@@ -9,11 +9,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="IdentityModel" Version="2.10.0" />
+    <PackageReference Include="IdentityModel" Version="2.6.0" />
+    <PackageReference Include="MiX.Identity.Client" Version="2017.8.17.2-beta" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\MiX.Identity.Client\MiX.Identity.Client\MiX.Identity.Client.csproj" />
     <ProjectReference Include="..\MiX.Integrate.Shared\MiX.Integrate.Shared.csproj" />
   </ItemGroup>
 
