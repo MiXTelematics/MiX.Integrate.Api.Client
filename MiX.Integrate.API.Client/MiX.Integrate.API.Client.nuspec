@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>MiX.Integrate.Api.Client</id>
+    <version>1.0.0</version>
+    <title>MiX Integrate Api Client</title>
+    <authors>MiX Telematics</authors>
+    <owners>MiX Telematics</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>The MiX.Integrate.Api.Client assembly implements a client library for accessing the MiX Integrate Api</description>
+    <licenseUrl>https://raw.githubusercontent.com/MiXTelematics/MiX.Integrate.Api.Client/master/License.txt</licenseUrl>
+    <releaseNotes />
+    <copyright>Copyright 2017</copyright>
+    <tags>MiX Integrate Api Client</tags>
+    <dependencies>
+      <group targetFramework=".NETStandard1.6">
+        <dependency id="MiX.Identity.Client" version="1.0.0" />
+        <dependency id="MiX.Integrate.Shared" version="1.0.0" />
+        <dependency id="RestSharp.NetCore" version="105.2.3" />
+        <dependency id="NETStandard.Library" version="1.6.1" />
+        <dependency id="IdentityModel" version="2.10.0" />
+      </group>
+      <group targetFramework=".NETFramework4.6.2">
+        <dependency id="MiX.Identity.Client" version="1.0.0" />
+        <dependency id="MiX.Integrate.Shared" version="1.0.0" />
+        <dependency id="RestSharp" version="105.2.3" />
+        <dependency id="IdentityModel" version="2.10.0" />
+      </group>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="$BaseOutputPath$\netstandard1.6\MiX.Integrate.API.Client.dll" target="lib\netstandard1.6\MiX.Integrate.API.Client.dll" />
+    <file src="$BaseOutputPath$\netstandard1.6\MiX.Integrate.API.Client.pdb" target="lib\netstandard1.6\MiX.Integrate.API.Client.pdb" />
+    <file src="$BaseOutputPath$\net462\MiX.Integrate.API.Client.dll" target="lib\net462\MiX.Integrate.API.Client.dll" />
+    <file src="$BaseOutputPath$\net462\MiX.Integrate.API.Client.pdb" target="lib\net462\MiX.Integrate.API.Client.pdb" />
+  </files>
+</package>
