@@ -7,11 +7,11 @@
     <authors>MiX Telematics</authors>
     <owners>MiX Telematics</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>The MiX.Integrate.Shared assembly implements a client library</description>
-    <licenseUrl>https://raw.githubusercontent.com/MiXTelematics/MiX.Integrate.Api.Client/master/License.txt</licenseUrl>
+    <description>The MiX.Integrate.Shared assembly implements the MiX.Integrate entities</description>
     <releaseNotes />
     <copyright>Copyright 2017</copyright>
-    <tags>MiX.Integrate.Shared</tags>
+    <licenseUrl>https://raw.githubusercontent.com/MiXTelematics/MiX.Integrate.Api.Client/master/License.txt</licenseUrl>
+    <tags>MiX Integrate Shared</tags>
     <dependencies>
       <group targetFramework=".NETStandard1.6">
         <dependency id="NETStandard.Library" version="1.6.1" />
