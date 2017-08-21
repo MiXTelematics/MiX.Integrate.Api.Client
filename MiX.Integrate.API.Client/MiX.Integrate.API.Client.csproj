@@ -11,7 +11,7 @@
 
   <ItemGroup>
     <PackageReference Include="IdentityModel" Version="2.6.0" />
-    <PackageReference Include="MiX.Identity.Client" Version="2017.8.21.1-beta" />
+    <PackageReference Include="MiX.Identity.Client" Version="2017.8.21.3-beta" />
   </ItemGroup>
 
   <ItemGroup>
