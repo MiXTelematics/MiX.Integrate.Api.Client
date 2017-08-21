@@ -15,20 +15,17 @@
     <dependencies>
       <group targetFramework=".NETStandard1.6">
         <dependency id="MiX.Identity.Client" version="2017.8.17.2-beta" />
-        <dependency id="MiX.Integrate.Shared" version="1.0.0" />
         <dependency id="RestSharp.NetCore" version="105.2.3" />
         <dependency id="NETStandard.Library" version="1.6.1" />
         <dependency id="IdentityModel" version="2.6.0" />
       </group>
       <group targetFramework=".NETFramework4.6.2">
         <dependency id="MiX.Identity.Client" version="2017.8.17.2-beta" />
-        <dependency id="MiX.Integrate.Shared" version="1.0.0" />
         <dependency id="RestSharp" version="105.2.3" />
         <dependency id="IdentityModel" version="2.6.0" />
       </group>
       <group targetFramework=".NETFramework4.5.1">
         <dependency id="MiX.Identity.Client" version="2017.8.17.2-beta" />
-        <dependency id="MiX.Integrate.Shared" version="1.0.0" />
         <dependency id="RestSharp" version="105.2.3" />
         <dependency id="IdentityModel" version="2.6.0" />
       </group>
@@ -37,9 +34,15 @@
   <files>
     <file src="$BaseOutputPath$\netstandard1.6\MiX.Integrate.API.Client.dll" target="lib\netstandard1.6\MiX.Integrate.API.Client.dll" />
     <file src="$BaseOutputPath$\netstandard1.6\MiX.Integrate.API.Client.pdb" target="lib\netstandard1.6\MiX.Integrate.API.Client.pdb" />
+    <file src="$BaseOutputPath$\netstandard1.6\MiX.Integrate.Shared.dll" target="lib\netstandard1.6\MiX.Integrate.Shared.dll" />
+    <file src="$BaseOutputPath$\netstandard1.6\MiX.Integrate.Shared.pdb" target="lib\netstandard1.6\MiX.Integrate.Shared.pdb" />
     <file src="$BaseOutputPath$\net462\MiX.Integrate.API.Client.dll" target="lib\net462\MiX.Integrate.API.Client.dll" />
     <file src="$BaseOutputPath$\net462\MiX.Integrate.API.Client.pdb" target="lib\net462\MiX.Integrate.API.Client.pdb" />
+    <file src="$BaseOutputPath$\net462\MiX.Integrate.Shared.dll" target="lib\net462\MiX.Integrate.Shared.dll" />
+    <file src="$BaseOutputPath$\net462\MiX.Integrate.Shared.pdb" target="lib\net462\MiX.Integrate.Shared.pdb" />
     <file src="$BaseOutputPath$\net451\MiX.Integrate.API.Client.dll" target="lib\net451\MiX.Integrate.API.Client.dll" />
     <file src="$BaseOutputPath$\net451\MiX.Integrate.API.Client.pdb" target="lib\net451\MiX.Integrate.API.Client.pdb" />
+    <file src="$BaseOutputPath$\net451\MiX.Integrate.Shared.dll" target="lib\net451\MiX.Integrate.Shared.dll" />
+    <file src="$BaseOutputPath$\net451\MiX.Integrate.Shared.pdb" target="lib\net451\MiX.Integrate.Shared.pdb" />
   </files>
 </package>
