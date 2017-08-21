@@ -12,17 +12,12 @@
     <copyright>Copyright 2017</copyright>
     <licenseUrl>https://raw.githubusercontent.com/MiXTelematics/MiX.Integrate.Api.Client/master/License.txt</licenseUrl>
     <tags>MiX Integrate Shared</tags>
-    <dependencies>
-      <group targetFramework=".NETStandard1.6">
-        <dependency id="NETStandard.Library" version="1.6.1" />
-      </group>
+    <dependencies> 
       <group targetFramework=".NETFramework4.6.2" />
       <group targetFramework=".NETFramework4.5.1" />
     </dependencies>
   </metadata>
-  <files>
-    <file src="$BaseOutputPath$\netstandard1.6\MiX.Integrate.Shared.dll" target="lib\netstandard1.6\MiX.Integrate.Shared.dll" />
-    <file src="$BaseOutputPath$\netstandard1.6\MiX.Integrate.Shared.pdb" target="lib\netstandard1.6\MiX.Integrate.Shared.pdb" />
+  <files> 
     <file src="$BaseOutputPath$\net462\MiX.Integrate.Shared.dll" target="lib\net462\MiX.Integrate.Shared.dll" />
     <file src="$BaseOutputPath$\net462\MiX.Integrate.Shared.pdb" target="lib\net462\MiX.Integrate.Shared.pdb" />
     <file src="$BaseOutputPath$\net451\MiX.Integrate.Shared.dll" target="lib\net451\MiX.Integrate.Shared.dll" />
