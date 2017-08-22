@@ -46,5 +46,55 @@ namespace MiX.Integrate.Api.Client
 			return response.Data;
 		}
 
+		public async Task UpdateAsync(Location location, long groupId)
+		{
+			IRestRequest request = GetRequest(APIControllerRoutes.LOCATIONSCONTROLLER.UPDATEASYNC, Method.PUT);
+			request.AddUrlSegment("groupId:long", groupId.ToString());
+			request.AddJsonBody(location);
+			await ExecuteAsync(request);
+		}
+		public void Update(Location location, long groupId)
+		{
+			IRestRequest request = GetRequest(APIControllerRoutes.LOCATIONSCONTROLLER.UPDATEASYNC, Method.PUT);
+			request.AddUrlSegment("groupId:long", groupId.ToString());
+			request.AddJsonBody(location);
+			Execute(request);
+		}
+
+		public async Task<long> AddAsync(Location location, long groupId)
+		{
+			IRestRequest request = GetRequest(APIControllerRoutes.LOCATIONSCONTROLLER.ADDASYNC, Method.POST);
+			request.AddUrlSegment("groupId:long", groupId.ToString());
+			request.AddJsonBody(location);
+			IRestResponse response = await ExecuteAsync(request); 
+			long locationId = Convert.ToInt64(response.Headers.ToList().Find(x => x.Name.ToLower() == "locationId".ToLower()).Value.ToString());
+			return locationId;
+		}
+
+		public long Add(Location location, long groupId)
+		{
+			IRestRequest request = GetRequest(APIControllerRoutes.LOCATIONSCONTROLLER.ADDASYNC, Method.POST);
+			request.AddUrlSegment("groupId:long", groupId.ToString());
+			request.AddJsonBody(location);
+			IRestResponse response = Execute(request);
+			long locationId = Convert.ToInt64(response.Headers.ToList().Find(x => x.Name.ToLower() == "locationId".ToLower()).Value.ToString());
+			return locationId;
+		}
+
+		public async Task DeleteAsync(long groupId, long locationId)
+		{
+			IRestRequest request = GetRequest(APIControllerRoutes.LOCATIONSCONTROLLER.DELETEASYNC, Method.DELETE);
+			request.AddUrlSegment("groupId:long", groupId.ToString());
+			request.AddUrlSegment("locationId:long", locationId.ToString());
+			await ExecuteAsync(request);
+		}
+
+		public void Delete(long groupId, long locationId)
+		{
+			IRestRequest request = GetRequest(APIControllerRoutes.LOCATIONSCONTROLLER.DELETEASYNC, Method.DELETE);
+			request.AddUrlSegment("groupId:long", groupId.ToString());
+			request.AddUrlSegment("locationId:long", locationId.ToString());
+			Execute(request);
+		}
 	}
 }

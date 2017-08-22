@@ -118,6 +118,9 @@ namespace MiX.Integrate.Shared.Constants
 		{
 			public const string GETALL = "api/locations/group/{groupId:long}";
 			public const string GET = "api/locations/location/{locationId:long}";
+			public const string ADDASYNC = "api/locations/group/{groupId:long}";
+			public const string UPDATEASYNC = "api/locations/group/{groupId:long}";
+			public const string DELETEASYNC = "api/locations/group/{groupId:long}/location/{locationId:long}";
 		}
 
 
@@ -135,6 +138,12 @@ namespace MiX.Integrate.Shared.Constants
 			public const string SENDDISARMUNITMESSAGE = "api/devicecommands/senddisarmunitmessage/groupId/{groupId:long}/assetid/{assetId:long}";
 			public const string SENDFREETEXTMESSAGE = "api/devicecommands/sendfreetextmessage/groupId/{groupId:long}/assetid/{assetId:long}";
 			public const string SENDSETACRONYMCOMMAND = "api/devicecommands/sendsetacronymcommand/groupId/{groupId:long}/assetid/{assetId:long}/params/{param1}/{param2}/{param3}";
+		}
+
+		//MiX.Integrate.Api.Controllers.LibraryEventsController
+		public class LIBRARYEVENTSCONTROLLER
+		{
+			public const string GETALLLIBRARYEVENTS = "api/libraryevents/organisation/{organisationId:long}";
 		}
 
 		//MiX.Integrate.Api.Controllers.MessagesController

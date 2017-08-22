@@ -11,5 +11,12 @@ namespace MiX.Integrate.Api.Client
 
 		Task<List<Location>> GetAllAsync(long groupId);
 		List<Location> GetAll(long groupId);
+		Task UpdateAsync(Location location, long groupId);
+		void Update(Location location, long groupId);
+		Task<long> AddAsync(Location location, long groupId);
+		long Add(Location location, long groupId);
+		Task DeleteAsync(long groupId, long locationId);
+		void Delete(long groupId, long locationId);
 	}
 }
+

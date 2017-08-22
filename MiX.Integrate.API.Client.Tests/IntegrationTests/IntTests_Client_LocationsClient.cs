@@ -91,6 +91,57 @@ namespace MiX.Integrate.Api.Client.Tests
 			Assert.IsTrue(item.LocationId != 0);
 		}
 
+		[TestMethod, TestCategory("Integration")]
+		public async Task IntTests_Logic_LocationsManager_AddUpdateDelete()
+		{
+			// Arrange    
+			ILocationsClient client = new LocationsClient(_apiUrl, _idServerResourceOwnerClientSettings);
+			//long testLocationId = -960811461965230592;
+
+			//Act 
+			IList<Location> locations = await client.GetAllAsync(_lightningLocationsOrganisationGroupId).ConfigureAwait(false);
+
+			//Assert
+			locations.ShouldNotBeNull();
+			locations.Count.ShouldBePositive();
+
+			// Arrange
+			Location location = await client.GetAsync(locations[0].LocationId).ConfigureAwait(false);
+			location.LocationId = 0;
+			location.Name = $"Test @ { DateTime.Now.ToString("yyyyMMdd_HHmmss.fff")}";
+
+			// Act  
+			long locationId = await client.AddAsync(location, _lightningLocationsOrganisationGroupId).ConfigureAwait(false);
+
+			// Assert 
+			locationId.ShouldNotBeNull();
+			locationId.ShouldNotBe(0);
+
+			// Act 
+			Location newLocation = await client.GetAsync(locationId).ConfigureAwait(false);
+			// Assert newLocation.ShouldNotBeNull();
+			newLocation.LocationId.ShouldBe(locationId);
+			newLocation.Name.ShouldBe(location.Name);
+			newLocation.Address.ShouldBe(location.Address);
+			newLocation.ShapeType.ShouldBe(location.ShapeType);
+			newLocation.ShapeWkt.ShouldBe(location.ShapeWkt);
+
+			// Act 
+			newLocation.Name = $"Test Update @  { DateTime.Now.ToString("ss.fff")}";
+			await client.UpdateAsync(newLocation, _lightningLocationsOrganisationGroupId).ConfigureAwait(false);
+			Location updatedLocation = await client.GetAsync(locationId).ConfigureAwait(false);
+			//// Assert
+			updatedLocation.ShouldNotBeNull();
+			updatedLocation.Name.ShouldBe(newLocation.Name);
+
+			// Act   
+			await client.DeleteAsync(_lightningLocationsOrganisationGroupId, locationId).ConfigureAwait(false);
+			Location deletedlocation = await client.GetAsync(locationId).ConfigureAwait(false);
+			// Assert 
+			deletedlocation.ShouldNotBeNull();
+			deletedlocation.IsDeleted.ShouldBe(true);
+		}
+
 		#region bad login
 
 		[TestMethod, TestCategory("Integration")]
