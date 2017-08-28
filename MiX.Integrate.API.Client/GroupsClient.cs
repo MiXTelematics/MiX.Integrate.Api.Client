@@ -1,4 +1,6 @@
-﻿using MiX.Integrate.Shared.Constants;
+﻿using System;
+using System.Linq;
+using MiX.Integrate.Shared.Constants;
 using MiX.Integrate.Shared.Entities.Groups;
 
 using RestSharp;
@@ -27,5 +29,79 @@ namespace MiX.Integrate.Api.Client
 			return response.Data;
 		}
 
+
+		public long AddSite(long parentGroupId, string name)
+		{
+			var request = GetRequest(APIControllerRoutes.GROUPSCONTROLLER.ADDSITE, Method.POST)
+				.AddUrlSegment("parentGroupId", parentGroupId.ToString())
+				.AddJsonBody(name);
+			IRestResponse response = Execute(request);
+			var idHeaderVal = response.Headers.ToList().FirstOrDefault(h => h.Name.ToLowerInvariant().Equals("groupid"))
+				?.Value.ToString();
+			long groupId;
+			if (!long.TryParse(idHeaderVal, out groupId) || groupId == 0)
+				throw new Exception("Could not determine the id of the newly-created site");
+			return groupId;
+		}
+
+		public long AddOrganisationSubGroup(long parentGroupId, string name)
+		{
+			var request = GetRequest(APIControllerRoutes.GROUPSCONTROLLER.ADDORGSUBGROUP, Method.POST)
+				.AddUrlSegment("parentGroupId", parentGroupId.ToString())
+				.AddJsonBody(name);
+			IRestResponse response = Execute(request);
+			var idHeaderVal = response.Headers.ToList().FirstOrDefault(h => h.Name.ToLowerInvariant().Equals("groupid"))
+				?.Value.ToString();
+			long groupId;
+			if (!long.TryParse(idHeaderVal, out groupId) || groupId == 0)
+				throw new Exception("Could not determine the id of the newly-created group");
+			return groupId;
+		}
+
+		public void UpdateGroupName(long organisationGroupId, long groupId, string name)
+		{
+			var request = GetRequest(APIControllerRoutes.GROUPSCONTROLLER.UPDATEGROUPNAME, Method.PUT)
+				.AddUrlSegment("organisationGroupId", organisationGroupId.ToString())
+				.AddUrlSegment("groupId", groupId.ToString())
+				.AddJsonBody(name);
+			Execute(request);
+		}
+
+		public async Task<long> AddSiteAsync(long parentGroupId, string name)
+		{
+			var request = GetRequest(APIControllerRoutes.GROUPSCONTROLLER.ADDSITE, Method.POST)
+				.AddUrlSegment("parentGroupId", parentGroupId.ToString())
+				.AddJsonBody(name);
+			IRestResponse response = await ExecuteAsync(request);
+			var idHeaderVal = response.Headers.ToList().FirstOrDefault(h => h.Name.ToLowerInvariant().Equals("groupid"))
+				?.Value.ToString();
+			long groupId;
+			if (!long.TryParse(idHeaderVal, out groupId) || groupId == 0)
+				throw new Exception("Could not determine the id of the newly-created site");
+			return groupId;
+		}
+
+		public async Task<long> AddOrganisationSubGroupAsync(long parentGroupId, string name)
+		{
+			var request = GetRequest(APIControllerRoutes.GROUPSCONTROLLER.ADDORGSUBGROUP, Method.POST)
+				.AddUrlSegment("parentGroupId", parentGroupId.ToString())
+				.AddJsonBody(name);
+			IRestResponse response = await ExecuteAsync(request).ConfigureAwait(false);
+			var idHeaderVal = response.Headers.ToList().FirstOrDefault(h => h.Name.ToLowerInvariant().Equals("groupid"))
+				?.Value.ToString();
+			long groupId;
+			if (!long.TryParse(idHeaderVal, out groupId) || groupId == 0)
+				throw new Exception("Could not determine the id of the newly-created group");
+			return groupId;
+		}
+
+		public async Task UpdateGroupNameAsync(long organisationGroupId, long groupId, string name)
+		{
+			var request = GetRequest(APIControllerRoutes.GROUPSCONTROLLER.UPDATEGROUPNAME, Method.PUT)
+				.AddUrlSegment("organisationGroupId", organisationGroupId.ToString())
+				.AddUrlSegment("groupId", groupId.ToString())
+				.AddJsonBody(name);
+			await ExecuteAsync(request).ConfigureAwait(false);
+		}
 	}
 }

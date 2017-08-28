@@ -53,6 +53,11 @@ namespace MiX.Integrate.Shared.Constants
 			public const string GETSUBGROUPS = "api/organisationgroups/{groupId:long}";
 			public const string DELETEORGSUBGROUP = "api/organisationgroups/organisationsubgroup/{groupId}";
 			public const string DELETESITE = "api/organisationgroups/site/{groupId}";
+
+			public const string ADDSITE = "api/organisationgroups/{parentGroupId}/site";
+			public const string ADDORGSUBGROUP = "api/organisationgroups/{parentGroupId}/organisationsubgroup";
+
+			public const string UPDATEGROUPNAME = "api/organisationgroups/{organisationGroupId}/group/{groupId}/name";
 		}
 
 		//MiX.Fleet.Services.Api PositionsController
