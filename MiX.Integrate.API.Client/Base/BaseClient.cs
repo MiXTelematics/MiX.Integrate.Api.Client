@@ -8,7 +8,7 @@ using System.Linq;
 using System.Security;
 using System.Threading.Tasks;
 
-namespace MiX.Integrate.Api.Client
+namespace MiX.Integrate.Api.Client.Base
 {
 
 	public class BaseClient : IBaseClient

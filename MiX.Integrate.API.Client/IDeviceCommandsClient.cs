@@ -1,8 +1,5 @@
-﻿using MiX.Integrate.Shared.Entities.DeviceCommands;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using MiX.Integrate.Api.Client.Base;
+using MiX.Integrate.Shared.Entities.DeviceCommands;
 using System.Threading.Tasks;
 
 namespace MiX.Integrate.Api.Client

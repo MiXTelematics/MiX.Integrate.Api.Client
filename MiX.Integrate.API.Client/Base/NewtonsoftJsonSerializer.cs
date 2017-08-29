@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using System;
 
-namespace MiX.Integrate.Api.Client
+namespace MiX.Integrate.Api.Client.Base
 {
 	public class NewtonsoftJsonSerializer : ISerializer, IDeserializer
 	{

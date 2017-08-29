@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using MiX.Integrate.Shared.Constants;
 using MiX.Integrate.Shared.Entities.Drivers;
 using RestSharp;
+using MiX.Integrate.Api.Client.Base;
 
 namespace MiX.Integrate.Api.Client
 {

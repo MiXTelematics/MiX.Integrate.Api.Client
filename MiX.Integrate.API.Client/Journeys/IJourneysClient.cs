@@ -1,6 +1,7 @@
 ﻿using System.Threading.Tasks;
 using System.Collections.Generic;
 using MiX.Integrate.Shared.Entities.Journeys;
+using MiX.Integrate.Api.Client.Base;
 
 namespace MiX.Integrate.Api.Client.Journeys
 {

@@ -1,6 +1,7 @@
 ﻿using IdentityModel.Client;
 using MiX.Identity.Client;
 using MiX.Integrate.API.Client;
+using MiX.Integrate.API.Client.Base;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -12,7 +13,7 @@ using System.Security;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MiX.Integrate.Api.Client
+namespace MiX.Integrate.Api.Client.Base
 {
 
 	public class BaseClientV2 : IBaseClient

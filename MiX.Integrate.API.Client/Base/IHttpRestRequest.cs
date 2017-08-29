@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
 
-namespace MiX.Integrate.API.Client
+namespace MiX.Integrate.API.Client.Base
 {
 	public interface IHttpRestRequest
 	{

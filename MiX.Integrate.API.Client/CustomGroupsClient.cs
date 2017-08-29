@@ -3,9 +3,9 @@ using MiX.Integrate.Shared.Constants;
 using MiX.Integrate.Shared.Entities.CustomGroups;
 using RestSharp;
 using System.Collections.Generic;
-using System.Linq;
-using System.Net;
+using System.Linq; 
 using System.Threading.Tasks;
+using MiX.Integrate.Api.Client.Base;
 
 namespace MiX.Integrate.Api.Client
 {

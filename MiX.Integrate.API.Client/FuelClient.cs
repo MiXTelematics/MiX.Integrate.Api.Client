@@ -1,4 +1,5 @@
-﻿using MiX.Integrate.Shared.Constants;
+﻿using MiX.Integrate.Api.Client.Base;
+using MiX.Integrate.Shared.Constants;
 using MiX.Integrate.Shared.Entities.Fuel;
 using RestSharp;
 using System;

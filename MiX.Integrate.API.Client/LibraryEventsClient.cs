@@ -6,6 +6,7 @@ using MiX.Integrate.Shared.Constants;
 using RestSharp;
 using System.Threading.Tasks;
 using MiX.Integrate.Shared.Entities.LibraryEvents;
+using MiX.Integrate.Api.Client.Base;
 
 namespace MiX.Integrate.Api.Client
 {

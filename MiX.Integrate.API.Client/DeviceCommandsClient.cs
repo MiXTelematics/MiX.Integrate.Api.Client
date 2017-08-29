@@ -1,11 +1,8 @@
 ﻿using MiX.Integrate.Shared.Constants;
 using MiX.Integrate.Shared.Entities.DeviceCommands;
-using RestSharp;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using RestSharp; 
 using System.Threading.Tasks;
+using MiX.Integrate.Api.Client.Base;
 
 namespace MiX.Integrate.Api.Client
 {

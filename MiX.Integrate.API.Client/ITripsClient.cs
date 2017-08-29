@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 using MiX.Integrate.Shared.Entities.Trips;
 using System.Threading.Tasks;
+using MiX.Integrate.Api.Client.Base;
 
 namespace MiX.Integrate.Api.Client
 {

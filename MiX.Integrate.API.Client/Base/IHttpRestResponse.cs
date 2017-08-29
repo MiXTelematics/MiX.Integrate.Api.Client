@@ -1,11 +1,9 @@
-﻿using MiX.Integrate.API.Client;
+﻿using MiX.Integrate.API.Client.Base;
 using System;
-using System.Collections.Generic;
 using System.Net;
 using System.Net.Http.Headers;
-using System.Text;
 
-namespace MiX.Integrate.Api.Client
+namespace MiX.Integrate.Api.Client.Base
 {
 
 	public interface IHttpRestResponse<T> : IHttpRestResponse
