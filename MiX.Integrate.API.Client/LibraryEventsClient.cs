@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-
+﻿using System.Collections.Generic;
 using MiX.Integrate.Shared.Constants;
-
-using RestSharp;
 using System.Threading.Tasks;
 using MiX.Integrate.Shared.Entities.LibraryEvents;
 using MiX.Integrate.Api.Client.Base;
+using MiX.Integrate.API.Client.Base;
+using System.Net.Http;
 
 namespace MiX.Integrate.Api.Client
 {
@@ -23,9 +21,9 @@ namespace MiX.Integrate.Api.Client
 
 		public async Task<IList<LibraryEvent>> GetAllLibraryEventsAsync(long organisationId)
 		{
-			IRestRequest request = GetRequest(APIControllerRoutes.LIBRARYEVENTSCONTROLLER.GETALLLIBRARYEVENTS, Method.GET);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.LIBRARYEVENTSCONTROLLER.GETALLLIBRARYEVENTS, HttpMethod.Get);
 			request.AddUrlSegment("organisationId:long", organisationId.ToString());
-			IRestResponse<List<LibraryEvent>> response = await ExecuteAsync<List<LibraryEvent>>(request);
+			IHttpRestResponse<List<LibraryEvent>> response = await ExecuteAsync<List<LibraryEvent>>(request);
 			return response.Data;
 		}
 	}

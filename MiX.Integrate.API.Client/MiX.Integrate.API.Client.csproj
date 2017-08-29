@@ -30,12 +30,6 @@
     <ProjectReference Include="..\MiX.Integrate.Shared\MiX.Integrate.Shared.csproj" />
   </ItemGroup>
 
-  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard1.6'">
-    <PackageReference Include="RestSharp.NetCore">
-      <Version>105.2.3</Version>
-    </PackageReference>
-  </ItemGroup>
-
   <ItemGroup Condition="'$(TargetFramework)' == 'net462'">
     <PackageReference Include="RestSharp">
       <Version>105.2.3</Version>

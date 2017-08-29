@@ -1,11 +1,10 @@
 ﻿using System.Collections.Generic;
-
 using MiX.Integrate.Shared.Constants;
 using MiX.Integrate.Shared.Entities.Drivers;
-
-using RestSharp;
 using System.Threading.Tasks;
 using MiX.Integrate.Api.Client.Base;
+using MiX.Integrate.API.Client.Base;
+using System.Net.Http;
 
 namespace MiX.Integrate.Api.Client
 {
@@ -16,35 +15,35 @@ namespace MiX.Integrate.Api.Client
 
 		public List<DriverSummary> GetAllDriverSummaries(long groupId)
 		{
-			IRestRequest request = GetRequest(APIControllerRoutes.DRIVERSCONTROLLER.GETALLDRIVERSUMMARIES, Method.GET);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.DRIVERSCONTROLLER.GETALLDRIVERSUMMARIES, HttpMethod.Get);
 			request.AddUrlSegment("groupId:long", groupId.ToString());
-			IRestResponse<List<DriverSummary>> response = Execute<List<DriverSummary>>(request);
+			IHttpRestResponse<List<DriverSummary>> response = Execute<List<DriverSummary>>(request);
 			return response.Data;
 		}
 
 		public async Task<List<DriverSummary>> GetAllDriverSummariesAsync(long groupId)
 		{
-			IRestRequest request = GetRequest(APIControllerRoutes.DRIVERSCONTROLLER.GETALLDRIVERSUMMARIES, Method.GET);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.DRIVERSCONTROLLER.GETALLDRIVERSUMMARIES, HttpMethod.Get);
 			request.AddUrlSegment("groupId:long", groupId.ToString());
-			IRestResponse<List<DriverSummary>> response = await ExecuteAsync<List<DriverSummary>>(request).ConfigureAwait(false);
+			IHttpRestResponse<List<DriverSummary>> response = await ExecuteAsync<List<DriverSummary>>(request).ConfigureAwait(false);
 			return response.Data;
 		}
 
 		public Driver GetDriverById(long groupId, long driverId)
 		{
-			IRestRequest request = GetRequest(APIControllerRoutes.DRIVERSCONTROLLER.GETDRIVERBYID, Method.GET);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.DRIVERSCONTROLLER.GETDRIVERBYID, HttpMethod.Get);
 			request.AddUrlSegment("groupId:long", groupId.ToString());
 			request.AddUrlSegment("driverId:long", driverId.ToString());
-			IRestResponse<Driver> response = Execute<Driver>(request);
+			IHttpRestResponse<Driver> response = Execute<Driver>(request);
 			return response.Data;
 		}
 
 		public async Task<Driver> GetDriverByIdAsync(long groupId, long driverId)
 		{
-			IRestRequest request = GetRequest(APIControllerRoutes.DRIVERSCONTROLLER.GETDRIVERBYID, Method.GET);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.DRIVERSCONTROLLER.GETDRIVERBYID, HttpMethod.Get);
 			request.AddUrlSegment("groupId:long", groupId.ToString());
 			request.AddUrlSegment("driverId:long", driverId.ToString());
-			IRestResponse<Driver> response = await ExecuteAsync<Driver>(request).ConfigureAwait(false);
+			IHttpRestResponse<Driver> response = await ExecuteAsync<Driver>(request).ConfigureAwait(false);
 			return response.Data;
 		}
 

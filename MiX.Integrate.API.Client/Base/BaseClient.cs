@@ -1,11 +1,16 @@
 ﻿using IdentityModel.Client;
 using MiX.Identity.Client;
-using MiX.Integrate.Shared.Constants;
-using RestSharp;
+using MiX.Integrate.API.Client;
+using MiX.Integrate.API.Client.Base;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Security;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace MiX.Integrate.Api.Client.Base
@@ -13,9 +18,8 @@ namespace MiX.Integrate.Api.Client.Base
 
 	public class BaseClient : IBaseClient
 	{
-
 		public Func<string> GetCorrelationId { get; set; }
-		private RestClient _client;
+		private string _url;
 		private bool _setTestRequestHeader;
 		private bool _hasIDServerResourceOwnerClientSettings;
 		private IdServerResourceOwnerClientSettings _idServerResourceOwnerClientSettings;
@@ -31,8 +35,7 @@ namespace MiX.Integrate.Api.Client.Base
 				throw new ArgumentException("Required arguments: url");
 			}
 
-			_client = new RestClient(url);
-			SetClientJsonHandler();
+			_url = url;
 			_setTestRequestHeader = setTestRequestHeader;
 			_hasIDServerResourceOwnerClientSettings = false;
 		}
@@ -58,19 +61,17 @@ namespace MiX.Integrate.Api.Client.Base
 				throw new ArgumentException("Required IdServerResourceOwnerClientSettings: BaseAddress, ClientId, ClientSecret, UserName, Password, Scopes");
 			}
 
-			_client = new RestClient(url);
-			SetClientJsonHandler();
+			_url = url;
 			_setTestRequestHeader = setTestRequestHeader;
 			_hasIDServerResourceOwnerClientSettings = true;
 			_idServerResourceOwnerClientSettings = settings;
 		}
 
-		public IRestRequest GetRequest(string resource, Method method)
+		public IHttpRestRequest GetRequest(string resource, HttpMethod method)
 		{
-			IRestRequest request = new RestRequest(resource, method);
-			request.JsonSerializer = NewtonsoftJsonSerializer.Default;
-			request.AddHeader("Accept", "application/json");
-			request.RequestFormat = DataFormat.Json;
+			IHttpRestRequest request = new HttpRestRequest(resource, method);
+			//request.AddHeader("Accept", "application/json");
+			//request.AddHeader("Content-type", "application/json");
 			string correlationId = GetCorrelationId?.Invoke();
 			if (!string.IsNullOrEmpty(correlationId))
 			{
@@ -108,125 +109,153 @@ namespace MiX.Integrate.Api.Client.Base
 			}
 		}
 
-		public IRestResponse<T> Execute<T>(IRestRequest request) where T : new()
+		public IHttpRestResponse<T> Execute<T>(IHttpRestRequest request) where T : new()
 		{
 			//IRestResponse resp = ExecuteAsync(request).GetAwaiter().GetResult();
 			//CheckResponseError(resp);
 			//IRestResponse<T> respT = CloneInTo<T>(resp);
 			//return respT;
 
-			IRestResponse<T> respT = ExecuteAsync<T>(request).GetAwaiter().GetResult();
+			IHttpRestResponse<T> respT = ExecuteAsync<T>(request).GetAwaiter().GetResult();
 			return respT;
 		}
 
-		public IRestResponse Execute(IRestRequest request)
+		public IHttpRestResponse Execute(IHttpRestRequest request)
 		{
 			//IRestResponse resp = ExecuteAsync(request).GetAwaiter().GetResult();
 			//CheckResponseError(resp);
 			//return resp;
 
-			IRestResponse resp = ExecuteAsync(request).GetAwaiter().GetResult();
+			IHttpRestResponse resp = ExecuteAsync(request).GetAwaiter().GetResult();
 			return resp;
 		}
 
-		public async Task<IRestResponse<T>> ExecuteAsync<T>(IRestRequest request) where T : new()
+		public async Task<IHttpRestResponse<T>> ExecuteAsync<T>(IHttpRestRequest request) where T : new()
 		{
-			TaskCompletionSource<IRestResponse> taskCompletion = new TaskCompletionSource<IRestResponse>();
-			RestRequestAsyncHandle handle = _client.ExecuteAsync(request, r => taskCompletion.SetResult(r));
-			IRestResponse resp = await taskCompletion.Task.ConfigureAwait(false);
-			CheckResponseError(resp);
-			IRestResponse<T> respT = CloneInTo<T>(resp);
+			string apiUrl = _url + "/" + request.QueryUrl;
+			HttpRequestMessage requestMessage = new HttpRequestMessage(request.Method, new Uri(apiUrl));
+			requestMessage.Headers.Add("Accept", "application/json");
+			// requestMessage.Headers.Add("Content-type", "application/json"); 
+			foreach (KeyValuePair<string, string> item in request.Headers)
+			{
+				requestMessage.Headers.Add(item.Key, item.Value.ToString());
+			}
+			if (request.JsonBody.Length > 0)
+			{
+				var jsonBody = new StringContent(request.JsonBody, Encoding.UTF8, "application/json");
+				requestMessage.Content = jsonBody;
+			}
+
+			HttpClient httpClient = new HttpClient();
+
+			HttpResponseMessage response = await httpClient.SendAsync(requestMessage).ConfigureAwait(false);
+			CheckResponseError(response);
+
+			Stream stream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
+
+			var sr = new StreamReader(stream);
+			string content = sr.ReadToEnd();
+
+			IHttpRestResponse resp = new HttpRestResponse()
+			{
+				Request = request,
+				Content = content,
+				StatusCode = response.StatusCode,
+				Headers = response.Headers
+			};
+
+			IHttpRestResponse<T> respT = CloneInTo<T>(resp);
 			return respT;
 		}
 
-		public async Task<IRestResponse> ExecuteAsync(IRestRequest request)
+		public async Task<IHttpRestResponse> ExecuteAsync(IHttpRestRequest request)
 		{
-			TaskCompletionSource<IRestResponse> taskCompletion = new TaskCompletionSource<IRestResponse>();
-			RestRequestAsyncHandle handle = _client.ExecuteAsync(request, r => taskCompletion.SetResult(r));
-			IRestResponse resp = await taskCompletion.Task.ConfigureAwait(false);
-			CheckResponseError(resp);
+			string apiUrl = _url + "/" + request.QueryUrl;
+			HttpRequestMessage requestMessage = new HttpRequestMessage(request.Method, new Uri(apiUrl));
+			requestMessage.Headers.Add("Accept", "application/json");
+			// requestMessage.Headers.Add("Content-type", "application/json"); 
+			foreach (KeyValuePair<string, string> item in request.Headers)
+			{
+				requestMessage.Headers.Add(item.Key, item.Value.ToString());
+			}
+			if (request.JsonBody.Length > 0)
+			{
+				var jsonBody = new StringContent(request.JsonBody, Encoding.UTF8, "application/json");
+				requestMessage.Content = jsonBody;
+			}
+
+			HttpClient httpClient = new HttpClient();
+
+			HttpResponseMessage response = await httpClient.SendAsync(requestMessage).ConfigureAwait(false);
+			CheckResponseError(response);
+
+			Stream stream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
+
+			var sr = new StreamReader(stream);
+			string content = sr.ReadToEnd();
+
+			IHttpRestResponse resp = new HttpRestResponse()
+			{
+				Request = request,
+				Content = content,
+				StatusCode = response.StatusCode,
+				Headers = response.Headers
+			};
+
 			return resp;
 		}
 
-		public string GetNewObjectUrl(IRestResponse response)
+		public string GetResponseHeader(HttpResponseHeaders headers, string name)
 		{
-			foreach (Parameter item in response.Headers)
-			{
-				if (item.Name.Equals(Headers.NEW_OBJECT_URL))
-					return Convert.ToString(item.Value);
-			}
-			return "";
-		}
-
-		public string GetResponseHeader(IList<Parameter> headers, string name)
-		{
-			var idHeaderVal = headers.ToList().FirstOrDefault(h => h.Name.ToLowerInvariant().Equals(name))
-					?.Value.ToString();
-
+			string idHeaderVal = string.Empty;
+			if (headers.Contains(name))
+				idHeaderVal = headers.GetValues(name).FirstOrDefault();
 			return idHeaderVal;
 		}
 
-		public void CheckResponseError(IRestResponse response)
+		private string GetResponseContent(HttpResponseMessage response)
+		{
+			Stream stream = response.Content.ReadAsStreamAsync().GetAwaiter().GetResult();
+			var sr = new StreamReader(stream);
+			string content = sr.ReadToEnd();
+			return content;
+		}
+
+		public void CheckResponseError(HttpResponseMessage response)
 		{
 			if ((int)response.StatusCode >= 400 & (int)response.StatusCode < 500)
 			{
-				throw new HttpClientException(response.StatusCode, response.Content);
+				string content = GetResponseContent(response);
+				dynamic responseForInvalidStatusCode = response.Content.ReadAsStringAsync();
+				throw new HttpClientException(response.StatusCode, content);
 			}
 			if ((int)response.StatusCode >= 500 & (int)response.StatusCode < 600)
 			{
-				throw new HttpServerException(response.StatusCode, response.Content);
+				string content = GetResponseContent(response);
+				throw new HttpServerException(response.StatusCode, content);
 			}
-			if (response.ResponseStatus == ResponseStatus.Error)
-			{
-				if (response.ErrorException != null)
-					throw (response.ErrorException);
-				else
-					throw new Exception(response.ErrorMessage);
-			}
+			//if (response.ResponseStatus == ResponseStatus.Error)
+			//{
+			//	if (response.ErrorException != null)
+			//		throw (response.ErrorException);
+			//	else
+			//		throw new Exception(response.ErrorMessage);
+			//}
 		}
 
-		private void SetClientJsonHandler()
+		public IHttpRestResponse<T> CloneInTo<T>(IHttpRestResponse resp) where T : new()
 		{
-			NewtonsoftJsonSerializer serializer = NewtonsoftJsonSerializer.Default;
-			_client.AddHandler("application/json", serializer);
-			_client.AddHandler("text/json", serializer);
-			_client.AddHandler("text/x-json", serializer);
-			_client.AddHandler("text/javascript", serializer);
-			_client.AddHandler("*+json", serializer);
-		}
-
-		public IRestResponse<T> CloneInTo<T>(IRestResponse resp) where T : new()
-		{
-			IRestResponse<T> respT = new RestResponse<T>();
-			respT.Content = resp.Content;
-			respT.ContentEncoding = resp.ContentEncoding;
-			respT.ContentLength = resp.ContentLength;
-			respT.ContentType = resp.ContentType;
-			if (resp.Cookies != null)
+			HttpRestResponse<T> respT = new HttpRestResponse<T>
 			{
-				foreach (var cookie in resp.Cookies)
-				{
-					respT.Cookies.Add(cookie);
-				}
-			}
-			respT.ErrorException = resp.ErrorException;
-			respT.ErrorMessage = resp.ErrorMessage;
-			if (resp.Headers != null)
-			{
-				foreach (var header in resp.Headers)
-				{
-					respT.Headers.Add(header);
-				}
-			}
-			respT.RawBytes = resp.RawBytes;
-			respT.Request = resp.Request;
-			respT.ResponseStatus = resp.ResponseStatus;
-			respT.ResponseUri = resp.ResponseUri;
-			respT.Server = resp.Server;
-			respT.StatusCode = resp.StatusCode;
-			respT.StatusDescription = resp.StatusDescription;
-			RestSharp.Deserializers.JsonDeserializer ds = new RestSharp.Deserializers.JsonDeserializer();
-			respT.Data = ds.Deserialize<T>(resp);
+				Request = resp.Request,
+				Content = resp.Content,
+				StatusCode = resp.StatusCode,
+				StatusDescription = resp.StatusDescription,
+				Headers = resp.Headers,
+				IsSuccessStatusCode = resp.IsSuccessStatusCode,
+				ErrorException = resp.ErrorException
+			};
+			respT.Data = NewtonsoftJsonSerializer.Default.Deserialize<T>(resp.Content);
 			return respT;
 		}
 

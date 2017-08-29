@@ -86,7 +86,7 @@ namespace MiX.Integrate.API.Client.Base
 						builder.AppendFormat($"{0}{1}={2}", separator, WebUtility.UrlEncode(item.Key), WebUtility.UrlEncode(item.Value.ToString()));
 						separator = "&";
 					}
-					url += url + builder.ToString();
+					url += builder.ToString();
 				}
 
 				return url;

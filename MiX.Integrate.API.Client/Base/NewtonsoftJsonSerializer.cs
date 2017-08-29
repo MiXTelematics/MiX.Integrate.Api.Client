@@ -1,12 +1,9 @@
-﻿using RestSharp.Serializers;
-using RestSharp.Deserializers;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using System;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Converters; 
 
 namespace MiX.Integrate.Api.Client.Base
 {
-	public class NewtonsoftJsonSerializer : ISerializer, IDeserializer
+	public class NewtonsoftJsonSerializer  
 	{
 		public string ContentType
 		{
@@ -25,13 +22,7 @@ namespace MiX.Integrate.Api.Client.Base
 			string json = JsonConvert.SerializeObject(obj, _settings);
 			return json;
 		}
-
-		public T Deserialize<T>(RestSharp.IRestResponse response)
-		{
-			T obj = JsonConvert.DeserializeObject<T>(response.Content, _settings);
-			return obj;
-		}
-
+		 
 		public T Deserialize<T>(string jsonString)
 		{
 			return JsonConvert.DeserializeObject<T>(jsonString, _settings);  

@@ -1,12 +1,10 @@
 ﻿using MiX.Integrate.Shared.Constants;
 using MiX.Integrate.Shared.Entities.Drivers;
-using RestSharp;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using MiX.Integrate.Api.Client.Base;
+using System.Net.Http;
+using MiX.Integrate.API.Client.Base;
 
 namespace MiX.Integrate.Api.Client
 {
@@ -18,61 +16,61 @@ namespace MiX.Integrate.Api.Client
 
 		public DriverCertification GetDriverCertificationById(long organisationGroupId, long driverId, int certificationTypeId)
 		{
-			IRestRequest request = GetRequest(APIControllerRoutes.DRIVERCERTIFICATIONCONTROLLER.GETDRIVERCERTIFICATIONASYNC, Method.GET);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.DRIVERCERTIFICATIONCONTROLLER.GETDRIVERCERTIFICATIONASYNC, HttpMethod.Get);
 			request.AddUrlSegment("organisationGroupId:long", organisationGroupId.ToString());
 			request.AddUrlSegment("driverId:long", driverId.ToString());
 			request.AddUrlSegment("certificationTypeId", certificationTypeId.ToString());
-			IRestResponse<DriverCertification> response = Execute<DriverCertification>(request);
+			IHttpRestResponse<DriverCertification> response = Execute<DriverCertification>(request);
 			return response.Data;
 		}
 		public async Task<DriverCertification> GetDriverCertificationByIdAsync(long organisationGroupId, long driverId, int certificationTypeId)
 		{
-			IRestRequest request = GetRequest(APIControllerRoutes.DRIVERCERTIFICATIONCONTROLLER.GETDRIVERCERTIFICATIONASYNC, Method.GET);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.DRIVERCERTIFICATIONCONTROLLER.GETDRIVERCERTIFICATIONASYNC, HttpMethod.Get);
 			request.AddUrlSegment("organisationGroupId:long", organisationGroupId.ToString());
 			request.AddUrlSegment("driverId:long", driverId.ToString());
 			request.AddUrlSegment("certificationTypeId", certificationTypeId.ToString());
-			IRestResponse<DriverCertification> response = await ExecuteAsync<DriverCertification>(request).ConfigureAwait(false);
+			IHttpRestResponse<DriverCertification> response = await ExecuteAsync<DriverCertification>(request).ConfigureAwait(false);
 			return response.Data;
 		}
 
 		public IList<DriverCertification> GetDriverCertificationsForDriver(long organisationGroupId, long driverId)
 		{
-			IRestRequest request = GetRequest(APIControllerRoutes.DRIVERCERTIFICATIONCONTROLLER.GETDRIVERCERTIFICATIONSASYNC, Method.GET);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.DRIVERCERTIFICATIONCONTROLLER.GETDRIVERCERTIFICATIONSASYNC, HttpMethod.Get);
 			request.AddUrlSegment("organisationGroupId:long", organisationGroupId.ToString());
 			request.AddUrlSegment("driverId:long", driverId.ToString());
-			IRestResponse<List<DriverCertification>> response = Execute<List<DriverCertification>>(request);
+			IHttpRestResponse<List<DriverCertification>> response = Execute<List<DriverCertification>>(request);
 			return response.Data;
 		}
 		public async Task<IList<DriverCertification>> GetDriverCertificationsForDriverAsync(long organisationGroupId, long driverId)
 		{
-			IRestRequest request = GetRequest(APIControllerRoutes.DRIVERCERTIFICATIONCONTROLLER.GETDRIVERCERTIFICATIONSASYNC, Method.GET);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.DRIVERCERTIFICATIONCONTROLLER.GETDRIVERCERTIFICATIONSASYNC, HttpMethod.Get);
 			request.AddUrlSegment("organisationGroupId:long", organisationGroupId.ToString());
 			request.AddUrlSegment("driverId:long", driverId.ToString());
-			IRestResponse<List<DriverCertification>> response = await ExecuteAsync<List<DriverCertification>>(request).ConfigureAwait(false);
+			IHttpRestResponse<List<DriverCertification>> response = await ExecuteAsync<List<DriverCertification>>(request).ConfigureAwait(false);
 			return response.Data;
 		}
 
 		public IList<CertificationType> GetDriverCertificationTypes(long organisationGroupId, long driverId)
 		{
-			IRestRequest request = GetRequest(APIControllerRoutes.DRIVERCERTIFICATIONCONTROLLER.GETDRIVERCERTIFICATIONTYPESASYNC, Method.GET);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.DRIVERCERTIFICATIONCONTROLLER.GETDRIVERCERTIFICATIONTYPESASYNC, HttpMethod.Get);
 			request.AddUrlSegment("organisationGroupId:long", organisationGroupId.ToString());
 			request.AddUrlSegment("driverId:long", driverId.ToString());
-			IRestResponse<List<CertificationType>> response = Execute<List<CertificationType>>(request);
+			IHttpRestResponse<List<CertificationType>> response = Execute<List<CertificationType>>(request);
 			return response.Data;
 		}
 
 		public async Task<IList<CertificationType>> GetDriverCertificationTypesAsync(long organisationGroupId, long driverId)
 		{
-			IRestRequest request = GetRequest(APIControllerRoutes.DRIVERCERTIFICATIONCONTROLLER.GETDRIVERCERTIFICATIONTYPESASYNC, Method.GET);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.DRIVERCERTIFICATIONCONTROLLER.GETDRIVERCERTIFICATIONTYPESASYNC, HttpMethod.Get);
 			request.AddUrlSegment("organisationGroupId:long", organisationGroupId.ToString());
 			request.AddUrlSegment("driverId:long", driverId.ToString());
-			IRestResponse<List<CertificationType>> response = await ExecuteAsync<List<CertificationType>>(request).ConfigureAwait(false);
+			IHttpRestResponse<List<CertificationType>> response = await ExecuteAsync<List<CertificationType>>(request).ConfigureAwait(false);
 			return response.Data;
 		}
 
 		public void AddDriverCertification(long organisationGroupId, DriverCertification driverCertification)
 		{
-			IRestRequest request = GetRequest(APIControllerRoutes.DRIVERCERTIFICATIONCONTROLLER.ADDDRIVERCERTIFICATIONASYNC, Method.PUT);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.DRIVERCERTIFICATIONCONTROLLER.ADDDRIVERCERTIFICATIONASYNC, HttpMethod.Put);
 			request.AddUrlSegment("organisationGroupId:long", organisationGroupId.ToString());
 			request.AddJsonBody(driverCertification);
 			Execute(request);
@@ -80,7 +78,7 @@ namespace MiX.Integrate.Api.Client
 
 		public async Task AddDriverCertificationAsync(long organisationGroupId, DriverCertification driverCertification)
 		{
-			IRestRequest request = GetRequest(APIControllerRoutes.DRIVERCERTIFICATIONCONTROLLER.ADDDRIVERCERTIFICATIONASYNC, Method.PUT);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.DRIVERCERTIFICATIONCONTROLLER.ADDDRIVERCERTIFICATIONASYNC, HttpMethod.Put);
 			request.AddUrlSegment("organisationGroupId:long", organisationGroupId.ToString());
 			request.AddJsonBody(driverCertification);
 			await ExecuteAsync(request).ConfigureAwait(false);
@@ -88,7 +86,7 @@ namespace MiX.Integrate.Api.Client
 
 		public void UpdateDriverCertification(long organisationGroupId, DriverCertification driverCertification)
 		{
-			IRestRequest request = GetRequest(APIControllerRoutes.DRIVERCERTIFICATIONCONTROLLER.UPDATEDRIVERCERTIFICATIONASYNC, Method.PUT);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.DRIVERCERTIFICATIONCONTROLLER.UPDATEDRIVERCERTIFICATIONASYNC, HttpMethod.Put);
 			request.AddUrlSegment("organisationGroupId:long", organisationGroupId.ToString());
 			request.AddJsonBody(driverCertification);
 			Execute(request);
@@ -96,7 +94,7 @@ namespace MiX.Integrate.Api.Client
 
 		public async Task UpdateDriverCertificationAsync(long organisationGroupId, DriverCertification driverCertification)
 		{
-			IRestRequest request = GetRequest(APIControllerRoutes.DRIVERCERTIFICATIONCONTROLLER.UPDATEDRIVERCERTIFICATIONASYNC, Method.PUT);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.DRIVERCERTIFICATIONCONTROLLER.UPDATEDRIVERCERTIFICATIONASYNC, HttpMethod.Put);
 			request.AddUrlSegment("organisationGroupId:long", organisationGroupId.ToString());
 			request.AddJsonBody(driverCertification);
 			await ExecuteAsync(request).ConfigureAwait(false);
@@ -104,7 +102,7 @@ namespace MiX.Integrate.Api.Client
 
 		public void DeleteDriverCertification(long organisationGroupId, long driverId, int certificationTypeId)
 		{
-			IRestRequest request = GetRequest(APIControllerRoutes.DRIVERCERTIFICATIONCONTROLLER.DELETEDRIVERCERTIFICATIONASYNC, Method.PUT);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.DRIVERCERTIFICATIONCONTROLLER.DELETEDRIVERCERTIFICATIONASYNC, HttpMethod.Put);
 			request.AddUrlSegment("organisationGroupId:long", organisationGroupId.ToString());
 			request.AddUrlSegment("driverId:long", driverId.ToString());
 			request.AddUrlSegment("certificationTypeId", certificationTypeId.ToString());
@@ -113,7 +111,7 @@ namespace MiX.Integrate.Api.Client
 
 		public async Task DeleteDriverCertificationAsync(long organisationGroupId, long driverId, int certificationTypeId)
 		{
-			IRestRequest request = GetRequest(APIControllerRoutes.DRIVERCERTIFICATIONCONTROLLER.DELETEDRIVERCERTIFICATIONASYNC, Method.PUT);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.DRIVERCERTIFICATIONCONTROLLER.DELETEDRIVERCERTIFICATIONASYNC, HttpMethod.Put);
 			request.AddUrlSegment("organisationGroupId:long", organisationGroupId.ToString());
 			request.AddUrlSegment("driverId:long", driverId.ToString());
 			request.AddUrlSegment("certificationTypeId", certificationTypeId.ToString());

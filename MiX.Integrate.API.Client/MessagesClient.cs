@@ -1,13 +1,10 @@
 ﻿using MiX.Integrate.Shared.Entities.Messages;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using MiX.Integrate.Shared.Constants;
-using MiX.Integrate.Shared.Entities.Drivers;
-using RestSharp;
 using MiX.Integrate.Api.Client.Base;
+using System.Net.Http;
+using MiX.Integrate.API.Client.Base;
 
 namespace MiX.Integrate.Api.Client
 {
@@ -18,94 +15,94 @@ namespace MiX.Integrate.Api.Client
 
 		public async Task<Message> GetMessageAsync(long organisationId, int messageId)
 		{
-			IRestRequest request = GetRequest(APIControllerRoutes.MESSAGESCONTROLLER.GET, Method.GET);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.MESSAGESCONTROLLER.GET, HttpMethod.Get);
 			request.AddUrlSegment("organisationId:long", organisationId.ToString());
 			request.AddUrlSegment("messageId", messageId.ToString());
-			IRestResponse<Message> response = await ExecuteAsync<Message>(request).ConfigureAwait(false);
+			IHttpRestResponse<Message> response = await ExecuteAsync<Message>(request).ConfigureAwait(false);
 			return response.Data;
 		}
 
 		public Message GetMessage(long organisationId, int messageId)
 		{
-			IRestRequest request = GetRequest(APIControllerRoutes.MESSAGESCONTROLLER.GET, Method.GET);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.MESSAGESCONTROLLER.GET, HttpMethod.Get);
 			request.AddUrlSegment("organisationId:long", organisationId.ToString());
 			request.AddUrlSegment("messageId", messageId.ToString());
-			IRestResponse<Message> response = Execute<Message>(request);
+			IHttpRestResponse<Message> response = Execute<Message>(request);
 			return response.Data;
 		}
 
 		public async Task<MessageStates> GetMessageStateAsync(long organisationId, int messageId)
 		{
-			IRestRequest request = GetRequest(APIControllerRoutes.MESSAGESCONTROLLER.GETMESSAGESTATE, Method.GET);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.MESSAGESCONTROLLER.GETMESSAGESTATE, HttpMethod.Get);
 			request.AddUrlSegment("organisationId:long", organisationId.ToString());
 			request.AddUrlSegment("messageId", messageId.ToString());
-			IRestResponse<MessageStates> response = await ExecuteAsync<MessageStates>(request).ConfigureAwait(false);
+			IHttpRestResponse<MessageStates> response = await ExecuteAsync<MessageStates>(request).ConfigureAwait(false);
 			return response.Data;
 		}
 
 		public MessageStates GetMessageState(long organisationId, int messageId)
 		{
-			IRestRequest request = GetRequest(APIControllerRoutes.MESSAGESCONTROLLER.GETMESSAGESTATE, Method.GET);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.MESSAGESCONTROLLER.GETMESSAGESTATE, HttpMethod.Get);
 			request.AddUrlSegment("organisationId:long", organisationId.ToString());
 			request.AddUrlSegment("messageId", messageId.ToString());
-			IRestResponse<MessageStates> response = Execute<MessageStates>(request);
+			IHttpRestResponse<MessageStates> response = Execute<MessageStates>(request);
 			return response.Data;
 		}
 
 		public async Task<IList<MessageStateHistoryItem>> GetMessageStateHistoryAsync(long organisationId, int messageId)
 		{
-			IRestRequest request = GetRequest(APIControllerRoutes.MESSAGESCONTROLLER.GETMESSAGESTATEHISTORY, Method.GET);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.MESSAGESCONTROLLER.GETMESSAGESTATEHISTORY, HttpMethod.Get);
 			request.AddUrlSegment("organisationId:long", organisationId.ToString());
 			request.AddUrlSegment("messageId", messageId.ToString());
-			IRestResponse<List<MessageStateHistoryItem>> response = await ExecuteAsync<List<MessageStateHistoryItem>>(request).ConfigureAwait(false);
+			IHttpRestResponse<List<MessageStateHistoryItem>> response = await ExecuteAsync<List<MessageStateHistoryItem>>(request).ConfigureAwait(false);
 			return response.Data;
 		}
 
 		public IList<MessageStateHistoryItem> GetMessageStateHistory(long organisationId, int messageId)
 		{
-			IRestRequest request = GetRequest(APIControllerRoutes.MESSAGESCONTROLLER.GETMESSAGESTATEHISTORY, Method.GET);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.MESSAGESCONTROLLER.GETMESSAGESTATEHISTORY, HttpMethod.Get);
 			request.AddUrlSegment("organisationId:long", organisationId.ToString());
 			request.AddUrlSegment("messageId", messageId.ToString());
-			IRestResponse<List<MessageStateHistoryItem>> response = Execute <List<MessageStateHistoryItem>> (request);
+			IHttpRestResponse<List<MessageStateHistoryItem>> response = Execute<List<MessageStateHistoryItem>>(request);
 			return response.Data;
 		}
 
 		public async Task<IList<Message>> GetMessagesBySinceIdAsync(long organisationId, int messageId, int maxRecords)
 		{
-			IRestRequest request = GetRequest(APIControllerRoutes.MESSAGESCONTROLLER.GETSINCEID, Method.GET);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.MESSAGESCONTROLLER.GETSINCEID, HttpMethod.Get);
 			request.AddUrlSegment("organisationId:long", organisationId.ToString());
 			request.AddUrlSegment("messageId", messageId.ToString());
 			request.AddUrlSegment("maxRecords", maxRecords.ToString());
-			IRestResponse<List<Message>> response = await ExecuteAsync<List<Message>>(request).ConfigureAwait(false);
+			IHttpRestResponse<List<Message>> response = await ExecuteAsync<List<Message>>(request).ConfigureAwait(false);
 			return response.Data;
 		}
 
 		public IList<Message> GetMessagesBySinceId(long organisationId, int messageId, int maxRecords)
 		{
-			IRestRequest request = GetRequest(APIControllerRoutes.MESSAGESCONTROLLER.GETSINCEID, Method.GET);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.MESSAGESCONTROLLER.GETSINCEID, HttpMethod.Get);
 			request.AddUrlSegment("organisationId:long", organisationId.ToString());
 			request.AddUrlSegment("messageId", messageId.ToString());
 			request.AddUrlSegment("maxRecords", maxRecords.ToString());
-			IRestResponse<List<Message>> response = Execute<List<Message>>(request);
+			IHttpRestResponse<List<Message>> response = Execute<List<Message>>(request);
 			return response.Data;
 		}
 
 
 		public async Task<SendMessageResult> SendFreeTextMessageAsync(long organisationId, SendFreeTextMessageCarrier messageCarrier)
 		{
-			IRestRequest request = GetRequest(APIControllerRoutes.MESSAGESCONTROLLER.SENDFREETEXTMESSAGE, Method.POST);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.MESSAGESCONTROLLER.SENDFREETEXTMESSAGE, HttpMethod.Post);
 			request.AddUrlSegment("organisationId:long", organisationId.ToString());
 			request.AddJsonBody(messageCarrier);
-			IRestResponse<SendMessageResult> response = await ExecuteAsync<SendMessageResult>(request).ConfigureAwait(false);
+			IHttpRestResponse<SendMessageResult> response = await ExecuteAsync<SendMessageResult>(request).ConfigureAwait(false);
 			return response.Data;
 		}
 
 		public SendMessageResult SendFreeTextMessage(long organisationId, SendFreeTextMessageCarrier messageCarrier)
 		{
-			IRestRequest request = GetRequest(APIControllerRoutes.MESSAGESCONTROLLER.SENDFREETEXTMESSAGE, Method.POST);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.MESSAGESCONTROLLER.SENDFREETEXTMESSAGE, HttpMethod.Post);
 			request.AddUrlSegment("organisationId:long", organisationId.ToString());
 			request.AddJsonBody(messageCarrier);
-			IRestResponse<SendMessageResult> response = Execute<SendMessageResult>(request);
+			IHttpRestResponse<SendMessageResult> response = Execute<SendMessageResult>(request);
 			return response.Data;
 		}
 	}

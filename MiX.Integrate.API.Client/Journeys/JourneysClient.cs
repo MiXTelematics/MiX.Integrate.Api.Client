@@ -1,9 +1,10 @@
-﻿using RestSharp;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using System.Collections.Generic;
 using MiX.Integrate.Shared.Constants;
 using MiX.Integrate.Shared.Entities.Journeys;
 using MiX.Integrate.Api.Client.Base;
+using System.Net.Http;
+using MiX.Integrate.API.Client.Base;
 
 namespace MiX.Integrate.Api.Client.Journeys
 {
@@ -37,9 +38,9 @@ namespace MiX.Integrate.Api.Client.Journeys
 		/// <returns></returns>
 		public Journey AddJourney(CreateJourney newJourney)
 		{
-			IRestRequest request = GetRequest(APIControllerRoutes.JOURNEYSCONTROLLER.ADDJOURNEY, Method.PUT);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.JOURNEYSCONTROLLER.ADDJOURNEY, HttpMethod.Put);
 			request.AddJsonBody(newJourney);
-			IRestResponse<Journey> response = Execute<Journey>(request);
+			IHttpRestResponse<Journey> response = Execute<Journey>(request);
 			return response.Data;
 		}
 
@@ -50,9 +51,9 @@ namespace MiX.Integrate.Api.Client.Journeys
 		/// <returns></returns>
 		public async Task<Journey> AddJourneyAsync(CreateJourney newJourney)
 		{
-			IRestRequest request = GetRequest(APIControllerRoutes.JOURNEYSCONTROLLER.ADDJOURNEY, Method.PUT);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.JOURNEYSCONTROLLER.ADDJOURNEY, HttpMethod.Put);
 			request.AddJsonBody(newJourney);
-			IRestResponse<Journey> response = await ExecuteAsync<Journey>(request);
+			IHttpRestResponse<Journey> response = await ExecuteAsync<Journey>(request);
 			return response.Data;
 		}
 
@@ -67,13 +68,13 @@ namespace MiX.Integrate.Api.Client.Journeys
 		/// <returns></returns>
 		public Journey AddJourney(Journey journey, List<JourneyAsset> journeyAssets, List<JourneyAssetDriver> journeyAssetDrivers, List<JourneyAssetExternalPassenger> journeyAssetExternalPassengers, JourneyRoute journeyRoute)
 		{
-			IRestRequest request = GetRequest(APIControllerRoutes.JOURNEYSCONTROLLER.ADDJOURNEY, Method.PUT);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.JOURNEYSCONTROLLER.ADDJOURNEY, HttpMethod.Put);
 			request.AddJsonBody(journey);
 			request.AddJsonBody(journeyAssets);
 			request.AddJsonBody(journeyAssetDrivers);
 			request.AddJsonBody(journeyAssetExternalPassengers);
 			request.AddJsonBody(journeyRoute);
-			IRestResponse<Journey> response = Execute<Journey>(request);
+			IHttpRestResponse<Journey> response = Execute<Journey>(request);
 			return response.Data;
 		}
 
@@ -88,13 +89,13 @@ namespace MiX.Integrate.Api.Client.Journeys
 		/// <returns></returns>
 		public async Task<Journey> AddJourneyAsync(Journey journey, List<JourneyAsset> journeyAssets, List<JourneyAssetDriver> journeyAssetDrivers, List<JourneyAssetExternalPassenger> journeyAssetExternalPassengers, JourneyRoute journeyRoute)
 		{
-			IRestRequest request = GetRequest(APIControllerRoutes.JOURNEYSCONTROLLER.ADDJOURNEY, Method.PUT);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.JOURNEYSCONTROLLER.ADDJOURNEY, HttpMethod.Put);
 			request.AddJsonBody(journey);
 			request.AddJsonBody(journeyAssets);
 			request.AddJsonBody(journeyAssetDrivers);
 			request.AddJsonBody(journeyAssetExternalPassengers);
 			request.AddJsonBody(journeyRoute);
-			IRestResponse<Journey> response = await ExecuteAsync<Journey>(request);
+			IHttpRestResponse<Journey> response = await ExecuteAsync<Journey>(request);
 			return response.Data;
 		}
 
@@ -105,9 +106,9 @@ namespace MiX.Integrate.Api.Client.Journeys
 		/// <returns></returns>
 		public Journey GetJourney(long journeyId)
 		{
-			IRestRequest request = GetRequest(APIControllerRoutes.JOURNEYSCONTROLLER.GETJOURNEY, Method.GET);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.JOURNEYSCONTROLLER.GETJOURNEY, HttpMethod.Get);
 			request.AddUrlSegment("journeyId:long", journeyId.ToString());
-			IRestResponse<Journey> response = Execute<Journey>(request);
+			IHttpRestResponse<Journey> response = Execute<Journey>(request);
 			return response.Data;
 		}
 
@@ -118,9 +119,9 @@ namespace MiX.Integrate.Api.Client.Journeys
 		/// <returns></returns>
 		public async Task<Journey> GetJourneyAsync(long journeyId)
 		{
-			IRestRequest request = GetRequest(APIControllerRoutes.JOURNEYSCONTROLLER.GETJOURNEY, Method.GET);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.JOURNEYSCONTROLLER.GETJOURNEY, HttpMethod.Get);
 			request.AddUrlSegment("journeyId:long", journeyId.ToString());
-			IRestResponse<Journey> response = await ExecuteAsync<Journey>(request);
+			IHttpRestResponse<Journey> response = await ExecuteAsync<Journey>(request);
 			return response.Data;
 		}
 
@@ -131,9 +132,9 @@ namespace MiX.Integrate.Api.Client.Journeys
 		/// <returns></returns>
 		public List<Route> GetRouteList(long groupId)
 		{
-			IRestRequest request = GetRequest(APIControllerRoutes.JOURNEYSCONTROLLER.GETJOURNEYROUTE, Method.GET);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.JOURNEYSCONTROLLER.GETJOURNEYROUTE, HttpMethod.Get);
 			request.AddUrlSegment("groupId:long", groupId.ToString());
-			IRestResponse<List<Route>> response = Execute<List<Route>>(request);
+			IHttpRestResponse<List<Route>> response = Execute<List<Route>>(request);
 			return response.Data;
 		}
 
@@ -144,9 +145,9 @@ namespace MiX.Integrate.Api.Client.Journeys
 		/// <returns></returns>
 		public async Task<List<Route>> GetRouteListAsync(long groupId)
 		{
-			IRestRequest request = GetRequest(APIControllerRoutes.JOURNEYSCONTROLLER.GETJOURNEYROUTE, Method.GET);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.JOURNEYSCONTROLLER.GETJOURNEYROUTE, HttpMethod.Get);
 			request.AddUrlSegment("groupId:long", groupId.ToString());
-			IRestResponse<List<Route>> response = await ExecuteAsync<List<Route>>(request);
+			IHttpRestResponse<List<Route>> response = await ExecuteAsync<List<Route>>(request);
 			return response.Data;
 		}
 
@@ -157,9 +158,9 @@ namespace MiX.Integrate.Api.Client.Journeys
 		/// <returns></returns>
 		public AutomatedMonitoring GetJourneyProgress(long journeyId)
 		{
-			IRestRequest request = GetRequest(APIControllerRoutes.JOURNEYSCONTROLLER.GETJOURNEYPROGRESS, Method.GET);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.JOURNEYSCONTROLLER.GETJOURNEYPROGRESS, HttpMethod.Get);
 			request.AddUrlSegment("journeyId:long", journeyId.ToString());
-			IRestResponse<AutomatedMonitoring> response = Execute<AutomatedMonitoring>(request);
+			IHttpRestResponse<AutomatedMonitoring> response = Execute<AutomatedMonitoring>(request);
 			return response.Data;
 		}
 
@@ -170,9 +171,9 @@ namespace MiX.Integrate.Api.Client.Journeys
 		/// <returns></returns>
 		public async Task<AutomatedMonitoring> GetJourneyProgressAsync(long journeyId)
 		{
-			IRestRequest request = GetRequest(APIControllerRoutes.JOURNEYSCONTROLLER.GETJOURNEYPROGRESS, Method.GET);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.JOURNEYSCONTROLLER.GETJOURNEYPROGRESS, HttpMethod.Get);
 			request.AddUrlSegment("journeyId:long", journeyId.ToString());
-			IRestResponse<AutomatedMonitoring> response = await ExecuteAsync<AutomatedMonitoring>(request);
+			IHttpRestResponse<AutomatedMonitoring> response = await ExecuteAsync<AutomatedMonitoring>(request);
 			return response.Data;
 		}
 
@@ -183,9 +184,9 @@ namespace MiX.Integrate.Api.Client.Journeys
 		/// <returns></returns>
 		public List<JourneyInProgressCurrentStatus> GetJourneyInProgressCurrentStatus(long groupId)
 		{
-			IRestRequest request = GetRequest(APIControllerRoutes.JOURNEYSCONTROLLER.GETJOURNEYINPROGRESSCURRENTSTATUS, Method.GET);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.JOURNEYSCONTROLLER.GETJOURNEYINPROGRESSCURRENTSTATUS, HttpMethod.Get);
 			request.AddUrlSegment("groupId:long", groupId.ToString());
-			IRestResponse<List<JourneyInProgressCurrentStatus>> response = Execute<List<JourneyInProgressCurrentStatus>>(request);
+			IHttpRestResponse<List<JourneyInProgressCurrentStatus>> response = Execute<List<JourneyInProgressCurrentStatus>>(request);
 			return response.Data;
 		}
 
@@ -196,9 +197,9 @@ namespace MiX.Integrate.Api.Client.Journeys
 		/// <returns></returns>
 		public async Task<List<JourneyInProgressCurrentStatus>> GetJourneyInProgressCurrentStatusAsync(long groupId)
 		{
-			IRestRequest request = GetRequest(APIControllerRoutes.JOURNEYSCONTROLLER.GETJOURNEYINPROGRESSCURRENTSTATUS, Method.GET);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.JOURNEYSCONTROLLER.GETJOURNEYINPROGRESSCURRENTSTATUS, HttpMethod.Get);
 			request.AddUrlSegment("groupId:long", groupId.ToString());
-			IRestResponse<List<JourneyInProgressCurrentStatus>> response = await ExecuteAsync<List<JourneyInProgressCurrentStatus>>(request);
+			IHttpRestResponse<List<JourneyInProgressCurrentStatus>> response = await ExecuteAsync<List<JourneyInProgressCurrentStatus>>(request);
 			return response.Data;
 		}
 

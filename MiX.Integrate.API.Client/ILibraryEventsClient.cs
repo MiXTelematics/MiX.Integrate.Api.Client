@@ -1,6 +1,6 @@
 ﻿using MiX.Integrate.Api.Client.Base;
-using MiX.Integrate.Shared.Entities.LibraryEvents; 
-using System.Collections.Generic; 
+using MiX.Integrate.Shared.Entities.LibraryEvents;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace MiX.Integrate.Api.Client
