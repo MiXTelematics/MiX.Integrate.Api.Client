@@ -3,25 +3,17 @@ using MiX.Identity.Client;
 using MiX.Integrate.Shared.Constants;
 using RestSharp;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Security;
 using System.Threading.Tasks;
 
 namespace MiX.Integrate.Api.Client
 {
 
-	public class IdServerResourceOwnerClientSettings
-	{
-		public string BaseAddress { get; set; }
-		public string ClientId { get; set; }
-		public string ClientSecret { get; set; }
-		public string Scopes { get; set; }
-		public string UserName { get; set; }
-		public string Password { get; set; }
-		public IdServerResourceOwnerClientSettings() { }
-	}
-
 	public class BaseClient : IBaseClient
 	{
+
 		public Func<string> GetCorrelationId { get; set; }
 		private RestClient _client;
 		private bool _setTestRequestHeader;
@@ -164,6 +156,14 @@ namespace MiX.Integrate.Api.Client
 					return Convert.ToString(item.Value);
 			}
 			return "";
+		}
+
+		public string GetResponseHeader(IList<Parameter> headers, string name)
+		{
+			var idHeaderVal = headers.ToList().FirstOrDefault(h => h.Name.ToLowerInvariant().Equals(name))
+					?.Value.ToString();
+
+			return idHeaderVal;
 		}
 
 		public void CheckResponseError(IRestResponse response)

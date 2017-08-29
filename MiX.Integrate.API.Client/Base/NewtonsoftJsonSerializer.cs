@@ -32,6 +32,11 @@ namespace MiX.Integrate.Api.Client
 			return obj;
 		}
 
+		public T Deserialize<T>(string jsonString)
+		{
+			return JsonConvert.DeserializeObject<T>(jsonString, _settings);  
+		}
+		 
 		private JsonSerializerSettings _settings;
 		public NewtonsoftJsonSerializer()
 		{
@@ -41,11 +46,16 @@ namespace MiX.Integrate.Api.Client
 			_settings.Converters.Add(new StringEnumConverter());
 		}
 
+		private static NewtonsoftJsonSerializer _default;
 		public static NewtonsoftJsonSerializer Default
 		{
 			get
 			{
-				return new NewtonsoftJsonSerializer();
+				if (_default == null)
+				{
+					_default = new NewtonsoftJsonSerializer();
+				}
+				return _default;
 			}
 		}
 	}
