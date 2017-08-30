@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using MiX.Integrate.Shared.Entities.Locations;
+using MiX.Integrate.Api.Client.Base;
 
 namespace MiX.Integrate.Api.Client
 {

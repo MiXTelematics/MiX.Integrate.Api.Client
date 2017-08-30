@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using MiX.Integrate.Shared.Entities.Messages;
+using MiX.Integrate.Api.Client.Base;
 
 namespace MiX.Integrate.Api.Client
 {

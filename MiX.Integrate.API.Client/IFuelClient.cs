@@ -1,4 +1,5 @@
-﻿using MiX.Integrate.Shared.Entities.Fuel;
+﻿using MiX.Integrate.Api.Client.Base;
+using MiX.Integrate.Shared.Entities.Fuel;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;

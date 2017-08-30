@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MiX.Integrate.Api.Client
+namespace MiX.Integrate.Api.Client.Base
 {
 	public interface IBaseClient
 	{

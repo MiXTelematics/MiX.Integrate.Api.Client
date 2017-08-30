@@ -14,19 +14,19 @@
     <tags>MiX Integrate Api Client</tags>
     <dependencies>
       <group targetFramework=".NETStandard1.6">
-        <dependency id="MiX.Identity.Client" version="2017.8.23.1-beta" />
-        <dependency id="RestSharp.NetCore" version="105.2.3" />
         <dependency id="NETStandard.Library" version="1.6.1" />
+        <dependency id="MiX.Identity.Client" version="2017.8.28.5" />
+        <dependency id="System.Net.Http" version="4.3.0" />
         <dependency id="IdentityModel" version="2.6.0" />
       </group>
       <group targetFramework=".NETFramework4.6.2">
-        <dependency id="MiX.Identity.Client" version="2017.8.23.1-beta" />
-        <dependency id="RestSharp" version="105.2.3" />
+        <dependency id="MiX.Identity.Client" version="2017.8.28.5" />
+        <dependency id="System.Net.Http" version="4.3.0" />
         <dependency id="IdentityModel" version="2.6.0" />
       </group>
       <group targetFramework=".NETFramework4.5.1">
-        <dependency id="MiX.Identity.Client" version="2017.8.23.1-beta" />
-        <dependency id="RestSharp" version="105.2.3" />
+        <dependency id="MiX.Identity.Client" version="2017.8.28.5" />
+        <dependency id="System.Net.Http" version="4.3.0" />
         <dependency id="IdentityModel" version="2.6.0" />
       </group>
     </dependencies>
