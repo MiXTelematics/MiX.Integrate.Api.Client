@@ -1,5 +1,6 @@
 ﻿using MiX.Integrate.Shared.Entities.Groups;
 using System.Threading.Tasks;
+using MiX.Integrate.Api.Client.Base;
 
 namespace MiX.Integrate.Api.Client
 {
