@@ -16,8 +16,7 @@ namespace MiX.Integrate.API.Client.Base
 		Dictionary<string, string> UrlSegments { get; }
 
 		string QueryUrl { get; }
-
-		void AddJsonBody(string json);
+		 
 		void AddJsonBody(object obj);
 		void AddHeader(string name, string value);
 		void AddQueryParameter(string name, string value);

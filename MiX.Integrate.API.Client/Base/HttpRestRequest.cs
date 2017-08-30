@@ -30,11 +30,6 @@ namespace MiX.Integrate.API.Client.Base
 			JsonBody = string.Empty;
 		}
 
-		public void AddJsonBody(string json)
-		{
-			JsonBody = json;
-		}
-
 		public void AddJsonBody(object obj)
 		{
 			JsonBody = NewtonsoftJsonSerializer.Default.Serialize(obj);
@@ -79,14 +74,14 @@ namespace MiX.Integrate.API.Client.Base
 				//add the queryparams
 				if (QueryParameters.Count > 0)
 				{
-					var builder = new StringBuilder("?");
-					var separator = "";
+					var separator = "?";
 					foreach (KeyValuePair<string, string> item in QueryParameters)
 					{
-						builder.AppendFormat($"{0}{1}={2}", separator, WebUtility.UrlEncode(item.Key), WebUtility.UrlEncode(item.Value.ToString()));
+						string qryKey = WebUtility.UrlEncode(item.Key);
+						string qryValue = WebUtility.UrlEncode(item.Value);
+						url += $"{separator}{qryKey}={qryValue}";
 						separator = "&";
 					}
-					url += builder.ToString();
 				}
 
 				return url;
