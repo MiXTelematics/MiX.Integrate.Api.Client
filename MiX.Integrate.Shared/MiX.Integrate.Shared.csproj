@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>netstandard1.6;net462;net451</TargetFrameworks>
+    <OutputPath>$(BaseOutputPath)</OutputPath>
+    <Version>1.0.0.0</Version>
+    <FileVersion>1.0.0.0</FileVersion>
+    <ProductVersion>1.0.0.0</ProductVersion>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|netstandard1.6|AnyCPU'">
+    <OutputPath>bin\Debug\</OutputPath>
+  </PropertyGroup>
+
+</Project>
