@@ -15,6 +15,9 @@ namespace MiX.Integrate.Shared.Constants
 		{
 			public const string GETALLDRIVERSUMMARIES = "api/drivers/group/{groupId:long}";
 			public const string GETDRIVERBYID = "api/drivers/group/{groupId:long}/{driverId:long}";
+			public const string UPDATEDRIVERASYNC = "api/drivers/update";
+			public const string ADDDRIVERASYNC = "api/drivers/add";
+			public const string UPDATEDRIVERNAMEBYEXTENDEDIDIFAUTOCREATEDASYNC = "api/drivers/extended/{extendedDriverId}/groups/{groupId:long}/ifautocreated";
 		}
 
 		//MiX.Integrate.Api.Controllers.DriverLicenceController
