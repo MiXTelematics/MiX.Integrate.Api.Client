@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using MiX.Integrate.Api.Client.Base;
 using System.Net.Http;
-using MiX.Integrate.API.Client.Base;
 
 namespace MiX.Integrate.Api.Client
 {

@@ -1,7 +1,7 @@
 ﻿using IdentityModel.Client;
 using MiX.Identity.Client;
-using MiX.Integrate.API.Client;
-using MiX.Integrate.API.Client.Base;
+using MiX.Integrate.Api.Client;
+using MiX.Integrate.Api.Client.Base;
 using System;
 using System.Collections.Generic;
 using System.IO;

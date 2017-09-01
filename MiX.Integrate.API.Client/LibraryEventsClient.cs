@@ -3,7 +3,6 @@ using MiX.Integrate.Shared.Constants;
 using System.Threading.Tasks;
 using MiX.Integrate.Shared.Entities.LibraryEvents;
 using MiX.Integrate.Api.Client.Base;
-using MiX.Integrate.API.Client.Base;
 using System.Net.Http;
 
 namespace MiX.Integrate.Api.Client

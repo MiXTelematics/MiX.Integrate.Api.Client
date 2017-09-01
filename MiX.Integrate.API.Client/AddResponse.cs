@@ -1,5 +1,5 @@
 ﻿
-namespace MiX.Integrate.API.Client
+namespace MiX.Integrate.Api.Client
 {
 	public class AddResponse
 	{

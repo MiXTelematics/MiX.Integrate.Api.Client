@@ -2,7 +2,7 @@
 using MiX.Integrate.Shared.Entities.Drivers;
 using System.Threading.Tasks;
 using MiX.Integrate.Api.Client.Base;
-using MiX.Integrate.API.Client;
+using MiX.Integrate.Api.Client;
 
 namespace MiX.Integrate.Api.Client
 {

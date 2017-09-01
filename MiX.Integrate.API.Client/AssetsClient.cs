@@ -1,9 +1,8 @@
-﻿using System.Collections.Generic; 
+﻿using System.Collections.Generic;
 using MiX.Integrate.Shared.Constants;
-using MiX.Integrate.Shared.Entities.Assets; 
+using MiX.Integrate.Shared.Entities.Assets;
 using System.Threading.Tasks;
 using MiX.Integrate.Api.Client.Base;
-using MiX.Integrate.API.Client.Base;
 using System.Net.Http;
 
 namespace MiX.Integrate.Api.Client

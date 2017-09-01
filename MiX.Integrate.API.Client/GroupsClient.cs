@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Linq;
 using MiX.Integrate.Shared.Constants;
 using MiX.Integrate.Shared.Entities.Groups;
 using System.Threading.Tasks;
 using MiX.Integrate.Api.Client.Base;
-using MiX.Integrate.API.Client.Base;
 using System.Net.Http;
 
 namespace MiX.Integrate.Api.Client
