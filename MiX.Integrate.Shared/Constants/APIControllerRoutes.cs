@@ -48,6 +48,7 @@ namespace MiX.Integrate.Shared.Constants
 			public const string GET = "api/assets/{assetId:long}";
 			public const string GETBYGROUP = "api/assets/group/{groupId:long}/asset/{assetId:long}";
 			public const string UPDATE = "api/assets";
+			public const string ADDASSETSTATEASYNC = "api/assets/group/{groupId:long}/state";
 		}
 
 		//MiX.Fleet.Services.Api GroupsController
@@ -76,7 +77,7 @@ namespace MiX.Integrate.Shared.Constants
 
 		//MiX.Fleet.Services.Api EventsController
 		public class EVENTSCONTROLLER
-		{	
+		{
 			//public const string GETASYNC = "api/events/{eventId:long}";
 			//public const string EXISTSASYNC = "api/events/exists/{eventId:long}";
 
@@ -99,19 +100,19 @@ namespace MiX.Integrate.Shared.Constants
 		//MiX.Fleet.Services.Api TripsController
 		public class TRIPSCONTROLLER
 		{
-      public const string GETLATESTFORGROUPS = "api/trips/groups/latest/entitytype/{entityType}/quantity/{quantity}";
-      public const string GETRANGEFORGROUPS = "api/trips/groups/range/entitytype/{entityType}/from/{from}/to/{to}";
-      public const string GETSINCEFORGROUPS = "api/trips/groups/since/entitytype/{entityType}/since/{since}";
+			public const string GETLATESTFORGROUPS = "api/trips/groups/latest/entitytype/{entityType}/quantity/{quantity}";
+			public const string GETRANGEFORGROUPS = "api/trips/groups/range/entitytype/{entityType}/from/{from}/to/{to}";
+			public const string GETSINCEFORGROUPS = "api/trips/groups/since/entitytype/{entityType}/since/{since}";
 
-      public const string GETLATESTFORASSETS = "api/trips/assets/latest/quantity/{quantity}";
-      public const string GETRANGEFORASSETS = "api/trips/assets/range/from/{from}/to/{to}";
-      public const string GETSINCEFORASSETS = "api/trips/assets/since/since/{since}";
+			public const string GETLATESTFORASSETS = "api/trips/assets/latest/quantity/{quantity}";
+			public const string GETRANGEFORASSETS = "api/trips/assets/range/from/{from}/to/{to}";
+			public const string GETSINCEFORASSETS = "api/trips/assets/since/since/{since}";
 
-      public const string GETLATESTFORDRIVERS = "api/trips/drivers/latest/quantity/{quantity}";
-      public const string GETRANGEFORDRIVERS = "api/trips/drivers/range/from/{from}/to/{to}";
-      public const string GETSINCEFORDRIVERS = "api/trips/drivers/since/since/{since}";
+			public const string GETLATESTFORDRIVERS = "api/trips/drivers/latest/quantity/{quantity}";
+			public const string GETRANGEFORDRIVERS = "api/trips/drivers/range/from/{from}/to/{to}";
+			public const string GETSINCEFORDRIVERS = "api/trips/drivers/since/since/{since}";
 
-    }
+		}
 
 		//MiX.Integrate.Api.Controllers.JourneysController
 		public class JOURNEYSCONTROLLER
@@ -167,23 +168,23 @@ namespace MiX.Integrate.Shared.Constants
 			public const string SENDJOBMESSAGE = "api/messages/sendjobmessage/organisationid/{organisationId:long}";
 		}
 
-	  //MiX.Integrate.Api.Controllers.FuelController
-	  public class FUELCONTROLLER
-	  {
-	    public const string GETFUELBYDATERANGEFORGROUP = "api/fueltransactions/group/{organisationId:long}/from/{from}/to/{to}";
-	  }
+		//MiX.Integrate.Api.Controllers.FuelController
+		public class FUELCONTROLLER
+		{
+			public const string GETFUELBYDATERANGEFORGROUP = "api/fueltransactions/group/{organisationId:long}/from/{from}/to/{to}";
+		}
 
-	  //MiX.Integrate.Api.Controllers.CustomGroupsController
-	  public class CUSTOMGROUPSCONTROLLER
-	  {
-	    public const string GETALLCUSTOMGROUPS = "api/customgroups/organisation/{organisationId:long}";
-	    public const string GETCUSTOMGROUPBYID = "api/customgroups/organisation/{organisationId:long}/customgroup/{customGroupId:long}";
+		//MiX.Integrate.Api.Controllers.CustomGroupsController
+		public class CUSTOMGROUPSCONTROLLER
+		{
+			public const string GETALLCUSTOMGROUPS = "api/customgroups/organisation/{organisationId:long}";
+			public const string GETCUSTOMGROUPBYID = "api/customgroups/organisation/{organisationId:long}/customgroup/{customGroupId:long}";
 
-	    public const string ADDCUSTOMGROUP = "api/customgroups/organisation/{organisationId:long}";
-	    public const string UPDATECUSTOMGROUP = "api/customgroups/organisation/{organisationId:long}";
+			public const string ADDCUSTOMGROUP = "api/customgroups/organisation/{organisationId:long}";
+			public const string UPDATECUSTOMGROUP = "api/customgroups/organisation/{organisationId:long}";
 
-	    public const string ADDCUSTOMGROUPMEMBERS = "api/customgroups/organisation/{organisationId:long}/customgroup/{customGroupId:long}/entitytype/{entityType}/members";
-	    public const string DELETECUSTOMGROUPMEMBERS = "api/customgroups/organisation/{organisationId:long}/customgroup/{customGroupId:long}/entitytype/{entityType}/members";
+			public const string ADDCUSTOMGROUPMEMBERS = "api/customgroups/organisation/{organisationId:long}/customgroup/{customGroupId:long}/entitytype/{entityType}/members";
+			public const string DELETECUSTOMGROUPMEMBERS = "api/customgroups/organisation/{organisationId:long}/customgroup/{customGroupId:long}/entitytype/{entityType}/members";
 
 			public const string GETCUSTOMGROUPSFORASSET = "api/customgroups/asset/{assetId}";
 

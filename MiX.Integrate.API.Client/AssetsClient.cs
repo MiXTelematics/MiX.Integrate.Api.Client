@@ -77,5 +77,29 @@ namespace MiX.Integrate.Api.Client
 			await ExecuteAsync(request);
 		}
 
+		public bool AddAssetState(long groupId, AssetState assetState)
+		{
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.ASSETSCONTROLLER.ADDASSETSTATEASYNC, HttpMethod.Post);
+			request.AddUrlSegment("groupId:long", groupId.ToString());
+			request.AddJsonBody(assetState);
+			IHttpRestResponse response = Execute(request);
+			if (response.StatusCode == System.Net.HttpStatusCode.OK)
+				return true;
+			else
+				return false;
+		}
+
+		public async Task<bool> AddAssetStateAsync(long groupId, AssetState assetState)
+		{
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.ASSETSCONTROLLER.ADDASSETSTATEASYNC, HttpMethod.Post);
+			request.AddUrlSegment("groupId:long", groupId.ToString());
+			request.AddJsonBody(assetState);
+			IHttpRestResponse response = await ExecuteAsync(request).ConfigureAwait(false);
+			if (response.StatusCode == System.Net.HttpStatusCode.OK)
+				return true;
+			else
+				return false;
+		}
+
 	}
 }
