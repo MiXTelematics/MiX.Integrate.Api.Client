@@ -4,6 +4,7 @@ using MiX.Integrate.Shared.Entities.Groups;
 using System.Threading.Tasks;
 using MiX.Integrate.Api.Client.Base;
 using System.Net.Http;
+using MiX.Integrate.Shared.Entities.Organisation;
 
 namespace MiX.Integrate.Api.Client
 {
@@ -126,5 +127,22 @@ namespace MiX.Integrate.Api.Client
 			request.AddJsonBody(name);
 			await ExecuteAsync(request).ConfigureAwait(false);
 		}
+
+		public OrganisationDetail GetOrganisationDetail(long groupId)
+		{
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.GROUPSCONTROLLER.GETORGANISATIONDETAILSASYNC, HttpMethod.Get);
+			request.AddUrlSegment("organisationId:long", groupId.ToString());
+			IHttpRestResponse<OrganisationDetail> response = Execute<OrganisationDetail>(request);
+			return response.Data;
+		}
+
+		public async Task<OrganisationDetail> GetOrganisationDetailAsync(long groupId)
+		{
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.GROUPSCONTROLLER.GETORGANISATIONDETAILSASYNC, HttpMethod.Get);
+			request.AddUrlSegment("organisationId:long", groupId.ToString());
+			IHttpRestResponse<OrganisationDetail> response = await ExecuteAsync<OrganisationDetail>(request);
+			return response.Data;
+		}
+
 	}
 }
