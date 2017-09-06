@@ -188,7 +188,8 @@ namespace MiX.Integrate.Shared.Constants
 			public const string ADDCUSTOMGROUPMEMBERS = "api/customgroups/organisation/{organisationId:long}/customgroup/{customGroupId:long}/entitytype/{entityType}/members";
 			public const string DELETECUSTOMGROUPMEMBERS = "api/customgroups/organisation/{organisationId:long}/customgroup/{customGroupId:long}/entitytype/{entityType}/members";
 
-			public const string GETCUSTOMGROUPSFORASSET = "api/customgroups/asset/{assetId}";
+			public const string GETCUSTOMGROUPSFORASSET = "api/customgroups/organisation/{organisationId:long}/asset/{assetId}";
+			public const string GETCUSTOMGROUPSFORDRIVER = "api/customgroups/organisation/{organisationId:long}/driver/{driverId}";
 
 		}
 
