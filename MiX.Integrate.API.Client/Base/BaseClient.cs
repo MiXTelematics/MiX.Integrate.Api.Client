@@ -25,6 +25,19 @@ namespace MiX.Integrate.Api.Client.Base
 		private IdServerResourceOwnerClientSettings _idServerResourceOwnerClientSettings;
 
 		private static string _idServerAccessToken;
+		private static HttpClient _httpClient;
+		private static HttpClient HttpClient
+		{
+			get
+			{
+				if (_httpClient == null)
+				{
+					_httpClient = new HttpClient();
+				}
+				return _httpClient;
+			}
+			set { _httpClient = value; }
+		}
 
 		internal BaseClient() { }
 
@@ -146,9 +159,8 @@ namespace MiX.Integrate.Api.Client.Base
 				requestMessage.Content = jsonBody;
 			}
 
-			HttpClient httpClient = new HttpClient();
 
-			HttpResponseMessage response = await httpClient.SendAsync(requestMessage).ConfigureAwait(false);
+			HttpResponseMessage response = await HttpClient.SendAsync(requestMessage).ConfigureAwait(false);
 			CheckResponseError(response);
 
 			Stream stream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
@@ -184,9 +196,7 @@ namespace MiX.Integrate.Api.Client.Base
 				requestMessage.Content = jsonBody;
 			}
 
-			HttpClient httpClient = new HttpClient();
-
-			HttpResponseMessage response = await httpClient.SendAsync(requestMessage).ConfigureAwait(false);
+			HttpResponseMessage response = await HttpClient.SendAsync(requestMessage).ConfigureAwait(false);
 			CheckResponseError(response);
 
 			Stream stream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
