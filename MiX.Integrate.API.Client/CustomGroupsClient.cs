@@ -25,6 +25,32 @@ namespace MiX.Integrate.Api.Client
 			return response.Data;
 		}
 
+		/// <summary>Gets a list of custom groups for an asset</summary>
+		/// <param name="organisationId"></param>
+		/// <param name="assetId"></param>
+		/// <returns></returns>
+		public async Task<IList<CustomGroup>> GetListForAssetAsync(long organisationId, long assetId)
+		{
+			var request = GetRequest(APIControllerRoutes.CUSTOMGROUPSCONTROLLER.GETCUSTOMGROUPSFORASSET, HttpMethod.Get);
+			request.AddUrlSegment("organisationId:long", organisationId.ToString());
+			request.AddUrlSegment("assetId", organisationId.ToString());
+			var response = await ExecuteAsync<List<CustomGroup>>(request).ConfigureAwait(false);
+			return response.Data;
+		}
+
+		/// <summary>Gets a list of custom groups for a driver</summary>
+		/// <param name="organisationId"></param>
+		/// <param name="driverId"></param>
+		/// <returns></returns>
+		public async Task<IList<CustomGroup>> GetListForDriverAsync(long organisationId, long driverId)
+		{
+			var request = GetRequest(APIControllerRoutes.CUSTOMGROUPSCONTROLLER.GETCUSTOMGROUPSFORDRIVER, HttpMethod.Get);
+			request.AddUrlSegment("organisationId:long", organisationId.ToString());
+			request.AddUrlSegment("driverId", organisationId.ToString());
+			var response = await ExecuteAsync<List<CustomGroup>>(request).ConfigureAwait(false);
+			return response.Data;
+		}
+
 		/// <summary>Gets the details of a custom group</summary>
 		/// <param name="organisationId"></param>
 		/// <param name="customGroupId"></param>
@@ -102,6 +128,32 @@ namespace MiX.Integrate.Api.Client
 		public IList<CustomGroup> GetAll(long organisationId)
 		{
 			return GetAllAsync(organisationId).Result;
+		}
+
+		/// <summary>Gets a list of custom groups for an asset</summary>
+		/// <param name="organisationId"></param>
+		/// <param name="assetId"></param>
+		/// <returns></returns>
+		public IList<CustomGroup> GetListForAsset(long organisationId, long assetId)
+		{
+			var request = GetRequest(APIControllerRoutes.CUSTOMGROUPSCONTROLLER.GETCUSTOMGROUPSFORASSET, HttpMethod.Get);
+			request.AddUrlSegment("organisationId:long", organisationId.ToString());
+			request.AddUrlSegment("assetId", organisationId.ToString());
+			var response = Execute<List<CustomGroup>>(request);
+			return response.Data;
+		}
+
+		/// <summary>Gets a list of custom groups for a driver</summary>
+		/// <param name="organisationId"></param>
+		/// <param name="driverId"></param>
+		/// <returns></returns>
+		public IList<CustomGroup> GetListForDriver(long organisationId, long driverId)
+		{
+			var request = GetRequest(APIControllerRoutes.CUSTOMGROUPSCONTROLLER.GETCUSTOMGROUPSFORDRIVER, HttpMethod.Get);
+			request.AddUrlSegment("organisationId:long", organisationId.ToString());
+			request.AddUrlSegment("driverId", organisationId.ToString());
+			var response = Execute<List<CustomGroup>>(request);
+			return response.Data;
 		}
 
 		/// <summary>Gets the details of a custom group</summary>
