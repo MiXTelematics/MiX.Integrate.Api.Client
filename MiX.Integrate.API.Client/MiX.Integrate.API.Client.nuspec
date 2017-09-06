@@ -16,17 +16,17 @@
       <group targetFramework=".NETStandard1.6">
         <dependency id="NETStandard.Library" version="1.6.1" />
         <dependency id="MiX.Identity.Client" version="2017.8.28.5" />
-        <dependency id="System.Net.Http" version="4.3.0" />
+        <dependency id="System.Net.Http" version="4.3.2" />
         <dependency id="IdentityModel" version="2.6.0" />
       </group>
       <group targetFramework=".NETFramework4.6.2">
         <dependency id="MiX.Identity.Client" version="2017.8.28.5" />
-        <dependency id="System.Net.Http" version="4.3.0" />
+        <dependency id="System.Net.Http" version="4.3.2" />
         <dependency id="IdentityModel" version="2.6.0" />
       </group>
       <group targetFramework=".NETFramework4.5.1">
         <dependency id="MiX.Identity.Client" version="2017.8.28.5" />
-        <dependency id="System.Net.Http" version="4.3.0" />
+        <dependency id="System.Net.Http" version="4.3.2" />
         <dependency id="IdentityModel" version="2.6.0" />
       </group>
     </dependencies>
