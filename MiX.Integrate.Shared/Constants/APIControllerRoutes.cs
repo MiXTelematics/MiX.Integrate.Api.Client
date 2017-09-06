@@ -62,6 +62,8 @@ namespace MiX.Integrate.Shared.Constants
 			public const string ADDORGSUBGROUP = "api/organisationgroups/{parentGroupId}/organisationsubgroup";
 
 			public const string UPDATEGROUPNAME = "api/organisationgroups/{organisationGroupId}/group/{groupId}/name";
+
+			public const string GETORGANISATIONDETAILSASYNC = "api/organisationgroups/organisation/{organisationId:long}";
 		}
 
 		//MiX.Fleet.Services.Api PositionsController
