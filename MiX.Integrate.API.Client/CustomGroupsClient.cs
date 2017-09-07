@@ -33,7 +33,7 @@ namespace MiX.Integrate.Api.Client
 		{
 			var request = GetRequest(APIControllerRoutes.CUSTOMGROUPSCONTROLLER.GETCUSTOMGROUPSFORASSET, HttpMethod.Get);
 			request.AddUrlSegment("organisationId:long", organisationId.ToString());
-			request.AddUrlSegment("assetId", organisationId.ToString());
+			request.AddUrlSegment("assetId", assetId.ToString());
 			var response = await ExecuteAsync<List<CustomGroup>>(request).ConfigureAwait(false);
 			return response.Data;
 		}
@@ -46,7 +46,7 @@ namespace MiX.Integrate.Api.Client
 		{
 			var request = GetRequest(APIControllerRoutes.CUSTOMGROUPSCONTROLLER.GETCUSTOMGROUPSFORDRIVER, HttpMethod.Get);
 			request.AddUrlSegment("organisationId:long", organisationId.ToString());
-			request.AddUrlSegment("driverId", organisationId.ToString());
+			request.AddUrlSegment("driverId", driverId.ToString());
 			var response = await ExecuteAsync<List<CustomGroup>>(request).ConfigureAwait(false);
 			return response.Data;
 		}
@@ -138,7 +138,7 @@ namespace MiX.Integrate.Api.Client
 		{
 			var request = GetRequest(APIControllerRoutes.CUSTOMGROUPSCONTROLLER.GETCUSTOMGROUPSFORASSET, HttpMethod.Get);
 			request.AddUrlSegment("organisationId:long", organisationId.ToString());
-			request.AddUrlSegment("assetId", organisationId.ToString());
+			request.AddUrlSegment("assetId", assetId.ToString());
 			var response = Execute<List<CustomGroup>>(request);
 			return response.Data;
 		}
@@ -151,7 +151,7 @@ namespace MiX.Integrate.Api.Client
 		{
 			var request = GetRequest(APIControllerRoutes.CUSTOMGROUPSCONTROLLER.GETCUSTOMGROUPSFORDRIVER, HttpMethod.Get);
 			request.AddUrlSegment("organisationId:long", organisationId.ToString());
-			request.AddUrlSegment("driverId", organisationId.ToString());
+			request.AddUrlSegment("driverId", driverId.ToString());
 			var response = Execute<List<CustomGroup>>(request);
 			return response.Data;
 		}
