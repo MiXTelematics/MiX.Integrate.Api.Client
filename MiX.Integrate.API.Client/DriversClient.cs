@@ -3,8 +3,8 @@ using MiX.Integrate.Shared.Constants;
 using MiX.Integrate.Shared.Entities.Drivers;
 using System.Threading.Tasks;
 using MiX.Integrate.Api.Client.Base;
-using MiX.Integrate.API.Client.Base;
 using System.Net.Http;
+using System;
 
 namespace MiX.Integrate.Api.Client
 {
@@ -45,6 +45,46 @@ namespace MiX.Integrate.Api.Client
 			request.AddUrlSegment("driverId:long", driverId.ToString());
 			IHttpRestResponse<Driver> response = await ExecuteAsync<Driver>(request).ConfigureAwait(false);
 			return response.Data;
+		}
+
+		public void UpdateDriver(Driver driver)
+		{
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.DRIVERSCONTROLLER.UPDATEDRIVERASYNC, HttpMethod.Put);
+			request.AddJsonBody(driver);
+			Execute(request);
+		}
+
+		public async Task UpdateDriverAsync(Driver driver)
+		{
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.DRIVERSCONTROLLER.UPDATEDRIVERASYNC, HttpMethod.Put);
+			request.AddJsonBody(driver);
+			await ExecuteAsync(request).ConfigureAwait(false);
+		}
+
+		public long AddDriver(Driver driver)
+		{
+			if (driver.FmDriverId == -1 || driver.FmDriverId == 0 || driver.FmDriverId == 1) throw new ArgumentException("FmDriverId -1, 0 and 1 was reserved");
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.DRIVERSCONTROLLER.ADDDRIVERASYNC, HttpMethod.Post);
+			request.AddJsonBody(driver);
+			IHttpRestResponse response = Execute(request);
+			var idHeaderVal = GetResponseHeader(response.Headers, "driverid");
+			long driverId;
+			if (!long.TryParse(idHeaderVal, out driverId) || driverId == 0)
+				throw new Exception("Could not determine the id of the newly-created driver");
+			return driverId;
+		}
+
+		public async Task<long> AddDriverAsync(Driver driver)
+		{
+			if (driver.FmDriverId == -1 || driver.FmDriverId == 0 || driver.FmDriverId == 1) throw new ArgumentException("FmDriverId -1, 0 and 1 was reserved");
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.DRIVERSCONTROLLER.ADDDRIVERASYNC, HttpMethod.Post);
+			request.AddJsonBody(driver);
+			IHttpRestResponse response = await ExecuteAsync(request).ConfigureAwait(false);
+			var idHeaderVal = GetResponseHeader(response.Headers, "driverid");
+			long driverId;
+			if (!long.TryParse(idHeaderVal, out driverId) || driverId == 0)
+				throw new Exception("Could not determine the id of the newly-created driver");
+			return driverId;
 		}
 
 	}

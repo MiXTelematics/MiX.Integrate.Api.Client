@@ -1,11 +1,10 @@
 ﻿using System;
-using System.Linq;
 using MiX.Integrate.Shared.Constants;
 using MiX.Integrate.Shared.Entities.Groups;
 using System.Threading.Tasks;
 using MiX.Integrate.Api.Client.Base;
-using MiX.Integrate.API.Client.Base;
 using System.Net.Http;
+using MiX.Integrate.Shared.Entities.Organisation;
 
 namespace MiX.Integrate.Api.Client
 {
@@ -44,6 +43,13 @@ namespace MiX.Integrate.Api.Client
 			return groupId;
 		}
 
+		public void DeleteSite(long groupId)
+		{
+			var request = GetRequest(APIControllerRoutes.GROUPSCONTROLLER.DELETESITE, HttpMethod.Delete);
+			request.AddUrlSegment("groupId", groupId.ToString());
+			Execute(request);
+		}
+
 		public long AddOrganisationSubGroup(long parentGroupId, string name)
 		{
 			var request = GetRequest(APIControllerRoutes.GROUPSCONTROLLER.ADDORGSUBGROUP, HttpMethod.Post);
@@ -55,6 +61,13 @@ namespace MiX.Integrate.Api.Client
 			if (!long.TryParse(idHeaderVal, out groupId) || groupId == 0)
 				throw new Exception("Could not determine the id of the newly-created group");
 			return groupId;
+		}
+
+		public void DeleteOrganisationSubGroup(long groupId)
+		{
+			var request = GetRequest(APIControllerRoutes.GROUPSCONTROLLER.DELETEORGSUBGROUP, HttpMethod.Delete);
+			request.AddUrlSegment("groupId", groupId.ToString());
+			Execute(request);
 		}
 
 		public void UpdateGroupName(long organisationGroupId, long groupId, string name)
@@ -79,6 +92,13 @@ namespace MiX.Integrate.Api.Client
 			return groupId;
 		}
 
+		public async Task DeleteSiteAsync(long groupId)
+		{
+			var request = GetRequest(APIControllerRoutes.GROUPSCONTROLLER.DELETESITE, HttpMethod.Delete);
+			request.AddUrlSegment("groupId", groupId.ToString());
+			await ExecuteAsync(request).ConfigureAwait(false);
+		}
+
 		public async Task<long> AddOrganisationSubGroupAsync(long parentGroupId, string name)
 		{
 			var request = GetRequest(APIControllerRoutes.GROUPSCONTROLLER.ADDORGSUBGROUP, HttpMethod.Post);
@@ -92,6 +112,13 @@ namespace MiX.Integrate.Api.Client
 			return groupId;
 		}
 
+		public async Task DeleteOrganisationSubGroupAsync(long groupId)
+		{
+			var request = GetRequest(APIControllerRoutes.GROUPSCONTROLLER.DELETEORGSUBGROUP, HttpMethod.Delete);
+			request.AddUrlSegment("groupId", groupId.ToString());
+			await ExecuteAsync(request).ConfigureAwait(false);
+		}
+
 		public async Task UpdateGroupNameAsync(long organisationGroupId, long groupId, string name)
 		{
 			var request = GetRequest(APIControllerRoutes.GROUPSCONTROLLER.UPDATEGROUPNAME, HttpMethod.Put);
@@ -100,5 +127,22 @@ namespace MiX.Integrate.Api.Client
 			request.AddJsonBody(name);
 			await ExecuteAsync(request).ConfigureAwait(false);
 		}
+
+		public OrganisationDetail GetOrganisationDetail(long groupId)
+		{
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.GROUPSCONTROLLER.GETORGANISATIONDETAILSASYNC, HttpMethod.Get);
+			request.AddUrlSegment("organisationId:long", groupId.ToString());
+			IHttpRestResponse<OrganisationDetail> response = Execute<OrganisationDetail>(request);
+			return response.Data;
+		}
+
+		public async Task<OrganisationDetail> GetOrganisationDetailAsync(long groupId)
+		{
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.GROUPSCONTROLLER.GETORGANISATIONDETAILSASYNC, HttpMethod.Get);
+			request.AddUrlSegment("organisationId:long", groupId.ToString());
+			IHttpRestResponse<OrganisationDetail> response = await ExecuteAsync<OrganisationDetail>(request);
+			return response.Data;
+		}
+
 	}
 }

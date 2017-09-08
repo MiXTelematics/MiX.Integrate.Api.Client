@@ -1,4 +1,4 @@
-﻿using MiX.Integrate.API.Client.Base;
+﻿using MiX.Integrate.Api.Client.Base;
 using System;
 using System.Net;
 using System.Net.Http.Headers;

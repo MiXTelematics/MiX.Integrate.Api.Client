@@ -1,9 +1,8 @@
-﻿using System.Collections.Generic; 
+﻿using System.Collections.Generic;
 using MiX.Integrate.Shared.Constants;
-using MiX.Integrate.Shared.Entities.Assets; 
+using MiX.Integrate.Shared.Entities.Assets;
 using System.Threading.Tasks;
 using MiX.Integrate.Api.Client.Base;
-using MiX.Integrate.API.Client.Base;
 using System.Net.Http;
 
 namespace MiX.Integrate.Api.Client
@@ -76,6 +75,30 @@ namespace MiX.Integrate.Api.Client
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.ASSETSCONTROLLER.GETBYGROUP, HttpMethod.Put);
 			request.AddJsonBody(asset);
 			await ExecuteAsync(request);
+		}
+
+		public bool AddAssetState(long groupId, AssetState assetState)
+		{
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.ASSETSCONTROLLER.ADDASSETSTATEASYNC, HttpMethod.Post);
+			request.AddUrlSegment("groupId:long", groupId.ToString());
+			request.AddJsonBody(assetState);
+			IHttpRestResponse response = Execute(request);
+			if (response.StatusCode == System.Net.HttpStatusCode.OK)
+				return true;
+			else
+				return false;
+		}
+
+		public async Task<bool> AddAssetStateAsync(long groupId, AssetState assetState)
+		{
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.ASSETSCONTROLLER.ADDASSETSTATEASYNC, HttpMethod.Post);
+			request.AddUrlSegment("groupId:long", groupId.ToString());
+			request.AddJsonBody(assetState);
+			IHttpRestResponse response = await ExecuteAsync(request).ConfigureAwait(false);
+			if (response.StatusCode == System.Net.HttpStatusCode.OK)
+				return true;
+			else
+				return false;
 		}
 
 	}

@@ -4,7 +4,6 @@ using MiX.Integrate.Shared.Constants;
 using MiX.Integrate.Shared.Entities.Journeys;
 using MiX.Integrate.Api.Client.Base;
 using System.Net.Http;
-using MiX.Integrate.API.Client.Base;
 
 namespace MiX.Integrate.Api.Client.Journeys
 {
