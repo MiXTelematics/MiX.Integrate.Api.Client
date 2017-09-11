@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic; 
+﻿using System.Collections.Generic;
 using MiX.Integrate.Shared.Entities.Assets;
 using System.Threading.Tasks;
 using MiX.Integrate.Api.Client.Base;
@@ -15,7 +15,9 @@ namespace MiX.Integrate.Api.Client
 		Asset GetByGroup(long groupId, long assetId);
 		Task<Asset> GetByGroupAsync(long groupId, long assetId);
 		void Update(Asset asset);
-		Task UpdateAsync(Asset asset);
+		Task UpdateAsync(Asset asset); 
+		bool AddAssetState(long groupId, AssetState assetState);
+		Task<bool> AddAssetStateAsync(long groupId, AssetState assetState);
 
 	}
 }
