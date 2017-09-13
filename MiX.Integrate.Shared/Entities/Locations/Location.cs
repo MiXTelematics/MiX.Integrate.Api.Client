@@ -17,13 +17,16 @@ namespace MiX.Integrate.Shared.Entities.Locations
 		public LocationType LocationType { get; set; }
 		/// <summary>The type of shape describing the location</summary>
 		public ShapeType ShapeType { get; set; }
-		/// <summary>The Well Known Text describing the outline of the shape</summary>
+		/// <summary>Radius of circle in metres. Only significant when <see cref="ShapeType"/> is <see cref=" Locations.ShapeType.Circle"/></summary>
+		public double Radius { get; set; }
+		/// <summary>The Well Known Text representation of the location shape. When <see cref="ShapeType"/> is <see cref="Locations.ShapeType.Circle"/>,
+		/// this property is the Well Known Text representation of the centre of the circle.</summary>
 		public string ShapeWkt { get; set; }
 		/// <summary>Signifies that the location has been logically deleted from the system.</summary>
 		public bool IsDeleted { get; set; }
-		/// <summary>Colour to render the shape on a map</summary>
+		/// <summary>Colour to use when rendering the shape</summary>
 		public string ColourOnMap { get; set; }
-		/// <summary>Opacity to use when rending shape on a map</summary> 
+		/// <summary>Opacity to use when rendering the shape</summary> 
 		public decimal OpacityOnMap { get; set; }
 		/// <summary>Signifies that this is a temporary location for use in routing</summary>
 		public bool IsTemporary { get; set; }
@@ -36,23 +39,6 @@ namespace MiX.Integrate.Shared.Entities.Locations
 			"Indigo", "DimGray", "Maroon", "Purple", "LightGreen", "LightBlue", "FireBrick", "IndianRed",
 			"Orchid", "Crimson", "LightCoral", "Red", "DeepPink", "DarkOrange", "LightPink", "Yellow"
 		};
-
-		///// <summary>Geographic coordinate</summary>
-		//public class Coordinate
-		//{
-		//	/// <summary>Longitude of coordinate</summary>
-		//	public float Longitude { get; set; }
-		//	/// <summary>Latitude of coordinate</summary>
-		//	public float Latitude { get; set; }
-		//}
-		///// <summary>Centre coordinate of the location</summary>
-		//public Coordinate Centre { get; set; }
-		///// <summary>Radius of the shape</summary>
-		//public decimal RadiusKilometers { get; set; }
-		///// <summary>Upper left coordinate of the bounding rectangle around the shape</summary>
-		//public Coordinate BoundingUpperLeft { get; set; }
-		///// <summary>Lower right coordinate of the bounding rectangle around the shape</summary>
-		//public Coordinate BoundingLowerRight { get; set; }
 
 	}
 }
