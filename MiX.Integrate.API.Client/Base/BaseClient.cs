@@ -9,6 +9,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Reflection;
 using System.Security;
 using System.Text;
 using System.Threading.Tasks;
@@ -265,8 +266,38 @@ namespace MiX.Integrate.Api.Client.Base
 				IsSuccessStatusCode = resp.IsSuccessStatusCode,
 				ErrorException = resp.ErrorException
 			};
-			respT.Data = NewtonsoftJsonSerializer.Default.Deserialize<T>(resp.Content);
+			if (resp.StatusCode == System.Net.HttpStatusCode.NoContent)
+			{
+				if (IsEnumarable(respT.Data)) // Return empty list if Enumarable
+				{
+					respT.Data = NewtonsoftJsonSerializer.Default.Deserialize<T>("[]");
+				}
+			}
+			else
+			{
+				respT.Data = NewtonsoftJsonSerializer.Default.Deserialize<T>(resp.Content);
+			}
 			return respT;
+		}
+
+		public static bool IsEnumarable<T>(T item)
+		{
+			if (typeof(T).Name == "String") return false;
+			bool isEnumerable = typeof(T).GetTypeInfo().GetInterface("IEnumerable") != null;
+			return isEnumerable;
+		}
+
+		public static bool IsEnumarableAndHasItems<T>(T item)
+		{
+			if (item == null) return false;
+			if (!IsEnumarable(item)) return false;
+			var enumerable = item as System.Collections.IEnumerable;
+			if (enumerable == null) return false;
+			foreach (var obj in enumerable)
+			{
+				return true;
+			}
+			return false;
 		}
 
 	}
