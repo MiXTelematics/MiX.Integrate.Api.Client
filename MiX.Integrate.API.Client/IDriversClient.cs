@@ -17,6 +17,8 @@ namespace MiX.Integrate.Api.Client
 		Task UpdateDriverAsync(Driver driver);
 		long AddDriver(Driver driver);
 		Task<long> AddDriverAsync(Driver driver);
+		List<Driver> GetAllDrivers(long organisationId, string filterType, string wildCard);
+		Task<List<Driver>> GetAllDriversAsync(long organisationId, string filterType, string wildCard);
 
 	}
 }
