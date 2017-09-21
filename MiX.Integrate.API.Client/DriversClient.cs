@@ -49,14 +49,14 @@ namespace MiX.Integrate.Api.Client
 
 		public void UpdateDriver(Driver driver)
 		{
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.DRIVERSCONTROLLER.UPDATEDRIVERASYNC, HttpMethod.Put);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.DRIVERSCONTROLLER.UPDATEDRIVER, HttpMethod.Put);
 			request.AddJsonBody(driver);
 			Execute(request);
 		}
 
 		public async Task UpdateDriverAsync(Driver driver)
 		{
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.DRIVERSCONTROLLER.UPDATEDRIVERASYNC, HttpMethod.Put);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.DRIVERSCONTROLLER.UPDATEDRIVER, HttpMethod.Put);
 			request.AddJsonBody(driver);
 			await ExecuteAsync(request).ConfigureAwait(false);
 		}
@@ -64,7 +64,7 @@ namespace MiX.Integrate.Api.Client
 		public long AddDriver(Driver driver)
 		{
 			if (driver.FmDriverId == -1 || driver.FmDriverId == 0 || driver.FmDriverId == 1) throw new ArgumentException("FmDriverId -1, 0 and 1 was reserved");
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.DRIVERSCONTROLLER.ADDDRIVERASYNC, HttpMethod.Post);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.DRIVERSCONTROLLER.ADDDRIVER, HttpMethod.Post);
 			request.AddJsonBody(driver);
 			IHttpRestResponse response = Execute(request);
 			var idHeaderVal = GetResponseHeader(response.Headers, "driverid");
@@ -77,7 +77,7 @@ namespace MiX.Integrate.Api.Client
 		public async Task<long> AddDriverAsync(Driver driver)
 		{
 			if (driver.FmDriverId == -1 || driver.FmDriverId == 0 || driver.FmDriverId == 1) throw new ArgumentException("FmDriverId -1, 0 and 1 was reserved");
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.DRIVERSCONTROLLER.ADDDRIVERASYNC, HttpMethod.Post);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.DRIVERSCONTROLLER.ADDDRIVER, HttpMethod.Post);
 			request.AddJsonBody(driver);
 			IHttpRestResponse response = await ExecuteAsync(request).ConfigureAwait(false);
 			var idHeaderVal = GetResponseHeader(response.Headers, "driverid");

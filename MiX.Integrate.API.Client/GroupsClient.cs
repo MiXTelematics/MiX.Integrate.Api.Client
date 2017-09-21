@@ -130,7 +130,7 @@ namespace MiX.Integrate.Api.Client
 
 		public OrganisationDetail GetOrganisationDetail(long groupId)
 		{
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.GROUPSCONTROLLER.GETORGANISATIONDETAILSASYNC, HttpMethod.Get);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.GROUPSCONTROLLER.GETORGANISATIONDETAILS, HttpMethod.Get);
 			request.AddUrlSegment("organisationId:long", groupId.ToString());
 			IHttpRestResponse<OrganisationDetail> response = Execute<OrganisationDetail>(request);
 			return response.Data;
@@ -138,7 +138,7 @@ namespace MiX.Integrate.Api.Client
 
 		public async Task<OrganisationDetail> GetOrganisationDetailAsync(long groupId)
 		{
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.GROUPSCONTROLLER.GETORGANISATIONDETAILSASYNC, HttpMethod.Get);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.GROUPSCONTROLLER.GETORGANISATIONDETAILS, HttpMethod.Get);
 			request.AddUrlSegment("organisationId:long", groupId.ToString());
 			IHttpRestResponse<OrganisationDetail> response = await ExecuteAsync<OrganisationDetail>(request);
 			return response.Data;

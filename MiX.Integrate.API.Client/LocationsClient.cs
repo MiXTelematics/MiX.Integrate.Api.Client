@@ -47,14 +47,14 @@ namespace MiX.Integrate.Api.Client
 
 		public async Task UpdateAsync(Location location, long groupId)
 		{
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.LOCATIONSCONTROLLER.UPDATEASYNC, HttpMethod.Put);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.LOCATIONSCONTROLLER.UPDATE, HttpMethod.Put);
 			request.AddUrlSegment("groupId:long", groupId.ToString());
 			request.AddJsonBody(location);
 			await ExecuteAsync(request);
 		}
 		public void Update(Location location, long groupId)
 		{
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.LOCATIONSCONTROLLER.UPDATEASYNC, HttpMethod.Put);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.LOCATIONSCONTROLLER.UPDATE, HttpMethod.Put);
 			request.AddUrlSegment("groupId:long", groupId.ToString());
 			request.AddJsonBody(location);
 			Execute(request);
@@ -62,7 +62,7 @@ namespace MiX.Integrate.Api.Client
 
 		public async Task<long> AddAsync(Location location, long groupId)
 		{
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.LOCATIONSCONTROLLER.ADDASYNC, HttpMethod.Post);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.LOCATIONSCONTROLLER.ADD, HttpMethod.Post);
 			request.AddUrlSegment("groupId:long", groupId.ToString());
 			request.AddJsonBody(location);
 			IHttpRestResponse response = await ExecuteAsync(request);
@@ -72,7 +72,7 @@ namespace MiX.Integrate.Api.Client
 
 		public long Add(Location location, long groupId)
 		{
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.LOCATIONSCONTROLLER.ADDASYNC, HttpMethod.Post);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.LOCATIONSCONTROLLER.ADD, HttpMethod.Post);
 			request.AddUrlSegment("groupId:long", groupId.ToString());
 			request.AddJsonBody(location);
 			IHttpRestResponse response = Execute(request);
@@ -82,7 +82,7 @@ namespace MiX.Integrate.Api.Client
 
 		public async Task DeleteAsync(long groupId, long locationId)
 		{
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.LOCATIONSCONTROLLER.DELETEASYNC, HttpMethod.Delete);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.LOCATIONSCONTROLLER.DELETE, HttpMethod.Delete);
 			request.AddUrlSegment("groupId:long", groupId.ToString());
 			request.AddUrlSegment("locationId:long", locationId.ToString());
 			await ExecuteAsync(request);
@@ -90,7 +90,7 @@ namespace MiX.Integrate.Api.Client
 
 		public void Delete(long groupId, long locationId)
 		{
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.LOCATIONSCONTROLLER.DELETEASYNC, HttpMethod.Delete);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.LOCATIONSCONTROLLER.DELETE, HttpMethod.Delete);
 			request.AddUrlSegment("groupId:long", groupId.ToString());
 			request.AddUrlSegment("locationId:long", locationId.ToString());
 			Execute(request);
