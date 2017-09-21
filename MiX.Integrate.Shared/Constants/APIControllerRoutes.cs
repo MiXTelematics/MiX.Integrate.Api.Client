@@ -13,11 +13,10 @@ namespace MiX.Integrate.Shared.Constants
 		//MiX.Integrate.Api.Controllers.DriversControllerpublic 
 		public class DRIVERSCONTROLLER
 		{
-			public const string GETALLDRIVERSUMMARIES = "api/drivers/group/{groupId}";
-			public const string GETDRIVERBYID = "api/drivers/group/{groupId}/{driverId}";
+			public const string GETDRIVER = "api/drivers/group/{groupId}/driver/{driverId}";
 			public const string UPDATEDRIVER = "api/drivers";
 			public const string ADDDRIVER = "api/drivers";
-			public const string UPDATEDRIVERNAMEBYEXTENDEDIDIFAUTOCREATED = "api/drivers/extended/{extendedDriverId}/groups/{groupId}/ifautocreated";
+			public const string UPDATEDRIVERNAMEBYEXTENDEDIDIFAUTOCREATED = "api/drivers/group/{groupId}/extended/{extendedDriverId}/ifautocreated";
 			public const string GETALLDRIVERS = "api/drivers/organisation/{organisationId}";
 		}
 
