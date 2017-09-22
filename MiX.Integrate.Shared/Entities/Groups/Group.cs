@@ -6,14 +6,15 @@ using System.Threading.Tasks;
 
 namespace MiX.Integrate.Shared.Entities.Groups
 {
-	public class GroupSummary
+	public class Group
 	{
-		public GroupSummary()
+		public Group()
 		{
-			this.SubGroups = new List<GroupSummary>();
+			Name = "";
+			DisplayTimeZone = "";
 		}
 
-		public GroupSummary(long groupId, string name, GroupType type) : this()
+		public Group(long groupId, string name, GroupType type) : this()
 		{
 			GroupId = groupId;
 			Name = name;
@@ -22,6 +23,11 @@ namespace MiX.Integrate.Shared.Entities.Groups
 		public long GroupId { get; set; }
 		public string Name { get; set; }
 		public GroupType Type { get; set; }
-		public List<GroupSummary> SubGroups { get; set; }
+		public string DisplayTimeZone { get; set; }
+
+		public override string ToString()
+		{
+			return $"{Type} : [{GroupId}] - {Name}";
+		}
 	}
 }
