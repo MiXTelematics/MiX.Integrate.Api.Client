@@ -80,9 +80,6 @@ namespace MiX.Integrate.Shared.Constants
 		//MiX.Fleet.Services.Api EventsController
 		public class EVENTSCONTROLLER
 		{
-			//public const string GETASYNC = "api/events/{eventId}";
-			//public const string EXISTSASYNC = "api/events/exists/{eventId}";
-
 			public const string GETLATESTFORGROUPS = "api/events/groups/latest/entitytype/{entityType}/{quantity}";
 			public const string GETRANGEFORGROUPS = "api/events/groups/entitytype/{entityType}/from/{from}/to/{to}";
 			public const string GETSINCEFORGROUPS = "api/events/groups/since/entitytype/{entityType}/{since}";
@@ -95,7 +92,6 @@ namespace MiX.Integrate.Shared.Constants
 			public const string GETRANGEFORDRIVERS = "api/events/drivers/from/{from}/to/{to}";
 			public const string GETSINCEFORDRIVERS = "api/events/drivers/since/{since}/quantity/{quantity}";
 
-			//public const string HASANYEVENTDATAFORORG = "api/events/hasanyevents/organisation/{organisationId}/from/{from}";
 		}
 
 

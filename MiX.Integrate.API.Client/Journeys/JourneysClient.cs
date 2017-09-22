@@ -132,7 +132,7 @@ namespace MiX.Integrate.Api.Client.Journeys
 		public List<Route> GetRouteList(long groupId)
 		{
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.JOURNEYSCONTROLLER.GETJOURNEYROUTE, HttpMethod.Get);
-			request.AddUrlSegment("groupId:long", groupId.ToString());
+			request.AddUrlSegment("groupId", groupId.ToString());
 			IHttpRestResponse<List<Route>> response = Execute<List<Route>>(request);
 			return response.Data;
 		}
@@ -145,7 +145,7 @@ namespace MiX.Integrate.Api.Client.Journeys
 		public async Task<List<Route>> GetRouteListAsync(long groupId)
 		{
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.JOURNEYSCONTROLLER.GETJOURNEYROUTE, HttpMethod.Get);
-			request.AddUrlSegment("groupId:long", groupId.ToString());
+			request.AddUrlSegment("groupId", groupId.ToString());
 			IHttpRestResponse<List<Route>> response = await ExecuteAsync<List<Route>>(request);
 			return response.Data;
 		}
@@ -184,7 +184,7 @@ namespace MiX.Integrate.Api.Client.Journeys
 		public List<JourneyInProgressCurrentStatus> GetJourneyInProgressCurrentStatus(long groupId)
 		{
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.JOURNEYSCONTROLLER.GETJOURNEYINPROGRESSCURRENTSTATUS, HttpMethod.Get);
-			request.AddUrlSegment("groupId:long", groupId.ToString());
+			request.AddUrlSegment("groupId", groupId.ToString());
 			IHttpRestResponse<List<JourneyInProgressCurrentStatus>> response = Execute<List<JourneyInProgressCurrentStatus>>(request);
 			return response.Data;
 		}
@@ -197,7 +197,7 @@ namespace MiX.Integrate.Api.Client.Journeys
 		public async Task<List<JourneyInProgressCurrentStatus>> GetJourneyInProgressCurrentStatusAsync(long groupId)
 		{
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.JOURNEYSCONTROLLER.GETJOURNEYINPROGRESSCURRENTSTATUS, HttpMethod.Get);
-			request.AddUrlSegment("groupId:long", groupId.ToString());
+			request.AddUrlSegment("groupId", groupId.ToString());
 			IHttpRestResponse<List<JourneyInProgressCurrentStatus>> response = await ExecuteAsync<List<JourneyInProgressCurrentStatus>>(request);
 			return response.Data;
 		}

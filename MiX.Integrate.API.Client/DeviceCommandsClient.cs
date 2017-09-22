@@ -15,8 +15,8 @@ namespace MiX.Integrate.Api.Client
 		public async Task<long> SendPositionRequestMessageAsync(long groupId, long assetId, MessageTransport? preferredTransport = null)
 		{
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.DEVICECOMMANDSCONTROLLER.SENDPOSITIONREQUESTMESSAGE, HttpMethod.Get);
-			request.AddUrlSegment("groupId:long", groupId.ToString());
-			request.AddUrlSegment("assetId:long", assetId.ToString());
+			request.AddUrlSegment("groupId", groupId.ToString());
+			request.AddUrlSegment("assetId", assetId.ToString());
 			if (preferredTransport.HasValue) request.AddQueryParameter("preferredTransport", preferredTransport.ToString());
 			IHttpRestResponse<long> response = await ExecuteAsync<long>(request).ConfigureAwait(false);
 			return response.Data;
@@ -25,8 +25,8 @@ namespace MiX.Integrate.Api.Client
 		public async Task<long> SendRelayCommandAsync(long groupId, long assetId, uint relayDrive, uint relayState, MessageTransport? preferredTransport = null)
 		{
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.DEVICECOMMANDSCONTROLLER.SENDRELAYCOMMAND, HttpMethod.Get);
-			request.AddUrlSegment("groupId:long", groupId.ToString());
-			request.AddUrlSegment("assetId:long", assetId.ToString());
+			request.AddUrlSegment("groupId", groupId.ToString());
+			request.AddUrlSegment("assetId", assetId.ToString());
 			request.AddUrlSegment("relayDrive", relayDrive.ToString());
 			request.AddUrlSegment("relayState", relayState.ToString());
 			if (preferredTransport.HasValue) request.AddQueryParameter("preferredTransport", preferredTransport.ToString());
@@ -37,8 +37,8 @@ namespace MiX.Integrate.Api.Client
 		public async Task<long> SendTrackingRequestAsync(long groupId, long assetId, uint intervalSeconds, uint durationSeconds, MessageTransport? preferredTransport = null)
 		{
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.DEVICECOMMANDSCONTROLLER.SENDTRACKINGREQUEST, HttpMethod.Get);
-			request.AddUrlSegment("groupId:long", groupId.ToString());
-			request.AddUrlSegment("assetId:long", assetId.ToString());
+			request.AddUrlSegment("groupId", groupId.ToString());
+			request.AddUrlSegment("assetId", assetId.ToString());
 			request.AddUrlSegment("intervalSeconds", intervalSeconds.ToString());
 			request.AddUrlSegment("durationSeconds", durationSeconds.ToString());
 			if (preferredTransport.HasValue) request.AddQueryParameter("preferredTransport", preferredTransport.ToString());
@@ -49,8 +49,8 @@ namespace MiX.Integrate.Api.Client
 		public async Task<long> SendStopTrackingRequestAsync(long groupId, long assetId, MessageTransport? preferredTransport = null)
 		{
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.DEVICECOMMANDSCONTROLLER.SENDSTOPTRACKINGREQUEST, HttpMethod.Get);
-			request.AddUrlSegment("groupId:long", groupId.ToString());
-			request.AddUrlSegment("assetId:long", assetId.ToString());
+			request.AddUrlSegment("groupId", groupId.ToString());
+			request.AddUrlSegment("assetId", assetId.ToString());
 			if (preferredTransport.HasValue) request.AddQueryParameter("preferredTransport", preferredTransport.ToString());
 			IHttpRestResponse<long> response = await ExecuteAsync<long>(request).ConfigureAwait(false);
 			return response.Data;
@@ -59,8 +59,8 @@ namespace MiX.Integrate.Api.Client
 		public async Task<long> SendProgressiveShutdownCommandAsync(long groupId, long assetId, uint relayDrive, MessageTransport? preferredTransport = null)
 		{
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.DEVICECOMMANDSCONTROLLER.SENDPROGRESSIVESHUTDOWNCOMMAND, HttpMethod.Get);
-			request.AddUrlSegment("groupId:long", groupId.ToString());
-			request.AddUrlSegment("assetId:long", assetId.ToString());
+			request.AddUrlSegment("groupId", groupId.ToString());
+			request.AddUrlSegment("assetId", assetId.ToString());
 			request.AddUrlSegment("relayDrive", relayDrive.ToString());
 			if (preferredTransport.HasValue) request.AddQueryParameter("preferredTransport", preferredTransport.ToString());
 			IHttpRestResponse<long> response = await ExecuteAsync<long>(request).ConfigureAwait(false);
@@ -70,8 +70,8 @@ namespace MiX.Integrate.Api.Client
 		public async Task<long> SendDisarmUnitMessageAsync(long groupId, long assetId, MessageTransport? preferredTransport = null)
 		{
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.DEVICECOMMANDSCONTROLLER.SENDDISARMUNITMESSAGE, HttpMethod.Get);
-			request.AddUrlSegment("groupId:long", groupId.ToString());
-			request.AddUrlSegment("assetId:long", assetId.ToString());
+			request.AddUrlSegment("groupId", groupId.ToString());
+			request.AddUrlSegment("assetId", assetId.ToString());
 			if (preferredTransport.HasValue) request.AddQueryParameter("preferredTransport", preferredTransport.ToString());
 			IHttpRestResponse<long> response = await ExecuteAsync<long>(request).ConfigureAwait(false);
 			return response.Data;
@@ -80,8 +80,8 @@ namespace MiX.Integrate.Api.Client
 		public async Task<long> SendFreeTextMessageAsync(string message, long groupId, long assetId, MessageTransport? preferredTransport = null)
 		{
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.DEVICECOMMANDSCONTROLLER.SENDFREETEXTMESSAGE, HttpMethod.Post);
-			request.AddUrlSegment("groupId:long", groupId.ToString());
-			request.AddUrlSegment("assetId:long", assetId.ToString());
+			request.AddUrlSegment("groupId", groupId.ToString());
+			request.AddUrlSegment("assetId", assetId.ToString());
 			if (preferredTransport.HasValue) request.AddQueryParameter("preferredTransport", preferredTransport.ToString());
 			request.AddJsonBody(message);
 			IHttpRestResponse<long> response = await ExecuteAsync<long>(request).ConfigureAwait(false);
@@ -91,8 +91,8 @@ namespace MiX.Integrate.Api.Client
 		public async Task<long> SendSetAcronymCommandAsync(long groupId, long assetId, uint? param1 = null, uint? param2 = null, uint? param3 = null, MessageTransport? preferredTransport = null)
 		{
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.DEVICECOMMANDSCONTROLLER.SENDSETACRONYMCOMMAND, HttpMethod.Get);
-			request.AddUrlSegment("groupId:long", groupId.ToString());
-			request.AddUrlSegment("assetId:long", assetId.ToString());
+			request.AddUrlSegment("groupId", groupId.ToString());
+			request.AddUrlSegment("assetId", assetId.ToString());
 			request.AddUrlSegment("param1", param1.HasValue ? param1.Value.ToString() : "0");
 			request.AddUrlSegment("param2", param2.HasValue ? param2.Value.ToString() : "0");
 			request.AddUrlSegment("param3", param3.HasValue ? param3.Value.ToString() : "0");
@@ -106,8 +106,8 @@ namespace MiX.Integrate.Api.Client
 		public long SendPositionRequestMessage(long groupId, long assetId, MessageTransport? preferredTransport = null)
 		{
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.DEVICECOMMANDSCONTROLLER.SENDPOSITIONREQUESTMESSAGE, HttpMethod.Get);
-			request.AddUrlSegment("groupId:long", groupId.ToString());
-			request.AddUrlSegment("assetId:long", assetId.ToString());
+			request.AddUrlSegment("groupId", groupId.ToString());
+			request.AddUrlSegment("assetId", assetId.ToString());
 			if (preferredTransport.HasValue) request.AddQueryParameter("preferredTransport", preferredTransport.ToString());
 			IHttpRestResponse<long> response = Execute<long>(request);
 			return response.Data;
@@ -116,8 +116,8 @@ namespace MiX.Integrate.Api.Client
 		public long SendRelayCommand(long groupId, long assetId, uint relayDrive, uint relayState, MessageTransport? preferredTransport = null)
 		{
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.DEVICECOMMANDSCONTROLLER.SENDRELAYCOMMAND, HttpMethod.Get);
-			request.AddUrlSegment("groupId:long", groupId.ToString());
-			request.AddUrlSegment("assetId:long", assetId.ToString());
+			request.AddUrlSegment("groupId", groupId.ToString());
+			request.AddUrlSegment("assetId", assetId.ToString());
 			request.AddUrlSegment("relayDrive", relayDrive.ToString());
 			request.AddUrlSegment("relayState", relayState.ToString());
 			if (preferredTransport.HasValue) request.AddQueryParameter("preferredTransport", preferredTransport.ToString());
@@ -128,8 +128,8 @@ namespace MiX.Integrate.Api.Client
 		public long SendTrackingRequest(long groupId, long assetId, uint intervalSeconds, uint durationSeconds, MessageTransport? preferredTransport = null)
 		{
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.DEVICECOMMANDSCONTROLLER.SENDTRACKINGREQUEST, HttpMethod.Get);
-			request.AddUrlSegment("groupId:long", groupId.ToString());
-			request.AddUrlSegment("assetId:long", assetId.ToString());
+			request.AddUrlSegment("groupId", groupId.ToString());
+			request.AddUrlSegment("assetId", assetId.ToString());
 			request.AddUrlSegment("intervalSeconds", intervalSeconds.ToString());
 			request.AddUrlSegment("durationSeconds", durationSeconds.ToString());
 			if (preferredTransport.HasValue) request.AddQueryParameter("preferredTransport", preferredTransport.ToString());
@@ -140,8 +140,8 @@ namespace MiX.Integrate.Api.Client
 		public long SendStopTrackingRequest(long groupId, long assetId, MessageTransport? preferredTransport = null)
 		{
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.DEVICECOMMANDSCONTROLLER.SENDSTOPTRACKINGREQUEST, HttpMethod.Get);
-			request.AddUrlSegment("groupId:long", groupId.ToString());
-			request.AddUrlSegment("assetId:long", assetId.ToString());
+			request.AddUrlSegment("groupId", groupId.ToString());
+			request.AddUrlSegment("assetId", assetId.ToString());
 			if (preferredTransport.HasValue) request.AddQueryParameter("preferredTransport", preferredTransport.ToString());
 			IHttpRestResponse<long> response = Execute<long>(request);
 			return response.Data;
@@ -150,8 +150,8 @@ namespace MiX.Integrate.Api.Client
 		public long SendProgressiveShutdownCommand(long groupId, long assetId, uint relayDrive, MessageTransport? preferredTransport = null)
 		{
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.DEVICECOMMANDSCONTROLLER.SENDPROGRESSIVESHUTDOWNCOMMAND, HttpMethod.Get);
-			request.AddUrlSegment("groupId:long", groupId.ToString());
-			request.AddUrlSegment("assetId:long", assetId.ToString());
+			request.AddUrlSegment("groupId", groupId.ToString());
+			request.AddUrlSegment("assetId", assetId.ToString());
 			request.AddUrlSegment("relayDrive", relayDrive.ToString());
 			if (preferredTransport.HasValue) request.AddQueryParameter("preferredTransport", preferredTransport.ToString());
 			IHttpRestResponse<long> response = Execute<long>(request);
@@ -161,8 +161,8 @@ namespace MiX.Integrate.Api.Client
 		public long SendDisarmUnitMessage(long groupId, long assetId, MessageTransport? preferredTransport = null)
 		{
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.DEVICECOMMANDSCONTROLLER.SENDDISARMUNITMESSAGE, HttpMethod.Get);
-			request.AddUrlSegment("groupId:long", groupId.ToString());
-			request.AddUrlSegment("assetId:long", assetId.ToString());
+			request.AddUrlSegment("groupId", groupId.ToString());
+			request.AddUrlSegment("assetId", assetId.ToString());
 			if (preferredTransport.HasValue) request.AddQueryParameter("preferredTransport", preferredTransport.ToString());
 			IHttpRestResponse<long> response = Execute<long>(request);
 			return response.Data;
@@ -171,8 +171,8 @@ namespace MiX.Integrate.Api.Client
 		public long SendFreeTextMessage(string message, long groupId, long assetId, MessageTransport? preferredTransport = null)
 		{
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.DEVICECOMMANDSCONTROLLER.SENDFREETEXTMESSAGE, HttpMethod.Post);
-			request.AddUrlSegment("groupId:long", groupId.ToString());
-			request.AddUrlSegment("assetId:long", assetId.ToString());
+			request.AddUrlSegment("groupId", groupId.ToString());
+			request.AddUrlSegment("assetId", assetId.ToString());
 			if (preferredTransport.HasValue) request.AddQueryParameter("preferredTransport", preferredTransport.ToString());
 			request.AddJsonBody(message);
 			IHttpRestResponse<long> response = Execute<long>(request);
@@ -182,8 +182,8 @@ namespace MiX.Integrate.Api.Client
 		public long SendSetAcronymCommand(long groupId, long assetId, uint? param1 = null, uint? param2 = null, uint? param3 = null, MessageTransport? preferredTransport = null)
 		{
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.DEVICECOMMANDSCONTROLLER.SENDSETACRONYMCOMMAND, HttpMethod.Get);
-			request.AddUrlSegment("groupId:long", groupId.ToString());
-			request.AddUrlSegment("assetId:long", assetId.ToString());
+			request.AddUrlSegment("groupId", groupId.ToString());
+			request.AddUrlSegment("assetId", assetId.ToString());
 			request.AddUrlSegment("param1", param1.HasValue ? param1.Value.ToString() : "0");
 			request.AddUrlSegment("param2", param2.HasValue ? param2.Value.ToString() : "0");
 			request.AddUrlSegment("param3", param3.HasValue ? param3.Value.ToString() : "0");
