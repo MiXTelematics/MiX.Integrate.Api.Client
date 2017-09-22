@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace MiX.Integrate.Shared.Entities.Groups
 {
+  /// <summary>Summary information for a group in the organisation hierarchy</summary>
 	public class GroupSummary
 	{
 		public GroupSummary() { }
@@ -15,8 +16,13 @@ namespace MiX.Integrate.Shared.Entities.Groups
 			Name = name;
 			Type = type;
 		}
+		/// <summary>The unique identifier of the group</summary>
 		public long GroupId { get; set; }
+
+		/// <summary>The name of the group</summary>
 		public string Name { get; set; }
+
+		/// <summary>The <see cref="GroupType"/> of the group</summary>
 		public GroupType Type { get; set; }
 		private List<GroupSummary> _subGroups = new List<GroupSummary>();
 		public List<GroupSummary> SubGroups
