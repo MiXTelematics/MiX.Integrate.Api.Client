@@ -137,8 +137,15 @@ namespace MiX.Integrate.Shared.Constants
 			public const string DELETEASYNC = "api/locations/group/{groupId:long}/location/{locationId:long}";
 		}
 
-
-
+		//MiX.Integrate.Api.Controllers.LoggableData
+		public class LOGGABLEDATACONTROLLER
+		{
+			public const string GETLOGGABLEDATAFORASSETSBYDATERANGE = "api/loggabledata/from/{from}/to/{to}";
+			public const string GETROVIMESSAGESFORASSETSSINCE = "api/loggabledata/rovimessages/since/{since}";
+			public const string GETROVIMESSAGESFORASSETSBYDATERANGE = "api/loggabledata/rovimessages/from/{from}/to/{to}";
+			public const string GETROVIMESSAGESFORASSETSLATEST = "api/loggabledata/rovimessageslatest/count/{count}"; 
+		}
+		 
 		//MiX.Integrate.Api.Controllers.DeviceCommandsController
 		public class DEVICECOMMANDSCONTROLLER
 		{
