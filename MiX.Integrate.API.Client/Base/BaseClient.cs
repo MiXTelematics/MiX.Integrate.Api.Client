@@ -34,6 +34,7 @@ namespace MiX.Integrate.Api.Client.Base
 				if (_httpClient == null)
 				{
 					_httpClient = new HttpClient();
+					_httpClient.DefaultRequestHeaders.ExpectContinue = false;
 				}
 				return _httpClient;
 			}
