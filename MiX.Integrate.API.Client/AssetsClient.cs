@@ -29,6 +29,26 @@ namespace MiX.Integrate.Api.Client
 			return response.Data;
 		}
 
+		public List<Asset> GetAll(long groupId, string filterType, string wildCard)
+		{
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.ASSETSCONTROLLER.GETALL, HttpMethod.Get);
+			request.AddUrlSegment("groupId:long", groupId.ToString());
+			request.AddQueryParameter("filterType", filterType);
+			request.AddQueryParameter("wildCard", wildCard);
+			IHttpRestResponse<List<Asset>> response = Execute<List<Asset>>(request);
+			return response.Data;
+		}
+
+		public async Task<List<Asset>> GetAllAsync(long groupId, string filterType, string wildCard)
+		{
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.ASSETSCONTROLLER.GETALL, HttpMethod.Get);
+			request.AddUrlSegment("groupId:long", groupId.ToString());
+			request.AddQueryParameter("filterType", filterType);
+			request.AddQueryParameter("wildCard", wildCard);
+			IHttpRestResponse<List<Asset>> response = await ExecuteAsync<List<Asset>>(request);
+			return response.Data;
+		}
+
 		public Asset Get(long assetId)
 		{
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.ASSETSCONTROLLER.GET, HttpMethod.Get);
