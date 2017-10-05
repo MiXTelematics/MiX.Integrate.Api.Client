@@ -1,9 +1,9 @@
 ﻿using Newtonsoft.Json;
-using Newtonsoft.Json.Converters; 
+using Newtonsoft.Json.Converters;
 
 namespace MiX.Integrate.Api.Client.Base
 {
-	public class NewtonsoftJsonSerializer  
+	public class NewtonsoftJsonSerializer
 	{
 		public string ContentType
 		{
@@ -22,12 +22,12 @@ namespace MiX.Integrate.Api.Client.Base
 			string json = JsonConvert.SerializeObject(obj, _settings);
 			return json;
 		}
-		 
+
 		public T Deserialize<T>(string jsonString)
 		{
-			return JsonConvert.DeserializeObject<T>(jsonString, _settings);  
+			return JsonConvert.DeserializeObject<T>(jsonString, _settings);
 		}
-		 
+
 		private JsonSerializerSettings _settings;
 		public NewtonsoftJsonSerializer()
 		{
@@ -35,6 +35,8 @@ namespace MiX.Integrate.Api.Client.Base
 			_settings.NullValueHandling = NullValueHandling.Ignore;
 			_settings.Converters.Add(new IsoDateTimeConverter());
 			_settings.Converters.Add(new StringEnumConverter());
+			_settings.Converters.Add(new TimeSpanJsonConverter());
+			_settings.Converters.Add(new TimeSpanNullableJsonConverter());
 		}
 
 		private static NewtonsoftJsonSerializer _default;
