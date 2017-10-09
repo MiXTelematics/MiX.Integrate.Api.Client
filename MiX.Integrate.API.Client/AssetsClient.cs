@@ -25,7 +25,7 @@ namespace MiX.Integrate.Api.Client
 		{
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.ASSETSCONTROLLER.GETALL, HttpMethod.Get);
 			request.AddUrlSegment("groupId:long", groupId.ToString());
-			IHttpRestResponse<List<Asset>> response = await ExecuteAsync<List<Asset>>(request);
+			IHttpRestResponse<List<Asset>> response = await ExecuteAsync<List<Asset>>(request).ConfigureAwait(false);
 			return response.Data;
 		}
 
@@ -45,7 +45,7 @@ namespace MiX.Integrate.Api.Client
 			request.AddUrlSegment("groupId:long", groupId.ToString());
 			request.AddQueryParameter("filterType", filterType);
 			request.AddQueryParameter("wildCard", wildCard);
-			IHttpRestResponse<List<Asset>> response = await ExecuteAsync<List<Asset>>(request);
+			IHttpRestResponse<List<Asset>> response = await ExecuteAsync<List<Asset>>(request).ConfigureAwait(false);
 			return response.Data;
 		}
 
@@ -61,7 +61,7 @@ namespace MiX.Integrate.Api.Client
 		{
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.ASSETSCONTROLLER.GET, HttpMethod.Get);
 			request.AddUrlSegment("assetId:long", assetId.ToString());
-			IHttpRestResponse<Asset> response = await ExecuteAsync<Asset>(request);
+			IHttpRestResponse<Asset> response = await ExecuteAsync<Asset>(request).ConfigureAwait(false);
 			return response.Data;
 		}
 
@@ -79,7 +79,7 @@ namespace MiX.Integrate.Api.Client
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.ASSETSCONTROLLER.GETBYGROUP, HttpMethod.Get);
 			request.AddUrlSegment("groupId:long", groupId.ToString());
 			request.AddUrlSegment("assetId:long", assetId.ToString());
-			IHttpRestResponse<Asset> response = await ExecuteAsync<Asset>(request);
+			IHttpRestResponse<Asset> response = await ExecuteAsync<Asset>(request).ConfigureAwait(false);
 			return response.Data;
 		}
 
@@ -94,7 +94,7 @@ namespace MiX.Integrate.Api.Client
 		{
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.ASSETSCONTROLLER.GETBYGROUP, HttpMethod.Put);
 			request.AddJsonBody(asset);
-			await ExecuteAsync(request);
+			await ExecuteAsync(request).ConfigureAwait(false);
 		}
 
 		public bool AddAssetState(long groupId, AssetState assetState)
