@@ -22,7 +22,7 @@ namespace MiX.Integrate.Api.Client
 		{
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.LIBRARYEVENTSCONTROLLER.GETALLLIBRARYEVENTS, HttpMethod.Get);
 			request.AddUrlSegment("organisationId:long", organisationId.ToString());
-			IHttpRestResponse<List<LibraryEvent>> response = await ExecuteAsync<List<LibraryEvent>>(request);
+			IHttpRestResponse<List<LibraryEvent>> response = await ExecuteAsync<List<LibraryEvent>>(request).ConfigureAwait(false);
 			return response.Data;
 		}
 	}

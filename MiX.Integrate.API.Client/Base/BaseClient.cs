@@ -134,23 +134,14 @@ namespace MiX.Integrate.Api.Client.Base
 		}
 
 		public IHttpRestResponse<T> Execute<T>(IHttpRestRequest request) where T : new()
-		{
-			//IRestResponse resp = ExecuteAsync(request).GetAwaiter().GetResult();
-			//CheckResponseError(resp);
-			//IRestResponse<T> respT = CloneInTo<T>(resp);
-			//return respT;
-
-			IHttpRestResponse<T> respT = ExecuteAsync<T>(request).GetAwaiter().GetResult();
+		{ 
+			IHttpRestResponse<T> respT = ExecuteAsync<T>(request).ConfigureAwait(false).GetAwaiter().GetResult();
 			return respT;
 		}
 
 		public IHttpRestResponse Execute(IHttpRestRequest request)
-		{
-			//IRestResponse resp = ExecuteAsync(request).GetAwaiter().GetResult();
-			//CheckResponseError(resp);
-			//return resp;
-
-			IHttpRestResponse resp = ExecuteAsync(request).GetAwaiter().GetResult();
+		{ 
+			IHttpRestResponse resp = ExecuteAsync(request).ConfigureAwait(false).GetAwaiter().GetResult();
 			return resp;
 		}
 
@@ -236,7 +227,7 @@ namespace MiX.Integrate.Api.Client.Base
 
 		private string GetResponseContent(HttpResponseMessage response)
 		{
-			Stream stream = response.Content.ReadAsStreamAsync().GetAwaiter().GetResult();
+			Stream stream = response.Content.ReadAsStreamAsync().ConfigureAwait(false).GetAwaiter().GetResult();
 			var sr = new StreamReader(stream);
 			string content = sr.ReadToEnd();
 			return content;

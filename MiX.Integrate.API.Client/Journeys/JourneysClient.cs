@@ -52,7 +52,7 @@ namespace MiX.Integrate.Api.Client.Journeys
 		{
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.JOURNEYSCONTROLLER.ADDJOURNEY, HttpMethod.Put);
 			request.AddJsonBody(newJourney);
-			IHttpRestResponse<long> response = await ExecuteAsync<long>(request);
+			IHttpRestResponse<long> response = await ExecuteAsync<long>(request).ConfigureAwait(false);
 			return response.Data;
 		}
 		
@@ -78,7 +78,7 @@ namespace MiX.Integrate.Api.Client.Journeys
 		{
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.JOURNEYSCONTROLLER.GETJOURNEY, HttpMethod.Get);
 			request.AddUrlSegment("journeyId:long", journeyId.ToString());
-			IHttpRestResponse<Journey> response = await ExecuteAsync<Journey>(request);
+			IHttpRestResponse<Journey> response = await ExecuteAsync<Journey>(request).ConfigureAwait(false);
 			return response.Data;
 		}
 
@@ -104,7 +104,7 @@ namespace MiX.Integrate.Api.Client.Journeys
 		{
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.JOURNEYSCONTROLLER.GETJOURNEYROUTE, HttpMethod.Get);
 			request.AddUrlSegment("groupId:long", groupId.ToString());
-			IHttpRestResponse<List<Route>> response = await ExecuteAsync<List<Route>>(request);
+			IHttpRestResponse<List<Route>> response = await ExecuteAsync<List<Route>>(request).ConfigureAwait(false);
 			return response.Data;
 		}
 
@@ -130,7 +130,7 @@ namespace MiX.Integrate.Api.Client.Journeys
 		{
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.JOURNEYSCONTROLLER.GETJOURNEYPROGRESS, HttpMethod.Get);
 			request.AddUrlSegment("journeyId:long", journeyId.ToString());
-			IHttpRestResponse<AutomatedMonitoring> response = await ExecuteAsync<AutomatedMonitoring>(request);
+			IHttpRestResponse<AutomatedMonitoring> response = await ExecuteAsync<AutomatedMonitoring>(request).ConfigureAwait(false);
 			return response.Data;
 		}
 
@@ -156,7 +156,7 @@ namespace MiX.Integrate.Api.Client.Journeys
 		{
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.JOURNEYSCONTROLLER.GETJOURNEYINPROGRESSCURRENTSTATUS, HttpMethod.Get);
 			request.AddUrlSegment("groupId:long", groupId.ToString());
-			IHttpRestResponse<List<JourneyInProgressCurrentStatus>> response = await ExecuteAsync<List<JourneyInProgressCurrentStatus>>(request);
+			IHttpRestResponse<List<JourneyInProgressCurrentStatus>> response = await ExecuteAsync<List<JourneyInProgressCurrentStatus>>(request).ConfigureAwait(false);
 			return response.Data;
 		}
 

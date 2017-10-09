@@ -32,7 +32,7 @@ namespace MiX.Integrate.Api.Client
 			if (cachedSince.HasValue)
 				request.AddQueryParameter("cachedSince", cachedSince.Value.ToUniversalTime().ToString(DataFormats.DateTime_Format));
 			request.AddJsonBody(assetIds);
-			IHttpRestResponse<List<Position>> response = await ExecuteAsync<List<Position>>(request);
+			IHttpRestResponse<List<Position>> response = await ExecuteAsync<List<Position>>(request).ConfigureAwait(false);
 			return response.Data;
 		}
 
@@ -54,7 +54,7 @@ namespace MiX.Integrate.Api.Client
 			if (cachedSince.HasValue)
 				request.AddQueryParameter("cachedSince", cachedSince.Value.ToUniversalTime().ToString(DataFormats.DateTime_Format));
 			request.AddJsonBody(groupIds);
-			IHttpRestResponse<List<Position>> response = await ExecuteAsync<List<Position>>(request);
+			IHttpRestResponse<List<Position>> response = await ExecuteAsync<List<Position>>(request).ConfigureAwait(false);
 			return response.Data;
 		}
 
@@ -72,7 +72,7 @@ namespace MiX.Integrate.Api.Client
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.POSITIONSCONTROLLER.GETSINCEBYASSETIDS, HttpMethod.Post);
 			request.AddUrlSegment("since", since.ToUniversalTime().ToString(DataFormats.DateTime_Format));
 			request.AddJsonBody(assetIds);
-			IHttpRestResponse<List<Position>> response = await ExecuteAsync<List<Position>>(request);
+			IHttpRestResponse<List<Position>> response = await ExecuteAsync<List<Position>>(request).ConfigureAwait(false);
 			return response.Data;
 		}
 
@@ -92,7 +92,7 @@ namespace MiX.Integrate.Api.Client
 			request.AddUrlSegment("from", fromDate.ToUniversalTime().ToString(DataFormats.DateTime_Format));
 			request.AddUrlSegment("to", toDate.ToUniversalTime().ToString(DataFormats.DateTime_Format));
 			request.AddJsonBody(assetIds);
-			IHttpRestResponse<List<Position>> response = await ExecuteAsync<List<Position>>(request);
+			IHttpRestResponse<List<Position>> response = await ExecuteAsync<List<Position>>(request).ConfigureAwait(false);
 			return response.Data;
 		}
 
@@ -112,7 +112,7 @@ namespace MiX.Integrate.Api.Client
 			request.AddUrlSegment("from", fromDate.ToUniversalTime().ToString(DataFormats.DateTime_Format));
 			request.AddUrlSegment("to", toDate.ToUniversalTime().ToString(DataFormats.DateTime_Format));
 			request.AddJsonBody(groupIds);
-			IHttpRestResponse<List<Position>> response = await ExecuteAsync<List<Position>>(request);
+			IHttpRestResponse<List<Position>> response = await ExecuteAsync<List<Position>>(request).ConfigureAwait(false);
 			return response.Data;
 		}
 
@@ -132,7 +132,7 @@ namespace MiX.Integrate.Api.Client
 			request.AddUrlSegment("from", fromDate.ToUniversalTime().ToString(DataFormats.DateTime_Format));
 			request.AddUrlSegment("to", toDate.ToUniversalTime().ToString(DataFormats.DateTime_Format));
 			request.AddJsonBody(driverIds);
-			IHttpRestResponse<List<Position>> response = await ExecuteAsync<List<Position>>(request);
+			IHttpRestResponse<List<Position>> response = await ExecuteAsync<List<Position>>(request).ConfigureAwait(false);
 			return response.Data;
 		}
 	}
