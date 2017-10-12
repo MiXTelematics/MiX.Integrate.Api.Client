@@ -24,7 +24,7 @@ namespace MiX.Integrate.Api.Client
 		public async Task<List<Group>> GetAvailableOrganisationsAsync()
 		{
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.GROUPSCONTROLLER.GETSUBGROUPS, HttpMethod.Get);
-			IHttpRestResponse<List<Group>> response = await ExecuteAsync<List<Group>>(request));
+			IHttpRestResponse<List<Group>> response = await ExecuteAsync<List<Group>>(request);
 			return response.Data;
 		}
 
