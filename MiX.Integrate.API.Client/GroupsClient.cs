@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using MiX.Integrate.Api.Client.Base;
 using System.Net.Http;
 using MiX.Integrate.Shared.Entities.Organisation;
+using System.Collections.Generic;
 
 namespace MiX.Integrate.Api.Client
 {
@@ -12,6 +13,20 @@ namespace MiX.Integrate.Api.Client
 	{
 		public GroupsClient(string url, bool setTestRequestHeader = false) : base(url, setTestRequestHeader) { }
 		public GroupsClient(string url, IdServerResourceOwnerClientSettings settings, bool setTestRequestHeader = false) : base(url, settings, setTestRequestHeader) { }
+
+		public List<Group> GetAvailableOrganisations()
+		{
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.GROUPSCONTROLLER.GETORGGROUPS, HttpMethod.Get);
+			IHttpRestResponse<List<Group>> response = Execute<List<Group>>(request);
+			return response.Data;
+		}
+
+		public async Task<List<Group>> GetAvailableOrganisationsAsync()
+		{
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.GROUPSCONTROLLER.GETSUBGROUPS, HttpMethod.Get);
+			IHttpRestResponse<List<Group>> response = await ExecuteAsync<List<Group>>(request));
+			return response.Data;
+		}
 
 		public GroupSummary GetSubGroups(long groupId)
 		{
@@ -28,7 +43,6 @@ namespace MiX.Integrate.Api.Client
 			IHttpRestResponse<GroupSummary> response = await ExecuteAsync<GroupSummary>(request);
 			return response.Data;
 		}
-
 
 		public long AddSite(long parentGroupId, string name)
 		{
