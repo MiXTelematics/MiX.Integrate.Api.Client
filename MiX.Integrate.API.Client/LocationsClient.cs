@@ -5,6 +5,7 @@ using MiX.Integrate.Shared.Constants;
 using MiX.Integrate.Shared.Entities.Locations;
 using MiX.Integrate.Api.Client.Base;
 using System.Net.Http;
+using MiX.Integrate.Shared.Entities.Events;
 
 namespace MiX.Integrate.Api.Client
 {
@@ -95,5 +96,45 @@ namespace MiX.Integrate.Api.Client
 			request.AddUrlSegment("locationId:long", locationId.ToString());
 			Execute(request);
 		}
+
+		public List<Location> InRange(long groupId, Coordinate coordinate, long meters)
+		{
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.LOCATIONSCONTROLLER.INRANGE, HttpMethod.Post);
+			request.AddUrlSegment("groupId", groupId.ToString());
+			request.AddUrlSegment("meters", meters.ToString());
+			request.AddJsonBody(coordinate);
+			IHttpRestResponse<List<Location>> response = Execute<List<Location>>(request);
+			return response.Data;
+		}
+
+		public async Task<List<Location>> InRangeAsync(long groupId, Coordinate coordinate, long meters)
+		{
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.LOCATIONSCONTROLLER.INRANGE, HttpMethod.Post);
+			request.AddUrlSegment("groupId", groupId.ToString());
+			request.AddUrlSegment("meters", meters.ToString());
+			request.AddJsonBody(coordinate);
+			IHttpRestResponse<List<Location>> response = await ExecuteAsync<List<Location>>(request).ConfigureAwait(false);
+			return response.Data;
+		}
+
+		public ProximityQueryResult Nearest(long groupId, Coordinate coordinate)
+		{
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.LOCATIONSCONTROLLER.NEAREST, HttpMethod.Post);
+			request.AddUrlSegment("groupId", groupId.ToString());
+			request.AddJsonBody(coordinate);
+			IHttpRestResponse<ProximityQueryResult> response = Execute<ProximityQueryResult>(request);
+			return response.Data;
+		}
+
+		public async Task<ProximityQueryResult> NearestAsync(long groupId, Coordinate coordinate)
+		{
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.LOCATIONSCONTROLLER.NEAREST, HttpMethod.Post);
+			request.AddUrlSegment("groupId", groupId.ToString());
+			request.AddJsonBody(coordinate);
+			IHttpRestResponse<ProximityQueryResult> response = await ExecuteAsync<ProximityQueryResult>(request).ConfigureAwait(false);
+			return response.Data;
+		}
+
+
 	}
 }
