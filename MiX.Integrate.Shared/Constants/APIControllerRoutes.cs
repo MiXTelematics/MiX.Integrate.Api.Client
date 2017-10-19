@@ -55,6 +55,7 @@ namespace MiX.Integrate.Shared.Constants
 		//MiX.Fleet.Services.Api GroupsController
 		public class GROUPSCONTROLLER
 		{
+			public const string GETORGGROUPS = "api/organisationgroups";
 			public const string GETSUBGROUPS = "api/organisationgroups/{groupId:long}";
 			public const string DELETEORGSUBGROUP = "api/organisationgroups/organisationsubgroup/{groupId}";
 			public const string DELETESITE = "api/organisationgroups/site/{groupId}";
@@ -135,6 +136,8 @@ namespace MiX.Integrate.Shared.Constants
 			public const string ADDASYNC = "api/locations/group/{groupId:long}";
 			public const string UPDATEASYNC = "api/locations/group/{groupId:long}";
 			public const string DELETEASYNC = "api/locations/group/{groupId:long}/location/{locationId:long}";
+			public const string INRANGE = "api/locations/group/{groupId}/inrange/{meters}";
+			public const string NEAREST = "api/locations/group/{groupId}/nearest";
 		}
 
 		//MiX.Integrate.Api.Controllers.LoggableData

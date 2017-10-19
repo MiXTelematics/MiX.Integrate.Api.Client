@@ -6,5 +6,6 @@ namespace MiX.Integrate.Shared.Entities.Events
 	{
 		public List<long> EntityIds { get; set; }
 		public List<long> EventTypeIds { get; set; }
+		public string MenuId { get; set; }
 	}
 }

@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using MiX.Integrate.Shared.Entities.Locations;
 using MiX.Integrate.Api.Client.Base;
+using MiX.Integrate.Shared.Entities.Events;
 
 namespace MiX.Integrate.Api.Client
 {
@@ -18,6 +19,12 @@ namespace MiX.Integrate.Api.Client
 		long Add(Location location, long groupId);
 		Task DeleteAsync(long groupId, long locationId);
 		void Delete(long groupId, long locationId);
+
+		List<Location> InRange(long groupId, Coordinate coordinate, long meters);
+		Task<List<Location>> InRangeAsync(long groupId, Coordinate coordinate, long meters);
+
+		ProximityQueryResult Nearest(long groupId, Coordinate coordinate);
+		Task<ProximityQueryResult> NearestAsync(long groupId, Coordinate coordinate);
 	}
 }
 
