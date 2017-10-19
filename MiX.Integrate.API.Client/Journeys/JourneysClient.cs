@@ -35,11 +35,11 @@ namespace MiX.Integrate.Api.Client.Journeys
 		/// </summary>
 		/// <param name="newJourney">The new journey.</param>
 		/// <returns></returns>
-		public Journey AddJourney(CreateJourney newJourney)
+		public long AddJourney(CreateJourney newJourney)
 		{
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.JOURNEYSCONTROLLER.ADDJOURNEY, HttpMethod.Put);
 			request.AddJsonBody(newJourney);
-			IHttpRestResponse<Journey> response = Execute<Journey>(request);
+			IHttpRestResponse<long> response = Execute<long>(request);
 			return response.Data;
 		}
 
@@ -48,7 +48,7 @@ namespace MiX.Integrate.Api.Client.Journeys
 		/// </summary>
 		/// <param name="newJourney">The new journey.</param>
 		/// <returns></returns>
-		public async Task<Journey> AddJourneyAsync(CreateJourney newJourney)
+		public async Task<long> AddJourneyAsync(CreateJourney newJourney)
 		{
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.JOURNEYSCONTROLLER.ADDJOURNEY, HttpMethod.Put);
 			request.AddJsonBody(newJourney);
@@ -76,7 +76,7 @@ namespace MiX.Integrate.Api.Client.Journeys
 			IHttpRestResponse<Journey> response = Execute<Journey>(request);
 			return response.Data;
 		}
-
+		
 		/// <summary>
 		/// Adds the journey asynchronous.
 		/// </summary>
