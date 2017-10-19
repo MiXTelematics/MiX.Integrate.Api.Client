@@ -34,7 +34,7 @@ namespace MiX.Integrate.Api.Client
 			if (cachedSince.HasValue)
 				request.AddQueryParameter("cachedSince", cachedSince.Value.ToUniversalTime().ToString(DataFormats.DateTime_Format));
 			request.AddJsonBody(eventFilter);
-			IHttpRestResponse<List<Event>> response = await ExecuteAsync<List<Event>>(request);
+			IHttpRestResponse<List<Event>> response = await ExecuteAsync<List<Event>>(request).ConfigureAwait(false);
 			return response.Data;
 		}
 
@@ -58,7 +58,7 @@ namespace MiX.Integrate.Api.Client
 			if (cachedSince.HasValue)
 				request.AddQueryParameter("cachedSince", cachedSince.Value.ToUniversalTime().ToString(DataFormats.DateTime_Format));
 			request.AddJsonBody(eventFilter);
-			IHttpRestResponse<List<Event>> response = await ExecuteAsync<List<Event>>(request);
+			IHttpRestResponse<List<Event>> response = await ExecuteAsync<List<Event>>(request).ConfigureAwait(false);
 			return response.Data;
 		}
 
@@ -84,7 +84,7 @@ namespace MiX.Integrate.Api.Client
 			if (cachedSince.HasValue)
 				request.AddQueryParameter("cachedSince", cachedSince.Value.ToUniversalTime().ToString(DataFormats.DateTime_Format));
 			request.AddJsonBody(eventFilter);
-			IHttpRestResponse<List<Event>> response = await ExecuteAsync<List<Event>>(request);
+			IHttpRestResponse<List<Event>> response = await ExecuteAsync<List<Event>>(request).ConfigureAwait(false);
 			return response.Data;
 		}
 
@@ -106,7 +106,7 @@ namespace MiX.Integrate.Api.Client
 			request.AddUrlSegment("from", from.ToUniversalTime().ToString(DataFormats.DateTime_Format));
 			request.AddUrlSegment("to", to.ToUniversalTime().ToString(DataFormats.DateTime_Format));
 			request.AddJsonBody(eventFilter);
-			IHttpRestResponse<List<Event>> response = await ExecuteAsync<List<Event>>(request);
+			IHttpRestResponse<List<Event>> response = await ExecuteAsync<List<Event>>(request).ConfigureAwait(false);
 			return response.Data;
 		}
 
@@ -128,7 +128,7 @@ namespace MiX.Integrate.Api.Client
 			request.AddUrlSegment("from", from.ToUniversalTime().ToString(DataFormats.DateTime_Format));
 			request.AddUrlSegment("to", to.ToUniversalTime().ToString(DataFormats.DateTime_Format));
 			request.AddJsonBody(eventFilter);
-			IHttpRestResponse<List<Event>> response = await ExecuteAsync<List<Event>>(request);
+			IHttpRestResponse<List<Event>> response = await ExecuteAsync<List<Event>>(request).ConfigureAwait(false);
 			return response.Data;
 		}
 
@@ -152,7 +152,7 @@ namespace MiX.Integrate.Api.Client
 			request.AddUrlSegment("from", from.ToUniversalTime().ToString(DataFormats.DateTime_Format));
 			request.AddUrlSegment("to", to.ToUniversalTime().ToString(DataFormats.DateTime_Format));
 			request.AddJsonBody(eventFilter);
-			IHttpRestResponse<List<Event>> response = await ExecuteAsync<List<Event>>(request);
+			IHttpRestResponse<List<Event>> response = await ExecuteAsync<List<Event>>(request).ConfigureAwait(false);
 			return response.Data;
 		}
 
@@ -174,7 +174,7 @@ namespace MiX.Integrate.Api.Client
 			request.AddUrlSegment("since", since.ToUniversalTime().ToString(DataFormats.DateTime_Format));
 			request.AddUrlSegment("quantity", quantity.ToString());
 			request.AddJsonBody(eventFilter);
-			IHttpRestResponse<List<Event>> response = await ExecuteAsync<List<Event>>(request);
+			IHttpRestResponse<List<Event>> response = await ExecuteAsync<List<Event>>(request).ConfigureAwait(false);
 			return response.Data;
 		}
 
@@ -196,7 +196,7 @@ namespace MiX.Integrate.Api.Client
 			request.AddUrlSegment("since", since.ToUniversalTime().ToString(DataFormats.DateTime_Format));
 			request.AddUrlSegment("quantity", quantity.ToString());
 			request.AddJsonBody(eventFilter);
-			IHttpRestResponse<List<Event>> response = await ExecuteAsync<List<Event>>(request);
+			IHttpRestResponse<List<Event>> response = await ExecuteAsync<List<Event>>(request).ConfigureAwait(false);
 			return response.Data;
 		}
 
@@ -218,7 +218,7 @@ namespace MiX.Integrate.Api.Client
 			request.AddUrlSegment("entityType", entityType);
 			request.AddUrlSegment("since", since.ToUniversalTime().ToString(DataFormats.DateTime_Format));
 			request.AddJsonBody(eventFilter);
-			IHttpRestResponse<List<Event>> response = await ExecuteAsync<List<Event>>(request);
+			IHttpRestResponse<List<Event>> response = await ExecuteAsync<List<Event>>(request).ConfigureAwait(false);
 			return response.Data;
 		}
 

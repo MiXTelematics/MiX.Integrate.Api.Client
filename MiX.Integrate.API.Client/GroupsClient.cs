@@ -24,7 +24,7 @@ namespace MiX.Integrate.Api.Client
 		public async Task<List<Group>> GetAvailableOrganisationsAsync()
 		{
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.GROUPSCONTROLLER.GETORGGROUPS, HttpMethod.Get);
-			IHttpRestResponse<List<Group>> response = await ExecuteAsync<List<Group>>(request);
+			IHttpRestResponse<List<Group>> response = await ExecuteAsync<List<Group>>(request).ConfigureAwait(false);
 			return response.Data;
 		}
 
@@ -40,7 +40,7 @@ namespace MiX.Integrate.Api.Client
 		{
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.GROUPSCONTROLLER.GETSUBGROUPS, HttpMethod.Get);
 			request.AddUrlSegment("groupId:long", groupId.ToString());
-			IHttpRestResponse<GroupSummary> response = await ExecuteAsync<GroupSummary>(request);
+			IHttpRestResponse<GroupSummary> response = await ExecuteAsync<GroupSummary>(request).ConfigureAwait(false);
 			return response.Data;
 		}
 
@@ -98,7 +98,7 @@ namespace MiX.Integrate.Api.Client
 			var request = GetRequest(APIControllerRoutes.GROUPSCONTROLLER.ADDSITE, HttpMethod.Post);
 			request.AddUrlSegment("parentGroupId", parentGroupId.ToString());
 			request.AddJsonBody(name);
-			IHttpRestResponse response = await ExecuteAsync(request);
+			IHttpRestResponse response = await ExecuteAsync(request).ConfigureAwait(false);
 			var idHeaderVal = GetResponseHeader(response.Headers, "groupid");
 			long groupId;
 			if (!long.TryParse(idHeaderVal, out groupId) || groupId == 0)
@@ -154,7 +154,7 @@ namespace MiX.Integrate.Api.Client
 		{
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.GROUPSCONTROLLER.GETORGANISATIONDETAILSASYNC, HttpMethod.Get);
 			request.AddUrlSegment("organisationId:long", groupId.ToString());
-			IHttpRestResponse<OrganisationDetail> response = await ExecuteAsync<OrganisationDetail>(request);
+			IHttpRestResponse<OrganisationDetail> response = await ExecuteAsync<OrganisationDetail>(request).ConfigureAwait(false);
 			return response.Data;
 		}
 
