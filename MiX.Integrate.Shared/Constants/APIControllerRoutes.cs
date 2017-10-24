@@ -52,7 +52,17 @@ namespace MiX.Integrate.Shared.Constants
 			public const string ADDASSETSTATEASYNC = "api/assets/group/{groupId:long}/state";
 		}
 
-		//MiX.Fleet.Services.Api GroupsController
+
+		//MiX.Integrate.Api RemindersController
+		public class REMINDERSCONTROLLER
+		{
+			public const string GETASSETREMINDERS = "api/reminders/organisation/{organisationId}/asset/{assetId}";
+			public const string ASSETSERVICEREMINDERS = "api/reminders/organisation/{organisationId}/asset/{assetId}/service";
+			public const string ASSETLICENCEREMINDERS = "api/reminders/organisation/{organisationId}/asset/{assetId}/licence";
+			public const string ASSETROADWORTHYREMINDERS = "api/reminders/organisation/{organisationId}/asset/{assetId}/roadworthy-certificate";
+		}
+
+		//MiX.Integrate.Api GroupsController
 		public class GROUPSCONTROLLER
 		{
 			public const string GETORGGROUPS = "api/organisationgroups";
@@ -68,7 +78,7 @@ namespace MiX.Integrate.Shared.Constants
 			public const string GETORGANISATIONDETAILSASYNC = "api/organisationgroups/organisation/{organisationId:long}";
 		}
 
-		//MiX.Fleet.Services.Api PositionsController
+		//MiX.Integrate.Api PositionsController
 		public class POSITIONSCONTROLLER
 		{
 			public const string GETLATESTBYASSETIDS = "api/positions/latest/assets/{quantity}";
@@ -79,7 +89,7 @@ namespace MiX.Integrate.Shared.Constants
 			public const string GETBYDATERANGEBYDRIVERIDS = "api/positions/drivers/{from}/{to}";
 		}
 
-		//MiX.Fleet.Services.Api EventsController
+		//MiX.Integrate.Api EventsController
 		public class EVENTSCONTROLLER
 		{
 			//public const string GETASYNC = "api/events/{eventId:long}";
@@ -101,7 +111,7 @@ namespace MiX.Integrate.Shared.Constants
 		}
 
 
-		//MiX.Fleet.Services.Api TripsController
+		//MiX.Integrate.Api TripsController
 		public class TRIPSCONTROLLER
 		{
 			public const string GETLATESTFORGROUPS = "api/trips/groups/latest/entitytype/{entityType}/quantity/{quantity}";
