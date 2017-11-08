@@ -14,27 +14,27 @@ namespace MiX.Integrate.Api.Client
 
 		public IList<DriverLicence> GetDriverLicencesByDriverId(long organisationGroupId, long driverId)
 		{
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.DRIVERLICENCECONTROLLER.GETDRIVERLICENCESASYNC, HttpMethod.Get);
-			request.AddUrlSegment("organisationGroupId:long", organisationGroupId.ToString());
-			request.AddUrlSegment("driverId:long", driverId.ToString());
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.DRIVERLICENCECONTROLLER.GETDRIVERLICENCES, HttpMethod.Get);
+			request.AddUrlSegment("organisationgroupId", organisationGroupId.ToString());
+			request.AddUrlSegment("driverId", driverId.ToString());
 			IHttpRestResponse<List<DriverLicence>> response = Execute<List<DriverLicence>>(request);
 			return response.Data;
 		}
 
 		public async Task<IList<DriverLicence>> GetDriverLicencesByDriverIdAsync(long organisationGroupId, long driverId)
 		{
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.DRIVERLICENCECONTROLLER.GETDRIVERLICENCESASYNC, HttpMethod.Get);
-			request.AddUrlSegment("organisationGroupId:long", organisationGroupId.ToString());
-			request.AddUrlSegment("driverId:long", driverId.ToString());
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.DRIVERLICENCECONTROLLER.GETDRIVERLICENCES, HttpMethod.Get);
+			request.AddUrlSegment("organisationgroupId", organisationGroupId.ToString());
+			request.AddUrlSegment("driverId", driverId.ToString());
 			IHttpRestResponse<List<DriverLicence>> response = await ExecuteAsync<List<DriverLicence>>(request).ConfigureAwait(false);
 			return response.Data;
 		}
 
 		public DriverLicence GetDriverLicenceById(long organisationGroupId, long driverId, int licenceCategoryId)
 		{
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.DRIVERLICENCECONTROLLER.GETDRIVERLICENCEASYNC, HttpMethod.Get);
-			request.AddUrlSegment("organisationGroupId:long", organisationGroupId.ToString());
-			request.AddUrlSegment("driverId:long", driverId.ToString());
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.DRIVERLICENCECONTROLLER.GETDRIVERLICENCE, HttpMethod.Get);
+			request.AddUrlSegment("organisationgroupId", organisationGroupId.ToString());
+			request.AddUrlSegment("driverId", driverId.ToString());
 			request.AddUrlSegment("licenceCategoryId", licenceCategoryId.ToString());
 			IHttpRestResponse<DriverLicence> response = Execute<DriverLicence>(request);
 			return response.Data;
@@ -42,9 +42,9 @@ namespace MiX.Integrate.Api.Client
 
 		public async Task<DriverLicence> GetDriverLicenceByIdAsync(long organisationGroupId, long driverId, int licenceCategoryId)
 		{
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.DRIVERLICENCECONTROLLER.GETDRIVERLICENCEASYNC, HttpMethod.Get);
-			request.AddUrlSegment("organisationGroupId:long", organisationGroupId.ToString());
-			request.AddUrlSegment("driverId:long", driverId.ToString());
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.DRIVERLICENCECONTROLLER.GETDRIVERLICENCE, HttpMethod.Get);
+			request.AddUrlSegment("organisationgroupId", organisationGroupId.ToString());
+			request.AddUrlSegment("driverId", driverId.ToString());
 			request.AddUrlSegment("licenceCategoryId", licenceCategoryId.ToString());
 			IHttpRestResponse<DriverLicence> response = await ExecuteAsync<DriverLicence>(request).ConfigureAwait(false);
 			return response.Data;
@@ -52,34 +52,34 @@ namespace MiX.Integrate.Api.Client
 
 		public IList<LicenceCategory> GetDriverLicenceCategories(long organisationGroupId, long driverId)
 		{
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.DRIVERLICENCECONTROLLER.GETDRIVERLICENCECATEGORIESSYNC, HttpMethod.Get);
-			request.AddUrlSegment("organisationGroupId:long", organisationGroupId.ToString());
-			request.AddUrlSegment("driverId:long", driverId.ToString());
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.DRIVERLICENCECONTROLLER.GETDRIVERLICENCECATEGORIES, HttpMethod.Get);
+			request.AddUrlSegment("organisationgroupId", organisationGroupId.ToString());
+			request.AddUrlSegment("driverId", driverId.ToString());
 			IHttpRestResponse<List<LicenceCategory>> response = Execute<List<LicenceCategory>>(request);
 			return response.Data;
 		}
 
 		public async Task<IList<LicenceCategory>> GetDriverLicenceCategoriesAsync(long organisationGroupId, long driverId)
 		{
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.DRIVERLICENCECONTROLLER.GETDRIVERLICENCECATEGORIESSYNC, HttpMethod.Get);
-			request.AddUrlSegment("organisationGroupId:long", organisationGroupId.ToString());
-			request.AddUrlSegment("driverId:long", driverId.ToString());
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.DRIVERLICENCECONTROLLER.GETDRIVERLICENCECATEGORIES, HttpMethod.Get);
+			request.AddUrlSegment("organisationgroupId", organisationGroupId.ToString());
+			request.AddUrlSegment("driverId", driverId.ToString());
 			IHttpRestResponse<List<LicenceCategory>> response = await ExecuteAsync<List<LicenceCategory>>(request).ConfigureAwait(false);
 			return response.Data;
 		}
 
 		public void AddDriverLicence(long organisationGroupId, DriverLicence driverLicence)
 		{
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.DRIVERLICENCECONTROLLER.ADDDRIVERLICENCEASYNC, HttpMethod.Put);
-			request.AddUrlSegment("organisationGroupId:long", organisationGroupId.ToString());
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.DRIVERLICENCECONTROLLER.ADDDRIVERLICENCE, HttpMethod.Put);
+			request.AddUrlSegment("organisationgroupId", organisationGroupId.ToString());
 			request.AddJsonBody(driverLicence);
 			Execute(request);
 		}
 
 		public async Task AddDriverLicenceAsync(long organisationGroupId, DriverLicence driverLicence)
 		{
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.DRIVERLICENCECONTROLLER.ADDDRIVERLICENCEASYNC, HttpMethod.Put);
-			request.AddUrlSegment("organisationGroupId:long", organisationGroupId.ToString());
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.DRIVERLICENCECONTROLLER.ADDDRIVERLICENCE, HttpMethod.Put);
+			request.AddUrlSegment("organisationgroupId", organisationGroupId.ToString());
 			request.AddJsonBody(driverLicence);
 			await ExecuteAsync(request).ConfigureAwait(false);
 		}
@@ -87,34 +87,34 @@ namespace MiX.Integrate.Api.Client
 
 		public void UpdateDriverLicence(long organisationGroupId, DriverLicence driverLicence)
 		{
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.DRIVERLICENCECONTROLLER.UPDATEDRIVERLICENCEASYNC, HttpMethod.Put);
-			request.AddUrlSegment("organisationGroupId:long", organisationGroupId.ToString());
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.DRIVERLICENCECONTROLLER.UPDATEDRIVERLICENCE, HttpMethod.Put);
+			request.AddUrlSegment("organisationgroupId", organisationGroupId.ToString());
 			request.AddJsonBody(driverLicence);
 			Execute(request);
 		}
 
 		public async Task UpdateDriverLicenceAsync(long organisationGroupId, DriverLicence driverLicence)
 		{
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.DRIVERLICENCECONTROLLER.UPDATEDRIVERLICENCEASYNC, HttpMethod.Put);
-			request.AddUrlSegment("organisationGroupId:long", organisationGroupId.ToString());
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.DRIVERLICENCECONTROLLER.UPDATEDRIVERLICENCE, HttpMethod.Put);
+			request.AddUrlSegment("organisationgroupId", organisationGroupId.ToString());
 			request.AddJsonBody(driverLicence);
 			await ExecuteAsync(request).ConfigureAwait(false);
 		}
 
 		public void DeleteDriverLicence(long organisationGroupId, long driverId, int licenceCategoryId)
 		{
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.DRIVERLICENCECONTROLLER.DELETEDRIVERLICENCEASYNC, HttpMethod.Put);
-			request.AddUrlSegment("organisationGroupId:long", organisationGroupId.ToString());
-			request.AddUrlSegment("driverId:long", driverId.ToString());
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.DRIVERLICENCECONTROLLER.DELETEDRIVERLICENCE, HttpMethod.Put);
+			request.AddUrlSegment("organisationgroupId", organisationGroupId.ToString());
+			request.AddUrlSegment("driverId", driverId.ToString());
 			request.AddUrlSegment("licenceCategoryId", licenceCategoryId.ToString());
 			Execute(request);
 		}
 
 		public async Task DeleteDriverLicenceAsync(long organisationGroupId, long driverId, int licenceCategoryId)
 		{
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.DRIVERLICENCECONTROLLER.DELETEDRIVERLICENCEASYNC, HttpMethod.Put);
-			request.AddUrlSegment("organisationGroupId:long", organisationGroupId.ToString());
-			request.AddUrlSegment("driverId:long", driverId.ToString());
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.DRIVERLICENCECONTROLLER.DELETEDRIVERLICENCE, HttpMethod.Put);
+			request.AddUrlSegment("organisationgroupId", organisationGroupId.ToString());
+			request.AddUrlSegment("driverId", driverId.ToString());
 			request.AddUrlSegment("licenceCategoryId", licenceCategoryId.ToString());
 			await ExecuteAsync(request).ConfigureAwait(false);
 		}
