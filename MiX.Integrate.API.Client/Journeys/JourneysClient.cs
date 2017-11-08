@@ -106,7 +106,7 @@ namespace MiX.Integrate.Api.Client.Journeys
 		public Journey GetJourney(long journeyId)
 		{
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.JOURNEYSCONTROLLER.GETJOURNEY, HttpMethod.Get);
-			request.AddUrlSegment("journeyId:long", journeyId.ToString());
+			request.AddUrlSegment("journeyId", journeyId.ToString());
 			IHttpRestResponse<Journey> response = Execute<Journey>(request);
 			return response.Data;
 		}
@@ -119,7 +119,7 @@ namespace MiX.Integrate.Api.Client.Journeys
 		public async Task<Journey> GetJourneyAsync(long journeyId)
 		{
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.JOURNEYSCONTROLLER.GETJOURNEY, HttpMethod.Get);
-			request.AddUrlSegment("journeyId:long", journeyId.ToString());
+			request.AddUrlSegment("journeyId", journeyId.ToString());
 			IHttpRestResponse<Journey> response = await ExecuteAsync<Journey>(request).ConfigureAwait(false);
 			return response.Data;
 		}
@@ -158,7 +158,7 @@ namespace MiX.Integrate.Api.Client.Journeys
 		public AutomatedMonitoring GetJourneyProgress(long journeyId)
 		{
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.JOURNEYSCONTROLLER.GETJOURNEYPROGRESS, HttpMethod.Get);
-			request.AddUrlSegment("journeyId:long", journeyId.ToString());
+			request.AddUrlSegment("journeyId", journeyId.ToString());
 			IHttpRestResponse<AutomatedMonitoring> response = Execute<AutomatedMonitoring>(request);
 			return response.Data;
 		}
@@ -171,7 +171,7 @@ namespace MiX.Integrate.Api.Client.Journeys
 		public async Task<AutomatedMonitoring> GetJourneyProgressAsync(long journeyId)
 		{
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.JOURNEYSCONTROLLER.GETJOURNEYPROGRESS, HttpMethod.Get);
-			request.AddUrlSegment("journeyId:long", journeyId.ToString());
+			request.AddUrlSegment("journeyId", journeyId.ToString());
 			IHttpRestResponse<AutomatedMonitoring> response = await ExecuteAsync<AutomatedMonitoring>(request).ConfigureAwait(false);
 			return response.Data;
 		}

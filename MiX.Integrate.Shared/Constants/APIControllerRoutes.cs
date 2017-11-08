@@ -64,6 +64,8 @@ namespace MiX.Integrate.Shared.Constants
 		//MiX.Integrate.Api GroupsController
 		public class GROUPSCONTROLLER
 		{
+			public const string GETORGGROUPS = "api/organisationgroups";
+
 			public const string GETSUBGROUPS = "api/organisationgroups/subgroups/{groupId}";
 			public const string DELETEORGSUBGROUP = "api/organisationgroups/organisationsubgroup/{groupId}";
 			public const string DELETESITE = "api/organisationgroups/site/{groupId}";
