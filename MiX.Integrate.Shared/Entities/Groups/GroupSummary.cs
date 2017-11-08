@@ -9,8 +9,12 @@ namespace MiX.Integrate.Shared.Entities.Groups
   /// <summary>Summary information for a group in the organisation hierarchy</summary>
 	public class GroupSummary
 	{
-		public GroupSummary() { }
-		public GroupSummary(long groupId, string name, GroupType type)
+		public GroupSummary()
+		{
+			this.SubGroups = new List<GroupSummary>();
+		}
+
+		public GroupSummary(long groupId, string name, GroupType type) : this()
 		{
 			GroupId = groupId;
 			Name = name;
@@ -24,11 +28,6 @@ namespace MiX.Integrate.Shared.Entities.Groups
 
 		/// <summary>The <see cref="GroupType"/> of the group</summary>
 		public GroupType Type { get; set; }
-		private List<GroupSummary> _subGroups = new List<GroupSummary>();
-		public List<GroupSummary> SubGroups
-		{
-			get { return _subGroups; }
-			set { _subGroups = value; }
-		}
+		public List<GroupSummary> SubGroups { get; set; }
 	}
 }

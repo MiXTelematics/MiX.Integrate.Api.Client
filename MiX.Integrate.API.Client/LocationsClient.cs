@@ -5,6 +5,7 @@ using MiX.Integrate.Shared.Constants;
 using MiX.Integrate.Shared.Entities.Locations;
 using MiX.Integrate.Api.Client.Base;
 using System.Net.Http;
+using MiX.Integrate.Shared.Entities.Events;
 
 namespace MiX.Integrate.Api.Client
 {
@@ -34,7 +35,7 @@ namespace MiX.Integrate.Api.Client
 		{
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.LOCATIONSCONTROLLER.GETALL, HttpMethod.Get);
 			request.AddUrlSegment("groupId", groupId.ToString());
-			IHttpRestResponse<List<Location>> response = await ExecuteAsync<List<Location>>(request);
+			IHttpRestResponse<List<Location>> response = await ExecuteAsync<List<Location>>(request).ConfigureAwait(false);
 			return response.Data;
 		}
 		public List<Location> GetAll(long groupId)
@@ -50,7 +51,7 @@ namespace MiX.Integrate.Api.Client
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.LOCATIONSCONTROLLER.UPDATE, HttpMethod.Put);
 			request.AddUrlSegment("groupId", groupId.ToString());
 			request.AddJsonBody(location);
-			await ExecuteAsync(request);
+			await ExecuteAsync(request).ConfigureAwait(false);
 		}
 		public void Update(Location location, long groupId)
 		{
@@ -65,7 +66,7 @@ namespace MiX.Integrate.Api.Client
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.LOCATIONSCONTROLLER.ADD, HttpMethod.Post);
 			request.AddUrlSegment("groupId", groupId.ToString());
 			request.AddJsonBody(location);
-			IHttpRestResponse response = await ExecuteAsync(request);
+			IHttpRestResponse response = await ExecuteAsync(request).ConfigureAwait(false);
 			long locationId = Convert.ToInt64(GetResponseHeader(response.Headers, "locationId"));
 			return locationId;
 		}
@@ -85,7 +86,7 @@ namespace MiX.Integrate.Api.Client
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.LOCATIONSCONTROLLER.DELETE, HttpMethod.Delete);
 			request.AddUrlSegment("groupId", groupId.ToString());
 			request.AddUrlSegment("locationId", locationId.ToString());
-			await ExecuteAsync(request);
+			await ExecuteAsync(request).ConfigureAwait(false); ;
 		}
 
 		public void Delete(long groupId, long locationId)
@@ -95,5 +96,45 @@ namespace MiX.Integrate.Api.Client
 			request.AddUrlSegment("locationId", locationId.ToString());
 			Execute(request);
 		}
+
+		public List<Location> InRange(long groupId, Coordinate coordinate, long meters)
+		{
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.LOCATIONSCONTROLLER.INRANGE, HttpMethod.Post);
+			request.AddUrlSegment("groupId", groupId.ToString());
+			request.AddUrlSegment("meters", meters.ToString());
+			request.AddJsonBody(coordinate);
+			IHttpRestResponse<List<Location>> response = Execute<List<Location>>(request);
+			return response.Data;
+		}
+
+		public async Task<List<Location>> InRangeAsync(long groupId, Coordinate coordinate, long meters)
+		{
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.LOCATIONSCONTROLLER.INRANGE, HttpMethod.Post);
+			request.AddUrlSegment("groupId", groupId.ToString());
+			request.AddUrlSegment("meters", meters.ToString());
+			request.AddJsonBody(coordinate);
+			IHttpRestResponse<List<Location>> response = await ExecuteAsync<List<Location>>(request).ConfigureAwait(false);
+			return response.Data;
+		}
+
+		public ProximityQueryResult Nearest(long groupId, Coordinate coordinate)
+		{
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.LOCATIONSCONTROLLER.NEAREST, HttpMethod.Post);
+			request.AddUrlSegment("groupId", groupId.ToString());
+			request.AddJsonBody(coordinate);
+			IHttpRestResponse<ProximityQueryResult> response = Execute<ProximityQueryResult>(request);
+			return response.Data;
+		}
+
+		public async Task<ProximityQueryResult> NearestAsync(long groupId, Coordinate coordinate)
+		{
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.LOCATIONSCONTROLLER.NEAREST, HttpMethod.Post);
+			request.AddUrlSegment("groupId", groupId.ToString());
+			request.AddJsonBody(coordinate);
+			IHttpRestResponse<ProximityQueryResult> response = await ExecuteAsync<ProximityQueryResult>(request).ConfigureAwait(false);
+			return response.Data;
+		}
+
+
 	}
 }

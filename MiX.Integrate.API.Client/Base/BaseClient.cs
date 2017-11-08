@@ -24,9 +24,10 @@ namespace MiX.Integrate.Api.Client.Base
 		private bool _setTestRequestHeader;
 		private bool _hasIDServerResourceOwnerClientSettings;
 		private IdServerResourceOwnerClientSettings _idServerResourceOwnerClientSettings;
-
 		private static string _idServerAccessToken;
 		private static HttpClient _httpClient;
+		private bool _notFoundShouldReturnNull;
+
 		private static HttpClient HttpClient
 		{
 			get
@@ -34,6 +35,7 @@ namespace MiX.Integrate.Api.Client.Base
 				if (_httpClient == null)
 				{
 					_httpClient = new HttpClient();
+					_httpClient.DefaultRequestHeaders.ExpectContinue = false;
 				}
 				return _httpClient;
 			}
@@ -81,6 +83,14 @@ namespace MiX.Integrate.Api.Client.Base
 			_idServerResourceOwnerClientSettings = settings;
 		}
 
+
+		public bool HTTPStatusNotFoundShouldReturnNull
+		{
+			get { return _notFoundShouldReturnNull; }
+			set { _notFoundShouldReturnNull = value; }
+		}
+
+
 		public IHttpRestRequest GetRequest(string resource, HttpMethod method)
 		{
 			IHttpRestRequest request = new HttpRestRequest(resource, method);
@@ -124,23 +134,14 @@ namespace MiX.Integrate.Api.Client.Base
 		}
 
 		public IHttpRestResponse<T> Execute<T>(IHttpRestRequest request) where T : new()
-		{
-			//IRestResponse resp = ExecuteAsync(request).GetAwaiter().GetResult();
-			//CheckResponseError(resp);
-			//IRestResponse<T> respT = CloneInTo<T>(resp);
-			//return respT;
-
-			IHttpRestResponse<T> respT = ExecuteAsync<T>(request).GetAwaiter().GetResult();
+		{ 
+			IHttpRestResponse<T> respT = ExecuteAsync<T>(request).ConfigureAwait(false).GetAwaiter().GetResult();
 			return respT;
 		}
 
 		public IHttpRestResponse Execute(IHttpRestRequest request)
-		{
-			//IRestResponse resp = ExecuteAsync(request).GetAwaiter().GetResult();
-			//CheckResponseError(resp);
-			//return resp;
-
-			IHttpRestResponse resp = ExecuteAsync(request).GetAwaiter().GetResult();
+		{ 
+			IHttpRestResponse resp = ExecuteAsync(request).ConfigureAwait(false).GetAwaiter().GetResult();
 			return resp;
 		}
 
@@ -226,7 +227,7 @@ namespace MiX.Integrate.Api.Client.Base
 
 		private string GetResponseContent(HttpResponseMessage response)
 		{
-			Stream stream = response.Content.ReadAsStreamAsync().GetAwaiter().GetResult();
+			Stream stream = response.Content.ReadAsStreamAsync().ConfigureAwait(false).GetAwaiter().GetResult();
 			var sr = new StreamReader(stream);
 			string content = sr.ReadToEnd();
 			return content;
@@ -234,6 +235,11 @@ namespace MiX.Integrate.Api.Client.Base
 
 		public void CheckResponseError(HttpResponseMessage response)
 		{
+			if (_notFoundShouldReturnNull && response.StatusCode == HttpStatusCode.NotFound)
+			{
+				//If flag is set do not throw error on NotFound (404). The client will return a null result instead.
+				return;
+			}
 			if ((int)response.StatusCode >= 400 & (int)response.StatusCode < 500)
 			{
 				string content = GetResponseContent(response);
@@ -245,13 +251,6 @@ namespace MiX.Integrate.Api.Client.Base
 				string content = GetResponseContent(response);
 				throw new HttpServerException(response.StatusCode, content);
 			}
-			//if (response.ResponseStatus == ResponseStatus.Error)
-			//{
-			//	if (response.ErrorException != null)
-			//		throw (response.ErrorException);
-			//	else
-			//		throw new Exception(response.ErrorMessage);
-			//}
 		}
 
 		public IHttpRestResponse<T> CloneInTo<T>(IHttpRestResponse resp) where T : new()
@@ -266,11 +265,18 @@ namespace MiX.Integrate.Api.Client.Base
 				IsSuccessStatusCode = resp.IsSuccessStatusCode,
 				ErrorException = resp.ErrorException
 			};
-			if (resp.StatusCode == System.Net.HttpStatusCode.NoContent)
+			if (resp.StatusCode == HttpStatusCode.NoContent)
 			{
 				if (IsEnumarable(respT.Data)) // Return empty list if Enumarable
 				{
-					respT.Data = NewtonsoftJsonSerializer.Default.Deserialize<T>("[]");
+					respT.Data = new T();
+				}
+			}
+			else if (resp.StatusCode == HttpStatusCode.NotFound)
+			{
+				if (IsEnumarable(respT.Data)) // Return empty list if Enumarable
+				{
+					respT.Data = new T();
 				}
 			}
 			else

@@ -51,7 +51,17 @@ namespace MiX.Integrate.Shared.Constants
 			public const string ADDASSETSTATE = "api/assets/group/{groupId}/state";
 		}
 
-		//MiX.Fleet.Services.Api GroupsController
+
+		//MiX.Integrate.Api RemindersController
+		public class REMINDERSCONTROLLER
+		{
+			public const string GETASSETREMINDERS = "api/reminders/organisation/{organisationId}/asset/{assetId}";
+			public const string ASSETSERVICEREMINDERS = "api/reminders/organisation/{organisationId}/asset/{assetId}/service";
+			public const string ASSETLICENCEREMINDERS = "api/reminders/organisation/{organisationId}/asset/{assetId}/licence";
+			public const string ASSETROADWORTHYREMINDERS = "api/reminders/organisation/{organisationId}/asset/{assetId}/roadworthy-certificate";
+		}
+
+		//MiX.Integrate.Api GroupsController
 		public class GROUPSCONTROLLER
 		{
 			public const string GETSUBGROUPS = "api/organisationgroups/subgroups/{groupId}";
@@ -66,7 +76,7 @@ namespace MiX.Integrate.Shared.Constants
 			public const string GETORGANISATIONDETAILS = "api/organisationgroups/details/{organisationId}";
 		}
 
-		//MiX.Fleet.Services.Api PositionsController
+		//MiX.Integrate.Api PositionsController
 		public class POSITIONSCONTROLLER
 		{
 			public const string GETLATESTFORGROUPS = "api/positions/groups/latest/{quantity}";
@@ -77,7 +87,7 @@ namespace MiX.Integrate.Shared.Constants
 			public const string GETRANGEFORDRIVERS = "api/positions/drivers/from/{from}/to/{to}";
 		}
 
-		//MiX.Fleet.Services.Api EventsController
+		//MiX.Integrate.Api EventsController
 		public class EVENTSCONTROLLER
 		{
 			public const string GETLATESTFORGROUPS = "api/events/groups/latest/entitytype/{entityType}/{quantity}";
@@ -95,7 +105,7 @@ namespace MiX.Integrate.Shared.Constants
 		}
 
 
-		//MiX.Fleet.Services.Api TripsController
+		//MiX.Integrate.Api TripsController
 		public class TRIPSCONTROLLER
 		{
 			public const string GETLATESTFORGROUPS = "api/trips/groups/latest/{quantity}/entitytype/{entityType}";
@@ -130,10 +140,20 @@ namespace MiX.Integrate.Shared.Constants
 			public const string ADD = "api/locations/group/{groupId}";
 			public const string UPDATE = "api/locations/group/{groupId}";
 			public const string DELETE = "api/locations/group/{groupId}/location/{locationId}";
+		  public const string INRANGE = "api/locations/group/{groupId}/inrange/{meters}";
+		  public const string NEAREST = "api/locations/group/{groupId}/nearest";
+
+    }
+
+    //MiX.Integrate.Api.Controllers.LoggableData
+    public class LOGGABLEDATACONTROLLER
+		{
+			public const string GETLOGGABLEDATAFORASSETSBYDATERANGE = "api/loggabledata/from/{from}/to/{to}";
+			public const string GETROVIMESSAGESFORASSETSSINCE = "api/loggabledata/rovimessages/since/{since}";
+			public const string GETROVIMESSAGESFORASSETSBYDATERANGE = "api/loggabledata/rovimessages/from/{from}/to/{to}";
+			public const string GETROVIMESSAGESFORASSETSLATEST = "api/loggabledata/rovimessageslatest/count/{count}"; 
 		}
-
-
-
+		 
 		//MiX.Integrate.Api.Controllers.DeviceCommandsController
 		public class DEVICECOMMANDSCONTROLLER
 		{

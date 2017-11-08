@@ -180,7 +180,7 @@ namespace MiX.Integrate.Api.Client
 		/// <returns></returns>
 		public void UpdateCustomGroup(long organisationId, CustomGroup customGroup)
 		{
-			UpdateCustomGroupAsync(organisationId, customGroup).GetAwaiter().GetResult();
+			UpdateCustomGroupAsync(organisationId, customGroup).ConfigureAwait(false).GetAwaiter().GetResult();
 		}
 
 		/// <summary>Adds members tp a custom groups</summary>
@@ -190,7 +190,7 @@ namespace MiX.Integrate.Api.Client
 		/// <param name="entityIds"></param>
 		public void AddMembers(long organisationId, long customGroupId, string entityType, IEnumerable<long> entityIds)
 		{
-			AddMembersAsync(organisationId, customGroupId, entityType, entityIds).GetAwaiter().GetResult();
+			AddMembersAsync(organisationId, customGroupId, entityType, entityIds).ConfigureAwait(false).GetAwaiter().GetResult();
 		}
 
 		/// <summary>Removes members from a custom group</summary>
@@ -200,7 +200,7 @@ namespace MiX.Integrate.Api.Client
 		/// <param name="entityIds"></param>
 		public void RemoveMembers(long organisationId, long customGroupId, string entityType, IEnumerable<long> entityIds)
 		{
-			RemoveMembersAsync(organisationId, customGroupId, entityType, entityIds).GetAwaiter().GetResult();
+			RemoveMembersAsync(organisationId, customGroupId, entityType, entityIds).ConfigureAwait(false).GetAwaiter().GetResult();
 		}
 	}
 }
