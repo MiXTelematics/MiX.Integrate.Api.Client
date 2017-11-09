@@ -119,7 +119,7 @@ namespace MiX.Integrate.Shared.Constants
 			public const string GETSINCEFORASSETS = "api/trips/assets/since/{since}";
 
 			public const string GETLATESTFORDRIVERS = "api/trips/drivers/latest/{quantity}";
-			public const string GETRANGEFORDRIVERS = "api/trips/drivers//from/{from}/to/{to}";
+			public const string GETRANGEFORDRIVERS = "api/trips/drivers/from/{from}/to/{to}";
 			public const string GETSINCEFORDRIVERS = "api/trips/drivers/since/{since}";
 
 		}
