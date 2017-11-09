@@ -59,7 +59,7 @@ namespace MiX.Integrate.Api.Client
 		{
 			var request = GetRequest(APIControllerRoutes.CUSTOMGROUPSCONTROLLER.GETCUSTOMGROUPBYID, HttpMethod.Get);
 			request.AddUrlSegment("organisationId", organisationId.ToString());
-			request.AddUrlSegment("customgroupId", customGroupId.ToString());
+			request.AddUrlSegment("customGroupId", customGroupId.ToString());
 			var response = await ExecuteAsync<CustomGroupDetails>(request).ConfigureAwait(false);
 			return response.Data;
 		}
@@ -101,7 +101,7 @@ namespace MiX.Integrate.Api.Client
 		{
 			var request = GetRequest(APIControllerRoutes.CUSTOMGROUPSCONTROLLER.ADDCUSTOMGROUPMEMBERS, HttpMethod.Put);
 			request.AddUrlSegment("organisationId", organisationId.ToString());
-			request.AddUrlSegment("customgroupId", customGroupId.ToString());
+			request.AddUrlSegment("customGroupId", customGroupId.ToString());
 			request.AddUrlSegment("entityType", entityType);
 			request.AddJsonBody(entityIds);
 			await ExecuteAsync(request).ConfigureAwait(false);
@@ -116,7 +116,7 @@ namespace MiX.Integrate.Api.Client
 		{
 			var request = GetRequest(APIControllerRoutes.CUSTOMGROUPSCONTROLLER.DELETECUSTOMGROUPMEMBERS, HttpMethod.Delete);
 			request.AddUrlSegment("organisationId", organisationId.ToString());
-			request.AddUrlSegment("customgroupId", customGroupId.ToString());
+			request.AddUrlSegment("customGroupId", customGroupId.ToString());
 			request.AddUrlSegment("entityType", entityType);
 			request.AddJsonBody(entityIds);
 			await ExecuteAsync(request).ConfigureAwait(false);
