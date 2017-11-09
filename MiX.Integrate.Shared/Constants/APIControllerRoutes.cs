@@ -100,7 +100,7 @@ namespace MiX.Integrate.Shared.Constants
 			public const string GETRANGEFORASSETS = "api/events/assets/from/{from}/to/{to}";
 			public const string GETSINCEFORASSETS = "api/events/assets/since/{since}/quantity/{quantity}";
 
-			public const string GETLATESTFORDRIVERS = "api/events/drivers/latest/quantity}";
+			public const string GETLATESTFORDRIVERS = "api/events/drivers/latest/{quantity}";
 			public const string GETRANGEFORDRIVERS = "api/events/drivers/from/{from}/to/{to}";
 			public const string GETSINCEFORDRIVERS = "api/events/drivers/since/{since}/quantity/{quantity}";
 
