@@ -87,7 +87,7 @@ namespace MiX.Integrate.Api.Client
 		public void UpdateGroupName(long organisationGroupId, long groupId, string name)
 		{
 			var request = GetRequest(APIControllerRoutes.GROUPSCONTROLLER.UPDATEGROUPNAME, HttpMethod.Put);
-			request.AddUrlSegment("organisationGroupId", organisationGroupId.ToString());
+			request.AddUrlSegment("organisationId", organisationGroupId.ToString());
 			request.AddUrlSegment("groupId", groupId.ToString());
 			request.AddJsonBody(name);
 			Execute(request);
@@ -136,7 +136,7 @@ namespace MiX.Integrate.Api.Client
 		public async Task UpdateGroupNameAsync(long organisationGroupId, long groupId, string name)
 		{
 			var request = GetRequest(APIControllerRoutes.GROUPSCONTROLLER.UPDATEGROUPNAME, HttpMethod.Put);
-			request.AddUrlSegment("organisationGroupId", organisationGroupId.ToString());
+			request.AddUrlSegment("organisationId", organisationGroupId.ToString());
 			request.AddUrlSegment("groupId", groupId.ToString());
 			request.AddJsonBody(name);
 			await ExecuteAsync(request).ConfigureAwait(false);
