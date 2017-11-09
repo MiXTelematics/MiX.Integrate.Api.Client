@@ -69,7 +69,7 @@ namespace MiX.Integrate.Api.Client
 
 		public void AddDriverCertification(long organisationGroupId, DriverCertification driverCertification)
 		{
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.DRIVERCERTIFICATIONCONTROLLER.ADDDRIVERCERTIFICATION, HttpMethod.Put);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.DRIVERCERTIFICATIONCONTROLLER.ADDDRIVERCERTIFICATION, HttpMethod.Post);
 			request.AddUrlSegment("organisationId", organisationGroupId.ToString());
 			request.AddJsonBody(driverCertification);
 			Execute(request);
@@ -77,7 +77,7 @@ namespace MiX.Integrate.Api.Client
 
 		public async Task AddDriverCertificationAsync(long organisationGroupId, DriverCertification driverCertification)
 		{
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.DRIVERCERTIFICATIONCONTROLLER.ADDDRIVERCERTIFICATION, HttpMethod.Put);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.DRIVERCERTIFICATIONCONTROLLER.ADDDRIVERCERTIFICATION, HttpMethod.Post);
 			request.AddUrlSegment("organisationId", organisationGroupId.ToString());
 			request.AddJsonBody(driverCertification);
 			await ExecuteAsync(request).ConfigureAwait(false);
@@ -101,7 +101,7 @@ namespace MiX.Integrate.Api.Client
 
 		public void DeleteDriverCertification(long organisationGroupId, long driverId, int certificationTypeId)
 		{
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.DRIVERCERTIFICATIONCONTROLLER.DELETEDRIVERCERTIFICATION, HttpMethod.Put);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.DRIVERCERTIFICATIONCONTROLLER.DELETEDRIVERCERTIFICATION, HttpMethod.Delete);
 			request.AddUrlSegment("organisationId", organisationGroupId.ToString());
 			request.AddUrlSegment("driverId", driverId.ToString());
 			request.AddUrlSegment("certificationTypeId", certificationTypeId.ToString());
@@ -110,7 +110,7 @@ namespace MiX.Integrate.Api.Client
 
 		public async Task DeleteDriverCertificationAsync(long organisationGroupId, long driverId, int certificationTypeId)
 		{
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.DRIVERCERTIFICATIONCONTROLLER.DELETEDRIVERCERTIFICATION, HttpMethod.Put);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.DRIVERCERTIFICATIONCONTROLLER.DELETEDRIVERCERTIFICATION, HttpMethod.Delete);
 			request.AddUrlSegment("organisationId", organisationGroupId.ToString());
 			request.AddUrlSegment("driverId", driverId.ToString());
 			request.AddUrlSegment("certificationTypeId", certificationTypeId.ToString());

@@ -70,7 +70,7 @@ namespace MiX.Integrate.Api.Client
 
 		public void AddDriverLicence(long organisationGroupId, DriverLicence driverLicence)
 		{
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.DRIVERLICENCECONTROLLER.ADDDRIVERLICENCE, HttpMethod.Put);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.DRIVERLICENCECONTROLLER.ADDDRIVERLICENCE, HttpMethod.Post);
 			request.AddUrlSegment("organisationId", organisationGroupId.ToString());
 			request.AddJsonBody(driverLicence);
 			Execute(request);
@@ -78,7 +78,7 @@ namespace MiX.Integrate.Api.Client
 
 		public async Task AddDriverLicenceAsync(long organisationGroupId, DriverLicence driverLicence)
 		{
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.DRIVERLICENCECONTROLLER.ADDDRIVERLICENCE, HttpMethod.Put);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.DRIVERLICENCECONTROLLER.ADDDRIVERLICENCE, HttpMethod.Post);
 			request.AddUrlSegment("organisationId", organisationGroupId.ToString());
 			request.AddJsonBody(driverLicence);
 			await ExecuteAsync(request).ConfigureAwait(false);
@@ -103,7 +103,7 @@ namespace MiX.Integrate.Api.Client
 
 		public void DeleteDriverLicence(long organisationGroupId, long driverId, int licenceCategoryId)
 		{
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.DRIVERLICENCECONTROLLER.DELETEDRIVERLICENCE, HttpMethod.Put);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.DRIVERLICENCECONTROLLER.DELETEDRIVERLICENCE, HttpMethod.Delete);
 			request.AddUrlSegment("organisationId", organisationGroupId.ToString());
 			request.AddUrlSegment("driverId", driverId.ToString());
 			request.AddUrlSegment("licenceCategoryId", licenceCategoryId.ToString());
@@ -112,7 +112,7 @@ namespace MiX.Integrate.Api.Client
 
 		public async Task DeleteDriverLicenceAsync(long organisationGroupId, long driverId, int licenceCategoryId)
 		{
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.DRIVERLICENCECONTROLLER.DELETEDRIVERLICENCE, HttpMethod.Put);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.DRIVERLICENCECONTROLLER.DELETEDRIVERLICENCE, HttpMethod.Delete);
 			request.AddUrlSegment("organisationId", organisationGroupId.ToString());
 			request.AddUrlSegment("driverId", driverId.ToString());
 			request.AddUrlSegment("licenceCategoryId", licenceCategoryId.ToString());
