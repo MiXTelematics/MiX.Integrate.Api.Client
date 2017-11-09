@@ -40,5 +40,6 @@ namespace MiX.Integrate.Shared.Entities.Locations
 			"Orchid", "Crimson", "LightCoral", "Red", "DeepPink", "DarkOrange", "LightPink", "Yellow"
 		};
 
+		public string ExternalReference { get; set; }
 	}
 }
