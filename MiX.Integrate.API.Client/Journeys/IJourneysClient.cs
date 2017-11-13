@@ -10,8 +10,8 @@ namespace MiX.Integrate.Api.Client.Journeys
 		Journey GetJourney(long journeyId);
 		Task<Journey> GetJourneyAsync(long journeyId);
 
-		Journey AddJourney(CreateJourney newjourney);
-		Task<Journey> AddJourneyAsync(CreateJourney newjourney);
+		long AddJourney(CreateJourney newjourney);
+		Task<long> AddJourneyAsync(CreateJourney newjourney);
 
 		List<Route> GetRouteList(long groupId);
 		Task<List<Route>> GetRouteListAsync(long groupId);

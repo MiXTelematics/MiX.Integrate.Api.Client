@@ -21,8 +21,8 @@ namespace MiX.Integrate.Api.Client
 		public async Task<IList<LibraryEvent>> GetAllLibraryEventsAsync(long organisationId)
 		{
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.LIBRARYEVENTSCONTROLLER.GETALLLIBRARYEVENTS, HttpMethod.Get);
-			request.AddUrlSegment("organisationId:long", organisationId.ToString());
-			IHttpRestResponse<List<LibraryEvent>> response = await ExecuteAsync<List<LibraryEvent>>(request);
+			request.AddUrlSegment("organisationId", organisationId.ToString());
+			IHttpRestResponse<List<LibraryEvent>> response = await ExecuteAsync<List<LibraryEvent>>(request).ConfigureAwait(false);
 			return response.Data;
 		}
 	}
