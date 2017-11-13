@@ -31,7 +31,7 @@ namespace MiX.Integrate.Api.Client
 		public GroupSummary GetSubGroups(long groupId)
 		{
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.GROUPSCONTROLLER.GETSUBGROUPS, HttpMethod.Get);
-			request.AddUrlSegment("groupId:long", groupId.ToString());
+			request.AddUrlSegment("groupId", groupId.ToString());
 			IHttpRestResponse<GroupSummary> response = Execute<GroupSummary>(request);
 			return response.Data;
 		}
@@ -39,7 +39,7 @@ namespace MiX.Integrate.Api.Client
 		public async Task<GroupSummary> GetSubGroupsAsync(long groupId)
 		{
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.GROUPSCONTROLLER.GETSUBGROUPS, HttpMethod.Get);
-			request.AddUrlSegment("groupId:long", groupId.ToString());
+			request.AddUrlSegment("groupId", groupId.ToString());
 			IHttpRestResponse<GroupSummary> response = await ExecuteAsync<GroupSummary>(request).ConfigureAwait(false);
 			return response.Data;
 		}
@@ -87,7 +87,7 @@ namespace MiX.Integrate.Api.Client
 		public void UpdateGroupName(long organisationGroupId, long groupId, string name)
 		{
 			var request = GetRequest(APIControllerRoutes.GROUPSCONTROLLER.UPDATEGROUPNAME, HttpMethod.Put);
-			request.AddUrlSegment("organisationGroupId", organisationGroupId.ToString());
+			request.AddUrlSegment("organisationId", organisationGroupId.ToString());
 			request.AddUrlSegment("groupId", groupId.ToString());
 			request.AddJsonBody(name);
 			Execute(request);
@@ -136,7 +136,7 @@ namespace MiX.Integrate.Api.Client
 		public async Task UpdateGroupNameAsync(long organisationGroupId, long groupId, string name)
 		{
 			var request = GetRequest(APIControllerRoutes.GROUPSCONTROLLER.UPDATEGROUPNAME, HttpMethod.Put);
-			request.AddUrlSegment("organisationGroupId", organisationGroupId.ToString());
+			request.AddUrlSegment("organisationId", organisationGroupId.ToString());
 			request.AddUrlSegment("groupId", groupId.ToString());
 			request.AddJsonBody(name);
 			await ExecuteAsync(request).ConfigureAwait(false);
@@ -144,18 +144,18 @@ namespace MiX.Integrate.Api.Client
 
 		public OrganisationDetail GetOrganisationDetail(long groupId)
 		{
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.GROUPSCONTROLLER.GETORGANISATIONDETAILSASYNC, HttpMethod.Get);
-			request.AddUrlSegment("organisationId:long", groupId.ToString());
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.GROUPSCONTROLLER.GETORGANISATIONDETAILS, HttpMethod.Get);
+			request.AddUrlSegment("organisationId", groupId.ToString());
 			IHttpRestResponse<OrganisationDetail> response = Execute<OrganisationDetail>(request);
 			return response.Data;
 		}
 
 		public async Task<OrganisationDetail> GetOrganisationDetailAsync(long groupId)
 		{
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.GROUPSCONTROLLER.GETORGANISATIONDETAILSASYNC, HttpMethod.Get);
-			request.AddUrlSegment("organisationId:long", groupId.ToString());
-			IHttpRestResponse<OrganisationDetail> response = await ExecuteAsync<OrganisationDetail>(request).ConfigureAwait(false);
-			return response.Data;
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.GROUPSCONTROLLER.GETORGANISATIONDETAILS, HttpMethod.Get);
+			request.AddUrlSegment("organisationId", groupId.ToString());
+		  IHttpRestResponse<OrganisationDetail> response = await ExecuteAsync<OrganisationDetail>(request).ConfigureAwait(false);
+      return response.Data;
 		}
 
 	}

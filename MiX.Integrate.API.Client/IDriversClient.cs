@@ -9,10 +9,10 @@ namespace MiX.Integrate.Api.Client
 	public interface IDriversClient : IBaseClient
 	{
 
-		List<DriverSummary> GetAllDriverSummaries(long groupId);
-		Task<List<DriverSummary>> GetAllDriverSummariesAsync(long groupId);
-		Driver GetDriverById(long groupId, long driverId);
-		Task<Driver> GetDriverByIdAsync(long groupId, long driverId); 
+		//List<DriverSummary> GetAllDriverSummaries(long groupId);
+		//Task<List<DriverSummary>> GetAllDriverSummariesAsync(long groupId);
+		Driver GetDriver(long groupId, long driverId);
+		Task<Driver> GetDriverAsync(long groupId, long driverId); 
 		void UpdateDriver(Driver driver);
 		Task UpdateDriverAsync(Driver driver);
 		long AddDriver(Driver driver);
