@@ -2,13 +2,14 @@
 
 namespace MiX.Integrate.Shared.Entities.Drivers
 {
-	public class Driver : DriverSummary
+	public class Driver 
 	{
 		public Driver()
 		{
 			ExtendedDriverIdType = ExtendedDriverIdType.None;
 		}
-		public Driver(long driverId, Int16? fmDriverId, string name, long siteId, DateTime lastTrip, string employeeNumber, bool automaticallyCreated, string driverImage, string mobileNumber, string email, string extendedDriverID, ExtendedDriverIdType extendedDriverIdType, string country)
+
+		public Driver(long driverId, Int16? fmDriverId, string name, long siteId, string employeeNumber, string driverImage, string mobileNumber, string email, string extendedDriverID, ExtendedDriverIdType extendedDriverIdType, string country)
 		{
 			DriverId = driverId;
 			if (fmDriverId.HasValue) FmDriverId = fmDriverId.Value;
@@ -23,6 +24,10 @@ namespace MiX.Integrate.Shared.Entities.Drivers
 			Country = country;
 		}
 
+		public long SiteId { get; set; }
+		public long DriverId { get; set; }
+		public string Name { get; set; }
+		public string ImageUri { get; set; }
 		public short FmDriverId { get; set; }
 		public string EmployeeNumber { get; set; }
 		public bool IsSystemDriver { get { return (FmDriverId == 0 || FmDriverId == 1); } }

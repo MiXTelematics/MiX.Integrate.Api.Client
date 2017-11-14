@@ -20,7 +20,7 @@ namespace MiX.Integrate.Api.Client
 		public async Task<IList<CustomGroup>> GetAllAsync(long organisationId)
 		{
 			var request = GetRequest(APIControllerRoutes.CUSTOMGROUPSCONTROLLER.GETALLCUSTOMGROUPS, HttpMethod.Get);
-			request.AddUrlSegment("organisationId:long", organisationId.ToString());
+			request.AddUrlSegment("organisationId", organisationId.ToString());
 			var response = await ExecuteAsync<List<CustomGroup>>(request).ConfigureAwait(false);
 			return response.Data;
 		}
@@ -32,7 +32,7 @@ namespace MiX.Integrate.Api.Client
 		public async Task<IList<CustomGroup>> GetListForAssetAsync(long organisationId, long assetId)
 		{
 			var request = GetRequest(APIControllerRoutes.CUSTOMGROUPSCONTROLLER.GETCUSTOMGROUPSFORASSET, HttpMethod.Get);
-			request.AddUrlSegment("organisationId:long", organisationId.ToString());
+			request.AddUrlSegment("organisationId", organisationId.ToString());
 			request.AddUrlSegment("assetId", assetId.ToString());
 			var response = await ExecuteAsync<List<CustomGroup>>(request).ConfigureAwait(false);
 			return response.Data;
@@ -45,7 +45,7 @@ namespace MiX.Integrate.Api.Client
 		public async Task<IList<CustomGroup>> GetListForDriverAsync(long organisationId, long driverId)
 		{
 			var request = GetRequest(APIControllerRoutes.CUSTOMGROUPSCONTROLLER.GETCUSTOMGROUPSFORDRIVER, HttpMethod.Get);
-			request.AddUrlSegment("organisationId:long", organisationId.ToString());
+			request.AddUrlSegment("organisationId", organisationId.ToString());
 			request.AddUrlSegment("driverId", driverId.ToString());
 			var response = await ExecuteAsync<List<CustomGroup>>(request).ConfigureAwait(false);
 			return response.Data;
@@ -58,8 +58,8 @@ namespace MiX.Integrate.Api.Client
 		public async Task<CustomGroupDetails> GetByIdAsync(long organisationId, long customGroupId)
 		{
 			var request = GetRequest(APIControllerRoutes.CUSTOMGROUPSCONTROLLER.GETCUSTOMGROUPBYID, HttpMethod.Get);
-			request.AddUrlSegment("organisationId:long", organisationId.ToString());
-			request.AddUrlSegment("customGroupId:long", customGroupId.ToString());
+			request.AddUrlSegment("organisationId", organisationId.ToString());
+			request.AddUrlSegment("customGroupId", customGroupId.ToString());
 			var response = await ExecuteAsync<CustomGroupDetails>(request).ConfigureAwait(false);
 			return response.Data;
 		}
@@ -71,7 +71,7 @@ namespace MiX.Integrate.Api.Client
 		public async Task<long> AddCustomGroupAsync(long organisationId, CustomGroup customGroup)
 		{
 			var request = GetRequest(APIControllerRoutes.CUSTOMGROUPSCONTROLLER.ADDCUSTOMGROUP, HttpMethod.Post);
-			request.AddUrlSegment("organisationId:long", organisationId.ToString());
+			request.AddUrlSegment("organisationId", organisationId.ToString());
 			request.AddJsonBody(customGroup);
 			var response = await ExecuteAsync(request).ConfigureAwait(false);
 			var idHeaderVal = GetResponseHeader(response.Headers, "customgroupid");
@@ -87,7 +87,7 @@ namespace MiX.Integrate.Api.Client
 		public async Task UpdateCustomGroupAsync(long organisationId, CustomGroup customGroup)
 		{
 			var request = GetRequest(APIControllerRoutes.CUSTOMGROUPSCONTROLLER.UPDATECUSTOMGROUP, HttpMethod.Put);
-			request.AddUrlSegment("organisationId:long", organisationId.ToString());
+			request.AddUrlSegment("organisationId", organisationId.ToString());
 			request.AddJsonBody(customGroup);
 			await ExecuteAsync(request).ConfigureAwait(false);
 		}
@@ -100,8 +100,8 @@ namespace MiX.Integrate.Api.Client
 		public async Task AddMembersAsync(long organisationId, long customGroupId, string entityType, IEnumerable<long> entityIds)
 		{
 			var request = GetRequest(APIControllerRoutes.CUSTOMGROUPSCONTROLLER.ADDCUSTOMGROUPMEMBERS, HttpMethod.Put);
-			request.AddUrlSegment("organisationId:long", organisationId.ToString());
-			request.AddUrlSegment("customGroupId:long", customGroupId.ToString());
+			request.AddUrlSegment("organisationId", organisationId.ToString());
+			request.AddUrlSegment("customGroupId", customGroupId.ToString());
 			request.AddUrlSegment("entityType", entityType);
 			request.AddJsonBody(entityIds);
 			await ExecuteAsync(request).ConfigureAwait(false);
@@ -115,8 +115,8 @@ namespace MiX.Integrate.Api.Client
 		public async Task RemoveMembersAsync(long organisationId, long customGroupId, string entityType, IEnumerable<long> entityIds)
 		{
 			var request = GetRequest(APIControllerRoutes.CUSTOMGROUPSCONTROLLER.DELETECUSTOMGROUPMEMBERS, HttpMethod.Delete);
-			request.AddUrlSegment("organisationId:long", organisationId.ToString());
-			request.AddUrlSegment("customGroupId:long", customGroupId.ToString());
+			request.AddUrlSegment("organisationId", organisationId.ToString());
+			request.AddUrlSegment("customGroupId", customGroupId.ToString());
 			request.AddUrlSegment("entityType", entityType);
 			request.AddJsonBody(entityIds);
 			await ExecuteAsync(request).ConfigureAwait(false);
@@ -137,7 +137,7 @@ namespace MiX.Integrate.Api.Client
 		public IList<CustomGroup> GetListForAsset(long organisationId, long assetId)
 		{
 			var request = GetRequest(APIControllerRoutes.CUSTOMGROUPSCONTROLLER.GETCUSTOMGROUPSFORASSET, HttpMethod.Get);
-			request.AddUrlSegment("organisationId:long", organisationId.ToString());
+			request.AddUrlSegment("organisationId", organisationId.ToString());
 			request.AddUrlSegment("assetId", assetId.ToString());
 			var response = Execute<List<CustomGroup>>(request);
 			return response.Data;
@@ -150,7 +150,7 @@ namespace MiX.Integrate.Api.Client
 		public IList<CustomGroup> GetListForDriver(long organisationId, long driverId)
 		{
 			var request = GetRequest(APIControllerRoutes.CUSTOMGROUPSCONTROLLER.GETCUSTOMGROUPSFORDRIVER, HttpMethod.Get);
-			request.AddUrlSegment("organisationId:long", organisationId.ToString());
+			request.AddUrlSegment("organisationId", organisationId.ToString());
 			request.AddUrlSegment("driverId", driverId.ToString());
 			var response = Execute<List<CustomGroup>>(request);
 			return response.Data;

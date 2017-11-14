@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace MiX.Integrate.Shared.Entities.Groups
 {
+/// <summary>Determines the purpose and functionality of groups in the DynaMiX system</summary>
 	public enum GroupType
 	{
 		DataCentre = 0,
@@ -28,21 +25,10 @@ namespace MiX.Integrate.Shared.Entities.Groups
 		DriverUserGroup = 14
 	}
 
+	/// <summary>Helper class providing predefined lists of <see cref="GroupType"/> enumeration values</summary>
 	public static class GroupTypes
 	{
-		public static readonly List<GroupType> GROUPS_ABOVE_AND_INCLUDING_ORGANISATIONS =
-				 new List<GroupType>
-						 {
-										 GroupType.DataCentre,
-										GroupType.RsoGroup,
-										GroupType.DealerGroup,
-										GroupType.MultiLevelOrg,
-										GroupType.OrganisationGroup
-						 };
-		/// <summary>
-		/// The group types that make up the organisation group tree structure, groups like security groups and custom groups are outside of this structure
-		/// and are not included in this list.
-		/// </summary>
+		/// <summary>The group types that make up the organisation tree structure. Non-hierarchical groups are not included in this list.</summary>
 		public static readonly List<GroupType> GROUP_TYPES_IN_ORGANISATION_GROUP_TREE =
 				new List<GroupType>(new GroupType[]
 						{
@@ -56,6 +42,21 @@ namespace MiX.Integrate.Shared.Entities.Groups
 										GroupType.DefaultSite
 						});
 
+
+		/// <summary>The group types that can exist at or above the organisation level in the hierarchy</summary>
+		public static readonly List<GroupType> GROUPS_ABOVE_AND_INCLUDING_ORGANISATIONS =
+			new List<GroupType>
+			{
+				GroupType.DataCentre,
+				GroupType.RsoGroup,
+				GroupType.DealerGroup,
+				GroupType.MultiLevelOrg,
+				GroupType.OrganisationGroup
+			};
+
+
+
+		/// <summary>The group types that can exists at or below the organisation in the hierarchicy</summary>
 		public static readonly List<GroupType> GROUP_TYPES_UNDER_AND_INCLUDING_ORG_LEVEL = new List<GroupType>
 				{
 						GroupType.OrganisationGroup,
@@ -64,9 +65,7 @@ namespace MiX.Integrate.Shared.Entities.Groups
 						GroupType.DefaultSite
 				};
 
-		/// <summary>
-		/// Defines the structure from the top down to the lowest level where the applicable entity can live
-		/// </summary>
+		/// <summary>The hierarchical group types that can contain user accounts</summary>
 		public static readonly List<GroupType> GROUP_TYPES_WHERE_USERS_CAN_LIVE =
 				new List<GroupType>(new GroupType[]
 						{
@@ -77,7 +76,7 @@ namespace MiX.Integrate.Shared.Entities.Groups
 										GroupType.OrganisationGroup
 						});
 
-
+		/// <summary>The hierarchical group types not requiring a timezone</summary>
 		public static readonly List<GroupType> GROUP_TYPES_WITHOUT_TIMEZONES =
 				new List<GroupType>(new GroupType[]
 						{
@@ -87,16 +86,13 @@ namespace MiX.Integrate.Shared.Entities.Groups
 										GroupType.MultiLevelOrg
 						});
 
-		/// <summary>
-		/// Defines the structure from the top down to the lowest level where the applicable entity can live
-		/// </summary>
+		/// <summary>The hierarchical group types that can contain security groups</summary>
 		public static readonly List<GroupType> GROUP_TYPES_WHERE_SECURITY_GROUPS_CAN_LIVE = GROUP_TYPES_WHERE_USERS_CAN_LIVE;
 
-		/// <summary>
-		/// Defines the structure from the top down to the lowest level where the applicable entity can live
-		/// </summary>
+		/// <summary>The hierarchical group types that can contain role groups</summary>
 		public static readonly List<GroupType> GROUP_TYPES_WHERE_ROLES_CAN_LIVE = GROUP_TYPES_WHERE_USERS_CAN_LIVE;
 
+		/// <summary>The hierarchical group types that can contain locations</summary>
 		public static readonly List<GroupType> GROUP_TYPES_WHERE_LOCATIONS_CAN_LIVE = new List<GroupType>
 				{
 						GroupType.DefaultSite,
@@ -104,9 +100,7 @@ namespace MiX.Integrate.Shared.Entities.Groups
 						GroupType.OrganisationGroup
 				};
 
-		/// <summary>
-		/// Defines the levels in the tree where permissions can be assigned
-		/// </summary>
+		/// <summary>The group types that can be the target of a permission assignment</summary>
 		public static List<GroupType> GROUP_TYPES_WHERE_PERMISSIONS_CAN_BE_ASSIGNED
 		{
 			get
@@ -132,9 +126,7 @@ namespace MiX.Integrate.Shared.Entities.Groups
 								{GroupType.MobileDeviceAdminCommissioningGroup, "Commissioning"}
 				};
 
-		/// <summary>
-		/// Defines a list of group types under which organisations may be created
-		/// </summary>
+		/// <summary>The hierarchical group types in which a new organisation can be created</summary>
 		public static readonly List<GroupType> GROUP_TYPES_WHERE_ORGANISATIONS_CAN_BE_ADDED =
 				new List<GroupType>(new GroupType[]
 						{

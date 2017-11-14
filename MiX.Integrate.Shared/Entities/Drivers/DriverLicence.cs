@@ -16,7 +16,7 @@ namespace MiX.Integrate.Shared.Entities.Drivers
 			this.LicenceCategoryId = licenceCategoryId;
 			this.DriverId = driverId;
 			this.LicenceCode = licenceCode;
-			this.LicenceNumber = LicenceNumber;
+			this.LicenceNumber = licenceNumber;
 		}
 
 		public int LicenceCategoryId { get; set; }
