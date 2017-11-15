@@ -13,12 +13,9 @@ namespace MiX.Integrate.Shared.Constants
 		//MiX.Integrate.Api.Controllers.ActiveEventController 
 		public class ACTIVEEVENTSCONTROLLER
 		{
-			public const string GETALLDRIVERSUMMARIES = "api/drivers/group/{groupId:long}";
-			public const string GETDRIVERBYID = "api/drivers/group/{groupId:long}/{driverId:long}";
-			public const string UPDATEDRIVERASYNC = "api/drivers/update";
-			public const string ADDDRIVERASYNC = "api/drivers/add";
-			public const string UPDATEDRIVERNAMEBYEXTENDEDIDIFAUTOCREATEDASYNC = "api/drivers/extended/{extendedDriverId}/groups/{groupId:long}/ifautocreated";
-			public const string GETALLDRIVERS = "api/drivers/organisationid/{organisationId:long}";
+			public const string GETLATESTFORGROUP = "api/activeevents/group/{groupId:long}/latest/{quantity}";
+			public const string GETLATESTPERASSETINGROUP = "api/activeevents/group/{groupId:long}/latestperasset/{quantity}";;
+			public const string GETRANGEFORASSETS = "api/activeevents/assets//from/{from}/to/{to}";
 		}
 
 		//MiX.Integrate.Api.Controllers.DriversControllerpublic 
