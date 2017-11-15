@@ -13,9 +13,9 @@ namespace MiX.Integrate.Shared.Constants
 		//MiX.Integrate.Api.Controllers.ActiveEventController 
 		public class ACTIVEEVENTSCONTROLLER
 		{
-			public const string GETLATESTFORGROUP = "api/activeevents/group/{groupId:long}/latest/{quantity}";
-			public const string GETLATESTPERASSETINGROUP = "api/activeevents/group/{groupId:long}/latestperasset/{quantity}";
-			public const string GETRANGEFORASSETS = "api/activeevents/assets//from/{from}/to/{to}";
+			public const string GETLATESTFORGROUP = "api/activeevents/group/{groupId}/latest/{quantity}";
+			public const string GETLATESTPERASSETINGROUP = "api/activeevents/group/{groupId}/latestperasset/{quantity}";
+			public const string GETRANGEFORASSETS = "api/activeevents/assets/from/{from}/to/{to}";
 		}
 
 		//MiX.Integrate.Api.Controllers.DriversControllerpublic 
