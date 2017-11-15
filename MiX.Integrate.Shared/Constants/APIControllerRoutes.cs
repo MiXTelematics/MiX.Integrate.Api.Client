@@ -10,6 +10,14 @@ namespace MiX.Integrate.Shared.Constants
 			public const string EXTENDED = "healthcheck/extended";
 		}
 
+		//MiX.Integrate.Api.Controllers.ActiveEventController 
+		public class ACTIVEEVENTSCONTROLLER
+		{
+			public const string GETLATESTFORGROUP = "api/activeevents/group/{groupId:long}/latest/{quantity}";
+			public const string GETLATESTPERASSETINGROUP = "api/activeevents/group/{groupId:long}/latestperasset/{quantity}";;
+			public const string GETRANGEFORASSETS = "api/activeevents/assets//from/{from}/to/{to}";
+		}
+
 		//MiX.Integrate.Api.Controllers.DriversControllerpublic 
 		public class DRIVERSCONTROLLER
 		{
