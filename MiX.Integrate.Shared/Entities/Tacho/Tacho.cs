@@ -9,8 +9,14 @@ namespace MiX.Integrate.Shared.Entities.Tacho
 	/// </summary>
 	public class TachoData
 	{
+		public TachoData()
+		{
+			ParameterDefinitions = new List<TachoParameterDefinition>();
+			Intervals = new List<TachoInterval>();
+		}
+
 		/// <summary>
-		/// <see cref="MiX.Fleet.Services.Shared.Entities.Assets.Asset.AssetId"/> for which tacho data was recorded
+		/// <see cref="MiX.Integrate.Shared.Entities.Assets.Asset.AssetId"/> for which tacho data was recorded
 		/// </summary>
 		public long AssetId { get; set; }
 
@@ -23,6 +29,7 @@ namespace MiX.Integrate.Shared.Entities.Tacho
 			{
 				return Intervals?.OrderBy(x => x.IntervalDateTime)?.FirstOrDefault()?.IntervalDateTime;
 			}
+			private set { }
 		}
 
 		/// <summary>
@@ -34,17 +41,18 @@ namespace MiX.Integrate.Shared.Entities.Tacho
 			{
 				return Intervals?.OrderByDescending(x => x.IntervalDateTime)?.FirstOrDefault()?.IntervalDateTime;
 			}
+			private set { }
 		}
 
 		/// <summary>
 		/// List of <see cref="TachoParameterDefinition"/> for <see cref="TachoParameterValue"/>s contained in the <see cref="Intervals"/> collection
 		/// </summary>
-		public List<TachoParameterDefinition> ParameterDefinitions { get; } = new List<TachoParameterDefinition>();
+		public List<TachoParameterDefinition> ParameterDefinitions { get; set; }
 
 		/// <summary>
 		/// collection of <see cref="TachoInterval"/>
 		/// </summary>
-		public List<TachoInterval> Intervals { get; } = new List<TachoInterval>();
+		public List<TachoInterval> Intervals { get; set; }
 
 	}
 }
