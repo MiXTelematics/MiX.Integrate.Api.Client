@@ -114,6 +114,11 @@ namespace MiX.Integrate.Shared.Constants
 
 		}
 
+		//MiX.Fleet.Services.Api TachoController
+		public class TACHOCONTROLLER
+		{
+			public const string GETRANGEFORASSETASYNC = "api/tachos/asset/{assetId}/range/from/{from}/to/{to}";
+		}
 
 		//MiX.Integrate.Api TripsController
 		public class TRIPSCONTROLLER
@@ -150,20 +155,20 @@ namespace MiX.Integrate.Shared.Constants
 			public const string ADD = "api/locations/group/{groupId}";
 			public const string UPDATE = "api/locations/group/{groupId}";
 			public const string DELETE = "api/locations/group/{groupId}/location/{locationId}";
-		  public const string INRANGE = "api/locations/group/{groupId}/inrange/{meters}";
-		  public const string NEAREST = "api/locations/group/{groupId}/nearest";
+			public const string INRANGE = "api/locations/group/{groupId}/inrange/{meters}";
+			public const string NEAREST = "api/locations/group/{groupId}/nearest";
 
-    }
+		}
 
-    //MiX.Integrate.Api.Controllers.LoggableData
-    public class LOGGABLEDATACONTROLLER
+		//MiX.Integrate.Api.Controllers.LoggableData
+		public class LOGGABLEDATACONTROLLER
 		{
 			public const string GETLOGGABLEDATAFORASSETSBYDATERANGE = "api/loggabledata/from/{from}/to/{to}";
 			public const string GETROVIMESSAGESFORASSETSSINCE = "api/loggabledata/rovimessages/since/{since}";
 			public const string GETROVIMESSAGESFORASSETSBYDATERANGE = "api/loggabledata/rovimessages/from/{from}/to/{to}";
-			public const string GETROVIMESSAGESFORASSETSLATEST = "api/loggabledata/rovimessageslatest/count/{count}"; 
+			public const string GETROVIMESSAGESFORASSETSLATEST = "api/loggabledata/rovimessageslatest/count/{count}";
 		}
-		 
+
 		//MiX.Integrate.Api.Controllers.DeviceCommandsController
 		public class DEVICECOMMANDSCONTROLLER
 		{
