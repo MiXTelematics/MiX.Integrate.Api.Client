@@ -11,5 +11,8 @@ namespace MiX.Integrate.Api.Client
 		TachoData GetRangeForAsset(long assetId, DateTime from, DateTime to);
 		Task<TachoData> GetRangeForAssetAsync(long assetId, DateTime from, DateTime to);
 
+		TachoData GetRangeForAssetPerSecond(long assetId, DateTime from, DateTime to);
+		Task<TachoData> GetRangeForAssetPerSecondAsync(long assetId, DateTime from, DateTime to);
+
 	}
 }
