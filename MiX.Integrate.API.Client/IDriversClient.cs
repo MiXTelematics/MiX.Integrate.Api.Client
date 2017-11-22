@@ -1,8 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using MiX.Integrate.Api.Client.Base;
 using MiX.Integrate.Shared.Entities.Drivers;
+using System.Collections.Generic;
 using System.Threading.Tasks;
-using MiX.Integrate.Api.Client.Base;
-using MiX.Integrate.Api.Client;
 
 namespace MiX.Integrate.Api.Client
 {
@@ -17,6 +16,8 @@ namespace MiX.Integrate.Api.Client
 		Task UpdateDriverAsync(Driver driver);
 		long AddDriver(Driver driver);
 		Task<long> AddDriverAsync(Driver driver);
+		List<Driver> GetAllDrivers(long organisationId);
+		Task<List<Driver>> GetAllDriversAsync(long organisationId);
 		List<Driver> GetAllDrivers(long organisationId, string filterType, string wildCard);
 		Task<List<Driver>> GetAllDriversAsync(long organisationId, string filterType, string wildCard);
 
