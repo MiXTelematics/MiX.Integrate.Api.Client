@@ -1,10 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using MiX.Integrate.Api.Client.Base;
 using MiX.Integrate.Shared.Constants;
 using MiX.Integrate.Shared.Entities.Drivers;
-using System.Threading.Tasks;
-using MiX.Integrate.Api.Client.Base;
-using System.Net.Http;
 using System;
+using System.Collections.Generic;
+using System.Net.Http;
+using System.Threading.Tasks;
 
 namespace MiX.Integrate.Api.Client
 {
@@ -87,6 +87,22 @@ namespace MiX.Integrate.Api.Client
 			return driverId;
 		}
 
+		public List<Driver> GetAllDrivers(long organisationId)
+		{
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.DRIVERSCONTROLLER.GETALLDRIVERS, HttpMethod.Get);
+			request.AddUrlSegment("organisationId", organisationId.ToString());
+			IHttpRestResponse<List<Driver>> response = Execute<List<Driver>>(request);
+			return response.Data;
+		}
+
+		public async Task<List<Driver>> GetAllDriversAsync(long organisationId)
+		{
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.DRIVERSCONTROLLER.GETALLDRIVERS, HttpMethod.Get);
+			request.AddUrlSegment("organisationId", organisationId.ToString());
+			IHttpRestResponse<List<Driver>> response = await ExecuteAsync<List<Driver>>(request).ConfigureAwait(false);
+			return response.Data;
+		}
+
 		public List<Driver> GetAllDrivers(long organisationId, string filterType, string wildCard)
 		{
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.DRIVERSCONTROLLER.GETALLDRIVERS, HttpMethod.Get);
@@ -106,6 +122,5 @@ namespace MiX.Integrate.Api.Client
 			IHttpRestResponse<List<Driver>> response = await ExecuteAsync<List<Driver>>(request).ConfigureAwait(false);
 			return response.Data;
 		}
-
 	}
 }
