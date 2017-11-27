@@ -27,6 +27,9 @@ namespace MiX.Integrate.Shared.Entities.Events
 		/// <summary>The date and time at which the event occurred</summary>
 		public DateTime EventDateTime { get; set; }
 
+		/// <summary>The date and time at which the event was received by the comms system</summary>
+		public DateTime? ReceivedDateTime { get; set; }
+
 		/// <summary>Odometer of the asset at the time the event occurred</summary>
 		public decimal? OdometerKilometres { get; set; }
 
