@@ -126,15 +126,17 @@ namespace MiX.Integrate.Shared.Constants
 			public const string GETLATESTFORGROUPS = "api/trips/groups/latest/{quantity}/entitytype/{entityType}";
 			public const string GETRANGEFORGROUPS = "api/trips/groups/from/{from}/to/{to}/entitytype/{entityType}";
 			public const string GETSINCEFORGROUPS = "api/trips/groups/since/{since}/entitytype/{entityType}";
+			public const string GETCREATEDSINCEFORGROUPSASYNC = "api/trips/groups/createdsince/entitytype/{entityType}/since/{since}/quantity/{quantity}";
 
 			public const string GETLATESTFORASSETS = "api/trips/assets/latest/{quantity}";
 			public const string GETRANGEFORASSETS = "api/trips/assets/from/{from}/to/{to}";
 			public const string GETSINCEFORASSETS = "api/trips/assets/since/{since}";
+			public const string GETCREATEDSINCEFORASSETSASYNC = "api/trips/assets/createdsince/since/{since}/quantity/{quantity}";
 
 			public const string GETLATESTFORDRIVERS = "api/trips/drivers/latest/{quantity}";
 			public const string GETRANGEFORDRIVERS = "api/trips/drivers/from/{from}/to/{to}";
 			public const string GETSINCEFORDRIVERS = "api/trips/drivers/since/{since}";
-
+			public const string GETCREATEDSINCEFORDRIVERSASYNC = "api/trips/drivers/createdsince/since/{since}/quantity/{quantity}";
 		}
 
 		//MiX.Integrate.Api.Controllers.JourneysController
