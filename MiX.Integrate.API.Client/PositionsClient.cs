@@ -5,6 +5,7 @@ using MiX.Integrate.Shared.Entities.Positions;
 using System.Threading.Tasks;
 using MiX.Integrate.Api.Client.Base;
 using System.Net.Http;
+using MiX.Integrate.Shared.Entities.Carriers;
 
 namespace MiX.Integrate.Api.Client
 {
@@ -135,5 +136,38 @@ namespace MiX.Integrate.Api.Client
 			IHttpRestResponse<List<Position>> response = await ExecuteAsync<List<Position>>(request).ConfigureAwait(false);
 			return response.Data;
 		}
+
+		public CreatedSinceResult<Position> GetCreatedSinceForGroups(List<long> groupIds, string entityType, DateTime since, int quantity)
+		{
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.POSITIONSCONTROLLER.GETCREATEDSINCEFORGROUPSASYNC, HttpMethod.Post);
+			request.AddUrlSegment("entityType", entityType);
+			request.AddUrlSegment("since", since.ToUniversalTime().ToString(DataFormats.DateTime_Format));
+			request.AddUrlSegment("quantity", quantity.ToString());
+			request.AddJsonBody(groupIds);
+			IHttpRestResponse<List<Position>> response = Execute<List<Position>>(request);
+			string sHasMoreItems = GetResponseHeader(response.Headers, "HasMoreItems");
+			string createdDateTime = GetResponseHeader(response.Headers, "CreatedDateTime");
+			bool hasMoreItems = false;
+			if (!bool.TryParse(sHasMoreItems, out hasMoreItems))
+				throw new Exception("Could not read the HasMoreItems header");
+			return new CreatedSinceResult<Position>() { HasMoreItems = hasMoreItems, CreatedDateTime = createdDateTime, Items = response.Data };
+		}
+
+		public async Task<CreatedSinceResult<Position>> GetCreatedSinceForGroupsAsync(List<long> groupIds, string entityType, DateTime since, int quantity)
+		{
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.POSITIONSCONTROLLER.GETCREATEDSINCEFORGROUPSASYNC, HttpMethod.Post);
+			request.AddUrlSegment("entityType", entityType);
+			request.AddUrlSegment("since", since.ToUniversalTime().ToString(DataFormats.DateTime_Format));
+			request.AddUrlSegment("quantity", quantity.ToString());
+			request.AddJsonBody(groupIds);
+			IHttpRestResponse<List<Position>> response = await ExecuteAsync<List<Position>>(request).ConfigureAwait(false);
+			string sHasMoreItems = GetResponseHeader(response.Headers, "HasMoreItems");
+			string createdDateTime = GetResponseHeader(response.Headers, "CreatedDateTime");
+			bool hasMoreItems = false;
+			if (!bool.TryParse(sHasMoreItems, out hasMoreItems))
+				throw new Exception("Could not read the HasMoreItems header");
+			return new CreatedSinceResult<Position>() { HasMoreItems = hasMoreItems, CreatedDateTime = createdDateTime, Items = response.Data };
+		}
+
 	}
 }
