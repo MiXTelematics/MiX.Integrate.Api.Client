@@ -5,6 +5,7 @@ using MiX.Integrate.Shared.Entities.Trips;
 using System.Threading.Tasks;
 using MiX.Integrate.Api.Client.Base;
 using System.Net.Http;
+using MiX.Integrate.Shared.Entities.Carriers;
 
 namespace MiX.Integrate.Api.Client
 {
@@ -236,7 +237,7 @@ namespace MiX.Integrate.Api.Client
 
 		#region Created Since
 
-		public IList<Trip> GetCreatedSinceForAssets(List<long> assetIds, DateTime since, int quantity, bool includeSubTrips = false)
+		public CreatedSinceResult<Trip> GetCreatedSinceForAssets(List<long> assetIds, DateTime since, int quantity, bool includeSubTrips = false)
 		{
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.TRIPSCONTROLLER.GETCREATEDSINCEFORASSETSASYNC, HttpMethod.Post);
 			request.AddUrlSegment("since", since.ToUniversalTime().ToString(DataFormats.DateTime_Format));
@@ -244,10 +245,15 @@ namespace MiX.Integrate.Api.Client
 			request.AddQueryParameter("includeSubTrips", includeSubTrips.ToString());
 			request.AddJsonBody(assetIds);
 			IHttpRestResponse<List<Trip>> response = Execute<List<Trip>>(request);
-			return response.Data;
+			string sHasMoreItems = GetResponseHeader(response.Headers, "HasMoreItems");
+			string createdDateTime = GetResponseHeader(response.Headers, "CreatedDateTime");
+			bool hasMoreItems = false;
+			if (!bool.TryParse(sHasMoreItems, out hasMoreItems))
+				throw new Exception("Could not read the HasMoreItems header");
+			return new CreatedSinceResult<Trip>() { HasMoreItems = hasMoreItems, CreatedDateTime = createdDateTime, Items = response.Data };
 		}
 
-		public async Task<IList<Trip>> GetCreatedSinceForAssetsAsync(List<long> assetIds, DateTime since, int quantity, bool includeSubTrips = false)
+		public async Task<CreatedSinceResult<Trip>> GetCreatedSinceForAssetsAsync(List<long> assetIds, DateTime since, int quantity, bool includeSubTrips = false)
 		{
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.TRIPSCONTROLLER.GETCREATEDSINCEFORASSETSASYNC, HttpMethod.Post);
 			request.AddUrlSegment("since", since.ToUniversalTime().ToString(DataFormats.DateTime_Format));
@@ -255,10 +261,15 @@ namespace MiX.Integrate.Api.Client
 			request.AddQueryParameter("includeSubTrips", includeSubTrips.ToString());
 			request.AddJsonBody(assetIds);
 			IHttpRestResponse<List<Trip>> response = await ExecuteAsync<List<Trip>>(request).ConfigureAwait(false);
-			return response.Data;
+			string sHasMoreItems = GetResponseHeader(response.Headers, "HasMoreItems");
+			string createdDateTime = GetResponseHeader(response.Headers, "CreatedDateTime");
+			bool hasMoreItems = false;
+			if (!bool.TryParse(sHasMoreItems, out hasMoreItems))
+				throw new Exception("Could not read the HasMoreItems header");
+			return new CreatedSinceResult<Trip>() { HasMoreItems = hasMoreItems, CreatedDateTime = createdDateTime, Items = response.Data };
 		}
 
-		public IList<Trip> GetCreatedSinceForDrivers(List<long> driverIds, DateTime since, int quantity, bool includeSubTrips = false)
+		public CreatedSinceResult<Trip> GetCreatedSinceForDrivers(List<long> driverIds, DateTime since, int quantity, bool includeSubTrips = false)
 		{
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.TRIPSCONTROLLER.GETCREATEDSINCEFORDRIVERSASYNC, HttpMethod.Post);
 			request.AddUrlSegment("since", since.ToUniversalTime().ToString(DataFormats.DateTime_Format));
@@ -266,10 +277,15 @@ namespace MiX.Integrate.Api.Client
 			request.AddQueryParameter("includeSubTrips", includeSubTrips.ToString());
 			request.AddJsonBody(driverIds);
 			IHttpRestResponse<List<Trip>> response = Execute<List<Trip>>(request);
-			return response.Data;
+			string sHasMoreItems = GetResponseHeader(response.Headers, "HasMoreItems");
+			string createdDateTime = GetResponseHeader(response.Headers, "CreatedDateTime");
+			bool hasMoreItems = false;
+			if (!bool.TryParse(sHasMoreItems, out hasMoreItems))
+				throw new Exception("Could not read the HasMoreItems header");
+			return new CreatedSinceResult<Trip>() { HasMoreItems = hasMoreItems, CreatedDateTime = createdDateTime, Items = response.Data };
 		}
 
-		public async Task<IList<Trip>> GetCreatedSinceForDriversAsync(List<long> driverIds, DateTime since, int quantity, bool includeSubTrips = false)
+		public async Task<CreatedSinceResult<Trip>> GetCreatedSinceForDriversAsync(List<long> driverIds, DateTime since, int quantity, bool includeSubTrips = false)
 		{
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.TRIPSCONTROLLER.GETCREATEDSINCEFORDRIVERSASYNC, HttpMethod.Post);
 			request.AddUrlSegment("since", since.ToUniversalTime().ToString(DataFormats.DateTime_Format));
@@ -277,10 +293,15 @@ namespace MiX.Integrate.Api.Client
 			request.AddQueryParameter("includeSubTrips", includeSubTrips.ToString());
 			request.AddJsonBody(driverIds);
 			IHttpRestResponse<List<Trip>> response = await ExecuteAsync<List<Trip>>(request).ConfigureAwait(false);
-			return response.Data;
+			string sHasMoreItems = GetResponseHeader(response.Headers, "HasMoreItems");
+			string createdDateTime = GetResponseHeader(response.Headers, "CreatedDateTime");
+			bool hasMoreItems = false;
+			if (!bool.TryParse(sHasMoreItems, out hasMoreItems))
+				throw new Exception("Could not read the HasMoreItems header");
+			return new CreatedSinceResult<Trip>() { HasMoreItems = hasMoreItems, CreatedDateTime = createdDateTime, Items = response.Data };
 		}
 
-		public IList<Trip> GetCreatedSinceForGroups(List<long> groupIds, string entityType, DateTime since, int quantity, bool includeSubTrips = false)
+		public CreatedSinceResult<Trip> GetCreatedSinceForGroups(List<long> groupIds, string entityType, DateTime since, int quantity, bool includeSubTrips = false)
 		{
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.TRIPSCONTROLLER.GETCREATEDSINCEFORGROUPSASYNC, HttpMethod.Post);
 			request.AddUrlSegment("entityType", entityType);
@@ -289,10 +310,15 @@ namespace MiX.Integrate.Api.Client
 			request.AddQueryParameter("includeSubTrips", includeSubTrips.ToString());
 			request.AddJsonBody(groupIds);
 			IHttpRestResponse<List<Trip>> response = Execute<List<Trip>>(request);
-			return response.Data;
+			string sHasMoreItems = GetResponseHeader(response.Headers, "HasMoreItems");
+			string createdDateTime = GetResponseHeader(response.Headers, "CreatedDateTime");
+			bool hasMoreItems = false;
+			if (!bool.TryParse(sHasMoreItems, out hasMoreItems))
+				throw new Exception("Could not read the HasMoreItems header");
+			return new CreatedSinceResult<Trip>() { HasMoreItems = hasMoreItems, CreatedDateTime = createdDateTime, Items = response.Data };
 		}
 
-		public async Task<IList<Trip>> GetCreatedSinceForGroupsAsync(List<long> groupIds, string entityType, DateTime since, int quantity, bool includeSubTrips = false)
+		public async Task<CreatedSinceResult<Trip>> GetCreatedSinceForGroupsAsync(List<long> groupIds, string entityType, DateTime since, int quantity, bool includeSubTrips = false)
 		{
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.TRIPSCONTROLLER.GETCREATEDSINCEFORGROUPSASYNC, HttpMethod.Post);
 			request.AddUrlSegment("entityType", entityType);
@@ -301,7 +327,12 @@ namespace MiX.Integrate.Api.Client
 			request.AddQueryParameter("includeSubTrips", includeSubTrips.ToString());
 			request.AddJsonBody(groupIds);
 			IHttpRestResponse<List<Trip>> response = await ExecuteAsync<List<Trip>>(request).ConfigureAwait(false);
-			return response.Data;
+			string sHasMoreItems = GetResponseHeader(response.Headers, "HasMoreItems");
+			string createdDateTime = GetResponseHeader(response.Headers, "CreatedDateTime");
+			bool hasMoreItems = false;
+			if (!bool.TryParse(sHasMoreItems, out hasMoreItems))
+				throw new Exception("Could not read the HasMoreItems header");
+			return new CreatedSinceResult<Trip>() { HasMoreItems = hasMoreItems, CreatedDateTime = createdDateTime, Items = response.Data };
 		}
 
 

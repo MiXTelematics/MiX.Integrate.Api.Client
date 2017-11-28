@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using MiX.Integrate.Shared.Entities.Trips;
 using System.Threading.Tasks;
 using MiX.Integrate.Api.Client.Base;
+using MiX.Integrate.Shared.Entities.Carriers;
 
 namespace MiX.Integrate.Api.Client
 {
@@ -29,11 +30,11 @@ namespace MiX.Integrate.Api.Client
 		IList<Trip> GetSinceForGroups(List<long> groupIds, string entityType, DateTime since, bool includeSubTrips = false);
 		Task<IList<Trip>> GetSinceForGroupsAsync(List<long> groupIds, string entityType, DateTime since, bool includeSubTrips = false);
 
-		IList<Trip> GetCreatedSinceForAssets(List<long> assetIds, DateTime since, int quantity, bool includeSubTrips = false);
-		Task<IList<Trip>> GetCreatedSinceForAssetsAsync(List<long> assetIds, DateTime since, int quantity, bool includeSubTrips = false);
-		IList<Trip> GetCreatedSinceForDrivers(List<long> driverIds, DateTime since, int quantity, bool includeSubTrips = false);
-		Task<IList<Trip>> GetCreatedSinceForDriversAsync(List<long> driverIds, DateTime since, int quantity, bool includeSubTrips = false);
-		IList<Trip> GetCreatedSinceForGroups(List<long> groupIds, string entityType, DateTime since, int quantity, bool includeSubTrips = false);
-		Task<IList<Trip>> GetCreatedSinceForGroupsAsync(List<long> groupIds, string entityType, DateTime since, int quantity, bool includeSubTrips = false);
+		CreatedSinceResult<Trip> GetCreatedSinceForAssets(List<long> assetIds, DateTime since, int quantity, bool includeSubTrips = false);
+		Task<CreatedSinceResult<Trip>> GetCreatedSinceForAssetsAsync(List<long> assetIds, DateTime since, int quantity, bool includeSubTrips = false);
+		CreatedSinceResult<Trip> GetCreatedSinceForDrivers(List<long> driverIds, DateTime since, int quantity, bool includeSubTrips = false);
+		Task<CreatedSinceResult<Trip>> GetCreatedSinceForDriversAsync(List<long> driverIds, DateTime since, int quantity, bool includeSubTrips = false);
+		CreatedSinceResult<Trip> GetCreatedSinceForGroups(List<long> groupIds, string entityType, DateTime since, int quantity, bool includeSubTrips = false);
+		Task<CreatedSinceResult<Trip>> GetCreatedSinceForGroupsAsync(List<long> groupIds, string entityType, DateTime since, int quantity, bool includeSubTrips = false);
 	}
 }
