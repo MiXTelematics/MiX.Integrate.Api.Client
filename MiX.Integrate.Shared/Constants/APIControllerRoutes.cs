@@ -10,6 +10,14 @@ namespace MiX.Integrate.Shared.Constants
 			public const string EXTENDED = "healthcheck/extended";
 		}
 
+		//MiX.Integrate.Api.Controllers.ActiveEventController 
+		public class ACTIVEEVENTSCONTROLLER
+		{
+			public const string GETLATESTFORGROUP = "api/activeevents/group/{groupId}/latest/{quantity}";
+			public const string GETLATESTPERASSETINGROUP = "api/activeevents/group/{groupId}/latestperasset/{quantity}";
+			public const string GETRANGEFORASSETS = "api/activeevents/assets/from/{from}/to/{to}";
+		}
+
 		//MiX.Integrate.Api.Controllers.DriversControllerpublic 
 		public class DRIVERSCONTROLLER
 		{
@@ -87,6 +95,7 @@ namespace MiX.Integrate.Shared.Constants
 			public const string GETRANGEFORASSETS = "api/positions/assets/from/{from}/to/{to}";
 			public const string GETSINCEFORASSETS = "api/positions/assets/since/{since}";
 			public const string GETRANGEFORDRIVERS = "api/positions/drivers/from/{from}/to/{to}";
+			public const string GETCREATEDSINCEFORGROUPSASYNC = "api/positions/groups/createdsince/entitytype/{entityType}/since/{since}/quantity/{quantity}";
 		}
 
 		//MiX.Integrate.Api EventsController
@@ -106,6 +115,11 @@ namespace MiX.Integrate.Shared.Constants
 
 		}
 
+		//MiX.Fleet.Services.Api TachoController
+		public class TACHOCONTROLLER
+		{
+			public const string GETRANGEFORASSETASYNC = "api/tachos/asset/{assetId}/range/from/{from}/to/{to}";
+		}
 
 		//MiX.Integrate.Api TripsController
 		public class TRIPSCONTROLLER
@@ -113,15 +127,17 @@ namespace MiX.Integrate.Shared.Constants
 			public const string GETLATESTFORGROUPS = "api/trips/groups/latest/{quantity}/entitytype/{entityType}";
 			public const string GETRANGEFORGROUPS = "api/trips/groups/from/{from}/to/{to}/entitytype/{entityType}";
 			public const string GETSINCEFORGROUPS = "api/trips/groups/since/{since}/entitytype/{entityType}";
+			public const string GETCREATEDSINCEFORGROUPSASYNC = "api/trips/groups/createdsince/entitytype/{entityType}/since/{since}/quantity/{quantity}";
 
 			public const string GETLATESTFORASSETS = "api/trips/assets/latest/{quantity}";
 			public const string GETRANGEFORASSETS = "api/trips/assets/from/{from}/to/{to}";
 			public const string GETSINCEFORASSETS = "api/trips/assets/since/{since}";
+			public const string GETCREATEDSINCEFORASSETSASYNC = "api/trips/assets/createdsince/since/{since}/quantity/{quantity}";
 
 			public const string GETLATESTFORDRIVERS = "api/trips/drivers/latest/{quantity}";
 			public const string GETRANGEFORDRIVERS = "api/trips/drivers/from/{from}/to/{to}";
 			public const string GETSINCEFORDRIVERS = "api/trips/drivers/since/{since}";
-
+			public const string GETCREATEDSINCEFORDRIVERSASYNC = "api/trips/drivers/createdsince/since/{since}/quantity/{quantity}";
 		}
 
 		//MiX.Integrate.Api.Controllers.JourneysController
@@ -142,20 +158,20 @@ namespace MiX.Integrate.Shared.Constants
 			public const string ADD = "api/locations/group/{groupId}";
 			public const string UPDATE = "api/locations/group/{groupId}";
 			public const string DELETE = "api/locations/group/{groupId}/location/{locationId}";
-		  public const string INRANGE = "api/locations/group/{groupId}/inrange/{meters}";
-		  public const string NEAREST = "api/locations/group/{groupId}/nearest";
+			public const string INRANGE = "api/locations/group/{groupId}/inrange/{meters}";
+			public const string NEAREST = "api/locations/group/{groupId}/nearest";
 
-    }
+		}
 
-    //MiX.Integrate.Api.Controllers.LoggableData
-    public class LOGGABLEDATACONTROLLER
+		//MiX.Integrate.Api.Controllers.LoggableData
+		public class LOGGABLEDATACONTROLLER
 		{
 			public const string GETLOGGABLEDATAFORASSETSBYDATERANGE = "api/loggabledata/from/{from}/to/{to}";
 			public const string GETROVIMESSAGESFORASSETSSINCE = "api/loggabledata/rovimessages/since/{since}";
 			public const string GETROVIMESSAGESFORASSETSBYDATERANGE = "api/loggabledata/rovimessages/from/{from}/to/{to}";
-			public const string GETROVIMESSAGESFORASSETSLATEST = "api/loggabledata/rovimessageslatest/count/{count}"; 
+			public const string GETROVIMESSAGESFORASSETSLATEST = "api/loggabledata/rovimessageslatest/count/{count}";
 		}
-		 
+
 		//MiX.Integrate.Api.Controllers.DeviceCommandsController
 		public class DEVICECOMMANDSCONTROLLER
 		{
