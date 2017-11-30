@@ -104,15 +104,17 @@ namespace MiX.Integrate.Shared.Constants
 			public const string GETLATESTFORGROUPS = "api/events/groups/latest/entitytype/{entityType}/{quantity}";
 			public const string GETRANGEFORGROUPS = "api/events/groups/entitytype/{entityType}/from/{from}/to/{to}";
 			public const string GETSINCEFORGROUPS = "api/events/groups/since/entitytype/{entityType}/{since}";
+			public const string GETCREATEDSINCEFORGROUPSASYNC = "api/events/groups/createdsince/entitytype/{entityType}/since/{since}/quantity/{quantity}";
 
 			public const string GETLATESTFORASSETS = "api/events/assets/latest/{quantity}";
 			public const string GETRANGEFORASSETS = "api/events/assets/from/{from}/to/{to}";
 			public const string GETSINCEFORASSETS = "api/events/assets/since/{since}/quantity/{quantity}";
+			public const string GETCREATEDSINCEFORASSETSASYNC = "api/events/assets/createdsince/since/{since}/quantity/{quantity}";
 
 			public const string GETLATESTFORDRIVERS = "api/events/drivers/latest/{quantity}";
 			public const string GETRANGEFORDRIVERS = "api/events/drivers/from/{from}/to/{to}";
 			public const string GETSINCEFORDRIVERS = "api/events/drivers/since/{since}/quantity/{quantity}";
-
+			public const string GETCREATEDSINCEFORDRIVERSASYNC = "api/events/drivers/createdsince/since/{since}/quantity/{quantity}";
 		}
 
 		//MiX.Fleet.Services.Api TachoController

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using MiX.Integrate.Shared.Entities.Events;
 using System.Threading.Tasks;
 using MiX.Integrate.Api.Client.Base;
+using MiX.Integrate.Shared.Entities.Carriers;
 
 namespace MiX.Integrate.Api.Client
 {
@@ -27,5 +28,11 @@ namespace MiX.Integrate.Api.Client
 		IList<Event> GetSinceForGroups(List<long> groupIds, string entityType, DateTime since, List<long> eventTypeIds = null, string menuId = null);
 		Task<IList<Event>> GetSinceForGroupsAsync(List<long> groupIds, string entityType, DateTime since, List<long> eventTypeIds = null, string menuId = null);
 
+		CreatedSinceResult<Event> GetCreatedSinceForAssets(List<long> assetIds, DateTime since, int quantity);
+		Task<CreatedSinceResult<Event>> GetCreatedSinceForAssetsAsync(List<long> assetIds, DateTime since, int quantity);
+		CreatedSinceResult<Event> GetCreatedSinceForDrivers(List<long> assetIds, DateTime since, int quantity);
+		Task<CreatedSinceResult<Event>> GetCreatedSinceForDriversAsync(List<long> driverIds, DateTime since, int quantity);
+		CreatedSinceResult<Event> GetCreatedSinceForGroups(List<long> groupIds, string entityType, DateTime since, int quantity);
+		Task<CreatedSinceResult<Event>> GetCreatedSinceForGroupsAsync(List<long> groupIds, string entityType, DateTime since, int quantity);
 	}
 }
