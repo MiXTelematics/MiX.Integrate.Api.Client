@@ -1,12 +1,11 @@
-﻿using MiX.Integrate.Api.Client;
-using MiX.Integrate.Api.Client.Base;
+﻿using MiX.Integrate.Api.Client.Base;
 using MiX.Integrate.Shared.Constants;
 using MiX.Integrate.Shared.Entities.DeviceConfiguration;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
 
-namespace MiX.Integrate.API.Client
+namespace MiX.Integrate.Api.Client
 {
 	public class DeviceConfigurationClient : BaseClient, IDeviceConfigurationClient
 	{
