@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MiX.Integrate.Api.Client
 {
-	public class DeviceConfigurationClient : BaseClient, IDeviceConfigurationClient
+	public class DeviceConfigurationClient : BaseClient, IDeviceConfigurationClient, IBaseClient
 	{
 		public DeviceConfigurationClient(string url, bool setTestRequestHeader = false) : base(url, setTestRequestHeader) { }
 		public DeviceConfigurationClient(string url, IdServerResourceOwnerClientSettings settings, bool setTestRequestHeader = false) : base(url, settings, setTestRequestHeader) { }
