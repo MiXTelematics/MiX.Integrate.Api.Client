@@ -176,8 +176,7 @@ namespace MiX.Integrate.Shared.Constants
 
 		//MiX.Integrate.Api.Controllers.DeviceCommandsController
 		public class DEVICECOMMANDSCONTROLLER
-		{
-			//public const string SENDCOMMAND = "api/devicecommands/group/{groupId}/asset/{assetId}/commandType/{commandType}";
+		{ 
 			public const string SENDPOSITIONREQUESTMESSAGE = "api/devicecommands/group/{groupId}/asset/{assetId}/sendpositionrequestmessage";
 			public const string SENDRELAYCOMMAND = "api/devicecommands/group/{groupId}/asset/{assetId}/sendrelaycommand/relayDrive/{relayDrive}/relayState/{relayState}";
 			public const string SENDTRACKINGREQUEST = "api/devicecommands/group/{groupId}/asset/{assetId}/sendtrackingrequest/intervalSeconds/{intervalSeconds}/durationSeconds/{durationSeconds}";
@@ -187,6 +186,12 @@ namespace MiX.Integrate.Shared.Constants
 			public const string SENDDISARMUNITMESSAGE = "api/devicecommands/group/{groupId}/asset/{assetId}/senddisarmunitmessage";
 			public const string SENDFREETEXTMESSAGE = "api/devicecommands/group/{groupId}/asset/{assetId}/sendfreetextmessage";
 			public const string SENDSETACRONYMCOMMAND = "api/devicecommands/group/{groupId}/asset/{assetId}/sendsetacronymcommand/params/{param1}/{param2}/{param3}";
+		}
+
+		//MiX.Integrate.Api.Controllers.DeviceConfigurationController
+		public class DEVICECONFIGCONTROLLER
+		{
+			public const string GETCONNECTEDPERIPHERALSFORASSETS = "/api/deviceconfiguration/assets/connectedperipherals";
 		}
 
 		//MiX.Integrate.Api.Controllers.LibraryEventsController
