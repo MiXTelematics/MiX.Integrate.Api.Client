@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace MiX.Integrate.API.Client
+namespace MiX.Integrate.Api.Client
 {
 	public interface IDeviceConfigurationClient
 	{
