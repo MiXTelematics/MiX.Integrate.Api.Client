@@ -20,6 +20,8 @@ namespace MiX.Integrate.Api.Client
 		Task UpdateAsync(Asset asset);
 		bool AddAssetState(long groupId, AssetState assetState);
 		Task<bool> AddAssetStateAsync(long groupId, AssetState assetState);
+		AddResponse Add(Asset asset);
+		Task<AddResponse> AddAsync(Asset asset);
 
 	}
 }
