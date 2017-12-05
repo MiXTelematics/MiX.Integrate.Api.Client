@@ -57,6 +57,7 @@ namespace MiX.Integrate.Shared.Constants
 			public const string GETBYGROUP = "api/assets/group/{groupId}/asset/{assetId}";
 			public const string UPDATE = "api/assets";
 			public const string ADDASSETSTATE = "api/assets/group/{groupId}/state";
+			public const string ADD = "api/assets";
 		}
 
 
@@ -176,7 +177,7 @@ namespace MiX.Integrate.Shared.Constants
 
 		//MiX.Integrate.Api.Controllers.DeviceCommandsController
 		public class DEVICECOMMANDSCONTROLLER
-		{ 
+		{
 			public const string SENDPOSITIONREQUESTMESSAGE = "api/devicecommands/group/{groupId}/asset/{assetId}/sendpositionrequestmessage";
 			public const string SENDRELAYCOMMAND = "api/devicecommands/group/{groupId}/asset/{assetId}/sendrelaycommand/relayDrive/{relayDrive}/relayState/{relayState}";
 			public const string SENDTRACKINGREQUEST = "api/devicecommands/group/{groupId}/asset/{assetId}/sendtrackingrequest/intervalSeconds/{intervalSeconds}/durationSeconds/{durationSeconds}";
