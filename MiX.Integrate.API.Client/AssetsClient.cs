@@ -86,14 +86,14 @@ namespace MiX.Integrate.Api.Client
 
 		public void Update(Asset asset)
 		{
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.ASSETSCONTROLLER.GETBYGROUP, HttpMethod.Put);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.ASSETSCONTROLLER.UPDATE, HttpMethod.Put);
 			request.AddJsonBody(asset);
 			Execute(request);
 		}
 
 		public async Task UpdateAsync(Asset asset)
 		{
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.ASSETSCONTROLLER.GETBYGROUP, HttpMethod.Put);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.ASSETSCONTROLLER.UPDATE, HttpMethod.Put);
 			request.AddJsonBody(asset);
 			await ExecuteAsync(request).ConfigureAwait(false);
 		}
