@@ -122,30 +122,28 @@ namespace MiX.Integrate.Api.Client
 				return false;
 		}
 
-		public AddResponse Add(Asset asset)
+		public long Add(Asset asset)
 		{
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.ASSETSCONTROLLER.ADD, HttpMethod.Post);
 			request.AddJsonBody(asset);
 			IHttpRestResponse response = Execute(request);
-			string location = GetResponseHeader(response.Headers, "location");
 			string idHeaderVal = GetResponseHeader(response.Headers, "assetId");
 			long assetId;
 			if (!long.TryParse(idHeaderVal, out assetId) || assetId == 0)
 				throw new Exception("Could not determine the id of the newly-created asset");
-			return new AddResponse() { Location = location, Id = assetId.ToString() };
+			return assetId;
 		}
 
-		public async Task<AddResponse> AddAsync(Asset asset)
+		public async Task<long> AddAsync(Asset asset)
 		{
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.ASSETSCONTROLLER.ADD, HttpMethod.Post);
 			request.AddJsonBody(asset);
 			IHttpRestResponse response = await ExecuteAsync(request).ConfigureAwait(false);
-			string location = GetResponseHeader(response.Headers, "location");
 			string idHeaderVal = GetResponseHeader(response.Headers, "assetId");
 			long assetId;
 			if (!long.TryParse(idHeaderVal, out assetId) || assetId == 0)
 				throw new Exception("Could not determine the id of the newly-created asset");
-			return new AddResponse() { Location = location, Id = assetId.ToString() };
+			return assetId;
 		}
 
 	}
