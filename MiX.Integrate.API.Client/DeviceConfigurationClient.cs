@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MiX.Integrate.Api.Client
 {
-	public class DeviceConfigurationClient : BaseClient, IDeviceConfigurationClient, IBaseClient
+	public class DeviceConfigurationClient : BaseClient, IDeviceConfigurationClient
 	{
 		public DeviceConfigurationClient(string url, bool setTestRequestHeader = false) : base(url, setTestRequestHeader) { }
 		public DeviceConfigurationClient(string url, IdServerResourceOwnerClientSettings settings, bool setTestRequestHeader = false) : base(url, settings, setTestRequestHeader) { }
@@ -15,6 +15,7 @@ namespace MiX.Integrate.Api.Client
 		public async Task<List<ConnectedPeripheral>> GetConnectedPeripheralsForAssetsAsync(long groupId, List<long> assetIds)
 		{
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.DEVICECONFIGCONTROLLER.GETCONNECTEDPERIPHERALSFORASSETS, HttpMethod.Post);
+			request.AddUrlSegment("groupId", groupId.ToString());
 			request.AddJsonBody(assetIds);
 			IHttpRestResponse<List<ConnectedPeripheral>> response = await ExecuteAsync<List<ConnectedPeripheral>>(request).ConfigureAwait(false);
 			return response.Data;
@@ -23,10 +24,11 @@ namespace MiX.Integrate.Api.Client
 		public List<ConnectedPeripheral> GetConnectedPeripheralsForAssets(long groupId, List<long> assetIds)
 		{
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.DEVICECONFIGCONTROLLER.GETCONNECTEDPERIPHERALSFORASSETS, HttpMethod.Post);
+			request.AddUrlSegment("groupId", groupId.ToString());
 			request.AddJsonBody(assetIds);
 			IHttpRestResponse<List<ConnectedPeripheral>> response = Execute<List<ConnectedPeripheral>>(request);
 			return response.Data;
 		}
-
+		 
 	}
 }
