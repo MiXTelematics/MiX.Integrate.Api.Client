@@ -191,7 +191,7 @@ namespace MiX.Integrate.Shared.Constants
 		//MiX.Integrate.Api.Controllers.DeviceConfigurationController
 		public class DEVICECONFIGCONTROLLER
 		{
-			public const string GETCONNECTEDPERIPHERALSFORASSETS = "/api/deviceconfiguration/group/{groupId}/assets/connectedperipherals";
+			public const string GETCONNECTEDPERIPHERALSFORASSETS = "api/deviceconfiguration/group/{groupId}/assets/connectedperipherals";
 		}
 
 		//MiX.Integrate.Api.Controllers.LibraryEventsController
