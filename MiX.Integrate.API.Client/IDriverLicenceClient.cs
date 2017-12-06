@@ -1,10 +1,11 @@
-﻿using MiX.Integrate.Shared.Entities.Drivers;
+﻿using MiX.Integrate.Api.Client.Base;
+using MiX.Integrate.Shared.Entities.Drivers;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace MiX.Integrate.Api.Client
 {
-	public interface IDriverLicenceClient
+	public interface IDriverLicenceClient : IBaseClient
 	{
 		IList<DriverLicence> GetDriverLicencesByDriverId(long organisationGroupId, long driverId);
 		Task<IList<DriverLicence>> GetDriverLicencesByDriverIdAsync(long organisationGroupId, long driverId);
