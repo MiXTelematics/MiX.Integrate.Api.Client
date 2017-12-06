@@ -6,7 +6,7 @@ namespace MiX.Integrate.Api.Client
 {
 	public interface IDeviceConfigurationClient
 	{
-		Task<List<ConfigurationGroupDetail>> GetConnectedPeripheralsForAssetsAsync(long groupId, List<long> assetIds);
-		List<ConfigurationGroupDetail> GetConnectedPeripheralsForAssets(long groupId, List<long> assetIds);
+		Task<List<ConnectedPeripheral>> GetConnectedPeripheralsForAssetsAsync(long groupId, List<long> assetIds);
+		List<ConnectedPeripheral> GetConnectedPeripheralsForAssets(long groupId, List<long> assetIds);
 	}
 }
