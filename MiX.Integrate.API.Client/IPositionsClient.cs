@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using MiX.Integrate.Shared.Entities.Positions;
 using System.Threading.Tasks;
 using MiX.Integrate.Api.Client.Base;
+using MiX.Integrate.Shared.Entities.Carriers;
 
 namespace MiX.Integrate.Api.Client
 {
@@ -20,5 +21,7 @@ namespace MiX.Integrate.Api.Client
 		Task<List<Position>> GetByDateRangeByAssetIdsAsync(List<long> assetIds, DateTime fromDate, DateTime toDate);
 		List<Position> GetByDateRangeByDriverIds(List<long> driverIds, DateTime fromDate, DateTime toDate);
 		Task<List<Position>> GetByDateRangeByDriverIdsAsync(List<long> driverIds, DateTime fromDate, DateTime toDate);
+		CreatedSinceResult<Position> GetCreatedSinceForGroups(List<long> groupIds, string entityType, DateTime since, int quantity);
+		Task<CreatedSinceResult<Position>> GetCreatedSinceForGroupsAsync(List<long> groupIds, string entityType, DateTime since, int quantity);
 	}
 }

@@ -5,6 +5,7 @@ using MiX.Integrate.Shared.Entities.Events;
 using System.Threading.Tasks;
 using MiX.Integrate.Api.Client.Base;
 using System.Net.Http;
+using MiX.Integrate.Shared.Entities.Carriers;
 
 namespace MiX.Integrate.Api.Client
 {
@@ -88,7 +89,7 @@ namespace MiX.Integrate.Api.Client
 			return response.Data;
 		}
 
-		public IList<Event> GetRangeForAssets(List<long> assetIds, DateTime from, DateTime to, List<long> eventTypeIds = null,   string menuId = null)
+		public IList<Event> GetRangeForAssets(List<long> assetIds, DateTime from, DateTime to, List<long> eventTypeIds = null, string menuId = null)
 		{
 			EventFilter eventFilter = new EventFilter() { EntityIds = assetIds, EventTypeIds = eventTypeIds, MenuId = menuId };
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.EVENTSCONTROLLER.GETRANGEFORASSETS, HttpMethod.Post);
@@ -213,13 +214,105 @@ namespace MiX.Integrate.Api.Client
 
 		public async Task<IList<Event>> GetSinceForGroupsAsync(List<long> groupIds, string entityType, DateTime since, List<long> eventTypeIds = null, string menuId = null)
 		{
-			EventFilter eventFilter = new EventFilter() { EntityIds = groupIds, EventTypeIds = eventTypeIds, MenuId=menuId };
+			EventFilter eventFilter = new EventFilter() { EntityIds = groupIds, EventTypeIds = eventTypeIds, MenuId = menuId };
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.EVENTSCONTROLLER.GETSINCEFORGROUPS, HttpMethod.Post);
 			request.AddUrlSegment("entityType", entityType);
 			request.AddUrlSegment("since", since.ToUniversalTime().ToString(DataFormats.DateTime_Format));
 			request.AddJsonBody(eventFilter);
 			IHttpRestResponse<List<Event>> response = await ExecuteAsync<List<Event>>(request).ConfigureAwait(false);
 			return response.Data;
+		}
+
+		public CreatedSinceResult<Event> GetCreatedSinceForAssets(List<long> assetIds, DateTime since, int quantity)
+		{
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.EVENTSCONTROLLER.GETCREATEDSINCEFORASSETSASYNC, HttpMethod.Post);
+			request.AddUrlSegment("since", since.ToString(DataFormats.DateTime_Format));
+			request.AddUrlSegment("quantity", quantity.ToString());
+			request.AddJsonBody(assetIds);
+			IHttpRestResponse<List<Event>> response = Execute<List<Event>>(request);
+			string sHasMoreItems = GetResponseHeader(response.Headers, "HasMoreItems");
+			string createdDateTime = GetResponseHeader(response.Headers, "CreatedDateTime");
+			bool hasMoreItems = false;
+			if (!bool.TryParse(sHasMoreItems, out hasMoreItems))
+				throw new Exception("Could not read the HasMoreItems header");
+			return new CreatedSinceResult<Event>() { HasMoreItems = hasMoreItems, CreatedDateTime = createdDateTime, Items = response.Data };
+		}
+
+		public async Task<CreatedSinceResult<Event>> GetCreatedSinceForAssetsAsync(List<long> assetIds, DateTime since, int quantity)
+		{
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.EVENTSCONTROLLER.GETCREATEDSINCEFORASSETSASYNC, HttpMethod.Post);
+			request.AddUrlSegment("since", since.ToString(DataFormats.DateTime_Format));
+			request.AddUrlSegment("quantity", quantity.ToString());
+			request.AddJsonBody(assetIds);
+			IHttpRestResponse<List<Event>> response = await ExecuteAsync<List<Event>>(request).ConfigureAwait(false);
+			string sHasMoreItems = GetResponseHeader(response.Headers, "HasMoreItems");
+			string createdDateTime = GetResponseHeader(response.Headers, "CreatedDateTime");
+			bool hasMoreItems = false;
+			if (!bool.TryParse(sHasMoreItems, out hasMoreItems))
+				throw new Exception("Could not read the HasMoreItems header");
+			return new CreatedSinceResult<Event>() { HasMoreItems = hasMoreItems, CreatedDateTime = createdDateTime, Items = response.Data };
+		}
+
+		public CreatedSinceResult<Event> GetCreatedSinceForDrivers(List<long> driverIds, DateTime since, int quantity)
+		{
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.EVENTSCONTROLLER.GETCREATEDSINCEFORDRIVERSASYNC, HttpMethod.Post);
+			request.AddUrlSegment("since", since.ToString(DataFormats.DateTime_Format));
+			request.AddUrlSegment("quantity", quantity.ToString());
+			request.AddJsonBody(driverIds);
+			IHttpRestResponse<List<Event>> response = Execute<List<Event>>(request);
+			string sHasMoreItems = GetResponseHeader(response.Headers, "HasMoreItems");
+			string createdDateTime = GetResponseHeader(response.Headers, "CreatedDateTime");
+			bool hasMoreItems = false;
+			if (!bool.TryParse(sHasMoreItems, out hasMoreItems))
+				throw new Exception("Could not read the HasMoreItems header");
+			return new CreatedSinceResult<Event>() { HasMoreItems = hasMoreItems, CreatedDateTime = createdDateTime, Items = response.Data };
+		}
+
+		public async Task<CreatedSinceResult<Event>> GetCreatedSinceForDriversAsync(List<long> driverIds, DateTime since, int quantity)
+		{
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.EVENTSCONTROLLER.GETCREATEDSINCEFORDRIVERSASYNC, HttpMethod.Post);
+			request.AddUrlSegment("since", since.ToString(DataFormats.DateTime_Format));
+			request.AddUrlSegment("quantity", quantity.ToString());
+			request.AddJsonBody(driverIds);
+			IHttpRestResponse<List<Event>> response = await ExecuteAsync<List<Event>>(request).ConfigureAwait(false);
+			string sHasMoreItems = GetResponseHeader(response.Headers, "HasMoreItems");
+			string createdDateTime = GetResponseHeader(response.Headers, "CreatedDateTime");
+			bool hasMoreItems = false;
+			if (!bool.TryParse(sHasMoreItems, out hasMoreItems))
+				throw new Exception("Could not read the HasMoreItems header");
+			return new CreatedSinceResult<Event>() { HasMoreItems = hasMoreItems, CreatedDateTime = createdDateTime, Items = response.Data };
+		}
+
+		public CreatedSinceResult<Event> GetCreatedSinceForGroups(List<long> groupIds, string entityType, DateTime since, int quantity)
+		{
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.EVENTSCONTROLLER.GETCREATEDSINCEFORGROUPSASYNC, HttpMethod.Post);
+			request.AddUrlSegment("entityType", entityType);
+			request.AddUrlSegment("since", since.ToString(DataFormats.DateTime_Format));
+			request.AddUrlSegment("quantity", quantity.ToString());
+			request.AddJsonBody(groupIds);
+			IHttpRestResponse<List<Event>> response = Execute<List<Event>>(request);
+			string sHasMoreItems = GetResponseHeader(response.Headers, "HasMoreItems");
+			string createdDateTime = GetResponseHeader(response.Headers, "CreatedDateTime");
+			bool hasMoreItems = false;
+			if (!bool.TryParse(sHasMoreItems, out hasMoreItems))
+				throw new Exception("Could not read the HasMoreItems header");
+			return new CreatedSinceResult<Event>() { HasMoreItems = hasMoreItems, CreatedDateTime = createdDateTime, Items = response.Data };
+		}
+
+		public async Task<CreatedSinceResult<Event>> GetCreatedSinceForGroupsAsync(List<long> groupIds, string entityType, DateTime since, int quantity)
+		{
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.EVENTSCONTROLLER.GETCREATEDSINCEFORGROUPSASYNC, HttpMethod.Post);
+			request.AddUrlSegment("entityType", entityType);
+			request.AddUrlSegment("since", since.ToString(DataFormats.DateTime_Format));
+			request.AddUrlSegment("quantity", quantity.ToString());
+			request.AddJsonBody(groupIds);
+			IHttpRestResponse<List<Event>> response = await ExecuteAsync<List<Event>>(request).ConfigureAwait(false);
+			string sHasMoreItems = GetResponseHeader(response.Headers, "HasMoreItems");
+			string createdDateTime = GetResponseHeader(response.Headers, "CreatedDateTime");
+			bool hasMoreItems = false;
+			if (!bool.TryParse(sHasMoreItems, out hasMoreItems))
+				throw new Exception("Could not read the HasMoreItems header");
+			return new CreatedSinceResult<Event>() { HasMoreItems = hasMoreItems, CreatedDateTime = createdDateTime, Items = response.Data };
 		}
 
 	}
