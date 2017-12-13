@@ -20,6 +20,7 @@ namespace MiX.Integrate.Api.Client
 		void DeleteOrganisationSubGroup(long groupId);
 		void UpdateGroupName(long organisationGroupId, long groupId, string name);
 		OrganisationDetail GetOrganisationDetail(long groupId);
+		Group GetGroup(long groupId);
 
 		#endregion sync
 
@@ -32,6 +33,7 @@ namespace MiX.Integrate.Api.Client
 		Task DeleteOrganisationSubGroupAsync(long groupId);
 		Task UpdateGroupNameAsync(long organisationGroupId, long groupId, string name);
 		Task<OrganisationDetail> GetOrganisationDetailAsync(long groupId);
+		Task<Group> GetGroupAsync(long groupId);
 
 		#endregion async
 	}
