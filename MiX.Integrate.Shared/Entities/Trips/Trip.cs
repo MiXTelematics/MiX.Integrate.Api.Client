@@ -65,11 +65,18 @@ namespace MiX.Integrate.Shared.Entities.Trips
 		}
 
 		#region parameters to be set from subtrips
-		 
+		/// <summary>
+		/// Start positionid of the first sub trip in the trip.
+		/// </summary>
+		public long? StartPositionId { get; set; }
 		/// <summary>
 		/// Start position of the first sub trip in the trip.
 		/// </summary>
 		public Position StartPosition { get; set; }
+		/// <summary>
+		/// End positionid of the last sub trip in the trip.
+		/// </summary>
+		public long? EndPositionId { get; set; }
 		/// <summary>
 		/// End position of the last sub trip in the trip.
 		/// </summary>
