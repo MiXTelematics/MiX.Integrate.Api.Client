@@ -12,6 +12,10 @@ namespace MiX.Integrate.Shared.Entities.Trips
 		/// <summary>
 		/// Where the sub trip started.
 		/// </summary>
+		public long? StartPositionId { get; set; }
+		/// <summary>
+		/// Where the sub trip started.
+		/// </summary>
 		public Position StartPosition { get; set; }
 		/// <summary>
 		/// The date time when the asset started to move in the sub trip.
@@ -25,6 +29,10 @@ namespace MiX.Integrate.Shared.Entities.Trips
 		/// The date time of the end of the period monitored by the sub trip.
 		/// </summary>
 		public DateTime? SubTripEnd { get; set; }
+		/// <summary>
+		/// Where the sub trip ended.
+		/// </summary>
+		public long? EndPositionId { get; set; }
 		/// <summary>
 		/// Where the sub trip ended.
 		/// </summary>
