@@ -135,6 +135,24 @@ namespace MiX.Integrate.Api.Client
 			return response.Data;
 		}
 
+		/// <inheritdoc />
+		public List<Location> GetChangedSince(long organisationId, DateTime since)
+		{
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.LOCATIONSCONTROLLER.CHANGEDSINCE, HttpMethod.Get);
+			request.AddUrlSegment("organisationId", organisationId.ToString());
+			request.AddUrlSegment("since", $"{since.ToUniversalTime():yyyyMMddHHmmss}");
+			IHttpRestResponse<List<Location>> response = Execute<List<Location>>(request);
+			return response.Data;
+		}
 
+		/// <inheritdoc />
+		public async Task<List<Location>> GetChangedSinceAsync(long organisationId, DateTime since)
+		{
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.LOCATIONSCONTROLLER.CHANGEDSINCE, HttpMethod.Get);
+			request.AddUrlSegment("organisationId", organisationId.ToString());
+			request.AddUrlSegment("since", $"{since.ToUniversalTime():yyyyMMddHHmmss}");
+			IHttpRestResponse<List<Location>> response = await ExecuteAsync<List<Location>>(request).ConfigureAwait(false);
+			return response.Data;
+		}
 	}
 }
