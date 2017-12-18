@@ -1,6 +1,7 @@
 ﻿using MiX.Integrate.Api.Client.Base;
 using MiX.Integrate.Shared.Constants;
 using MiX.Integrate.Shared.Entities.Assets;
+using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -85,14 +86,14 @@ namespace MiX.Integrate.Api.Client
 
 		public void Update(Asset asset)
 		{
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.ASSETSCONTROLLER.GETBYGROUP, HttpMethod.Put);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.ASSETSCONTROLLER.UPDATE, HttpMethod.Put);
 			request.AddJsonBody(asset);
 			Execute(request);
 		}
 
 		public async Task UpdateAsync(Asset asset)
 		{
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.ASSETSCONTROLLER.GETBYGROUP, HttpMethod.Put);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.ASSETSCONTROLLER.UPDATE, HttpMethod.Put);
 			request.AddJsonBody(asset);
 			await ExecuteAsync(request).ConfigureAwait(false);
 		}
@@ -119,6 +120,30 @@ namespace MiX.Integrate.Api.Client
 				return true;
 			else
 				return false;
+		}
+
+		public long Add(Asset asset)
+		{
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.ASSETSCONTROLLER.ADD, HttpMethod.Post);
+			request.AddJsonBody(asset);
+			IHttpRestResponse response = Execute(request);
+			string idHeaderVal = GetResponseHeader(response.Headers, "assetId");
+			long assetId;
+			if (!long.TryParse(idHeaderVal, out assetId) || assetId == 0)
+				throw new Exception("Could not determine the id of the newly-created asset");
+			return assetId;
+		}
+
+		public async Task<long> AddAsync(Asset asset)
+		{
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.ASSETSCONTROLLER.ADD, HttpMethod.Post);
+			request.AddJsonBody(asset);
+			IHttpRestResponse response = await ExecuteAsync(request).ConfigureAwait(false);
+			string idHeaderVal = GetResponseHeader(response.Headers, "assetId");
+			long assetId;
+			if (!long.TryParse(idHeaderVal, out assetId) || assetId == 0)
+				throw new Exception("Could not determine the id of the newly-created asset");
+			return assetId;
 		}
 
 	}

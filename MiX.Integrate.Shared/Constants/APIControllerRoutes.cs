@@ -57,6 +57,7 @@ namespace MiX.Integrate.Shared.Constants
 			public const string GETBYGROUP = "api/assets/group/{groupId}/asset/{assetId}";
 			public const string UPDATE = "api/assets";
 			public const string ADDASSETSTATE = "api/assets/group/{groupId}/state";
+			public const string ADD = "api/assets";
 		}
 
 
@@ -73,17 +74,14 @@ namespace MiX.Integrate.Shared.Constants
 		public class GROUPSCONTROLLER
 		{
 			public const string GETORGGROUPS = "api/organisationgroups";
-
 			public const string GETSUBGROUPS = "api/organisationgroups/subgroups/{groupId}";
 			public const string DELETEORGSUBGROUP = "api/organisationgroups/organisationsubgroup/{groupId}";
 			public const string DELETESITE = "api/organisationgroups/site/{groupId}";
-
 			public const string ADDSITE = "api/organisationgroups/{parentGroupId}/site";
 			public const string ADDORGSUBGROUP = "api/organisationgroups/{parentGroupId}/organisationsubgroup";
-
 			public const string UPDATEGROUPNAME = "api/organisationgroups/{organisationId}/group/{groupId}/name";
-
 			public const string GETORGANISATIONDETAILS = "api/organisationgroups/details/{organisationId}";
+			public const string GETGROUP = "api/organisationgroups/group/{groupId}";
 		}
 
 		//MiX.Integrate.Api PositionsController
@@ -162,6 +160,7 @@ namespace MiX.Integrate.Shared.Constants
 			public const string DELETE = "api/locations/group/{groupId}/location/{locationId}";
 			public const string INRANGE = "api/locations/group/{groupId}/inrange/{meters}";
 			public const string NEAREST = "api/locations/group/{groupId}/nearest";
+			public const string CHANGEDSINCE = "api/locations/organisation/{organisationId}/changedsince/since/{since}";
 
 		}
 
@@ -177,7 +176,6 @@ namespace MiX.Integrate.Shared.Constants
 		//MiX.Integrate.Api.Controllers.DeviceCommandsController
 		public class DEVICECOMMANDSCONTROLLER
 		{
-			//public const string SENDCOMMAND = "api/devicecommands/group/{groupId}/asset/{assetId}/commandType/{commandType}";
 			public const string SENDPOSITIONREQUESTMESSAGE = "api/devicecommands/group/{groupId}/asset/{assetId}/sendpositionrequestmessage";
 			public const string SENDRELAYCOMMAND = "api/devicecommands/group/{groupId}/asset/{assetId}/sendrelaycommand/relayDrive/{relayDrive}/relayState/{relayState}";
 			public const string SENDTRACKINGREQUEST = "api/devicecommands/group/{groupId}/asset/{assetId}/sendtrackingrequest/intervalSeconds/{intervalSeconds}/durationSeconds/{durationSeconds}";
@@ -187,6 +185,12 @@ namespace MiX.Integrate.Shared.Constants
 			public const string SENDDISARMUNITMESSAGE = "api/devicecommands/group/{groupId}/asset/{assetId}/senddisarmunitmessage";
 			public const string SENDFREETEXTMESSAGE = "api/devicecommands/group/{groupId}/asset/{assetId}/sendfreetextmessage";
 			public const string SENDSETACRONYMCOMMAND = "api/devicecommands/group/{groupId}/asset/{assetId}/sendsetacronymcommand/params/{param1}/{param2}/{param3}";
+		}
+
+		//MiX.Integrate.Api.Controllers.DeviceConfigurationController
+		public class DEVICECONFIGCONTROLLER
+		{
+			public const string GETCONNECTEDPERIPHERALSFORASSETS = "api/deviceconfiguration/group/{groupId}/assets/connectedperipherals";
 		}
 
 		//MiX.Integrate.Api.Controllers.LibraryEventsController
