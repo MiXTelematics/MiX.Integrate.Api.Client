@@ -18,8 +18,6 @@ namespace MiX.Integrate.Api.Client.Base
 		private bool _setTestRequestHeader;
 		private bool _hasIDServerResourceOwnerClientSettings;
 		private IdServerResourceOwnerClientSettings _idServerResourceOwnerClientSettings;
-		//private static ConcurrentDictionary<int, string> _idServerAccessTokens = new ConcurrentDictionary<int, string>();
-		//private static Object _idServerAccessLock = new Object();
 		private static HttpClient _httpClient;
 		private bool _notFoundShouldReturnNull;
 
@@ -101,45 +99,6 @@ namespace MiX.Integrate.Api.Client.Base
 
 			return request;
 		}
-
-		//private string GetIdServerAccessToken()
-		//{
-		//	try
-		//	{
-
-		//		if (_idServerResourceOwnerClientSettings == null)
-		//		{
-		//			throw new ArgumentException("IdServerResourceOwnerClientSettings not set");
-		//		}
-
-		//		int settingsHash = $"{_idServerResourceOwnerClientSettings.BaseAddress}|{_idServerResourceOwnerClientSettings.ClientId}|{_idServerResourceOwnerClientSettings.ClientSecret}|{_idServerResourceOwnerClientSettings.Scopes}|{_idServerResourceOwnerClientSettings.UserName}|{_idServerResourceOwnerClientSettings.Password}".GetHashCode();
-
-		//		if (_idServerAccessTokens.ContainsKey(settingsHash) && !string.IsNullOrWhiteSpace(_idServerAccessTokens[settingsHash]))
-		//		{
-		//			string token = _idServerAccessTokens[settingsHash];
-		//			return token;
-		//		}
-
-		//		lock (_idServerAccessLock)
-		//		{
-		//			IdentityClient identityClient = new IdentityClient(_idServerResourceOwnerClientSettings.BaseAddress, _idServerResourceOwnerClientSettings.ClientId, _idServerResourceOwnerClientSettings.ClientSecret);
-		//			TokenResponse reponse = identityClient.RequestToken(_idServerResourceOwnerClientSettings.UserName, _idServerResourceOwnerClientSettings.Password, _idServerResourceOwnerClientSettings.Scopes);
-		//			string accessToken = reponse.AccessToken;
-		//			if (string.IsNullOrEmpty(accessToken))
-		//			{
-		//				throw new Exception("No AccessToken returned");
-		//			}
-		//			_idServerAccessTokens.AddOrUpdate(settingsHash, accessToken, (key, oldValue) => accessToken);
-		//			Task.Delay(7600);
-		//			return accessToken;
-		//		}
-
-		//	}
-		//	catch (Exception exc)
-		//	{
-		//		throw new SecurityException("Authentication Failed", exc);
-		//	}
-		//}
 
 		public IHttpRestResponse<T> Execute<T>(IHttpRestRequest request) where T : new()
 		{
