@@ -214,7 +214,7 @@ namespace MiX.Integrate.Shared.Constants
 		public class FUELCONTROLLER
 		{
 			public const string GETFUELBYDATERANGEFORGROUP = "api/fueltransactions/organisation/{organisationId}/from/{from}/to/{to}";
-			public const string ADDFUELTRANSACTIONS = "api/fueltransactions/organisation/{organisationId}/asset/{assetId}";
+			public const string ADDFUELTRANSACTIONS = "api/fueltransactions/organisation/{organisationId}";
 		}
 
 		//MiX.Integrate.Api.Controllers.CustomGroupsController
