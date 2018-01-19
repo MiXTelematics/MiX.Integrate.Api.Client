@@ -10,7 +10,7 @@ namespace MiX.Integrate.Api.Client
 	{
 		Task<IList<FuelTransaction>> GetFuelByDateRangeForGroupAsync(long organisationId, DateTime from, DateTime to);
 	  IList<FuelTransaction> GetFuelByDateRangeForGroup(long organisationId, DateTime from, DateTime to);
-		Task<IList<int>> AddFuelTransactionsForGroupAsync(long organisationId, IList<FuelTransaction> transactions);
-		IList<int> AddFuelTransactionsForGroup(long organisationId, IList<FuelTransaction> transactions);
+		Task<IList<FuelInsertCarrier>> AddFuelTransactionsForGroupAsync(long organisationId, IList<FuelTransaction> transactions);
+		IList<FuelInsertCarrier> AddFuelTransactionsForGroup(long organisationId, IList<FuelTransaction> transactions);
 	}
 }
