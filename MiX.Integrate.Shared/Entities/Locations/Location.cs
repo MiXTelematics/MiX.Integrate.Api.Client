@@ -9,6 +9,8 @@ namespace MiX.Integrate.Shared.Entities.Locations
 	{
 		/// <summary>Unique Id for the location</summary>
 		public long LocationId { get; set; }
+		public long OrganisationId { get; set; }
+		public long GroupId { get; set; }
 		/// <summary>Name of the location</summary>
 		public string Name { get; set; }
 		/// <summary>Address of the location</summary>

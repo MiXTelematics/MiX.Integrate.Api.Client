@@ -18,7 +18,7 @@ namespace MiX.Integrate.Api.Client.Base
 		string QueryUrl { get; }
 		 
 		void AddJsonBody(object obj);
-		void AddHeader(string name, string value);
+		void SetHeader(string name, string value);
 		void AddQueryParameter(string name, string value);
 		void AddUrlSegment(string name, string value);
 	}

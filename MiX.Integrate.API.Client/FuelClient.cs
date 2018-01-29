@@ -33,5 +33,23 @@ namespace MiX.Integrate.Api.Client
       return response.Data;
     }
 
+		public async Task<IList<FuelInsertCarrier>> AddFuelTransactionsForGroupAsync(long organisationId, IList<FuelTransaction> transactions)
+		{
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.FUELCONTROLLER.ADDFUELTRANSACTIONS, HttpMethod.Put);
+			request.AddUrlSegment("organisationId", organisationId.ToString());
+			request.AddJsonBody(transactions);
+			IHttpRestResponse<List<FuelInsertCarrier>> response = await ExecuteAsync<List<FuelInsertCarrier>>(request).ConfigureAwait(false);
+			return response.Data;
+		}
+
+		public IList<FuelInsertCarrier> AddFuelTransactionsForGroup(long organisationId, IList<FuelTransaction> transactions)
+		{
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.FUELCONTROLLER.ADDFUELTRANSACTIONS, HttpMethod.Put);
+			request.AddUrlSegment("organisationId", organisationId.ToString());
+			request.AddJsonBody(transactions);
+			IHttpRestResponse<List<FuelInsertCarrier>> response = Execute<List<FuelInsertCarrier>>(request);
+			return response.Data;
+		}
+
 	}
 }
