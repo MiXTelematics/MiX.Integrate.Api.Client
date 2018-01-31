@@ -4,6 +4,7 @@ using MiX.Integrate.Shared.Entities.Trips;
 using System.Threading.Tasks;
 using MiX.Integrate.Api.Client.Base;
 using MiX.Integrate.Shared.Entities.Carriers;
+using MiX.Integrate.Shared.Entities.Drivers;
 
 namespace MiX.Integrate.Api.Client
 {
@@ -36,5 +37,8 @@ namespace MiX.Integrate.Api.Client
 		Task<CreatedSinceResult<Trip>> GetCreatedSinceForDriversAsync(List<long> driverIds, string sinceToken, int quantity, bool includeSubTrips = false);
 		CreatedSinceResult<Trip> GetCreatedSinceForGroups(List<long> groupIds, string entityType, string sinceToken, int quantity, bool includeSubTrips = false);
 		Task<CreatedSinceResult<Trip>> GetCreatedSinceForGroupsAsync(List<long> groupIds, string entityType, string sinceToken, int quantity, bool includeSubTrips = false);
+
+		List<DriverScore> GetDriverScores(List<long> driverIds, DateTime from, DateTime to);
+		Task<List<DriverScore>> GetDriverScoresAsync(List<long> driverIds, DateTime from, DateTime to);
 	}
 }
