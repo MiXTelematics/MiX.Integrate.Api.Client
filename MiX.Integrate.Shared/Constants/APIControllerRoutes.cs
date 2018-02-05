@@ -148,6 +148,11 @@ namespace MiX.Integrate.Shared.Constants
 			public const string GETJOURNEYROUTE = "api/journeys/routes/{groupId}";
 			public const string GETJOURNEYPROGRESS = "api/journeys/progress/{journeyId}";
 			public const string GETJOURNEYINPROGRESSCURRENTSTATUS = "api/journeys/inprogress/currentstatus/{groupId}";
+			public const string GETJOURNEYROUTELOCATIONSASYNC = "api/journeys/GetJourneyRouteLocations/{journeyId}";
+			public const string REMOVEJOURNEYASYNC = "api/journeys/RemoveJourney/{journeyId}";
+			public const string UPDATEJOURNEYASSETDRIVERSASYNC = "api/journeys/UpdateJourneyAssetDrivers/{journeyId}";
+			public const string GETJOURNEYASSETSANDDRIVERSASYNC = "api/journeys/GetJourneyAssetsAndDrivers/{journeyId}";
+
 		}
 
 		//MiX.Integrate.Api.Controllers.LocationsController
