@@ -1,4 +1,6 @@
-﻿namespace MiX.Integrate.Shared.Entities.Journeys
+﻿using System;
+
+namespace MiX.Integrate.Shared.Entities.Journeys
 {
 	public class RouteLocation
 	{
@@ -14,6 +16,11 @@
 		public string ReverseGeo { get; set; }
 		public string LocationId { get; set; }
 		public string StopActivityInstructions { get; set; }
+		public DateTimeOffset ActualDepartureDate { get; set; }
+		public DateTimeOffset ActualArrivalDate { get; set; }
+		public DateTimeOffset AdjustedDepartureDate { get; set; }
+		public DateTimeOffset AdjustedArrivalDate { get; set; }
+		public long? DmxLocationId { get; set; }
 
 		/// <summary>
 		/// Copies the entity.
