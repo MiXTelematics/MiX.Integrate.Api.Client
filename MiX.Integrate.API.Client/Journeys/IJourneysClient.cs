@@ -21,5 +21,13 @@ namespace MiX.Integrate.Api.Client.Journeys
 
 		List<JourneyInProgressCurrentStatus> GetJourneyInProgressCurrentStatus(long groupId);
 		Task<List<JourneyInProgressCurrentStatus>> GetJourneyInProgressCurrentStatusAsync(long groupId);
+		Task<List<JourneyRouteLocation>> GetJourneyRouteLocationsAsync(long journeyId);
+		Task<bool> RemoveJourneyAsync(long journeyId);
+		Task<bool> UpdateJourneyAssetDriversAsync(long journeyId, List<JourneyAssetDriver> journeyAssetDriver);
+		Task<List<JourneyAssetDriver>> GetJourneyAssetsAndDriversAsync(long journeyId);
+		List<JourneyAssetDriver> GetJourneyAssetsAndDrivers(long journeyId);
+		bool UpdateJourneyAssetDrivers(long journeyId, List<JourneyAssetDriver> journeyAssetDriver);
+		bool RemoveJourney(long journeyId);
+		List<JourneyRouteLocation> GetJourneyRouteLocations(long journeyId);
 	}
 }
