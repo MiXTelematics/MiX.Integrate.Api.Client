@@ -138,6 +138,8 @@ namespace MiX.Integrate.Shared.Constants
 			public const string GETRANGEFORDRIVERS = "api/trips/drivers/from/{from}/to/{to}";
 			public const string GETSINCEFORDRIVERS = "api/trips/drivers/since/{since}";
 			public const string GETCREATEDSINCEFORDRIVERSASYNC = "api/trips/drivers/createdsince/sincetoken/{sinceToken}/quantity/{quantity}";
+
+			public const string GETDRIVERSCORES = "api/trips/driverscore/standard/from/{from}/to/{to}";
 		}
 
 		//MiX.Integrate.Api.Controllers.JourneysController
