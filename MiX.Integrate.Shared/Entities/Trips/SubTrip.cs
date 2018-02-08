@@ -8,19 +8,19 @@ namespace MiX.Integrate.Shared.Entities.Trips
 		/// <summary>
 		/// The date time of the start of the period monitored by the sub trip.
 		/// </summary>
-		public DateTime SubTripStart { get; set; }
+		public DateTime? SubTripStart { get; set; }
+		/// <summary>
+		/// Where the sub trip started.
+		/// </summary>
+		public long? StartPositionId { get; set; }
 		/// <summary>
 		/// Where the sub trip started.
 		/// </summary>
 		public Position StartPosition { get; set; }
-        /// <summary>
-		/// Where the sub trip started.
+		/// <summary>
+		/// The date time when the asset started to move in the sub trip.
 		/// </summary>
-		public long? StartPositionId { get; set; }
-        /// <summary>
-        /// The date time when the asset started to move in the sub trip.
-        /// </summary>
-        public DateTime? Depart { get; set; }
+		public DateTime? Depart { get; set; }
 		/// <summary>
 		/// The date time when the asset last moved in the sub trip.
 		/// </summary>
@@ -28,20 +28,19 @@ namespace MiX.Integrate.Shared.Entities.Trips
 		/// <summary>
 		/// The date time of the end of the period monitored by the sub trip.
 		/// </summary>
-		public DateTime SubTripEnd { get; set; }
+		public DateTime? SubTripEnd { get; set; }
+		/// <summary>
+		/// Where the sub trip ended.
+		/// </summary>
+		public long? EndPositionId { get; set; }
 		/// <summary>
 		/// Where the sub trip ended.
 		/// </summary>
 		public Position EndPosition { get; set; }
-        /// <summary>
-		/// Where the sub trip ended.
+		/// <summary>
+		/// Time between Depart and Halt the asset was moving.
 		/// </summary>
-		public long? EndPositionId { get; set; }
-
-        /// <summary>
-        /// Time between Depart and Halt the asset was moving.
-        /// </summary>
-        public int DrivingTime { get; set; }
+		public int DrivingTime { get; set; }
 		/// <summary>
 		/// Time before Depart and after Halt the asset was not moving.
 		/// </summary>
@@ -50,11 +49,14 @@ namespace MiX.Integrate.Shared.Entities.Trips
 		/// Duration of the sub trip.
 		/// </summary>
 		public int Duration { get { return StandingTime + DrivingTime; } }
-
 		/// <summary>
 		/// Distance the asset moved in the sub trip.
 		/// </summary>
 		public decimal DistanceKilometres { get; set; }
+		/// <summary>
+		/// Odometer of the asset at the start of the sub trip.
+		/// </summary>
+		public decimal? StartOdometerKilometres { get; set; }
 		/// <summary>
 		/// Odometer of the asset at the end of the sub trip.
 		/// </summary>

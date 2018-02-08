@@ -1,8 +1,4 @@
-﻿using IdentityModel.Client;
-using MiX.Identity.Client;
-using MiX.Integrate.Api.Client;
-using MiX.Integrate.Api.Client.Base;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -10,13 +6,11 @@ using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Reflection;
-using System.Security;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace MiX.Integrate.Api.Client.Base
 {
-
 	public class BaseClient : IBaseClient
 	{
 		public Func<string> GetCorrelationId { get; set; }
@@ -24,7 +18,6 @@ namespace MiX.Integrate.Api.Client.Base
 		private bool _setTestRequestHeader;
 		private bool _hasIDServerResourceOwnerClientSettings;
 		private IdServerResourceOwnerClientSettings _idServerResourceOwnerClientSettings;
-		private static string _idServerAccessToken;
 		private static HttpClient _httpClient;
 		private bool _notFoundShouldReturnNull;
 
@@ -94,100 +87,64 @@ namespace MiX.Integrate.Api.Client.Base
 		public IHttpRestRequest GetRequest(string resource, HttpMethod method)
 		{
 			IHttpRestRequest request = new HttpRestRequest(resource, method);
-			//request.AddHeader("Accept", "application/json");
-			//request.AddHeader("Content-type", "application/json");
+
 			string correlationId = GetCorrelationId?.Invoke();
 			if (!string.IsNullOrEmpty(correlationId))
 			{
-				request.AddHeader("X-Forwarded-CorrelationId", correlationId);
-			}
-
-			if (_hasIDServerResourceOwnerClientSettings)
-			{
-				_idServerAccessToken = GetIdServerAccessToken(_idServerResourceOwnerClientSettings);
-				request.AddHeader("Authorization", string.Format("Bearer {0}", _idServerAccessToken));
+				request.SetHeader("X-Forwarded-CorrelationId", correlationId);
 			}
 
 			if (_setTestRequestHeader)
-				request.AddHeader("x-testing", "true");
+				request.SetHeader("x-testing", "true");
 
 			return request;
 		}
 
-		private string GetIdServerAccessToken(IdServerResourceOwnerClientSettings settings)
-		{
-			try
-			{
-				IdentityClient identityClient = new IdentityClient(settings.BaseAddress, settings.ClientId, settings.ClientSecret);
-				TokenResponse reponse = identityClient.RequestToken(settings.UserName, settings.Password, settings.Scopes);
-				string accessToken = reponse.AccessToken;
-				if (string.IsNullOrEmpty(accessToken))
-				{
-					throw new Exception("No AccessToken returned");
-				}
-				return accessToken;
-			}
-			catch (Exception exc)
-			{
-				throw new SecurityException("Authentication Failed", exc);
-			}
-		}
-
 		public IHttpRestResponse<T> Execute<T>(IHttpRestRequest request) where T : new()
-		{ 
+		{
 			IHttpRestResponse<T> respT = ExecuteAsync<T>(request).ConfigureAwait(false).GetAwaiter().GetResult();
 			return respT;
 		}
 
 		public IHttpRestResponse Execute(IHttpRestRequest request)
-		{ 
+		{
 			IHttpRestResponse resp = ExecuteAsync(request).ConfigureAwait(false).GetAwaiter().GetResult();
 			return resp;
 		}
 
 		public async Task<IHttpRestResponse<T>> ExecuteAsync<T>(IHttpRestRequest request) where T : new()
 		{
-			string apiUrl = _url + "/" + request.QueryUrl;
-			HttpRequestMessage requestMessage = new HttpRequestMessage(request.Method, new Uri(apiUrl));
-			requestMessage.Headers.Add("Accept", "application/json");
-			// requestMessage.Headers.Add("Content-type", "application/json"); 
-			foreach (KeyValuePair<string, string> item in request.Headers)
-			{
-				requestMessage.Headers.Add(item.Key, item.Value.ToString());
-			}
-			if (request.JsonBody.Length > 0)
-			{
-				var jsonBody = new StringContent(request.JsonBody, Encoding.UTF8, "application/json");
-				requestMessage.Content = jsonBody;
-			}
-
-
-			HttpResponseMessage response = await HttpClient.SendAsync(requestMessage).ConfigureAwait(false);
-			CheckResponseError(response);
-
-			Stream stream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
-
-			var sr = new StreamReader(stream);
-			string content = sr.ReadToEnd();
-
-			IHttpRestResponse resp = new HttpRestResponse()
-			{
-				Request = request,
-				Content = content,
-				StatusCode = response.StatusCode,
-				Headers = response.Headers
-			};
-
+			IHttpRestResponse resp = await ExecuteAsync(request).ConfigureAwait(false);
 			IHttpRestResponse<T> respT = CloneInTo<T>(resp);
 			return respT;
 		}
 
 		public async Task<IHttpRestResponse> ExecuteAsync(IHttpRestRequest request)
 		{
+			IHttpRestResponse resp = null;
+
+			var maxRetryAttempts = 3;
+			await RetryHelper.RetryOnExceptionAsync(maxRetryAttempts, async () =>
+		 {
+			 resp = await ExecuteInternalAsync(request).ConfigureAwait(false);
+		 },
+			 _idServerResourceOwnerClientSettings).ConfigureAwait(false);
+
+			return resp;
+		}
+
+		private async Task<IHttpRestResponse> ExecuteInternalAsync(IHttpRestRequest request)
+		{
 			string apiUrl = _url + "/" + request.QueryUrl;
 			HttpRequestMessage requestMessage = new HttpRequestMessage(request.Method, new Uri(apiUrl));
+
+			if (_hasIDServerResourceOwnerClientSettings)
+			{
+				string bearerToken = AccessTokenCache.GetIdServerAccessToken(_idServerResourceOwnerClientSettings);
+				request.SetHeader("Authorization", string.Format("Bearer {0}", bearerToken));
+			}
+
 			requestMessage.Headers.Add("Accept", "application/json");
-			// requestMessage.Headers.Add("Content-type", "application/json"); 
 			foreach (KeyValuePair<string, string> item in request.Headers)
 			{
 				requestMessage.Headers.Add(item.Key, item.Value.ToString());

@@ -57,6 +57,7 @@ namespace MiX.Integrate.Shared.Constants
 			public const string GETBYGROUP = "api/assets/group/{groupId}/asset/{assetId}";
 			public const string UPDATE = "api/assets";
 			public const string ADDASSETSTATE = "api/assets/group/{groupId}/state";
+			public const string ADD = "api/assets";
 		}
 
 
@@ -73,17 +74,14 @@ namespace MiX.Integrate.Shared.Constants
 		public class GROUPSCONTROLLER
 		{
 			public const string GETORGGROUPS = "api/organisationgroups";
-
 			public const string GETSUBGROUPS = "api/organisationgroups/subgroups/{groupId}";
 			public const string DELETEORGSUBGROUP = "api/organisationgroups/organisationsubgroup/{groupId}";
 			public const string DELETESITE = "api/organisationgroups/site/{groupId}";
-
 			public const string ADDSITE = "api/organisationgroups/{parentGroupId}/site";
 			public const string ADDORGSUBGROUP = "api/organisationgroups/{parentGroupId}/organisationsubgroup";
-
 			public const string UPDATEGROUPNAME = "api/organisationgroups/{organisationId}/group/{groupId}/name";
-
 			public const string GETORGANISATIONDETAILS = "api/organisationgroups/details/{organisationId}";
+			public const string GETGROUP = "api/organisationgroups/group/{groupId}";
 		}
 
 		//MiX.Integrate.Api PositionsController
@@ -95,7 +93,7 @@ namespace MiX.Integrate.Shared.Constants
 			public const string GETRANGEFORASSETS = "api/positions/assets/from/{from}/to/{to}";
 			public const string GETSINCEFORASSETS = "api/positions/assets/since/{since}";
 			public const string GETRANGEFORDRIVERS = "api/positions/drivers/from/{from}/to/{to}";
-			public const string GETCREATEDSINCEFORGROUPSASYNC = "api/positions/groups/createdsince/entitytype/{entityType}/since/{since}/quantity/{quantity}";
+			public const string GETCREATEDSINCEFORGROUPSASYNC = "api/positions/groups/createdsince/entitytype/{entityType}/sincetoken/{sinceToken}/quantity/{quantity}";
 		}
 
 		//MiX.Integrate.Api EventsController
@@ -104,17 +102,17 @@ namespace MiX.Integrate.Shared.Constants
 			public const string GETLATESTFORGROUPS = "api/events/groups/latest/entitytype/{entityType}/{quantity}";
 			public const string GETRANGEFORGROUPS = "api/events/groups/entitytype/{entityType}/from/{from}/to/{to}";
 			public const string GETSINCEFORGROUPS = "api/events/groups/since/entitytype/{entityType}/{since}";
-			public const string GETCREATEDSINCEFORGROUPSASYNC = "api/events/groups/createdsince/entitytype/{entityType}/since/{since}/quantity/{quantity}";
+			public const string GETCREATEDSINCEFORGROUPSASYNC = "api/events/groups/createdsince/entitytype/{entityType}/sincetoken/{sinceToken}/quantity/{quantity}";
 
 			public const string GETLATESTFORASSETS = "api/events/assets/latest/{quantity}";
 			public const string GETRANGEFORASSETS = "api/events/assets/from/{from}/to/{to}";
 			public const string GETSINCEFORASSETS = "api/events/assets/since/{since}/quantity/{quantity}";
-			public const string GETCREATEDSINCEFORASSETSASYNC = "api/events/assets/createdsince/since/{since}/quantity/{quantity}";
+			public const string GETCREATEDSINCEFORASSETSASYNC = "api/events/assets/createdsince/sincetoken/{sinceToken}/quantity/{quantity}";
 
 			public const string GETLATESTFORDRIVERS = "api/events/drivers/latest/{quantity}";
 			public const string GETRANGEFORDRIVERS = "api/events/drivers/from/{from}/to/{to}";
 			public const string GETSINCEFORDRIVERS = "api/events/drivers/since/{since}/quantity/{quantity}";
-			public const string GETCREATEDSINCEFORDRIVERSASYNC = "api/events/drivers/createdsince/since/{since}/quantity/{quantity}";
+			public const string GETCREATEDSINCEFORDRIVERSASYNC = "api/events/drivers/createdsince/sincetoken/{sinceToken}/quantity/{quantity}";
 		}
 
 		//MiX.Fleet.Services.Api TachoController
@@ -129,17 +127,17 @@ namespace MiX.Integrate.Shared.Constants
 			public const string GETLATESTFORGROUPS = "api/trips/groups/latest/{quantity}/entitytype/{entityType}";
 			public const string GETRANGEFORGROUPS = "api/trips/groups/from/{from}/to/{to}/entitytype/{entityType}";
 			public const string GETSINCEFORGROUPS = "api/trips/groups/since/{since}/entitytype/{entityType}";
-			public const string GETCREATEDSINCEFORGROUPSASYNC = "api/trips/groups/createdsince/entitytype/{entityType}/since/{since}/quantity/{quantity}";
+			public const string GETCREATEDSINCEFORGROUPSASYNC = "api/trips/groups/createdsince/entitytype/{entityType}/sincetoken/{sinceToken}/quantity/{quantity}";
 
 			public const string GETLATESTFORASSETS = "api/trips/assets/latest/{quantity}";
 			public const string GETRANGEFORASSETS = "api/trips/assets/from/{from}/to/{to}";
 			public const string GETSINCEFORASSETS = "api/trips/assets/since/{since}";
-			public const string GETCREATEDSINCEFORASSETSASYNC = "api/trips/assets/createdsince/since/{since}/quantity/{quantity}";
+			public const string GETCREATEDSINCEFORASSETSASYNC = "api/trips/assets/createdsince/sincetoken/{sinceToken}/quantity/{quantity}";
 
 			public const string GETLATESTFORDRIVERS = "api/trips/drivers/latest/{quantity}";
 			public const string GETRANGEFORDRIVERS = "api/trips/drivers/from/{from}/to/{to}";
 			public const string GETSINCEFORDRIVERS = "api/trips/drivers/since/{since}";
-			public const string GETCREATEDSINCEFORDRIVERSASYNC = "api/trips/drivers/createdsince/since/{since}/quantity/{quantity}";
+			public const string GETCREATEDSINCEFORDRIVERSASYNC = "api/trips/drivers/createdsince/sincetoken/{sinceToken}/quantity/{quantity}";
 		}
 
 		//MiX.Integrate.Api.Controllers.JourneysController
@@ -162,6 +160,7 @@ namespace MiX.Integrate.Shared.Constants
 			public const string DELETE = "api/locations/group/{groupId}/location/{locationId}";
 			public const string INRANGE = "api/locations/group/{groupId}/inrange/{meters}";
 			public const string NEAREST = "api/locations/group/{groupId}/nearest";
+			public const string CHANGEDSINCE = "api/locations/organisation/{organisationId}/changedsince/since/{since}";
 
 		}
 
@@ -177,7 +176,6 @@ namespace MiX.Integrate.Shared.Constants
 		//MiX.Integrate.Api.Controllers.DeviceCommandsController
 		public class DEVICECOMMANDSCONTROLLER
 		{
-			//public const string SENDCOMMAND = "api/devicecommands/group/{groupId}/asset/{assetId}/commandType/{commandType}";
 			public const string SENDPOSITIONREQUESTMESSAGE = "api/devicecommands/group/{groupId}/asset/{assetId}/sendpositionrequestmessage";
 			public const string SENDRELAYCOMMAND = "api/devicecommands/group/{groupId}/asset/{assetId}/sendrelaycommand/relayDrive/{relayDrive}/relayState/{relayState}";
 			public const string SENDTRACKINGREQUEST = "api/devicecommands/group/{groupId}/asset/{assetId}/sendtrackingrequest/intervalSeconds/{intervalSeconds}/durationSeconds/{durationSeconds}";
@@ -187,6 +185,12 @@ namespace MiX.Integrate.Shared.Constants
 			public const string SENDDISARMUNITMESSAGE = "api/devicecommands/group/{groupId}/asset/{assetId}/senddisarmunitmessage";
 			public const string SENDFREETEXTMESSAGE = "api/devicecommands/group/{groupId}/asset/{assetId}/sendfreetextmessage";
 			public const string SENDSETACRONYMCOMMAND = "api/devicecommands/group/{groupId}/asset/{assetId}/sendsetacronymcommand/params/{param1}/{param2}/{param3}";
+		}
+
+		//MiX.Integrate.Api.Controllers.DeviceConfigurationController
+		public class DEVICECONFIGCONTROLLER
+		{
+			public const string GETCONNECTEDPERIPHERALSFORASSETS = "api/deviceconfiguration/group/{groupId}/assets/connectedperipherals";
 		}
 
 		//MiX.Integrate.Api.Controllers.LibraryEventsController
@@ -210,6 +214,7 @@ namespace MiX.Integrate.Shared.Constants
 		public class FUELCONTROLLER
 		{
 			public const string GETFUELBYDATERANGEFORGROUP = "api/fueltransactions/organisation/{organisationId}/from/{from}/to/{to}";
+			public const string ADDFUELTRANSACTIONS = "api/fueltransactions/organisation/{organisationId}";
 		}
 
 		//MiX.Integrate.Api.Controllers.CustomGroupsController

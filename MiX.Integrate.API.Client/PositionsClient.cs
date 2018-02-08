@@ -137,36 +137,36 @@ namespace MiX.Integrate.Api.Client
 			return response.Data;
 		}
 
-		public CreatedSinceResult<Position> GetCreatedSinceForGroups(List<long> groupIds, string entityType, DateTime since, int quantity)
+		public CreatedSinceResult<Position> GetCreatedSinceForGroups(List<long> groupIds, string entityType, string sinceToken, int quantity)
 		{
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.POSITIONSCONTROLLER.GETCREATEDSINCEFORGROUPSASYNC, HttpMethod.Post);
 			request.AddUrlSegment("entityType", entityType);
-			request.AddUrlSegment("since", since.ToUniversalTime().ToString(DataFormats.DateTime_Format));
+			request.AddUrlSegment("sincetoken", sinceToken);
 			request.AddUrlSegment("quantity", quantity.ToString());
 			request.AddJsonBody(groupIds);
 			IHttpRestResponse<List<Position>> response = Execute<List<Position>>(request);
 			string sHasMoreItems = GetResponseHeader(response.Headers, "HasMoreItems");
-			string createdDateTime = GetResponseHeader(response.Headers, "CreatedDateTime");
+			string getSinceToken = GetResponseHeader(response.Headers, "GetSinceToken");
 			bool hasMoreItems = false;
 			if (!bool.TryParse(sHasMoreItems, out hasMoreItems))
 				throw new Exception("Could not read the HasMoreItems header");
-			return new CreatedSinceResult<Position>() { HasMoreItems = hasMoreItems, CreatedDateTime = createdDateTime, Items = response.Data };
+			return new CreatedSinceResult<Position>() { HasMoreItems = hasMoreItems, GetSinceToken = getSinceToken, Items = response.Data };
 		}
 
-		public async Task<CreatedSinceResult<Position>> GetCreatedSinceForGroupsAsync(List<long> groupIds, string entityType, DateTime since, int quantity)
+		public async Task<CreatedSinceResult<Position>> GetCreatedSinceForGroupsAsync(List<long> groupIds, string entityType, string sinceToken, int quantity)
 		{
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.POSITIONSCONTROLLER.GETCREATEDSINCEFORGROUPSASYNC, HttpMethod.Post);
 			request.AddUrlSegment("entityType", entityType);
-			request.AddUrlSegment("since", since.ToUniversalTime().ToString(DataFormats.DateTime_Format));
+			request.AddUrlSegment("sincetoken", sinceToken);
 			request.AddUrlSegment("quantity", quantity.ToString());
 			request.AddJsonBody(groupIds);
 			IHttpRestResponse<List<Position>> response = await ExecuteAsync<List<Position>>(request).ConfigureAwait(false);
 			string sHasMoreItems = GetResponseHeader(response.Headers, "HasMoreItems");
-			string createdDateTime = GetResponseHeader(response.Headers, "CreatedDateTime");
+			string getSinceToken = GetResponseHeader(response.Headers, "GetSinceToken");
 			bool hasMoreItems = false;
 			if (!bool.TryParse(sHasMoreItems, out hasMoreItems))
 				throw new Exception("Could not read the HasMoreItems header");
-			return new CreatedSinceResult<Position>() { HasMoreItems = hasMoreItems, CreatedDateTime = createdDateTime, Items = response.Data };
+			return new CreatedSinceResult<Position>() { HasMoreItems = hasMoreItems, GetSinceToken = getSinceToken, Items = response.Data };
 		}
 
 	}

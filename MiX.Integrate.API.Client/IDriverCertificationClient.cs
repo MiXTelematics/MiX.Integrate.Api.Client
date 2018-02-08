@@ -1,10 +1,11 @@
-﻿using MiX.Integrate.Shared.Entities.Drivers;
+﻿using MiX.Integrate.Api.Client.Base;
+using MiX.Integrate.Shared.Entities.Drivers;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace MiX.Integrate.Api.Client
 {
-	public interface IDriverCertificationClient
+	public interface IDriverCertificationClient : IBaseClient
 	{
 		DriverCertification GetDriverCertificationById(long organisationGroupId, long driverId, int certificationTypeId);
 		Task<DriverCertification> GetDriverCertificationByIdAsync(long organisationGroupId, long driverId, int certificationTypeId);

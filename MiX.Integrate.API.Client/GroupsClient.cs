@@ -154,8 +154,24 @@ namespace MiX.Integrate.Api.Client
 		{
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.GROUPSCONTROLLER.GETORGANISATIONDETAILS, HttpMethod.Get);
 			request.AddUrlSegment("organisationId", groupId.ToString());
-		  IHttpRestResponse<OrganisationDetail> response = await ExecuteAsync<OrganisationDetail>(request).ConfigureAwait(false);
-      return response.Data;
+			IHttpRestResponse<OrganisationDetail> response = await ExecuteAsync<OrganisationDetail>(request).ConfigureAwait(false);
+			return response.Data;
+		}
+
+		public Group GetGroup(long groupId)
+		{
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.GROUPSCONTROLLER.GETGROUP, HttpMethod.Get);
+			request.AddUrlSegment("groupId", groupId.ToString());
+			IHttpRestResponse<Group> response = Execute<Group>(request);
+			return response.Data;
+		}
+
+		public async Task<Group> GetGroupAsync(long groupId)
+		{
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.GROUPSCONTROLLER.GETGROUP, HttpMethod.Get);
+			request.AddUrlSegment("groupId", groupId.ToString());
+			IHttpRestResponse<Group> response = await ExecuteAsync<Group>(request).ConfigureAwait(false);
+			return response.Data;
 		}
 
 	}

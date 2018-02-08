@@ -35,7 +35,7 @@ namespace MiX.Integrate.Api.Client.Base
 			JsonBody = NewtonsoftJsonSerializer.Default.Serialize(obj);
 		}
 
-		public void AddHeader(string name, string value)
+		public void SetHeader(string name, string value)
 		{
 			if (!Headers.ContainsKey(name))
 				Headers.Add(name, value);
