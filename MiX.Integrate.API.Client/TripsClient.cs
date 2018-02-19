@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using MiX.Integrate.Api.Client.Base;
 using System.Net.Http;
 using MiX.Integrate.Shared.Entities.Carriers;
+using MiX.Integrate.Shared.Entities.Drivers;
 
 namespace MiX.Integrate.Api.Client
 {
@@ -333,6 +334,30 @@ namespace MiX.Integrate.Api.Client
 			if (!bool.TryParse(sHasMoreItems, out hasMoreItems))
 				throw new Exception("Could not read the HasMoreItems header");
 			return new CreatedSinceResult<Trip>() { HasMoreItems = hasMoreItems, GetSinceToken = getSinceToken, Items = response.Data };
+		}
+
+		#endregion
+
+		#region DriverScores
+
+		public List<DriverScore> GetDriverScores(List<long> driverIds, DateTime from, DateTime to)
+		{
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.TRIPSCONTROLLER.GETDRIVERSCORES, HttpMethod.Post);
+			request.AddUrlSegment("from", from.ToUniversalTime().ToString(DataFormats.DateTime_Format));
+			request.AddUrlSegment("to", to.ToUniversalTime().ToString(DataFormats.DateTime_Format));
+			request.AddJsonBody(driverIds);
+			IHttpRestResponse<List<DriverScore>> response = Execute<List<DriverScore>>(request);
+			return response.Data;
+		}
+
+		public async Task<List<DriverScore>> GetDriverScoresAsync(List<long> driverIds, DateTime from, DateTime to)
+		{
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.TRIPSCONTROLLER.GETDRIVERSCORES, HttpMethod.Post);
+			request.AddUrlSegment("from", from.ToUniversalTime().ToString(DataFormats.DateTime_Format));
+			request.AddUrlSegment("to", to.ToUniversalTime().ToString(DataFormats.DateTime_Format));
+			request.AddJsonBody(driverIds);
+			IHttpRestResponse<List<DriverScore>> response = await ExecuteAsync<List<DriverScore>>(request).ConfigureAwait(false);
+			return response.Data;
 		}
 
 		#endregion
