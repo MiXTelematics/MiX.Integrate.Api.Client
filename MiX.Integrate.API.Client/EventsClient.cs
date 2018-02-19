@@ -226,7 +226,7 @@ namespace MiX.Integrate.Api.Client
 		public CreatedSinceResult<Event> GetCreatedSinceForAssets(List<long> assetIds, string sinceToken, int quantity)
 		{
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.EVENTSCONTROLLER.GETCREATEDSINCEFORASSETSASYNC, HttpMethod.Post);
-			request.AddUrlSegment("sincetoken", sinceToken);
+			request.AddUrlSegment("sinceToken", sinceToken);
 			request.AddUrlSegment("quantity", quantity.ToString());
 			request.AddJsonBody(assetIds);
 			IHttpRestResponse<List<Event>> response = Execute<List<Event>>(request);
@@ -241,7 +241,7 @@ namespace MiX.Integrate.Api.Client
 		public async Task<CreatedSinceResult<Event>> GetCreatedSinceForAssetsAsync(List<long> assetIds, string sinceToken, int quantity)
 		{
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.EVENTSCONTROLLER.GETCREATEDSINCEFORASSETSASYNC, HttpMethod.Post);
-			request.AddUrlSegment("sincetoken", sinceToken);
+			request.AddUrlSegment("sinceToken", sinceToken);
 			request.AddUrlSegment("quantity", quantity.ToString());
 			request.AddJsonBody(assetIds);
 			IHttpRestResponse<List<Event>> response = await ExecuteAsync<List<Event>>(request).ConfigureAwait(false);
@@ -256,7 +256,7 @@ namespace MiX.Integrate.Api.Client
 		public CreatedSinceResult<Event> GetCreatedSinceForDrivers(List<long> driverIds, string sinceToken, int quantity)
 		{
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.EVENTSCONTROLLER.GETCREATEDSINCEFORDRIVERSASYNC, HttpMethod.Post);
-			request.AddUrlSegment("sincetoken", sinceToken);
+			request.AddUrlSegment("sinceToken", sinceToken);
 			request.AddUrlSegment("quantity", quantity.ToString());
 			request.AddJsonBody(driverIds);
 			IHttpRestResponse<List<Event>> response = Execute<List<Event>>(request);
@@ -271,7 +271,7 @@ namespace MiX.Integrate.Api.Client
 		public async Task<CreatedSinceResult<Event>> GetCreatedSinceForDriversAsync(List<long> driverIds, string sinceToken, int quantity)
 		{
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.EVENTSCONTROLLER.GETCREATEDSINCEFORDRIVERSASYNC, HttpMethod.Post);
-			request.AddUrlSegment("sincetoken", sinceToken);
+			request.AddUrlSegment("sinceToken", sinceToken);
 			request.AddUrlSegment("quantity", quantity.ToString());
 			request.AddJsonBody(driverIds);
 			IHttpRestResponse<List<Event>> response = await ExecuteAsync<List<Event>>(request).ConfigureAwait(false);
@@ -287,7 +287,7 @@ namespace MiX.Integrate.Api.Client
 		{
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.EVENTSCONTROLLER.GETCREATEDSINCEFORGROUPSASYNC, HttpMethod.Post);
 			request.AddUrlSegment("entityType", entityType);
-			request.AddUrlSegment("sincetoken", sinceToken);
+			request.AddUrlSegment("sinceToken", sinceToken);
 			request.AddUrlSegment("quantity", quantity.ToString());
 			request.AddJsonBody(groupIds);
 			IHttpRestResponse<List<Event>> response = Execute<List<Event>>(request);
@@ -303,7 +303,7 @@ namespace MiX.Integrate.Api.Client
 		{
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.EVENTSCONTROLLER.GETCREATEDSINCEFORGROUPSASYNC, HttpMethod.Post);
 			request.AddUrlSegment("entityType", entityType);
-			request.AddUrlSegment("sincetoken", sinceToken);
+			request.AddUrlSegment("sinceToken", sinceToken);
 			request.AddUrlSegment("quantity", quantity.ToString());
 			request.AddJsonBody(groupIds);
 			IHttpRestResponse<List<Event>> response = await ExecuteAsync<List<Event>>(request).ConfigureAwait(false);
