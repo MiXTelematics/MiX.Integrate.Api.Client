@@ -285,6 +285,25 @@ namespace MiX.Integrate.Api.Client.Journeys
 
 		}
 
-		#endregion
+		public async Task<bool> SubmitJourneyAsync(long journeyId)
+		{
+
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.JOURNEYSCONTROLLER.SUBMITJOURNEY, HttpMethod.Put);
+			request.AddUrlSegment("journeyId", journeyId.ToString());
+			IHttpRestResponse<bool> response = await ExecuteAsync<bool>(request).ConfigureAwait(false);
+			return response.Data;
+
+		}
+
+		public bool SubmitJourney(long journeyId)
+		{
+
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.JOURNEYSCONTROLLER.SUBMITJOURNEY, HttpMethod.Put);
+			request.AddUrlSegment("journeyId", journeyId.ToString());
+			IHttpRestResponse<bool> response = Execute<bool>(request);
+			return response.Data;
+		}
+
+			#endregion
+		}
 	}
-}
