@@ -264,6 +264,26 @@ namespace MiX.Integrate.Api.Client.Journeys
 
 		}
 
+		public async Task<bool> CancelJourneyAsync(long journeyId)
+		{
+
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.JOURNEYSCONTROLLER.CANCELJOURNEYASYNC, HttpMethod.Post);
+			request.AddUrlSegment("journeyId", journeyId.ToString());
+			IHttpRestResponse<bool> response = await ExecuteAsync<bool>(request).ConfigureAwait(false);
+			return response.Data;
+
+		}
+
+		public bool CancelJourney(long journeyId)
+		{
+
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.JOURNEYSCONTROLLER.CANCELJOURNEYASYNC, HttpMethod.Post);
+			request.AddUrlSegment("journeyId", journeyId.ToString());
+			IHttpRestResponse<bool> response = Execute<bool>(request);
+			return response.Data;
+
+		}
+
 
 		public async Task<List<JourneyRouteLocation>> GetJourneyRouteLocationsAsync(long journeyId)
 		{
