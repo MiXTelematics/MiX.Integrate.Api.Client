@@ -5,6 +5,7 @@ using MiX.Integrate.Shared.Entities.Events;
 using System.Threading.Tasks;
 using MiX.Integrate.Api.Client.Base;
 using System.Net.Http;
+using MiX.Integrate.Shared.Entities.Carriers;
 
 namespace MiX.Integrate.Api.Client
 {
@@ -57,5 +58,98 @@ namespace MiX.Integrate.Api.Client
 			IHttpRestResponse<List<ActiveEvent>> response = await ExecuteAsync<List<ActiveEvent>>(request).ConfigureAwait(false);
 			return response.Data;
 		}
+
+		public CreatedSinceResult<ActiveEvent> GetCreatedSinceForAssets(List<long> assetIds, string sinceToken, int quantity)
+		{
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.ACTIVEEVENTSCONTROLLER.GETCREATEDSINCEFORASSETSASYNC, HttpMethod.Post);
+			request.AddUrlSegment("sinceToken", sinceToken);
+			request.AddUrlSegment("quantity", quantity.ToString());
+			request.AddJsonBody(assetIds);
+			IHttpRestResponse<List<ActiveEvent>> response = Execute<List<ActiveEvent>>(request);
+			string sHasMoreItems = GetResponseHeader(response.Headers, "HasMoreItems");
+			string getSinceToken = GetResponseHeader(response.Headers, "GetSinceToken");
+			bool hasMoreItems = false;
+			if (!bool.TryParse(sHasMoreItems, out hasMoreItems))
+				throw new Exception("Could not read the HasMoreItems header");
+			return new CreatedSinceResult<ActiveEvent>() { HasMoreItems = hasMoreItems, GetSinceToken = getSinceToken, Items = response.Data };
+		}
+
+		public async Task<CreatedSinceResult<ActiveEvent>> GetCreatedSinceForAssetsAsync(List<long> assetIds, string sinceToken, int quantity)
+		{
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.ACTIVEEVENTSCONTROLLER.GETCREATEDSINCEFORASSETSASYNC, HttpMethod.Post);
+			request.AddUrlSegment("sinceToken", sinceToken);
+			request.AddUrlSegment("quantity", quantity.ToString());
+			request.AddJsonBody(assetIds);
+			IHttpRestResponse<List<ActiveEvent>> response = await ExecuteAsync<List<ActiveEvent>>(request).ConfigureAwait(false);
+			string sHasMoreItems = GetResponseHeader(response.Headers, "HasMoreItems");
+			string getSinceToken = GetResponseHeader(response.Headers, "GetSinceToken");
+			bool hasMoreItems = false;
+			if (!bool.TryParse(sHasMoreItems, out hasMoreItems))
+				throw new Exception("Could not read the HasMoreItems header");
+			return new CreatedSinceResult<ActiveEvent>() { HasMoreItems = hasMoreItems, GetSinceToken = getSinceToken, Items = response.Data };
+		}
+
+		public CreatedSinceResult<ActiveEvent> GetCreatedSinceForDrivers(List<long> driverIds, string sinceToken, int quantity)
+		{
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.ACTIVEEVENTSCONTROLLER.GETCREATEDSINCEFORDRIVERSASYNC, HttpMethod.Post);
+			request.AddUrlSegment("sinceToken", sinceToken);
+			request.AddUrlSegment("quantity", quantity.ToString());
+			request.AddJsonBody(driverIds);
+			IHttpRestResponse<List<ActiveEvent>> response = Execute<List<ActiveEvent>>(request);
+			string sHasMoreItems = GetResponseHeader(response.Headers, "HasMoreItems");
+			string getSinceToken = GetResponseHeader(response.Headers, "GetSinceToken");
+			bool hasMoreItems = false;
+			if (!bool.TryParse(sHasMoreItems, out hasMoreItems))
+				throw new Exception("Could not read the HasMoreItems header");
+			return new CreatedSinceResult<ActiveEvent>() { HasMoreItems = hasMoreItems, GetSinceToken = getSinceToken, Items = response.Data };
+		}
+
+		public async Task<CreatedSinceResult<ActiveEvent>> GetCreatedSinceForDriversAsync(List<long> driverIds, string sinceToken, int quantity)
+		{
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.ACTIVEEVENTSCONTROLLER.GETCREATEDSINCEFORDRIVERSASYNC, HttpMethod.Post);
+			request.AddUrlSegment("sinceToken", sinceToken);
+			request.AddUrlSegment("quantity", quantity.ToString());
+			request.AddJsonBody(driverIds);
+			IHttpRestResponse<List<ActiveEvent>> response = await ExecuteAsync<List<ActiveEvent>>(request).ConfigureAwait(false);
+			string sHasMoreItems = GetResponseHeader(response.Headers, "HasMoreItems");
+			string getSinceToken = GetResponseHeader(response.Headers, "GetSinceToken");
+			bool hasMoreItems = false;
+			if (!bool.TryParse(sHasMoreItems, out hasMoreItems))
+				throw new Exception("Could not read the HasMoreItems header");
+			return new CreatedSinceResult<ActiveEvent>() { HasMoreItems = hasMoreItems, GetSinceToken = getSinceToken, Items = response.Data };
+		}
+
+		public CreatedSinceResult<ActiveEvent> GetCreatedSinceForGroups(List<long> groupIds, string entityType, string sinceToken, int quantity)
+		{
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.ACTIVEEVENTSCONTROLLER.GETCREATEDSINCEFORGROUPSASYNC, HttpMethod.Post);
+			request.AddUrlSegment("entityType", entityType);
+			request.AddUrlSegment("sinceToken", sinceToken);
+			request.AddUrlSegment("quantity", quantity.ToString());
+			request.AddJsonBody(groupIds);
+			IHttpRestResponse<List<ActiveEvent>> response = Execute<List<ActiveEvent>>(request);
+			string sHasMoreItems = GetResponseHeader(response.Headers, "HasMoreItems");
+			string getSinceToken = GetResponseHeader(response.Headers, "GetSinceToken");
+			bool hasMoreItems = false;
+			if (!bool.TryParse(sHasMoreItems, out hasMoreItems))
+				throw new Exception("Could not read the HasMoreItems header");
+			return new CreatedSinceResult<ActiveEvent>() { HasMoreItems = hasMoreItems, GetSinceToken = getSinceToken, Items = response.Data };
+		}
+
+		public async Task<CreatedSinceResult<ActiveEvent>> GetCreatedSinceForGroupsAsync(List<long> groupIds, string entityType, string sinceToken, int quantity)
+		{
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.ACTIVEEVENTSCONTROLLER.GETCREATEDSINCEFORGROUPSASYNC, HttpMethod.Post);
+			request.AddUrlSegment("entityType", entityType);
+			request.AddUrlSegment("sinceToken", sinceToken);
+			request.AddUrlSegment("quantity", quantity.ToString());
+			request.AddJsonBody(groupIds);
+			IHttpRestResponse<List<ActiveEvent>> response = await ExecuteAsync<List<ActiveEvent>>(request).ConfigureAwait(false);
+			string sHasMoreItems = GetResponseHeader(response.Headers, "HasMoreItems");
+			string getSinceToken = GetResponseHeader(response.Headers, "GetSinceToken");
+			bool hasMoreItems = false;
+			if (!bool.TryParse(sHasMoreItems, out hasMoreItems))
+				throw new Exception("Could not read the HasMoreItems header");
+			return new CreatedSinceResult<ActiveEvent>() { HasMoreItems = hasMoreItems, GetSinceToken = getSinceToken, Items = response.Data };
+		}
+
 	}
 }
