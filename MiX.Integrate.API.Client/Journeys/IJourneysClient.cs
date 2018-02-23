@@ -28,6 +28,7 @@ namespace MiX.Integrate.Api.Client.Journeys
 		List<JourneyAssetDriver> GetJourneyAssetsAndDrivers(long journeyId);
 		bool UpdateJourneyAssetDrivers(long journeyId, List<JourneyAssetDriver> journeyAssetDriver);
 		bool RemoveJourney(long journeyId);
+		bool CancelJourney(long journeyId);
 		List<JourneyRouteLocation> GetJourneyRouteLocations(long journeyId);
 	}
 }
