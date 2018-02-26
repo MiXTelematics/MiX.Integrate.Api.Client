@@ -16,6 +16,10 @@ namespace MiX.Integrate.Shared.Constants
 			public const string GETLATESTFORGROUP = "api/activeevents/group/{groupId}/latest/{quantity}";
 			public const string GETLATESTPERASSETINGROUP = "api/activeevents/group/{groupId}/latestperasset/{quantity}";
 			public const string GETRANGEFORASSETS = "api/activeevents/assets/from/{from}/to/{to}";
+
+			public const string GETCREATEDSINCEFORGROUPSASYNC = "api/activeevents/groups/createdsince/entitytype/{entityType}/sincetoken/{sinceToken}/quantity/{quantity}";
+			public const string GETCREATEDSINCEFORASSETSASYNC = "api/activeevents/assets/createdsince/sincetoken/{sinceToken}/quantity/{quantity}";
+			public const string GETCREATEDSINCEFORDRIVERSASYNC = "api/activeevents/drivers/createdsince/sincetoken/{sinceToken}/quantity/{quantity}";
 		}
 
 		//MiX.Integrate.Api.Controllers.DriversControllerpublic 
