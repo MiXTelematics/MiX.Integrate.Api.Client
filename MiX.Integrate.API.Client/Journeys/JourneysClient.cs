@@ -324,6 +324,68 @@ namespace MiX.Integrate.Api.Client.Journeys
 			return response.Data;
 		}
 
-			#endregion
+		public async Task<int> UpdateJourneyAssetPassengersAsync(long journeyId, JourneyAssetAndPassengerData journeyAssetAndPassengerData)
+		{
+
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.JOURNEYSCONTROLLER.UPDATEJOURNEYASSETPASSENGERASYNC, HttpMethod.Post);
+			request.AddUrlSegment("journeyId", journeyId.ToString());
+			request.AddJsonBody(journeyAssetAndPassengerData);
+			IHttpRestResponse<int> response = await ExecuteAsync<int>(request).ConfigureAwait(false);
+			return response.Data;
+
 		}
+
+		public int UpdateJourneyAssetPassengers(long journeyId, JourneyAssetAndPassengerData journeyAssetAndPassengerData)
+		{
+
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.JOURNEYSCONTROLLER.UPDATEJOURNEYASSETPASSENGERASYNC, HttpMethod.Post);
+			request.AddUrlSegment("journeyId", journeyId.ToString());
+			request.AddJsonBody(journeyAssetAndPassengerData);
+			IHttpRestResponse<int> response = Execute<int>(request);
+			return response.Data;
+
+		}
+
+		public async Task<int> RemoveJourneyAssetPassengersAsync(long journeyId, JourneyAssetAndPassengerData journeyAssetAndPassengerData)
+		{
+
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.JOURNEYSCONTROLLER.REMOVEJOURNEYASSETPASSENGERASYNC, HttpMethod.Post);
+			request.AddUrlSegment("journeyId", journeyId.ToString());
+			request.AddJsonBody(journeyAssetAndPassengerData);
+			IHttpRestResponse<int> response = await ExecuteAsync<int>(request).ConfigureAwait(false);
+			return response.Data;
+
+		}
+
+		public  int RemoveJourneyAssetPassengers(long journeyId, JourneyAssetAndPassengerData journeyAssetAndPassengerData)
+		{
+
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.JOURNEYSCONTROLLER.REMOVEJOURNEYASSETPASSENGERASYNC, HttpMethod.Post);
+			request.AddUrlSegment("journeyId", journeyId.ToString());
+			request.AddJsonBody(journeyAssetAndPassengerData);
+			IHttpRestResponse<int> response =  Execute<int>(request);
+			return response.Data;
+
+		}
+
+		public async Task<JourneyAssetAndPassengerData> GetJourneyAssetPassengersAsync(long journeyId)
+		{
+
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.JOURNEYSCONTROLLER.GETJOURNEYASSETPASSENGERASYNC, HttpMethod.Get);
+			request.AddUrlSegment("journeyId", journeyId.ToString());
+			IHttpRestResponse<JourneyAssetAndPassengerData> response = await ExecuteAsync<JourneyAssetAndPassengerData>(request).ConfigureAwait(false);
+			return response.Data;
+		}
+
+		public JourneyAssetAndPassengerData GetJourneyAssetPassengers(long journeyId)
+		{
+
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.JOURNEYSCONTROLLER.GETJOURNEYASSETPASSENGERASYNC, HttpMethod.Get);
+			request.AddUrlSegment("journeyId", journeyId.ToString());
+			IHttpRestResponse<JourneyAssetAndPassengerData> response = Execute<JourneyAssetAndPassengerData>(request);
+			return response.Data;
+		}
+
+		#endregion
+	}
 	}
