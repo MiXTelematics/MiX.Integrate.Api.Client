@@ -33,5 +33,13 @@ namespace MiX.Integrate.Api.Client.Journeys
 		List<JourneyRouteLocation> GetJourneyRouteLocations(long journeyId);
 		Task<bool> SubmitJourneyAsync(long journeyId);
 		bool SubmitJourney(long journeyId);
+
+		Task<int> UpdateJourneyAssetPassengersAsync(long journeyId, JourneyAssetAndPassengerData journeyAssetAndPassengerData);
+		int UpdateJourneyAssetPassengers(long journeyId, JourneyAssetAndPassengerData journeyAssetAndPassengerData);
+		Task<int> RemoveJourneyAssetPassengersAsync(long journeyId, JourneyAssetAndPassengerData journeyAssetAndPassengerData);
+		int RemoveJourneyAssetPassengers(long journeyId, JourneyAssetAndPassengerData journeyAssetAndPassengerData);
+		Task<JourneyAssetAndPassengerData> GetJourneyAssetPassengersAsync(long journeyId);
+		JourneyAssetAndPassengerData GetJourneyAssetPassengers(long journeyId);
+		
 	}
 }
