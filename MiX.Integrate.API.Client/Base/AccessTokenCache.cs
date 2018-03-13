@@ -2,11 +2,11 @@ using IdentityModel.Client;
 using MiX.Identity.Client;
 using System;
 using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace MiX.Integrate.Api.Client.Base
-{
-	public static class AccessTokenCache
+{ 
 	public static class AccessTokenCache
     {
         private static Dictionary<int, TokenResponse> _idServerAccessTokens = new Dictionary<int, TokenResponse>();
@@ -36,7 +36,7 @@ namespace MiX.Integrate.Api.Client.Base
                 {
                     IdentityClient identityClient = new IdentityClient(settings.BaseAddress, settings.ClientId, settings.ClientSecret);
 
-                    TokenResponse reponse = await identityClient.RequestTokenAsync(settings.UserName, settings.Password, settings.Scopes);
+                    TokenResponse reponse = await identityClient.RequestTokenAsync(settings.UserName, settings.Password, settings.Scopes).ConfigureAwait(false);
 
                     if (reponse == null || string.IsNullOrEmpty(reponse.AccessToken))
                     {
