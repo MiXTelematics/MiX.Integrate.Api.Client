@@ -16,6 +16,10 @@ namespace MiX.Integrate.Shared.Constants
 			public const string GETLATESTFORGROUP = "api/activeevents/group/{groupId}/latest/{quantity}";
 			public const string GETLATESTPERASSETINGROUP = "api/activeevents/group/{groupId}/latestperasset/{quantity}";
 			public const string GETRANGEFORASSETS = "api/activeevents/assets/from/{from}/to/{to}";
+
+			public const string GETCREATEDSINCEFORGROUPSASYNC = "api/activeevents/groups/createdsince/entitytype/{entityType}/sincetoken/{sinceToken}/quantity/{quantity}";
+			public const string GETCREATEDSINCEFORASSETSASYNC = "api/activeevents/assets/createdsince/sincetoken/{sinceToken}/quantity/{quantity}";
+			public const string GETCREATEDSINCEFORDRIVERSASYNC = "api/activeevents/drivers/createdsince/sincetoken/{sinceToken}/quantity/{quantity}";
 		}
 
 		//MiX.Integrate.Api.Controllers.DriversControllerpublic 
@@ -150,6 +154,12 @@ namespace MiX.Integrate.Shared.Constants
 			public const string GETJOURNEYROUTE = "api/journeys/routes/{groupId}";
 			public const string GETJOURNEYPROGRESS = "api/journeys/progress/{journeyId}";
 			public const string GETJOURNEYINPROGRESSCURRENTSTATUS = "api/journeys/inprogress/currentstatus/{groupId}";
+			public const string GETJOURNEYROUTELOCATIONSASYNC = "api/journeys/getJourneyRouteLocations/{journeyId}";
+			public const string REMOVEJOURNEYASYNC = "api/journeys/removeJourney/{journeyId}";
+			public const string UPDATEJOURNEYASSETDRIVERSASYNC = "api/journeys/updateJourneyAssetDrivers/{journeyId}";
+			public const string GETJOURNEYASSETSANDDRIVERSASYNC = "api/journeys/getJourneyAssetsAndDrivers/{journeyId}";
+			public const string SUBMITJOURNEY = "api/journeys/submitJourneyAsync/{journeyId}";
+
 		}
 
 		//MiX.Integrate.Api.Controllers.LocationsController

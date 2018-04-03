@@ -202,6 +202,108 @@ namespace MiX.Integrate.Api.Client.Journeys
 			return response.Data;
 		}
 
-		#endregion
+
+		public List<JourneyAssetDriver> GetJourneyAssetsAndDrivers(long journeyId)
+		{
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.JOURNEYSCONTROLLER.GETJOURNEYASSETSANDDRIVERSASYNC, HttpMethod.Get);
+			request.AddUrlSegment("journeyId", journeyId.ToString());
+			IHttpRestResponse<List<JourneyAssetDriver>> response =  Execute<List<JourneyAssetDriver>>(request);
+			return response.Data;
+
+		}
+
+		public async Task<List<JourneyAssetDriver>> GetJourneyAssetsAndDriversAsync(long journeyId)
+		{
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.JOURNEYSCONTROLLER.GETJOURNEYASSETSANDDRIVERSASYNC, HttpMethod.Get);
+			request.AddUrlSegment("journeyId", journeyId.ToString());
+			IHttpRestResponse<List<JourneyAssetDriver>> response = await ExecuteAsync<List<JourneyAssetDriver>>(request).ConfigureAwait(false);
+			return response.Data;
+					
+		}
+
+		public bool UpdateJourneyAssetDrivers(long journeyId, List<JourneyAssetDriver> journeyAssetDriver)
+		{
+
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.JOURNEYSCONTROLLER.UPDATEJOURNEYASSETDRIVERSASYNC, HttpMethod.Put);
+			request.AddUrlSegment("journeyId", journeyId.ToString());
+			request.AddJsonBody(journeyAssetDriver);
+			IHttpRestResponse<bool> response = Execute<bool>(request);
+			return response.Data;
+
+		}
+
+		public async Task<bool> UpdateJourneyAssetDriversAsync(long journeyId, List<JourneyAssetDriver> journeyAssetDriver)
+		{
+
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.JOURNEYSCONTROLLER.UPDATEJOURNEYASSETDRIVERSASYNC, HttpMethod.Put);
+			request.AddUrlSegment("journeyId", journeyId.ToString());
+			request.AddJsonBody(journeyAssetDriver);
+			IHttpRestResponse<bool> response = await ExecuteAsync<bool>(request).ConfigureAwait(false);
+			return response.Data;
+			
+		}
+
+
+		public async Task<bool> RemoveJourneyAsync(long journeyId)
+		{
+
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.JOURNEYSCONTROLLER.REMOVEJOURNEYASYNC, HttpMethod.Delete);
+			request.AddUrlSegment("journeyId", journeyId.ToString());
+			IHttpRestResponse<bool> response = await ExecuteAsync<bool>(request).ConfigureAwait(false);
+			return response.Data;
+
+		}
+
+		public bool RemoveJourney(long journeyId)
+		{
+
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.JOURNEYSCONTROLLER.REMOVEJOURNEYASYNC, HttpMethod.Delete);
+			request.AddUrlSegment("journeyId", journeyId.ToString());
+			IHttpRestResponse<bool> response = Execute<bool>(request);
+			return response.Data;
+
+		}
+
+
+		public async Task<List<JourneyRouteLocation>> GetJourneyRouteLocationsAsync(long journeyId)
+		{
+
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.JOURNEYSCONTROLLER.GETJOURNEYROUTELOCATIONSASYNC, HttpMethod.Get);
+			request.AddUrlSegment("journeyId", journeyId.ToString());
+			IHttpRestResponse<List<JourneyRouteLocation>> response = await ExecuteAsync<List<JourneyRouteLocation>>(request).ConfigureAwait(false);
+			return response.Data;
+		
+		}
+
+		public List<JourneyRouteLocation> GetJourneyRouteLocations(long journeyId)
+		{
+
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.JOURNEYSCONTROLLER.GETJOURNEYROUTELOCATIONSASYNC, HttpMethod.Get);
+			request.AddUrlSegment("journeyId", journeyId.ToString());
+			IHttpRestResponse<List<JourneyRouteLocation>> response = Execute<List<JourneyRouteLocation>>(request);
+			return response.Data;
+
+		}
+
+		public async Task<bool> SubmitJourneyAsync(long journeyId)
+		{
+
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.JOURNEYSCONTROLLER.SUBMITJOURNEY, HttpMethod.Put);
+			request.AddUrlSegment("journeyId", journeyId.ToString());
+			IHttpRestResponse<bool> response = await ExecuteAsync<bool>(request).ConfigureAwait(false);
+			return response.Data;
+
+		}
+
+		public bool SubmitJourney(long journeyId)
+		{
+
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.JOURNEYSCONTROLLER.SUBMITJOURNEY, HttpMethod.Put);
+			request.AddUrlSegment("journeyId", journeyId.ToString());
+			IHttpRestResponse<bool> response = Execute<bool>(request);
+			return response.Data;
+		}
+
+			#endregion
+		}
 	}
-}

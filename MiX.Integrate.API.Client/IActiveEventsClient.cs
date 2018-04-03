@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using MiX.Integrate.Shared.Entities.Events;
 using System.Threading.Tasks;
 using MiX.Integrate.Api.Client.Base;
+using MiX.Integrate.Shared.Entities.Carriers;
 
 namespace MiX.Integrate.Api.Client
 {
@@ -37,5 +38,13 @@ namespace MiX.Integrate.Api.Client
 		/// <param name="eventTypeIds">(Optional) A list of event type ids to use in filtering the results</param>
 		/// <returns>A list of active events in the specified data range for the specified assets</returns>
 		Task<List<ActiveEvent>> GetRangeForAssetsAsync(List<long> assetIds, DateTime from, DateTime to, List<long> eventTypeIds = null);
+
+		CreatedSinceResult<ActiveEvent> GetCreatedSinceForAssets(List<long> assetIds, string sinceToken, int quantity);
+		Task<CreatedSinceResult<ActiveEvent>> GetCreatedSinceForAssetsAsync(List<long> assetIds, string sinceToken, int quantity);
+		CreatedSinceResult<ActiveEvent> GetCreatedSinceForDrivers(List<long> assetIds, string sinceToken, int quantity);
+		Task<CreatedSinceResult<ActiveEvent>> GetCreatedSinceForDriversAsync(List<long> driverIds, string sinceToken, int quantity);
+		CreatedSinceResult<ActiveEvent> GetCreatedSinceForGroups(List<long> groupIds, string entityType, string sinceToken, int quantity);
+		Task<CreatedSinceResult<ActiveEvent>> GetCreatedSinceForGroupsAsync(List<long> groupIds, string entityType, string sinceToken, int quantity);
+
 	}
 }
