@@ -19,8 +19,8 @@ namespace MiX.Integrate.Api.Client
 		{
 			EventFilter eventFilter = new EventFilter() { EntityIds = assetIds, EventTypeIds = eventTypeIds };
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.ACTIVEEVENTSCONTROLLER.GETRANGEFORASSETS, HttpMethod.Post);
-			request.AddUrlSegment("from", from.ToUniversalTime().ToString(DataFormats.DateTime_Format));
-			request.AddUrlSegment("to", to.ToUniversalTime().ToString(DataFormats.DateTime_Format));
+			request.AddUrlSegment("from", from.ToString(DataFormats.DateTime_Format));
+			request.AddUrlSegment("to", to.ToString(DataFormats.DateTime_Format));
 			request.AddJsonBody(eventFilter);
 			IHttpRestResponse<List<ActiveEvent>> response = Execute<List<ActiveEvent>>(request);
 			return response.Data;
@@ -41,8 +41,8 @@ namespace MiX.Integrate.Api.Client
 		{
 			EventFilter eventFilter = new EventFilter() { EntityIds = assetIds, EventTypeIds = eventTypeIds };
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.ACTIVEEVENTSCONTROLLER.GETRANGEFORASSETS, HttpMethod.Post);
-			request.AddUrlSegment("from", from.ToUniversalTime().ToString(DataFormats.DateTime_Format));
-			request.AddUrlSegment("to", to.ToUniversalTime().ToString(DataFormats.DateTime_Format));
+			request.AddUrlSegment("from", from.ToString(DataFormats.DateTime_Format));
+			request.AddUrlSegment("to", to.ToString(DataFormats.DateTime_Format));
 			request.AddJsonBody(eventFilter);
 			IHttpRestResponse<List<ActiveEvent>> response = await ExecuteAsync<List<ActiveEvent>>(request).ConfigureAwait(false);
 			return response.Data;
