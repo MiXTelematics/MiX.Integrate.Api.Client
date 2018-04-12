@@ -62,7 +62,7 @@ namespace MiX.Integrate.Api.Client
 		public List<Position> GetSinceByAssetIds(List<long> assetIds, DateTime since)
 		{
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.POSITIONSCONTROLLER.GETSINCEFORASSETS, HttpMethod.Post);
-			request.AddUrlSegment("since", since.ToUniversalTime().ToString(DataFormats.DateTime_Format));
+			request.AddUrlSegment("since", since.ToString(DataFormats.DateTime_Format));
 			request.AddJsonBody(assetIds);
 			IHttpRestResponse<List<Position>> response = Execute<List<Position>>(request);
 			return response.Data;
@@ -71,7 +71,7 @@ namespace MiX.Integrate.Api.Client
 		public async Task<List<Position>> GetSinceByAssetIdsAsync(List<long> assetIds, DateTime since)
 		{
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.POSITIONSCONTROLLER.GETSINCEFORASSETS, HttpMethod.Post);
-			request.AddUrlSegment("since", since.ToUniversalTime().ToString(DataFormats.DateTime_Format));
+			request.AddUrlSegment("since", since.ToString(DataFormats.DateTime_Format));
 			request.AddJsonBody(assetIds);
 			IHttpRestResponse<List<Position>> response = await ExecuteAsync<List<Position>>(request).ConfigureAwait(false);
 			return response.Data;
@@ -80,8 +80,8 @@ namespace MiX.Integrate.Api.Client
 		public List<Position> GetByDateRangeByAssetIds(List<long> assetIds, DateTime fromDate, DateTime toDate)
 		{
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.POSITIONSCONTROLLER.GETRANGEFORASSETS, HttpMethod.Post);
-			request.AddUrlSegment("from", fromDate.ToUniversalTime().ToString(DataFormats.DateTime_Format));
-			request.AddUrlSegment("to", toDate.ToUniversalTime().ToString(DataFormats.DateTime_Format));
+			request.AddUrlSegment("from", fromDate.ToString(DataFormats.DateTime_Format));
+			request.AddUrlSegment("to", toDate.ToString(DataFormats.DateTime_Format));
 			request.AddJsonBody(assetIds);
 			IHttpRestResponse<List<Position>> response = Execute<List<Position>>(request);
 			return response.Data;
@@ -90,8 +90,8 @@ namespace MiX.Integrate.Api.Client
 		public async Task<List<Position>> GetByDateRangeByAssetIdsAsync(List<long> assetIds, DateTime fromDate, DateTime toDate)
 		{
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.POSITIONSCONTROLLER.GETRANGEFORASSETS, HttpMethod.Post);
-			request.AddUrlSegment("from", fromDate.ToUniversalTime().ToString(DataFormats.DateTime_Format));
-			request.AddUrlSegment("to", toDate.ToUniversalTime().ToString(DataFormats.DateTime_Format));
+			request.AddUrlSegment("from", fromDate.ToString(DataFormats.DateTime_Format));
+			request.AddUrlSegment("to", toDate.ToString(DataFormats.DateTime_Format));
 			request.AddJsonBody(assetIds);
 			IHttpRestResponse<List<Position>> response = await ExecuteAsync<List<Position>>(request).ConfigureAwait(false);
 			return response.Data;
@@ -100,8 +100,8 @@ namespace MiX.Integrate.Api.Client
 		public List<Position> GetByDateRangeByGroupIds(List<long> groupIds, DateTime fromDate, DateTime toDate)
 		{
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.POSITIONSCONTROLLER.GETRANGEFORGROUPS, HttpMethod.Post);
-			request.AddUrlSegment("from", fromDate.ToUniversalTime().ToString(DataFormats.DateTime_Format));
-			request.AddUrlSegment("to", toDate.ToUniversalTime().ToString(DataFormats.DateTime_Format));
+			request.AddUrlSegment("from", fromDate.ToString(DataFormats.DateTime_Format));
+			request.AddUrlSegment("to", toDate.ToString(DataFormats.DateTime_Format));
 			request.AddJsonBody(groupIds);
 			IHttpRestResponse<List<Position>> response = Execute<List<Position>>(request);
 			return response.Data;
@@ -110,8 +110,8 @@ namespace MiX.Integrate.Api.Client
 		public async Task<List<Position>> GetByDateRangeByGroupIdsAsync(List<long> groupIds, DateTime fromDate, DateTime toDate)
 		{
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.POSITIONSCONTROLLER.GETRANGEFORGROUPS, HttpMethod.Post);
-			request.AddUrlSegment("from", fromDate.ToUniversalTime().ToString(DataFormats.DateTime_Format));
-			request.AddUrlSegment("to", toDate.ToUniversalTime().ToString(DataFormats.DateTime_Format));
+			request.AddUrlSegment("from", fromDate.ToString(DataFormats.DateTime_Format));
+			request.AddUrlSegment("to", toDate.ToString(DataFormats.DateTime_Format));
 			request.AddJsonBody(groupIds);
 			IHttpRestResponse<List<Position>> response = await ExecuteAsync<List<Position>>(request).ConfigureAwait(false);
 			return response.Data;
@@ -120,8 +120,8 @@ namespace MiX.Integrate.Api.Client
 		public List<Position> GetByDateRangeByDriverIds(List<long> driverIds, DateTime fromDate, DateTime toDate)
 		{
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.POSITIONSCONTROLLER.GETRANGEFORDRIVERS, HttpMethod.Post);
-			request.AddUrlSegment("from", fromDate.ToUniversalTime().ToString(DataFormats.DateTime_Format));
-			request.AddUrlSegment("to", toDate.ToUniversalTime().ToString(DataFormats.DateTime_Format));
+			request.AddUrlSegment("from", fromDate.ToString(DataFormats.DateTime_Format));
+			request.AddUrlSegment("to", toDate.ToString(DataFormats.DateTime_Format));
 			request.AddJsonBody(driverIds);
 			IHttpRestResponse<List<Position>> response = Execute<List<Position>>(request);
 			return response.Data;
@@ -130,8 +130,8 @@ namespace MiX.Integrate.Api.Client
 		public async Task<List<Position>> GetByDateRangeByDriverIdsAsync(List<long> driverIds, DateTime fromDate, DateTime toDate)
 		{
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.POSITIONSCONTROLLER.GETRANGEFORDRIVERS, HttpMethod.Post);
-			request.AddUrlSegment("from", fromDate.ToUniversalTime().ToString(DataFormats.DateTime_Format));
-			request.AddUrlSegment("to", toDate.ToUniversalTime().ToString(DataFormats.DateTime_Format));
+			request.AddUrlSegment("from", fromDate.ToString(DataFormats.DateTime_Format));
+			request.AddUrlSegment("to", toDate.ToString(DataFormats.DateTime_Format));
 			request.AddJsonBody(driverIds);
 			IHttpRestResponse<List<Position>> response = await ExecuteAsync<List<Position>>(request).ConfigureAwait(false);
 			return response.Data;
