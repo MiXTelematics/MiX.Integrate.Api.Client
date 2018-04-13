@@ -17,8 +17,8 @@ namespace MiX.Integrate.Api.Client
     {
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.FUELCONTROLLER.GETFUELBYDATERANGEFORGROUP, HttpMethod.Get);
 			request.AddUrlSegment("organisationId", organisationId.ToString());
-      request.AddUrlSegment("from", from.ToUniversalTime().ToString(DataFormats.DateTime_Format));
-      request.AddUrlSegment("to", to.ToUniversalTime().ToString(DataFormats.DateTime_Format));
+      request.AddUrlSegment("from", from.ToString(DataFormats.DateTime_Format));
+      request.AddUrlSegment("to", to.ToString(DataFormats.DateTime_Format));
 			IHttpRestResponse<List<FuelTransaction>> response = await ExecuteAsync<List<FuelTransaction>>(request).ConfigureAwait(false);
 			return response.Data;
 		}
@@ -27,8 +27,8 @@ namespace MiX.Integrate.Api.Client
     {
       IHttpRestRequest request = GetRequest(APIControllerRoutes.FUELCONTROLLER.GETFUELBYDATERANGEFORGROUP, HttpMethod.Get);
       request.AddUrlSegment("organisationId", organisationId.ToString());
-      request.AddUrlSegment("from", from.ToUniversalTime().ToString(DataFormats.DateTime_Format));
-      request.AddUrlSegment("to", to.ToUniversalTime().ToString(DataFormats.DateTime_Format));
+      request.AddUrlSegment("from", from.ToString(DataFormats.DateTime_Format));
+      request.AddUrlSegment("to", to.ToString(DataFormats.DateTime_Format));
       IHttpRestResponse<List<FuelTransaction>> response = Execute<List<FuelTransaction>>(request);
       return response.Data;
     }
