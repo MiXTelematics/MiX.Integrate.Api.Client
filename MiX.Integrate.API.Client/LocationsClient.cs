@@ -140,7 +140,7 @@ namespace MiX.Integrate.Api.Client
 		{
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.LOCATIONSCONTROLLER.CHANGEDSINCE, HttpMethod.Get);
 			request.AddUrlSegment("organisationId", organisationId.ToString());
-			request.AddUrlSegment("since", $"{since.ToUniversalTime():yyyyMMddHHmmss}");
+			request.AddUrlSegment("since", $"{since:yyyyMMddHHmmss}");
 			IHttpRestResponse<List<Location>> response = Execute<List<Location>>(request);
 			return response.Data;
 		}
@@ -150,7 +150,7 @@ namespace MiX.Integrate.Api.Client
 		{
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.LOCATIONSCONTROLLER.CHANGEDSINCE, HttpMethod.Get);
 			request.AddUrlSegment("organisationId", organisationId.ToString());
-			request.AddUrlSegment("since", $"{since.ToUniversalTime():yyyyMMddHHmmss}");
+			request.AddUrlSegment("since", $"{since:yyyyMMddHHmmss}");
 			IHttpRestResponse<List<Location>> response = await ExecuteAsync<List<Location>>(request).ConfigureAwait(false);
 			return response.Data;
 		}

@@ -103,8 +103,8 @@ namespace MiX.Integrate.Api.Client
 		public IList<Trip> GetRangeForAssets(List<long> assetIds, DateTime from, DateTime to, bool includeSubTrips = false)
 		{
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.TRIPSCONTROLLER.GETRANGEFORASSETS, HttpMethod.Post);
-			request.AddUrlSegment("from", from.ToUniversalTime().ToString(DataFormats.DateTime_Format));
-			request.AddUrlSegment("to", to.ToUniversalTime().ToString(DataFormats.DateTime_Format));
+			request.AddUrlSegment("from", from.ToString(DataFormats.DateTime_Format));
+			request.AddUrlSegment("to", to.ToString(DataFormats.DateTime_Format));
 			request.AddQueryParameter("includeSubTrips", includeSubTrips.ToString());
 			request.AddJsonBody(assetIds);
 			IHttpRestResponse<List<Trip>> response = Execute<List<Trip>>(request);
@@ -114,8 +114,8 @@ namespace MiX.Integrate.Api.Client
 		public async Task<IList<Trip>> GetRangeForAssetsAsync(List<long> assetIds, DateTime from, DateTime to, bool includeSubTrips = false)
 		{
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.TRIPSCONTROLLER.GETRANGEFORASSETS, HttpMethod.Post);
-			request.AddUrlSegment("from", from.ToUniversalTime().ToString(DataFormats.DateTime_Format));
-			request.AddUrlSegment("to", to.ToUniversalTime().ToString(DataFormats.DateTime_Format));
+			request.AddUrlSegment("from", from.ToString(DataFormats.DateTime_Format));
+			request.AddUrlSegment("to", to.ToString(DataFormats.DateTime_Format));
 			request.AddQueryParameter("includeSubTrips", includeSubTrips.ToString());
 			request.AddJsonBody(assetIds);
 			IHttpRestResponse<List<Trip>> response = await ExecuteAsync<List<Trip>>(request).ConfigureAwait(false);
@@ -125,8 +125,8 @@ namespace MiX.Integrate.Api.Client
 		public IList<Trip> GetRangeForDrivers(List<long> driverIds, DateTime from, DateTime to, bool includeSubTrips = false)
 		{
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.TRIPSCONTROLLER.GETRANGEFORDRIVERS, HttpMethod.Post);
-			request.AddUrlSegment("from", from.ToUniversalTime().ToString(DataFormats.DateTime_Format));
-			request.AddUrlSegment("to", to.ToUniversalTime().ToString(DataFormats.DateTime_Format));
+			request.AddUrlSegment("from", from.ToString(DataFormats.DateTime_Format));
+			request.AddUrlSegment("to", to.ToString(DataFormats.DateTime_Format));
 			request.AddQueryParameter("includeSubTrips", includeSubTrips.ToString());
 			request.AddJsonBody(driverIds);
 			IHttpRestResponse<List<Trip>> response = Execute<List<Trip>>(request);
@@ -136,8 +136,8 @@ namespace MiX.Integrate.Api.Client
 		public async Task<IList<Trip>> GetRangeForDriversAsync(List<long> driverIds, DateTime from, DateTime to, bool includeSubTrips = false)
 		{
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.TRIPSCONTROLLER.GETRANGEFORDRIVERS, HttpMethod.Post);
-			request.AddUrlSegment("from", from.ToUniversalTime().ToString(DataFormats.DateTime_Format));
-			request.AddUrlSegment("to", to.ToUniversalTime().ToString(DataFormats.DateTime_Format));
+			request.AddUrlSegment("from", from.ToString(DataFormats.DateTime_Format));
+			request.AddUrlSegment("to", to.ToString(DataFormats.DateTime_Format));
 			request.AddQueryParameter("includeSubTrips", includeSubTrips.ToString());
 			request.AddJsonBody(driverIds);
 			IHttpRestResponse<List<Trip>> response = await ExecuteAsync<List<Trip>>(request).ConfigureAwait(false);
@@ -148,8 +148,8 @@ namespace MiX.Integrate.Api.Client
 		{
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.TRIPSCONTROLLER.GETRANGEFORGROUPS, HttpMethod.Post);
 			request.AddUrlSegment("entityType", entityType);
-			request.AddUrlSegment("from", from.ToUniversalTime().ToString(DataFormats.DateTime_Format));
-			request.AddUrlSegment("to", to.ToUniversalTime().ToString(DataFormats.DateTime_Format));
+			request.AddUrlSegment("from", from.ToString(DataFormats.DateTime_Format));
+			request.AddUrlSegment("to", to.ToString(DataFormats.DateTime_Format));
 			request.AddQueryParameter("includeSubTrips", includeSubTrips.ToString());
 			request.AddJsonBody(groupIds);
 			IHttpRestResponse<List<Trip>> response = Execute<List<Trip>>(request);
@@ -160,8 +160,8 @@ namespace MiX.Integrate.Api.Client
 		{
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.TRIPSCONTROLLER.GETRANGEFORGROUPS, HttpMethod.Post);
 			request.AddUrlSegment("entityType", entityType);
-			request.AddUrlSegment("from", from.ToUniversalTime().ToString(DataFormats.DateTime_Format));
-			request.AddUrlSegment("to", to.ToUniversalTime().ToString(DataFormats.DateTime_Format));
+			request.AddUrlSegment("from", from.ToString(DataFormats.DateTime_Format));
+			request.AddUrlSegment("to", to.ToString(DataFormats.DateTime_Format));
 			request.AddQueryParameter("includeSubTrips", includeSubTrips.ToString());
 			request.AddJsonBody(groupIds);
 			IHttpRestResponse<List<Trip>> response = await ExecuteAsync<List<Trip>>(request).ConfigureAwait(false);
@@ -175,7 +175,7 @@ namespace MiX.Integrate.Api.Client
 		public IList<Trip> GetSinceForAssets(List<long> assetIds, DateTime since, bool includeSubTrips = false)
 		{
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.TRIPSCONTROLLER.GETSINCEFORASSETS, HttpMethod.Post);
-			request.AddUrlSegment("since", since.ToUniversalTime().ToString(DataFormats.DateTime_Format));
+			request.AddUrlSegment("since", since.ToString(DataFormats.DateTime_Format));
 			request.AddQueryParameter("includeSubTrips", includeSubTrips.ToString());
 			request.AddJsonBody(assetIds);
 			IHttpRestResponse<List<Trip>> response = Execute<List<Trip>>(request);
@@ -185,7 +185,7 @@ namespace MiX.Integrate.Api.Client
 		public async Task<IList<Trip>> GetSinceForAssetsAsync(List<long> assetIds, DateTime since, bool includeSubTrips = false)
 		{
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.TRIPSCONTROLLER.GETSINCEFORASSETS, HttpMethod.Post);
-			request.AddUrlSegment("since", since.ToUniversalTime().ToString(DataFormats.DateTime_Format));
+			request.AddUrlSegment("since", since.ToString(DataFormats.DateTime_Format));
 			request.AddQueryParameter("includeSubTrips", includeSubTrips.ToString());
 			request.AddJsonBody(assetIds);
 			IHttpRestResponse<List<Trip>> response = await ExecuteAsync<List<Trip>>(request).ConfigureAwait(false);
@@ -195,7 +195,7 @@ namespace MiX.Integrate.Api.Client
 		public IList<Trip> GetSinceForDrivers(List<long> driverIds, DateTime since, bool includeSubTrips = false)
 		{
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.TRIPSCONTROLLER.GETSINCEFORDRIVERS, HttpMethod.Post);
-			request.AddUrlSegment("since", since.ToUniversalTime().ToString(DataFormats.DateTime_Format));
+			request.AddUrlSegment("since", since.ToString(DataFormats.DateTime_Format));
 			request.AddQueryParameter("includeSubTrips", includeSubTrips.ToString());
 			request.AddJsonBody(driverIds);
 			IHttpRestResponse<List<Trip>> response = Execute<List<Trip>>(request);
@@ -205,7 +205,7 @@ namespace MiX.Integrate.Api.Client
 		public async Task<IList<Trip>> GetSinceForDriversAsync(List<long> driverIds, DateTime since, bool includeSubTrips = false)
 		{
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.TRIPSCONTROLLER.GETSINCEFORDRIVERS, HttpMethod.Post);
-			request.AddUrlSegment("since", since.ToUniversalTime().ToString(DataFormats.DateTime_Format));
+			request.AddUrlSegment("since", since.ToString(DataFormats.DateTime_Format));
 			request.AddQueryParameter("includeSubTrips", includeSubTrips.ToString());
 			request.AddJsonBody(driverIds);
 			IHttpRestResponse<List<Trip>> response = await ExecuteAsync<List<Trip>>(request).ConfigureAwait(false);
@@ -216,7 +216,7 @@ namespace MiX.Integrate.Api.Client
 		{
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.TRIPSCONTROLLER.GETSINCEFORGROUPS, HttpMethod.Post);
 			request.AddUrlSegment("entityType", entityType);
-			request.AddUrlSegment("since", since.ToUniversalTime().ToString(DataFormats.DateTime_Format));
+			request.AddUrlSegment("since", since.ToString(DataFormats.DateTime_Format));
 			request.AddQueryParameter("includeSubTrips", includeSubTrips.ToString());
 			request.AddJsonBody(groupIds);
 			IHttpRestResponse<List<Trip>> response = Execute<List<Trip>>(request);
@@ -227,7 +227,7 @@ namespace MiX.Integrate.Api.Client
 		{
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.TRIPSCONTROLLER.GETSINCEFORGROUPS, HttpMethod.Post);
 			request.AddUrlSegment("entityType", entityType);
-			request.AddUrlSegment("since", since.ToUniversalTime().ToString(DataFormats.DateTime_Format));
+			request.AddUrlSegment("since", since.ToString(DataFormats.DateTime_Format));
 			request.AddQueryParameter("includeSubTrips", includeSubTrips.ToString());
 			request.AddJsonBody(groupIds);
 			IHttpRestResponse<List<Trip>> response = await ExecuteAsync<List<Trip>>(request).ConfigureAwait(false);
@@ -343,8 +343,8 @@ namespace MiX.Integrate.Api.Client
 		public List<DriverScore> GetDriverScores(List<long> driverIds, DateTime from, DateTime to)
 		{
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.TRIPSCONTROLLER.GETDRIVERSCORES, HttpMethod.Post);
-			request.AddUrlSegment("from", from.ToUniversalTime().ToString(DataFormats.DateTime_Format));
-			request.AddUrlSegment("to", to.ToUniversalTime().ToString(DataFormats.DateTime_Format));
+			request.AddUrlSegment("from", from.ToString(DataFormats.DateTime_Format));
+			request.AddUrlSegment("to", to.ToString(DataFormats.DateTime_Format));
 			request.AddJsonBody(driverIds);
 			IHttpRestResponse<List<DriverScore>> response = Execute<List<DriverScore>>(request);
 			return response.Data;
@@ -353,8 +353,8 @@ namespace MiX.Integrate.Api.Client
 		public async Task<List<DriverScore>> GetDriverScoresAsync(List<long> driverIds, DateTime from, DateTime to)
 		{
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.TRIPSCONTROLLER.GETDRIVERSCORES, HttpMethod.Post);
-			request.AddUrlSegment("from", from.ToUniversalTime().ToString(DataFormats.DateTime_Format));
-			request.AddUrlSegment("to", to.ToUniversalTime().ToString(DataFormats.DateTime_Format));
+			request.AddUrlSegment("from", from.ToString(DataFormats.DateTime_Format));
+			request.AddUrlSegment("to", to.ToString(DataFormats.DateTime_Format));
 			request.AddJsonBody(driverIds);
 			IHttpRestResponse<List<DriverScore>> response = await ExecuteAsync<List<DriverScore>>(request).ConfigureAwait(false);
 			return response.Data;
