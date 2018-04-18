@@ -89,5 +89,10 @@ namespace MiX.Integrate.Shared.Entities.Events
 		/// URLs to media recorded with this event, if available.
 		/// </summary>
 		public IDictionary<string, string> MediaUrls { get; set; }
+
+		/// <summary>
+		/// The Location ID of a Location Event
+		/// </summary>
+		public long? LocationId { get; set; }
 	}
 }
