@@ -91,7 +91,7 @@ namespace MiX.Integrate.Shared.Entities.Events
 		public IDictionary<string, string> MediaUrls { get; set; }
 
 		/// <summary>
-		/// The Location ID of a Location Event
+		/// The Location ID of a Location for this event, if available
 		/// </summary>
 		public long? LocationId { get; set; }
 	}
