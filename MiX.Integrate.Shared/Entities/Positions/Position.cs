@@ -84,7 +84,10 @@ namespace MiX.Integrate.Shared.Entities.Positions
 		///		0 - GPS
 		/// </summary>
 		public PositionSource? Source { get; set; }
-
+		/// <summary>
+		/// Whether the position isAvl
+		/// </summary>
+		public bool? IsAvl { get; set; }
 		/// <summary>
 		/// Initialises a new Position.
 		/// </summary>
