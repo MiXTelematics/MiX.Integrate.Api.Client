@@ -285,22 +285,22 @@ namespace MiX.Integrate.Api.Client.Journeys
 		}
 
 
-		public async Task<List<JourneyRouteInfo>> GetJourneyRouteLocationsAsync(long journeyId)
+		public async Task<JourneyRouteInfo> GetJourneyRouteLocationsAsync(long journeyId)
 		{
 
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.JOURNEYSCONTROLLER.GETJOURNEYROUTELOCATIONSASYNC, HttpMethod.Get);
 			request.AddUrlSegment("journeyId", journeyId.ToString());
-			IHttpRestResponse<List<JourneyRouteInfo>> response = await ExecuteAsync<List<JourneyRouteInfo>>(request).ConfigureAwait(false);
+			IHttpRestResponse<JourneyRouteInfo> response = await ExecuteAsync<JourneyRouteInfo>(request).ConfigureAwait(false);
 			return response.Data;
 		
 		}
 
-		public List<JourneyRouteInfo> GetJourneyRouteLocations(long journeyId)
+		public JourneyRouteInfo GetJourneyRouteLocations(long journeyId)
 		{
 
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.JOURNEYSCONTROLLER.GETJOURNEYROUTELOCATIONSASYNC, HttpMethod.Get);
 			request.AddUrlSegment("journeyId", journeyId.ToString());
-			IHttpRestResponse<List<JourneyRouteInfo>> response = Execute<List<JourneyRouteInfo>>(request);
+			IHttpRestResponse<JourneyRouteInfo> response = Execute<JourneyRouteInfo>(request);
 			return response.Data;
 
 		}
