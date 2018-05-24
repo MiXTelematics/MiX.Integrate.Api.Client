@@ -18,5 +18,7 @@ namespace MiX.Integrate.Shared.Entities.Journeys
 		public DateTimeOffset AdjustedDepartureDate { get; set; }
 		public DateTimeOffset AdjustedArrivalDate { get; set; }
 		public string StopActivityInstructions { get; set; }
+		public double DepartureOdometer { get; set; }
+		public double ArrivalOdometer { get; set; }
 	}
 }
