@@ -23,13 +23,23 @@ namespace MiX.Integrate.Api.Client.Journeys
 		Task<List<JourneyInProgressCurrentStatus>> GetJourneyInProgressCurrentStatusAsync(long groupId);
 		Task<List<JourneyRouteLocation>> GetJourneyRouteLocationsAsync(long journeyId);
 		Task<bool> RemoveJourneyAsync(long journeyId);
+		Task<bool> CancelJourneyAsync(long journeyId);
 		Task<bool> UpdateJourneyAssetDriversAsync(long journeyId, List<JourneyAssetDriver> journeyAssetDriver);
 		Task<List<JourneyAssetDriver>> GetJourneyAssetsAndDriversAsync(long journeyId);
 		List<JourneyAssetDriver> GetJourneyAssetsAndDrivers(long journeyId);
 		bool UpdateJourneyAssetDrivers(long journeyId, List<JourneyAssetDriver> journeyAssetDriver);
 		bool RemoveJourney(long journeyId);
+		bool CancelJourney(long journeyId);
 		List<JourneyRouteLocation> GetJourneyRouteLocations(long journeyId);
 		Task<bool> SubmitJourneyAsync(long journeyId);
 		bool SubmitJourney(long journeyId);
+
+		Task<int> UpdateJourneyAssetPassengersAsync(long journeyId, JourneyAssetAndPassengerData journeyAssetAndPassengerData);
+		int UpdateJourneyAssetPassengers(long journeyId, JourneyAssetAndPassengerData journeyAssetAndPassengerData);
+		Task<int> RemoveJourneyAssetPassengersAsync(long journeyId, JourneyAssetAndPassengerData journeyAssetAndPassengerData);
+		int RemoveJourneyAssetPassengers(long journeyId, JourneyAssetAndPassengerData journeyAssetAndPassengerData);
+		Task<JourneyAssetAndPassengerData> GetJourneyAssetPassengersAsync(long journeyId);
+		JourneyAssetAndPassengerData GetJourneyAssetPassengers(long journeyId);
+		
 	}
 }
