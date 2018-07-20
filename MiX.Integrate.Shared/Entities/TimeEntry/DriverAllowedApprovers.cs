@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace MiX.Integrate.Shared.Entities.TimeApprovers
+namespace MiX.Integrate.Shared.Entities.TimeEntry
 {
 	public class DriverAllowedApprovers
 	{

@@ -250,11 +250,10 @@ namespace MiX.Integrate.Shared.Constants
 
 		}
 
-		//MiX.Integrate.Api.Controllers.TimeApproversController
-		public class TIMEAPPROVERSCONTROLLER
+		//MiX.Integrate.Api.Controllers.TimeEntryController
+		public class TIMEENTRYCONTROLLER
 		{
-			public const string IMPORT = "api/timeapprovers/organisation/{organisationId}/import";
+			public const string IMPORTAPPROVERS = "api/timeentry/approvers/organisation/{organisationId}/import";
 		}
 	}
 }
-
