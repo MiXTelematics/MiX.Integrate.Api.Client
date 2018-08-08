@@ -20,7 +20,7 @@
 				<dependency id="NETStandard.Library" version="1.6.1" />
 			</group>
       <group targetFramework=".NETFramework4.6.2" />
-      <group targetFramework=".NETFramework4.5.1" />
+      <group targetFramework=".NETFramework4.5.2" />
     </dependencies>
   </metadata>
   <files>
@@ -30,7 +30,7 @@
 		<file src="$BaseOutputPath$\netstandard1.6\MiX.Integrate.Shared.pdb" target="lib\netstandard1.6\MiX.Integrate.Shared.pdb" />
     <file src="$BaseOutputPath$\net462\MiX.Integrate.Shared.dll" target="lib\net462\MiX.Integrate.Shared.dll" />
     <file src="$BaseOutputPath$\net462\MiX.Integrate.Shared.pdb" target="lib\net462\MiX.Integrate.Shared.pdb" />
-    <file src="$BaseOutputPath$\net451\MiX.Integrate.Shared.dll" target="lib\net451\MiX.Integrate.Shared.dll" />
-    <file src="$BaseOutputPath$\net451\MiX.Integrate.Shared.pdb" target="lib\net451\MiX.Integrate.Shared.pdb" />
+    <file src="$BaseOutputPath$\net452\MiX.Integrate.Shared.dll" target="lib\net452\MiX.Integrate.Shared.dll" />
+    <file src="$BaseOutputPath$\net452\MiX.Integrate.Shared.pdb" target="lib\net452\MiX.Integrate.Shared.pdb" />
   </files>
 </package>
