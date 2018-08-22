@@ -20,6 +20,7 @@ namespace MiX.Integrate.Api.Client.Base
 		private IdServerResourceOwnerClientSettings _idServerResourceOwnerClientSettings;
 		private static HttpClient _httpClient;
 		private bool _notFoundShouldReturnNull;
+		private static bool _compressionEnabled = true;
 
 		private static HttpClient HttpClient
 		{
@@ -27,13 +28,24 @@ namespace MiX.Integrate.Api.Client.Base
 			{
 				if (_httpClient == null)
 				{
-					_httpClient = new HttpClient();
-					_httpClient.DefaultRequestHeaders.ExpectContinue = false;
+					if (_compressionEnabled)
+					{
+						var handler = new HttpClientHandler();
+						handler.AutomaticDecompression = DecompressionMethods.Deflate | DecompressionMethods.GZip;
+						_httpClient = new HttpClient(handler);
+						_httpClient.DefaultRequestHeaders.ExpectContinue = false;
+					}
+					else
+					{
+						_httpClient = new HttpClient();
+						_httpClient.DefaultRequestHeaders.ExpectContinue = false;
+					}
 				}
 				return _httpClient;
 			}
 			set { _httpClient = value; }
 		}
+
 
 		internal BaseClient() { }
 
@@ -76,13 +88,25 @@ namespace MiX.Integrate.Api.Client.Base
 			_idServerResourceOwnerClientSettings = settings;
 		}
 
+		/// <summary>
+		/// Enable/Disable Compression for all clients in this library
+		/// Default = true
+		/// </summary>
+		public bool CompressionEnabled
+		{
+			get { return _compressionEnabled; }
+			set
+			{
+				_compressionEnabled = value;
+				_httpClient = null;
+			}
+		}
 
 		public bool HTTPStatusNotFoundShouldReturnNull
 		{
 			get { return _notFoundShouldReturnNull; }
 			set { _notFoundShouldReturnNull = value; }
 		}
-
 
 		public IHttpRestRequest GetRequest(string resource, HttpMethod method)
 		{
