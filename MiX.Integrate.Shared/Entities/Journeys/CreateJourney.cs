@@ -9,6 +9,7 @@ namespace MiX.Integrate.Shared.Entities.Journeys
 		public List<JourneyAssetDriver> JourneyAssetDrivers { get; set; }
 		public List<JourneyAssetExternalPassenger> JourneyAssetExternalPassengers { get; set; }
 		public JourneyRoute JourneyRoute { get; set; }
+		public bool SubmitJourney { get; set; }
 
 		public CreateJourney()
 		{
