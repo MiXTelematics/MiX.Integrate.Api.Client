@@ -255,5 +255,10 @@ namespace MiX.Integrate.Shared.Constants
 		{
 			public const string IMPORTAPPROVERS = "api/timeentry/approvers/organisation/{organisationId}/import";
 		}
+
+		public class PERMISSIONCONTROLLER
+		{
+			public const string REFRESHPERMISSIONS = "api/permissions/organisation/{organisationId}/refresh";
+		}
 	}
 }
