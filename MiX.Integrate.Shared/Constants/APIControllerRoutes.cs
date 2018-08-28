@@ -258,7 +258,7 @@ namespace MiX.Integrate.Shared.Constants
 
 		public class PERMISSIONCONTROLLER
 		{
-			public const string REFRESHPERMISSIONS = "api/permissions/organisation/{organisationId}/refresh";
+			public const string REFRESHPERMISSIONS = "api/permissions/account/{accountId}/refresh";
 		}
 	}
 }
