@@ -124,30 +124,30 @@ namespace MiX.Integrate.Api.Client.Base
 			return request;
 		}
 
-		public IHttpRestResponse<T> Execute<T>(IHttpRestRequest request) where T : new()
+		public IHttpRestResponse<T> Execute<T>(IHttpRestRequest request,int maxRetryAttempts = 3) where T : new()
 		{
-			IHttpRestResponse<T> respT = ExecuteAsync<T>(request).ConfigureAwait(false).GetAwaiter().GetResult();
+			IHttpRestResponse<T> respT = ExecuteAsync<T>(request, maxRetryAttempts).ConfigureAwait(false).GetAwaiter().GetResult();
 			return respT;
 		}
 
-		public IHttpRestResponse Execute(IHttpRestRequest request)
+		public IHttpRestResponse Execute(IHttpRestRequest request,int maxRetryAttempts = 3)
 		{
-			IHttpRestResponse resp = ExecuteAsync(request).ConfigureAwait(false).GetAwaiter().GetResult();
+			IHttpRestResponse resp = ExecuteAsync(request, maxRetryAttempts).ConfigureAwait(false).GetAwaiter().GetResult();
 			return resp;
 		}
 
-		public async Task<IHttpRestResponse<T>> ExecuteAsync<T>(IHttpRestRequest request) where T : new()
+		public async Task<IHttpRestResponse<T>> ExecuteAsync<T>(IHttpRestRequest request, int maxRetryAttempts = 3) where T : new()
 		{
-			IHttpRestResponse resp = await ExecuteAsync(request).ConfigureAwait(false);
+			IHttpRestResponse resp = await ExecuteAsync(request, maxRetryAttempts).ConfigureAwait(false);
 			IHttpRestResponse<T> respT = CloneInTo<T>(resp);
 			return respT;
 		}
 
-		public async Task<IHttpRestResponse> ExecuteAsync(IHttpRestRequest request)
+		public async Task<IHttpRestResponse> ExecuteAsync(IHttpRestRequest request, int maxRetryAttempts = 3)
 		{
 			IHttpRestResponse resp = null;
 
-			var maxRetryAttempts = 3;
+			//var maxRetryAttempts = 3;
 			await RetryHelper.RetryOnExceptionAsync(maxRetryAttempts, async () =>
 		 {
 			 resp = await ExecuteInternalAsync(request).ConfigureAwait(false);
