@@ -40,7 +40,7 @@ namespace MiX.Integrate.Api.Client.Journeys
 		{
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.JOURNEYSCONTROLLER.ADDJOURNEY, HttpMethod.Put);
 			request.AddJsonBody(newJourney);
-			IHttpRestResponse<long> response = Execute<long>(request, 0);
+			IHttpRestResponse<long> response = Execute<long>(request, 1);
 			return response.Data;
 		}
 
@@ -53,7 +53,7 @@ namespace MiX.Integrate.Api.Client.Journeys
 		{
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.JOURNEYSCONTROLLER.ADDJOURNEY, HttpMethod.Put);
 			request.AddJsonBody(newJourney);
-			IHttpRestResponse<long> response = await ExecuteAsync<long>(request, 0).ConfigureAwait(false);
+			IHttpRestResponse<long> response = await ExecuteAsync<long>(request, 1).ConfigureAwait(false);
 			return response.Data;
 		}
 
@@ -76,7 +76,7 @@ namespace MiX.Integrate.Api.Client.Journeys
 			request.AddJsonBody(journeyAssetDrivers);
 			request.AddJsonBody(journeyAssetExternalPassengers);
 			request.AddJsonBody(journeyRoute);
-			IHttpRestResponse<Journey> response = Execute<Journey>(request,0);
+			IHttpRestResponse<Journey> response = Execute<Journey>(request,1);
 			return response.Data;
 		}
 
@@ -98,7 +98,7 @@ namespace MiX.Integrate.Api.Client.Journeys
 			request.AddJsonBody(journeyAssetDrivers);
 			request.AddJsonBody(journeyAssetExternalPassengers);
 			request.AddJsonBody(journeyRoute);
-			IHttpRestResponse<Journey> response = await ExecuteAsync<Journey>(request, 0).ConfigureAwait(false);
+			IHttpRestResponse<Journey> response = await ExecuteAsync<Journey>(request, 1).ConfigureAwait(false);
 			return response.Data;
 		}
 
