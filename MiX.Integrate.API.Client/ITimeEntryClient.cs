@@ -6,7 +6,7 @@ namespace MiX.Integrate.Api.Client
 {
 	public interface ITimeEntryClient : IBaseClient
 	{
-		bool ImportApprovers(long groupId, TimeApproverImport timeApproverImport);
-		Task<bool> ImportApproversAsync(long groupId, TimeApproverImport timeApproverImport);
+		bool ImportApprovers(long organisationId, TimeApproverImport timeApproverImport);
+		Task<bool> ImportApproversAsync(long organisationId, TimeApproverImport timeApproverImport);
 	}
 }

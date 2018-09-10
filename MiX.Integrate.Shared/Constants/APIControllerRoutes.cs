@@ -260,5 +260,12 @@ namespace MiX.Integrate.Shared.Constants
 		{
 			public const string REFRESHPERMISSIONS = "api/permissions/account/{accountId}/refresh";
 		}
+
+
+		//MiX.Integrate.Api.Controllers.HosDataController
+		public class HOSDATACONTROLLER
+		{
+			public const string GETHOSEVENTDATA = "api/ghos/events/from/{from}/to/{to}";
+		}
 	}
 }
