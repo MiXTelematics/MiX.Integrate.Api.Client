@@ -4,6 +4,7 @@ using MiX.Integrate.Shared.Constants;
 using MiX.Integrate.Shared.Entities.Journeys;
 using MiX.Integrate.Api.Client.Base;
 using System.Net.Http;
+using System;
 
 namespace MiX.Integrate.Api.Client.Journeys
 {
@@ -39,7 +40,7 @@ namespace MiX.Integrate.Api.Client.Journeys
 		{
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.JOURNEYSCONTROLLER.ADDJOURNEY, HttpMethod.Put);
 			request.AddJsonBody(newJourney);
-			IHttpRestResponse<long> response = Execute<long>(request);
+			IHttpRestResponse<long> response = Execute<long>(request, 1);
 			return response.Data;
 		}
 
@@ -52,7 +53,7 @@ namespace MiX.Integrate.Api.Client.Journeys
 		{
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.JOURNEYSCONTROLLER.ADDJOURNEY, HttpMethod.Put);
 			request.AddJsonBody(newJourney);
-			IHttpRestResponse<long> response = await ExecuteAsync<long>(request).ConfigureAwait(false);
+			IHttpRestResponse<long> response = await ExecuteAsync<long>(request, 1).ConfigureAwait(false);
 			return response.Data;
 		}
 
@@ -65,6 +66,8 @@ namespace MiX.Integrate.Api.Client.Journeys
 		/// <param name="journeyAssetExternalPassengers">The journey asset external passengers.</param>
 		/// <param name="journeyRoute">The journey route.</param>
 		/// <returns></returns>
+		
+		[Obsolete("Please use  AddJourney(CreateJourney newJourney)", false)]
 		public Journey AddJourney(Journey journey, List<JourneyAsset> journeyAssets, List<JourneyAssetDriver> journeyAssetDrivers, List<JourneyAssetExternalPassenger> journeyAssetExternalPassengers, JourneyRoute journeyRoute)
 		{
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.JOURNEYSCONTROLLER.ADDJOURNEY, HttpMethod.Put);
@@ -73,10 +76,10 @@ namespace MiX.Integrate.Api.Client.Journeys
 			request.AddJsonBody(journeyAssetDrivers);
 			request.AddJsonBody(journeyAssetExternalPassengers);
 			request.AddJsonBody(journeyRoute);
-			IHttpRestResponse<Journey> response = Execute<Journey>(request);
+			IHttpRestResponse<Journey> response = Execute<Journey>(request,1);
 			return response.Data;
 		}
-		
+
 		/// <summary>
 		/// Adds the journey asynchronous.
 		/// </summary>
@@ -86,6 +89,7 @@ namespace MiX.Integrate.Api.Client.Journeys
 		/// <param name="journeyAssetExternalPassengers">The journey asset external passengers.</param>
 		/// <param name="journeyRoute">The journey route.</param>
 		/// <returns></returns>
+		[Obsolete("Please use  AddJourneyAsync(CreateJourney newJourney)", false)]
 		public async Task<Journey> AddJourneyAsync(Journey journey, List<JourneyAsset> journeyAssets, List<JourneyAssetDriver> journeyAssetDrivers, List<JourneyAssetExternalPassenger> journeyAssetExternalPassengers, JourneyRoute journeyRoute)
 		{
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.JOURNEYSCONTROLLER.ADDJOURNEY, HttpMethod.Put);
@@ -94,7 +98,7 @@ namespace MiX.Integrate.Api.Client.Journeys
 			request.AddJsonBody(journeyAssetDrivers);
 			request.AddJsonBody(journeyAssetExternalPassengers);
 			request.AddJsonBody(journeyRoute);
-			IHttpRestResponse<Journey> response = await ExecuteAsync<Journey>(request).ConfigureAwait(false);
+			IHttpRestResponse<Journey> response = await ExecuteAsync<Journey>(request, 1).ConfigureAwait(false);
 			return response.Data;
 		}
 

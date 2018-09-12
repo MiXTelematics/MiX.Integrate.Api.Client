@@ -1,6 +1,6 @@
-﻿using System.Net.Http;
+﻿using System.Collections.Generic;
+using System.Net.Http;
 using System.Threading.Tasks;
-using MiX.Integrate.Api.Client;
 using MiX.Integrate.Api.Client.Base;
 using MiX.Integrate.Shared.Constants;
 using MiX.Integrate.Shared.Entities.TimeEntry;
@@ -30,6 +30,13 @@ namespace MiX.Integrate.Api.Client
 			IHttpRestResponse response = await ExecuteAsync(request).ConfigureAwait(false);
 
 			return (response.StatusCode == System.Net.HttpStatusCode.OK);
+		}
+		public async Task<List<GroupSubstatus>> GetStatusCodes(long organisationId)
+		{
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.TIMEENTRYCONTROLLER.GETSTATUSCODES, HttpMethod.Get);
+			request.AddUrlSegment("organisationId", organisationId.ToString());
+			IHttpRestResponse<List<GroupSubstatus>> response = await ExecuteAsync<List<GroupSubstatus>>(request).ConfigureAwait(false);
+			return response.Data;
 		}
 	}
 }
