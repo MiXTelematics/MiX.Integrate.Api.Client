@@ -19,5 +19,6 @@ namespace MiX.Integrate.Shared.Entities.Messages
 		public JobMessageActionNotifications NotificationSettings { get; set; }
 		public int[] AddressList { get; set; }
 		public CommsTransports Transport { get; set; }
+		public bool Urgent { get; set; }
 	}
 }
