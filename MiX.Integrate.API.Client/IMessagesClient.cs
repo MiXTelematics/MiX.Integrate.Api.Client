@@ -17,5 +17,8 @@ namespace MiX.Integrate.Api.Client
 		IList<Message> GetMessagesBySinceId(long organisationId, int messageId, int maxRecords);
 		Task<SendMessageResult> SendFreeTextMessageAsync(long organisationId, SendFreeTextMessageCarrier messageCarrier);
 		SendMessageResult SendFreeTextMessage(long organisationId, SendFreeTextMessageCarrier messageCarrier);
+		Task<SendMessageResult> SendJobMessageAsync(long organisationId, SendJobMessageCarrier jobMessageCarrier,
+			bool saveOnly);
+		SendMessageResult SendJobMessage(long organisationId, SendJobMessageCarrier jobMessageCarrier, bool saveOnly);
 	}
 }
