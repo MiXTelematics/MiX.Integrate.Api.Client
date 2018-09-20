@@ -56,5 +56,35 @@ namespace MiX.Integrate.API.Client
 
 			return new CreatedSinceResult<HosEvent> { HasMoreItems = hasMoreItems, GetSinceToken = getSinceToken, Items = response.Data };
 		}
+
+		public List<HosEventDriverSummary> GetHosEventDataSummary(ParameterEntityType entityTypeId, List<long> entityIds, List<byte> eventTypeIds, DateTime fromDateTime, DateTime toDateTime)
+		{
+			var dataRequest = new HosEventDataRequest { EntityTypeId = entityTypeId, EntityIds = entityIds, EventTypeIds = eventTypeIds };
+
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.HOSDATACONTROLLER.GETHOSEVENTDATASUMMARY, HttpMethod.Post);
+
+			request.AddUrlSegment("from", fromDateTime.ToString(DataFormats.DateTime_Format));
+			request.AddUrlSegment("to", toDateTime.ToString(DataFormats.DateTime_Format));
+			request.AddJsonBody(dataRequest);
+
+			IHttpRestResponse<List<HosEventDriverSummary>> response = Execute<List<HosEventDriverSummary>>(request);
+
+			return response.Data;
+		}
+
+		public async Task<List<HosEventDriverSummary>> GetHosEventDataSummaryAsync(ParameterEntityType entityTypeId, List<long> entityIds, List<byte> eventTypeIds, DateTime fromDateTime, DateTime toDateTime)
+		{
+			var dataRequest = new HosEventDataRequest { EntityTypeId = entityTypeId, EntityIds = entityIds, EventTypeIds = eventTypeIds };
+
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.HOSDATACONTROLLER.GETHOSEVENTDATASUMMARY, HttpMethod.Post);
+
+			request.AddUrlSegment("from", fromDateTime.ToString(DataFormats.DateTime_Format));
+			request.AddUrlSegment("to", toDateTime.ToString(DataFormats.DateTime_Format));
+			request.AddJsonBody(dataRequest);
+
+			IHttpRestResponse<List<HosEventDriverSummary>> response = await ExecuteAsync<List<HosEventDriverSummary>>(request).ConfigureAwait(false);
+
+			return response.Data;
+		}
 	}
 }
