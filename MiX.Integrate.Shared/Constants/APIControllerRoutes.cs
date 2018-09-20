@@ -267,6 +267,7 @@ namespace MiX.Integrate.Shared.Constants
 		public class HOSDATACONTROLLER
 		{
 			public const string GETHOSEVENTDATA = "api/ghos/events/from/{from}/to/{to}";
+			public const string GETHOSEVENTDATASUMMARY = "api/ghos/events/from/{from}/to/{to}/summary";
 		}
 	}
 }
