@@ -124,5 +124,21 @@ namespace MiX.Integrate.Api.Client
 			IHttpRestResponse<SendMessageResult> response = Execute<SendMessageResult>(request);
 			return response.Data;
 		}
+
+		public async Task CreateJobListAsync(long organisationId, int[] messageIDList)
+		{
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.MESSAGESCONTROLLER.CREATEJOBLIST, HttpMethod.Post);
+			request.AddUrlSegment("organisationId", organisationId.ToString());
+			request.AddJsonBody(messageIDList);
+			await ExecuteAsync(request).ConfigureAwait(false);
+		}
+
+		public void CreateJobList(long organisationId, int[] messageIDList)
+		{
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.MESSAGESCONTROLLER.CREATEJOBLIST, HttpMethod.Post);
+			request.AddUrlSegment("organisationId", organisationId.ToString());
+			request.AddJsonBody(messageIDList);
+			Execute(request);
+		}
 	}
 }
