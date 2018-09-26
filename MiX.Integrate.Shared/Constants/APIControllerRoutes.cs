@@ -224,6 +224,7 @@ namespace MiX.Integrate.Shared.Constants
 			public const string GETMESSAGESTATE = "api/messages/organisation/{organisationId}/messageid/{messageId}/messagestate";
 			public const string SENDFREETEXTMESSAGE = "api/messages/organisation/{organisationId}/sendfreetextmessage";
 			public const string SENDJOBMESSAGE = "api/messages/organisation/{organisationId}/sendjobmessage";
+			public const string CREATEJOBLIST = "api/messages/organisation/{organisationId}/createjoblist";
 		}
 
 		//MiX.Integrate.Api.Controllers.FuelController
