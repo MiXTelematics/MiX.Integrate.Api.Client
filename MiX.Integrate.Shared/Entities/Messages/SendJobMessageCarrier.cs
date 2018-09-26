@@ -13,8 +13,8 @@ namespace MiX.Integrate.Shared.Entities.Messages
 		public string Description { get; set; }
 		public string UserDescription { get; set; }
 		public string Body { get; set; }
-		public DateTime StartDate { get; set; }
-		public DateTime ExpiryDate { get; set; }
+		public DateTime? StartDate { get; set; }
+		public DateTime? ExpiryDate { get; set; }
 		public bool RequiresAddress { get; set; }
 		public bool AddAddressSummary { get; set; }
 		public bool UseFirstAddressForSummary { get; set; }
