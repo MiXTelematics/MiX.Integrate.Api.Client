@@ -104,5 +104,25 @@ namespace MiX.Integrate.Api.Client
 			IHttpRestResponse<SendMessageResult> response = Execute<SendMessageResult>(request);
 			return response.Data;
 		}
+
+		public async Task<SendMessageResult> SendJobMessageAsync(long organisationId, SendJobMessageCarrier jobMessageCarrier, bool saveOnly)
+		{
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.MESSAGESCONTROLLER.SENDJOBMESSAGE, HttpMethod.Post);
+			request.AddUrlSegment("organisationId", organisationId.ToString());
+			request.AddQueryParameter("saveOnly", saveOnly.ToString());
+			request.AddJsonBody(jobMessageCarrier);
+			IHttpRestResponse<SendMessageResult> response = await ExecuteAsync<SendMessageResult>(request).ConfigureAwait(false);
+			return response.Data;
+		}
+
+		public SendMessageResult SendJobMessage(long organisationId, SendJobMessageCarrier jobMessageCarrier, bool saveOnly)
+		{
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.MESSAGESCONTROLLER.SENDJOBMESSAGE, HttpMethod.Post);
+			request.AddUrlSegment("organisationId", organisationId.ToString());
+			request.AddQueryParameter("saveOnly", saveOnly.ToString());
+			request.AddJsonBody(jobMessageCarrier);
+			IHttpRestResponse<SendMessageResult> response = Execute<SendMessageResult>(request);
+			return response.Data;
+		}
 	}
 }
