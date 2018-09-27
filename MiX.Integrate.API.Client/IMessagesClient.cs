@@ -20,5 +20,7 @@ namespace MiX.Integrate.Api.Client
 		Task<SendMessageResult> SendJobMessageAsync(long organisationId, SendJobMessageCarrier jobMessageCarrier,
 			bool saveOnly);
 		SendMessageResult SendJobMessage(long organisationId, SendJobMessageCarrier jobMessageCarrier, bool saveOnly);
+		Task<int> CreateJobListAsync(long organisationId, int[] messageIDList);
+		void CreateJobList(long organisationId, int[] messageIDList);
 	}
 }
