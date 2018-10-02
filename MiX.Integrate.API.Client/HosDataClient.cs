@@ -21,7 +21,7 @@ namespace MiX.Integrate.API.Client
 
 			request.AddUrlSegment("driverId", driverId.ToString());
 			request.AddUrlSegment("from", fromDateTime.ToString(DataFormats.DateTime_Format));
-			request.AddUrlSegment("from", fromDateTime.ToString(DataFormats.DateTime_Format));
+			request.AddUrlSegment("to", toDateTime.ToString(DataFormats.DateTime_Format));
 
 			IHttpRestResponse<List<HosViolation>> response = Execute<List<HosViolation>>(request);
 
@@ -34,7 +34,7 @@ namespace MiX.Integrate.API.Client
 
 			request.AddUrlSegment("driverId", driverId.ToString());
 			request.AddUrlSegment("from", fromDateTime.ToString(DataFormats.DateTime_Format));
-			request.AddUrlSegment("from", fromDateTime.ToString(DataFormats.DateTime_Format));
+			request.AddUrlSegment("to", toDateTime.ToString(DataFormats.DateTime_Format));
 
 			IHttpRestResponse<List<HosViolation>> response = await ExecuteAsync<List<HosViolation>>(request).ConfigureAwait(false);
 
