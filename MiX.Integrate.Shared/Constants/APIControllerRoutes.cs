@@ -263,12 +263,13 @@ namespace MiX.Integrate.Shared.Constants
 			public const string REFRESHPERMISSIONS = "api/permissions/account/{accountId}/refresh";
 		}
 
-
 		//MiX.Integrate.Api.Controllers.HosDataController
 		public class HOSDATACONTROLLER
 		{
 			public const string GETHOSEVENTDATA = "api/ghos/events/from/{from}/to/{to}";
 			public const string GETHOSEVENTDATASUMMARY = "api/ghos/events/from/{from}/to/{to}/summary";
+			public const string GETHOSVIOLATIONS = "api/ghos/violations/driver/{driverId}/from/{from}/to/{to}";
+			public const string GETHOSAVAILABLEHOURS = "api/ghos/availablehours/driver/{driverId}";
 		}
 	}
 }
