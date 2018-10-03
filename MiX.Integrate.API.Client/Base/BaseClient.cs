@@ -146,8 +146,6 @@ namespace MiX.Integrate.Api.Client.Base
 		public async Task<IHttpRestResponse> ExecuteAsync(IHttpRestRequest request, int maxRetryAttempts = 3)
 		{
 			IHttpRestResponse resp = null;
-
-			//var maxRetryAttempts = 3;
 			await RetryHelper.RetryOnExceptionAsync(maxRetryAttempts, async () =>
 		 {
 			 resp = await ExecuteInternalAsync(request).ConfigureAwait(false);
