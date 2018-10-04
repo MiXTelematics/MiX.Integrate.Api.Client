@@ -36,6 +36,10 @@ namespace MiX.Integrate.Shared.Entities.Positions
 		/// </summary>
 		public float? SpeedKilometresPerHour { get; set; }
 		/// <summary>
+		/// Speed limit of current position
+		/// </summary>
+		public float? SpeedLimit { get; set; }
+		/// <summary>
 		/// Altitude above sea level.
 		/// </summary>
 		public int? AltitudeMetres { get; set; }

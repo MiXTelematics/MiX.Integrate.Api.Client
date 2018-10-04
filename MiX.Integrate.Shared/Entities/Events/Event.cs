@@ -94,5 +94,10 @@ namespace MiX.Integrate.Shared.Entities.Events
 		/// The Location ID of a Location for this event, if available
 		/// </summary>
 		public long? LocationId { get; set; }
+
+		/// <summary>
+		/// The speed limit of the location event occured in
+		/// </summary>
+		public float? SpeedLimit { get; set; }
 	}
 }

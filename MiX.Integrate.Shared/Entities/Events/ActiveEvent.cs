@@ -44,6 +44,11 @@ namespace MiX.Integrate.Shared.Entities.Events
 
 		/// <summary>The display units from the event type definition</summary>
 		public string ValueUnits { get; set; }
+
+		/// <summary>
+		/// The speed limit of the location event occured in
+		/// </summary>
+		public float? SpeedLimit { get; set; }
 	}
 }
 

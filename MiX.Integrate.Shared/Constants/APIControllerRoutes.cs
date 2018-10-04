@@ -250,6 +250,17 @@ namespace MiX.Integrate.Shared.Constants
 
 		}
 
+		//MiX.Integrate.Api.Controllers.TimeEntryController
+		public class TIMEENTRYCONTROLLER
+		{
+			public const string IMPORTAPPROVERS = "api/timeentry/approvers/organisation/{organisationId}/import";
+		}
+
+		//MiX.Integrate.Api.Controllers.HosDataController
+		public class HOSDATACONTROLLER
+		{
+			public const string GETHOSVIOLATIONS = "api/ghos/violations/driver/{driverId}/from/{from}/to/{to}";
+			public const string GETHOSAVAILABLEHOURS = "api/ghos/availablehours/driver/{driverId}";
+		}
 	}
 }
-

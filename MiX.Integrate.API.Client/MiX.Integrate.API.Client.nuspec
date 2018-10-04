@@ -30,7 +30,7 @@
         <dependency id="System.Net.Http" version="4.3.3" />
         <dependency id="IdentityModel" version="3.8.0" />
       </group>
-      <group targetFramework=".NETFramework4.5.1">
+      <group targetFramework=".NETFramework4.5.2">
         <dependency id="MiX.Identity.Client" version="2018.8.7.1" />
         <dependency id="System.Net.Http" version="4.3.3" />
         <dependency id="IdentityModel" version="3.8.0" />
