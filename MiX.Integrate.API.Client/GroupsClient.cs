@@ -174,5 +174,23 @@ namespace MiX.Integrate.Api.Client
 			return response.Data;
 		}
 
+		public Dictionary<long, int?> GetOrganisationSitesWithLegacyId(long groupId)
+		{
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.GROUPSCONTROLLER.GETORGANISATIONSITESWITHLEGACYID, HttpMethod.Get);
+			request.AddUrlSegment("organisationId", groupId.ToString());
+
+			IHttpRestResponse<Dictionary<long, int?>> response = Execute<Dictionary<long, int?>>(request);
+			return response.Data;
+		}
+		
+		public async Task<Dictionary<long, int?>> GetOrganisationSitesWithLegacyIdAsync(long groupId)
+		{
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.GROUPSCONTROLLER.GETORGANISATIONSITESWITHLEGACYID, HttpMethod.Get);
+			request.AddUrlSegment("organisationId", groupId.ToString());
+
+			IHttpRestResponse<Dictionary<long, int?>> response = await ExecuteAsync<Dictionary<long, int?>>(request).ConfigureAwait(false);
+			return response.Data;
+		}
+
 	}
 }
