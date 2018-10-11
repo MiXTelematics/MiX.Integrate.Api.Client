@@ -21,6 +21,7 @@ namespace MiX.Integrate.Api.Client
 		void UpdateGroupName(long organisationGroupId, long groupId, string name);
 		OrganisationDetail GetOrganisationDetail(long groupId);
 		Group GetGroup(long groupId);
+		Dictionary<long, int?> GetOrganisationSitesWithLegacyId(long groupId);
 
 		#endregion sync
 
@@ -34,7 +35,9 @@ namespace MiX.Integrate.Api.Client
 		Task UpdateGroupNameAsync(long organisationGroupId, long groupId, string name);
 		Task<OrganisationDetail> GetOrganisationDetailAsync(long groupId);
 		Task<Group> GetGroupAsync(long groupId);
+		Task<Dictionary<long, int?>> GetOrganisationSitesWithLegacyIdAsync(long groupId);
 
+		
 		#endregion async
 	}
 }

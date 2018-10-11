@@ -86,6 +86,8 @@ namespace MiX.Integrate.Shared.Constants
 			public const string UPDATEGROUPNAME = "api/organisationgroups/{organisationId}/group/{groupId}/name";
 			public const string GETORGANISATIONDETAILS = "api/organisationgroups/details/{organisationId}";
 			public const string GETGROUP = "api/organisationgroups/group/{groupId}";
+
+			public const string GETORGANISATIONSITESWITHLEGACYID = "api/organisationgroups/siteswithlegacyid/{organisationId}";
 		}
 
 		//MiX.Integrate.Api PositionsController
