@@ -113,22 +113,24 @@ namespace MiX.Integrate.API.Client
 			return response.Data;
 		}
 
-		public HosAvailableHours GetHosAvailableHours(long driverId)
+		public HosAvailableHours GetHosAvailableHours(long driverId, bool displayHiddenTimeTypes = false)
 		{
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.HOSDATACONTROLLER.GETHOSAVAILABLEHOURS, HttpMethod.Get);
 
 			request.AddUrlSegment("driverId", driverId.ToString());
+			request.AddUrlSegment("displayHiddenTimeTypes", displayHiddenTimeTypes.ToString());
 
 			IHttpRestResponse<HosAvailableHours> response = Execute<HosAvailableHours>(request);
 
 			return response.Data;
 		}
 
-		public async Task<HosAvailableHours> GetHosAvailableHoursAsync(long driverId)
+		public async Task<HosAvailableHours> GetHosAvailableHoursAsync(long driverId, bool displayHiddenTimeTypes = false)
 		{
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.HOSDATACONTROLLER.GETHOSAVAILABLEHOURS, HttpMethod.Get);
 
 			request.AddUrlSegment("driverId", driverId.ToString());
+			request.AddUrlSegment("displayHiddenTimeTypes", displayHiddenTimeTypes.ToString());
 
 			IHttpRestResponse<HosAvailableHours> response = await ExecuteAsync<HosAvailableHours>(request).ConfigureAwait(false);
 
