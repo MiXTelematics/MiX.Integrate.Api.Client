@@ -26,6 +26,11 @@ namespace MiX.Integrate.Shared.Entities.Events
 	[Serializable]
 	public class EntityList
 	{
+		public EntityList()
+		{
+			Ids = new List<long>();
+		}
+
 		public bool IsGroups { get; set; }
 		public List<long> Ids { get; set; }
 	}
