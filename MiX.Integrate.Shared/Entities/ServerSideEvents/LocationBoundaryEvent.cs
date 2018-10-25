@@ -1,24 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
-namespace MiX.Integrate.Shared.Entities.Events
+namespace MiX.Integrate.Shared.Entities.ServerSideEvents
 {
 	/// <summary>
 	/// Carrier for Location entered and Location left events
 	/// </summary>
-	[Serializable]
 	public class LocationBoundaryEvent : ServerSideEventBase
 	{
-		private LocationBoundaryEvent()
-		{}
+		public LocationBoundaryEvent()
+		{
+
+		}
 
 		public LocationBoundaryEvent(bool isEntryEvent)
 		{
-			EventType = (int) Events.EventType.LocationExit;
+			EventType = (int) ServerSideEvents.EventType.LocationExit;
 			if (isEntryEvent)
 			{
-				EventType = (int)Events.EventType.LocationEnter;
+				EventType = (int)ServerSideEvents.EventType.LocationEnter;
 			}
 
 			Locations = new List<long>();

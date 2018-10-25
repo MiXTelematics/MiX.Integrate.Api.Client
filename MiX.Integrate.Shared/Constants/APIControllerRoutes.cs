@@ -269,5 +269,10 @@ namespace MiX.Integrate.Shared.Constants
 		{
 			public const string GETHOSEVENTDATA = "api/ghos/events/from/{from}/to/{to}";
 		}
+
+		public class SERVERSIDEEVENTSCONTROLLER
+		{
+			public const string LOCATIONBOUNDARYEVENT = "api/serversideevents/organisation/{organisationId}/locationboundaryevent";
+		}
 	}
 }

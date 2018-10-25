@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
-namespace MiX.Integrate.Shared.Entities.Events
+namespace MiX.Integrate.Shared.Entities.ServerSideEvents
 {
 	/// <summary>
 	/// Contains the valid values for ServerSideEvent.EventRecordedFor
@@ -23,7 +22,6 @@ namespace MiX.Integrate.Shared.Entities.Events
 		LocationExit = 2
 	}
 
-	[Serializable]
 	public class EntityList
 	{
 		public EntityList()
@@ -38,7 +36,6 @@ namespace MiX.Integrate.Shared.Entities.Events
 	/// <summary>
 	/// Abstract base class for server side events; use a inherited class.
 	/// </summary>
-	[Serializable]
 	public abstract class ServerSideEventBase
 	{
 		public int ServerSideEventId { get; set; }
