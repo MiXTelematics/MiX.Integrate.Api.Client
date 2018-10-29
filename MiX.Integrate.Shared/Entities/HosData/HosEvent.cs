@@ -13,5 +13,6 @@ namespace MiX.Integrate.Shared.Entities.HosData
 		public byte EventStatusId { get; set; }
 		public byte SourceId { get; set; }
 		public string Remarks { get; set; }
+		public string StateCode { get; set; }
 	}
 }
