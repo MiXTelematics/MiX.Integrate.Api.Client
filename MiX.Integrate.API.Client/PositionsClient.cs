@@ -1,13 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using MiX.Integrate.API.Client;
+using MiX.Integrate.API.Client.Base;
 using MiX.Integrate.Shared.Constants;
-using MiX.Integrate.Shared.Entities.Positions;
-using System.Threading.Tasks;
-using MiX.Integrate.Api.Client.Base;
-using System.Net.Http;
 using MiX.Integrate.Shared.Entities.Carriers;
+using MiX.Integrate.Shared.Entities.Positions;
+using System;
+using System.Collections.Generic;
+using System.Net.Http;
+using System.Threading.Tasks;
 
-namespace MiX.Integrate.Api.Client
+namespace MiX.Integrate.API.Client
 {
 	public class PositionsClient : BaseClient, IPositionsClient
 	{

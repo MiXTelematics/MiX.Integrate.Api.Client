@@ -1,13 +1,13 @@
-﻿using System;
+﻿using MiX.Integrate.API.Client.Base;
 using MiX.Integrate.Shared.Constants;
-using System.Threading.Tasks;
-using MiX.Integrate.Api.Client.Base;
-using System.Net.Http;
 using MiX.Integrate.Shared.Entities.Tacho;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
+using System.Threading.Tasks;
 
-namespace MiX.Integrate.Api.Client
+namespace MiX.Integrate.API.Client
 {
 	public class TachoClient : BaseClient, ITachoClient
 	{

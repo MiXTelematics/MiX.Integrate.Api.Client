@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace MiX.Integrate.Api.Client.Base
+namespace MiX.Integrate.API.Client.Base
 {
 	public interface IBaseClient
 	{

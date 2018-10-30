@@ -1,11 +1,11 @@
-﻿using System;
+﻿using MiX.Integrate.API.Client.Base;
+using MiX.Integrate.Shared.Entities.Events;
+using MiX.Integrate.Shared.Entities.Locations;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using MiX.Integrate.Shared.Entities.Locations;
-using MiX.Integrate.Api.Client.Base;
-using MiX.Integrate.Shared.Entities.Events;
 
-namespace MiX.Integrate.Api.Client
+namespace MiX.Integrate.API.Client
 {
 	public interface ILocationsClient : IBaseClient
 	{

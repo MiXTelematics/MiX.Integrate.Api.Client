@@ -1,7 +1,6 @@
 ﻿
-namespace MiX.Integrate.Api.Client
+namespace MiX.Integrate.API.Client
 {
-
 	public class IdServerResourceOwnerClientSettings
 	{
 		public string BaseAddress { get; set; }
@@ -12,5 +11,4 @@ namespace MiX.Integrate.Api.Client
 		public string Password { get; set; }
 		public IdServerResourceOwnerClientSettings() { }
 	}
-
 }

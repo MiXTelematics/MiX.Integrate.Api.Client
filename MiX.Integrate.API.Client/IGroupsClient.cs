@@ -1,10 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using MiX.Integrate.API.Client.Base;
 using MiX.Integrate.Shared.Entities.Groups;
-using System.Threading.Tasks;
-using MiX.Integrate.Api.Client.Base;
 using MiX.Integrate.Shared.Entities.Organisation;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
-namespace MiX.Integrate.Api.Client
+namespace MiX.Integrate.API.Client
 {
 	public interface IGroupsClient : IBaseClient
 	{
@@ -37,7 +37,7 @@ namespace MiX.Integrate.Api.Client
 		Task<Group> GetGroupAsync(long groupId);
 		Task<Dictionary<long, int?>> GetOrganisationSitesWithLegacyIdAsync(long groupId);
 
-		
+
 		#endregion async
 	}
 }

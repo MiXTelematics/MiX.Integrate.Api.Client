@@ -1,4 +1,4 @@
-﻿using MiX.Integrate.Api.Client.Base;
+﻿using MiX.Integrate.API.Client.Base;
 using MiX.Integrate.Shared.Entities.Permissions;
 using System.Threading.Tasks;
 
