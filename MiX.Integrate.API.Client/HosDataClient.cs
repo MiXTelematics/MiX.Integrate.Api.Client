@@ -60,7 +60,7 @@ namespace MiX.Integrate.API.Client
 		{
 			var dataRequest = new HosEventDataRequest { EntityTypeId = entityTypeId, EntityIds = entityIds, EventTypeIds = eventTypeIds };
 
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.HOSDATACONTROLLER.GETHOSEVENTDATASINCE, HttpMethod.Post);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.HosDataController.GETHOSEVENTDATASINCE, HttpMethod.Post);
 
 			request.AddUrlSegment("sinceToken", sinceToken);
 			request.AddJsonBody(dataRequest);
@@ -80,7 +80,7 @@ namespace MiX.Integrate.API.Client
 		{
 			var dataRequest = new HosEventDataRequest { EntityTypeId = entityTypeId, EntityIds = entityIds, EventTypeIds = eventTypeIds };
 
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.HOSDATACONTROLLER.GETHOSEVENTDATASINCE, HttpMethod.Post);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.HosDataController.GETHOSEVENTDATASINCE, HttpMethod.Post);
 
 			request.AddUrlSegment("sinceToken", sinceToken);
 			request.AddJsonBody(dataRequest);
