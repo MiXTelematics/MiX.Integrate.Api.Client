@@ -18,7 +18,7 @@ namespace MiX.Integrate.API.Client
 		{
 			var dataRequest = new HosEventDataRequest { EntityTypeId = entityTypeId, EntityIds = entityIds, EventTypeIds = eventTypeIds };
 
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.HOSDATACONTROLLER.GETHOSEVENTDATA, HttpMethod.Post);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.HosDataController.GETHOSEVENTDATA, HttpMethod.Post);
 
 			request.AddUrlSegment("from", fromDateTime.ToString(DataFormats.DateTime_Format));
 			request.AddUrlSegment("to", toDateTime.ToString(DataFormats.DateTime_Format));
@@ -39,7 +39,7 @@ namespace MiX.Integrate.API.Client
 		{
 			var dataRequest = new HosEventDataRequest { EntityTypeId = entityTypeId, EntityIds = entityIds, EventTypeIds = eventTypeIds };
 
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.HOSDATACONTROLLER.GETHOSEVENTDATA, HttpMethod.Post);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.HosDataController.GETHOSEVENTDATA, HttpMethod.Post);
 
 			request.AddUrlSegment("from", fromDateTime.ToString(DataFormats.DateTime_Format));
 			request.AddUrlSegment("to", toDateTime.ToString(DataFormats.DateTime_Format));
@@ -60,7 +60,7 @@ namespace MiX.Integrate.API.Client
 		{
 			var dataRequest = new HosEventDataRequest { EntityTypeId = entityTypeId, EntityIds = entityIds, EventTypeIds = eventTypeIds };
 
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.HOSDATACONTROLLER.GETHOSEVENTDATASUMMARY, HttpMethod.Post);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.HosDataController.GETHOSEVENTDATASUMMARY, HttpMethod.Post);
 
 			request.AddUrlSegment("from", fromDateTime.ToString(DataFormats.DateTime_Format));
 			request.AddUrlSegment("to", toDateTime.ToString(DataFormats.DateTime_Format));
@@ -75,7 +75,7 @@ namespace MiX.Integrate.API.Client
 		{
 			var dataRequest = new HosEventDataRequest { EntityTypeId = entityTypeId, EntityIds = entityIds, EventTypeIds = eventTypeIds };
 
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.HOSDATACONTROLLER.GETHOSEVENTDATASUMMARY, HttpMethod.Post);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.HosDataController.GETHOSEVENTDATASUMMARY, HttpMethod.Post);
 
 			request.AddUrlSegment("from", fromDateTime.ToString(DataFormats.DateTime_Format));
 			request.AddUrlSegment("to", toDateTime.ToString(DataFormats.DateTime_Format));
@@ -88,7 +88,7 @@ namespace MiX.Integrate.API.Client
 
 		public List<HosViolation> GetHosViolations(long driverId, DateTime fromDateTime, DateTime toDateTime)
 		{
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.HOSDATACONTROLLER.GETHOSVIOLATIONS, HttpMethod.Get);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.HosDataController.GETHOSVIOLATIONS, HttpMethod.Get);
 
 			request.AddUrlSegment("driverId", driverId.ToString());
 			request.AddUrlSegment("from", fromDateTime.ToString(DataFormats.DateTime_Format));
@@ -101,7 +101,7 @@ namespace MiX.Integrate.API.Client
 
 		public async Task<List<HosViolation>> GetHosViolationsAsync(long driverId, DateTime fromDateTime, DateTime toDateTime)
 		{
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.HOSDATACONTROLLER.GETHOSVIOLATIONS, HttpMethod.Get);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.HosDataController.GETHOSVIOLATIONS, HttpMethod.Get);
 
 			request.AddUrlSegment("driverId", driverId.ToString());
 			request.AddUrlSegment("from", fromDateTime.ToString(DataFormats.DateTime_Format));
@@ -114,7 +114,7 @@ namespace MiX.Integrate.API.Client
 
 		public HosAvailableHours GetHosAvailableHours(long driverId, bool displayHiddenTimeTypes = false)
 		{
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.HOSDATACONTROLLER.GETHOSAVAILABLEHOURS, HttpMethod.Get);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.HosDataController.GETHOSAVAILABLEHOURS, HttpMethod.Get);
 
 			request.AddUrlSegment("driverId", driverId.ToString());
 			request.AddUrlSegment("displayHiddenTimeTypes", displayHiddenTimeTypes.ToString());
@@ -126,7 +126,7 @@ namespace MiX.Integrate.API.Client
 
 		public async Task<HosAvailableHours> GetHosAvailableHoursAsync(long driverId, bool displayHiddenTimeTypes = false)
 		{
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.HOSDATACONTROLLER.GETHOSAVAILABLEHOURS, HttpMethod.Get);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.HosDataController.GETHOSAVAILABLEHOURS, HttpMethod.Get);
 
 			request.AddUrlSegment("driverId", driverId.ToString());
 			request.AddUrlSegment("displayHiddenTimeTypes", displayHiddenTimeTypes.ToString());

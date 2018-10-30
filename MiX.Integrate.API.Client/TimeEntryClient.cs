@@ -14,7 +14,7 @@ namespace MiX.Integrate.API.Client
 
 		public bool ImportApprovers(long organisationId, TimeApproverImport timeApproverImport)
 		{
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.TIMEENTRYCONTROLLER.IMPORTAPPROVERS, HttpMethod.Post);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.TimeEntryController.IMPORTAPPROVERS, HttpMethod.Post);
 			request.AddUrlSegment("organisationId", organisationId.ToString());
 			request.AddJsonBody(timeApproverImport);
 			IHttpRestResponse response = Execute(request);
@@ -24,7 +24,7 @@ namespace MiX.Integrate.API.Client
 
 		public async Task<bool> ImportApproversAsync(long organisationId, TimeApproverImport timeApproverImport)
 		{
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.TIMEENTRYCONTROLLER.IMPORTAPPROVERS, HttpMethod.Post);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.TimeEntryController.IMPORTAPPROVERS, HttpMethod.Post);
 			request.AddUrlSegment("organisationId", organisationId.ToString());
 			request.AddJsonBody(timeApproverImport);
 			IHttpRestResponse response = await ExecuteAsync(request).ConfigureAwait(false);
@@ -33,7 +33,7 @@ namespace MiX.Integrate.API.Client
 		}
 		public async Task<List<GroupSubstatus>> GetStatusCodes(long organisationId)
 		{
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.TIMEENTRYCONTROLLER.GETSTATUSCODES, HttpMethod.Get);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.TimeEntryController.GETSTATUSCODES, HttpMethod.Get);
 			request.AddUrlSegment("organisationId", organisationId.ToString());
 			IHttpRestResponse<List<GroupSubstatus>> response = await ExecuteAsync<List<GroupSubstatus>>(request).ConfigureAwait(false);
 			return response.Data;

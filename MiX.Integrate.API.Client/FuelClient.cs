@@ -15,7 +15,7 @@ namespace MiX.Integrate.API.Client
 
 		public async Task<IList<FuelTransaction>> GetFuelByDateRangeForGroupAsync(long organisationId, DateTime from, DateTime to)
 		{
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.FUELCONTROLLER.GETFUELBYDATERANGEFORGROUP, HttpMethod.Get);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.FuelController.GETFUELBYDATERANGEFORGROUP, HttpMethod.Get);
 			request.AddUrlSegment("organisationId", organisationId.ToString());
 			request.AddUrlSegment("from", from.ToString(DataFormats.DateTime_Format));
 			request.AddUrlSegment("to", to.ToString(DataFormats.DateTime_Format));
@@ -25,7 +25,7 @@ namespace MiX.Integrate.API.Client
 
 		public IList<FuelTransaction> GetFuelByDateRangeForGroup(long organisationId, DateTime from, DateTime to)
 		{
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.FUELCONTROLLER.GETFUELBYDATERANGEFORGROUP, HttpMethod.Get);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.FuelController.GETFUELBYDATERANGEFORGROUP, HttpMethod.Get);
 			request.AddUrlSegment("organisationId", organisationId.ToString());
 			request.AddUrlSegment("from", from.ToString(DataFormats.DateTime_Format));
 			request.AddUrlSegment("to", to.ToString(DataFormats.DateTime_Format));
@@ -35,7 +35,7 @@ namespace MiX.Integrate.API.Client
 
 		public async Task<IList<FuelInsertCarrier>> AddFuelTransactionsForGroupAsync(long organisationId, IList<FuelTransaction> transactions)
 		{
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.FUELCONTROLLER.ADDFUELTRANSACTIONS, HttpMethod.Put);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.FuelController.ADDFUELTRANSACTIONS, HttpMethod.Put);
 			request.AddUrlSegment("organisationId", organisationId.ToString());
 			request.AddJsonBody(transactions);
 			IHttpRestResponse<List<FuelInsertCarrier>> response = await ExecuteAsync<List<FuelInsertCarrier>>(request).ConfigureAwait(false);
@@ -44,7 +44,7 @@ namespace MiX.Integrate.API.Client
 
 		public IList<FuelInsertCarrier> AddFuelTransactionsForGroup(long organisationId, IList<FuelTransaction> transactions)
 		{
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.FUELCONTROLLER.ADDFUELTRANSACTIONS, HttpMethod.Put);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.FuelController.ADDFUELTRANSACTIONS, HttpMethod.Put);
 			request.AddUrlSegment("organisationId", organisationId.ToString());
 			request.AddJsonBody(transactions);
 			IHttpRestResponse<List<FuelInsertCarrier>> response = Execute<List<FuelInsertCarrier>>(request);

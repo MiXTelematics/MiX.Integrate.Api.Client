@@ -20,7 +20,7 @@ namespace MiX.Integrate.API.Client
 
 		public async Task<IList<LibraryEvent>> GetAllLibraryEventsAsync(long organisationId)
 		{
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.LIBRARYEVENTSCONTROLLER.GETALLLIBRARYEVENTS, HttpMethod.Get);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.LibraryEventsController.GETALLLIBRARYEVENTS, HttpMethod.Get);
 			request.AddUrlSegment("organisationId", organisationId.ToString());
 			IHttpRestResponse<List<LibraryEvent>> response = await ExecuteAsync<List<LibraryEvent>>(request).ConfigureAwait(false);
 			return response.Data;

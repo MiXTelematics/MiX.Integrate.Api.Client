@@ -18,7 +18,7 @@ namespace MiX.Integrate.API.Client
 		public IList<Event> GetLatestForAssets(List<long> assetIds, byte quantity = 1, DateTime? cachedSince = null, List<long> eventTypeIds = null, string menuId = null)
 		{
 			EventFilter eventFilter = new EventFilter() { EntityIds = assetIds, EventTypeIds = eventTypeIds, MenuId = menuId };
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.EVENTSCONTROLLER.GETLATESTFORASSETS, HttpMethod.Post);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.EventsController.GETLATESTFORASSETS, HttpMethod.Post);
 			request.AddUrlSegment("quantity", quantity.ToString());
 			if (cachedSince.HasValue)
 				request.AddQueryParameter("cachedSince", cachedSince.Value.ToUniversalTime().ToString(DataFormats.DateTime_Format));
@@ -30,7 +30,7 @@ namespace MiX.Integrate.API.Client
 		public async Task<IList<Event>> GetLatestForAssetsAsync(List<long> assetIds, byte quantity = 1, DateTime? cachedSince = null, List<long> eventTypeIds = null, string menuId = null)
 		{
 			EventFilter eventFilter = new EventFilter() { EntityIds = assetIds, EventTypeIds = eventTypeIds, MenuId = menuId };
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.EVENTSCONTROLLER.GETLATESTFORASSETS, HttpMethod.Post);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.EventsController.GETLATESTFORASSETS, HttpMethod.Post);
 			request.AddUrlSegment("quantity", quantity.ToString());
 			if (cachedSince.HasValue)
 				request.AddQueryParameter("cachedSince", cachedSince.Value.ToUniversalTime().ToString(DataFormats.DateTime_Format));
@@ -42,7 +42,7 @@ namespace MiX.Integrate.API.Client
 		public IList<Event> GetLatestForDrivers(List<long> driverIds, byte quantity = 1, DateTime? cachedSince = null, List<long> eventTypeIds = null, string menuId = null)
 		{
 			EventFilter eventFilter = new EventFilter() { EntityIds = driverIds, EventTypeIds = eventTypeIds, MenuId = menuId };
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.EVENTSCONTROLLER.GETLATESTFORDRIVERS, HttpMethod.Post);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.EventsController.GETLATESTFORDRIVERS, HttpMethod.Post);
 			request.AddUrlSegment("quantity", quantity.ToString());
 			if (cachedSince.HasValue)
 				request.AddQueryParameter("cachedSince", cachedSince.Value.ToUniversalTime().ToString(DataFormats.DateTime_Format));
@@ -54,7 +54,7 @@ namespace MiX.Integrate.API.Client
 		public async Task<IList<Event>> GetLatestForDriversAsync(List<long> driverIds, byte quantity = 1, DateTime? cachedSince = null, List<long> eventTypeIds = null, string menuId = null)
 		{
 			EventFilter eventFilter = new EventFilter() { EntityIds = driverIds, EventTypeIds = eventTypeIds, MenuId = menuId };
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.EVENTSCONTROLLER.GETLATESTFORDRIVERS, HttpMethod.Post);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.EventsController.GETLATESTFORDRIVERS, HttpMethod.Post);
 			request.AddUrlSegment("quantity", quantity.ToString());
 			if (cachedSince.HasValue)
 				request.AddQueryParameter("cachedSince", cachedSince.Value.ToUniversalTime().ToString(DataFormats.DateTime_Format));
@@ -66,7 +66,7 @@ namespace MiX.Integrate.API.Client
 		public IList<Event> GetLatestForGroups(List<long> groupIds, string entityType, byte quantity = 1, DateTime? cachedSince = null, List<long> eventTypeIds = null, string menuId = null)
 		{
 			EventFilter eventFilter = new EventFilter() { EntityIds = groupIds, EventTypeIds = eventTypeIds, MenuId = menuId };
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.EVENTSCONTROLLER.GETLATESTFORGROUPS, HttpMethod.Post);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.EventsController.GETLATESTFORGROUPS, HttpMethod.Post);
 			request.AddUrlSegment("quantity", quantity.ToString());
 			request.AddUrlSegment("entityType", entityType);
 			if (cachedSince.HasValue)
@@ -79,7 +79,7 @@ namespace MiX.Integrate.API.Client
 		public async Task<IList<Event>> GetLatestForGroupsAsync(List<long> groupIds, string entityType, byte quantity = 1, DateTime? cachedSince = null, List<long> eventTypeIds = null, string menuId = null)
 		{
 			EventFilter eventFilter = new EventFilter() { EntityIds = groupIds, EventTypeIds = eventTypeIds, MenuId = menuId };
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.EVENTSCONTROLLER.GETLATESTFORGROUPS, HttpMethod.Post);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.EventsController.GETLATESTFORGROUPS, HttpMethod.Post);
 			request.AddUrlSegment("quantity", quantity.ToString());
 			request.AddUrlSegment("entityType", entityType);
 			if (cachedSince.HasValue)
@@ -92,7 +92,7 @@ namespace MiX.Integrate.API.Client
 		public IList<Event> GetRangeForAssets(List<long> assetIds, DateTime from, DateTime to, List<long> eventTypeIds = null, string menuId = null)
 		{
 			EventFilter eventFilter = new EventFilter() { EntityIds = assetIds, EventTypeIds = eventTypeIds, MenuId = menuId };
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.EVENTSCONTROLLER.GETRANGEFORASSETS, HttpMethod.Post);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.EventsController.GETRANGEFORASSETS, HttpMethod.Post);
 			request.AddUrlSegment("from", from.ToString(DataFormats.DateTime_Format));
 			request.AddUrlSegment("to", to.ToString(DataFormats.DateTime_Format));
 			request.AddJsonBody(eventFilter);
@@ -103,7 +103,7 @@ namespace MiX.Integrate.API.Client
 		public async Task<IList<Event>> GetRangeForAssetsAsync(List<long> assetIds, DateTime from, DateTime to, List<long> eventTypeIds = null, string menuId = null)
 		{
 			EventFilter eventFilter = new EventFilter() { EntityIds = assetIds, EventTypeIds = eventTypeIds, MenuId = menuId };
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.EVENTSCONTROLLER.GETRANGEFORASSETS, HttpMethod.Post);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.EventsController.GETRANGEFORASSETS, HttpMethod.Post);
 			request.AddUrlSegment("from", from.ToString(DataFormats.DateTime_Format));
 			request.AddUrlSegment("to", to.ToString(DataFormats.DateTime_Format));
 			request.AddJsonBody(eventFilter);
@@ -114,7 +114,7 @@ namespace MiX.Integrate.API.Client
 		public IList<Event> GetRangeForDrivers(List<long> driverIds, DateTime from, DateTime to, List<long> eventTypeIds = null, string menuId = null)
 		{
 			EventFilter eventFilter = new EventFilter() { EntityIds = driverIds, EventTypeIds = eventTypeIds, MenuId = menuId };
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.EVENTSCONTROLLER.GETRANGEFORDRIVERS, HttpMethod.Post);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.EventsController.GETRANGEFORDRIVERS, HttpMethod.Post);
 			request.AddUrlSegment("from", from.ToString(DataFormats.DateTime_Format));
 			request.AddUrlSegment("to", to.ToString(DataFormats.DateTime_Format));
 			request.AddJsonBody(eventFilter);
@@ -125,7 +125,7 @@ namespace MiX.Integrate.API.Client
 		public async Task<IList<Event>> GetRangeForDriversAsync(List<long> driverIds, DateTime from, DateTime to, List<long> eventTypeIds = null, string menuId = null)
 		{
 			EventFilter eventFilter = new EventFilter() { EntityIds = driverIds, EventTypeIds = eventTypeIds, MenuId = menuId };
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.EVENTSCONTROLLER.GETRANGEFORDRIVERS, HttpMethod.Post);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.EventsController.GETRANGEFORDRIVERS, HttpMethod.Post);
 			request.AddUrlSegment("from", from.ToString(DataFormats.DateTime_Format));
 			request.AddUrlSegment("to", to.ToString(DataFormats.DateTime_Format));
 			request.AddJsonBody(eventFilter);
@@ -136,7 +136,7 @@ namespace MiX.Integrate.API.Client
 		public IList<Event> GetRangeForGroups(List<long> groupIds, string entityType, DateTime from, DateTime to, List<long> eventTypeIds = null, string menuId = null)
 		{
 			EventFilter eventFilter = new EventFilter() { EntityIds = groupIds, EventTypeIds = eventTypeIds, MenuId = menuId };
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.EVENTSCONTROLLER.GETRANGEFORGROUPS, HttpMethod.Post);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.EventsController.GETRANGEFORGROUPS, HttpMethod.Post);
 			request.AddUrlSegment("entityType", entityType);
 			request.AddUrlSegment("from", from.ToString(DataFormats.DateTime_Format));
 			request.AddUrlSegment("to", to.ToString(DataFormats.DateTime_Format));
@@ -148,7 +148,7 @@ namespace MiX.Integrate.API.Client
 		public async Task<IList<Event>> GetRangeForGroupsAsync(List<long> groupIds, string entityType, DateTime from, DateTime to, List<long> eventTypeIds = null, string menuId = null)
 		{
 			EventFilter eventFilter = new EventFilter() { EntityIds = groupIds, EventTypeIds = eventTypeIds, MenuId = menuId };
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.EVENTSCONTROLLER.GETRANGEFORGROUPS, HttpMethod.Post);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.EventsController.GETRANGEFORGROUPS, HttpMethod.Post);
 			request.AddUrlSegment("entityType", entityType);
 			request.AddUrlSegment("from", from.ToString(DataFormats.DateTime_Format));
 			request.AddUrlSegment("to", to.ToString(DataFormats.DateTime_Format));
@@ -160,7 +160,7 @@ namespace MiX.Integrate.API.Client
 		public IList<Event> GetSinceForAssets(List<long> assetIds, DateTime since, byte quantity, List<long> eventTypeIds = null, string menuId = null)
 		{
 			EventFilter eventFilter = new EventFilter() { EntityIds = assetIds, EventTypeIds = eventTypeIds, MenuId = menuId };
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.EVENTSCONTROLLER.GETSINCEFORASSETS, HttpMethod.Post);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.EventsController.GETSINCEFORASSETS, HttpMethod.Post);
 			request.AddUrlSegment("since", since.ToString(DataFormats.DateTime_Format));
 			request.AddUrlSegment("quantity", quantity.ToString());
 			request.AddJsonBody(eventFilter);
@@ -171,7 +171,7 @@ namespace MiX.Integrate.API.Client
 		public async Task<IList<Event>> GetSinceForAssetsAsync(List<long> assetIds, DateTime since, byte quantity, List<long> eventTypeIds = null, string menuId = null)
 		{
 			EventFilter eventFilter = new EventFilter() { EntityIds = assetIds, EventTypeIds = eventTypeIds, MenuId = menuId };
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.EVENTSCONTROLLER.GETSINCEFORASSETS, HttpMethod.Post);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.EventsController.GETSINCEFORASSETS, HttpMethod.Post);
 			request.AddUrlSegment("since", since.ToString(DataFormats.DateTime_Format));
 			request.AddUrlSegment("quantity", quantity.ToString());
 			request.AddJsonBody(eventFilter);
@@ -182,7 +182,7 @@ namespace MiX.Integrate.API.Client
 		public IList<Event> GetSinceForDrivers(List<long> driverIds, DateTime since, byte quantity, List<long> eventTypeIds = null, string menuId = null)
 		{
 			EventFilter eventFilter = new EventFilter() { EntityIds = driverIds, EventTypeIds = eventTypeIds, MenuId = menuId };
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.EVENTSCONTROLLER.GETSINCEFORDRIVERS, HttpMethod.Post);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.EventsController.GETSINCEFORDRIVERS, HttpMethod.Post);
 			request.AddUrlSegment("since", since.ToString(DataFormats.DateTime_Format));
 			request.AddUrlSegment("quantity", quantity.ToString());
 			request.AddJsonBody(eventFilter);
@@ -193,7 +193,7 @@ namespace MiX.Integrate.API.Client
 		public async Task<IList<Event>> GetSinceForDriversAsync(List<long> driverIds, DateTime since, byte quantity, List<long> eventTypeIds = null, string menuId = null)
 		{
 			EventFilter eventFilter = new EventFilter() { EntityIds = driverIds, EventTypeIds = eventTypeIds, MenuId = menuId };
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.EVENTSCONTROLLER.GETSINCEFORDRIVERS, HttpMethod.Post);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.EventsController.GETSINCEFORDRIVERS, HttpMethod.Post);
 			request.AddUrlSegment("since", since.ToString(DataFormats.DateTime_Format));
 			request.AddUrlSegment("quantity", quantity.ToString());
 			request.AddJsonBody(eventFilter);
@@ -204,7 +204,7 @@ namespace MiX.Integrate.API.Client
 		public IList<Event> GetSinceForGroups(List<long> groupIds, string entityType, DateTime since, List<long> eventTypeIds = null, string menuId = null)
 		{
 			EventFilter eventFilter = new EventFilter() { EntityIds = groupIds, EventTypeIds = eventTypeIds, MenuId = menuId };
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.EVENTSCONTROLLER.GETSINCEFORGROUPS, HttpMethod.Post);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.EventsController.GETSINCEFORGROUPS, HttpMethod.Post);
 			request.AddUrlSegment("entityType", entityType);
 			request.AddUrlSegment("since", since.ToString(DataFormats.DateTime_Format));
 			request.AddJsonBody(eventFilter);
@@ -215,7 +215,7 @@ namespace MiX.Integrate.API.Client
 		public async Task<IList<Event>> GetSinceForGroupsAsync(List<long> groupIds, string entityType, DateTime since, List<long> eventTypeIds = null, string menuId = null)
 		{
 			EventFilter eventFilter = new EventFilter() { EntityIds = groupIds, EventTypeIds = eventTypeIds, MenuId = menuId };
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.EVENTSCONTROLLER.GETSINCEFORGROUPS, HttpMethod.Post);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.EventsController.GETSINCEFORGROUPS, HttpMethod.Post);
 			request.AddUrlSegment("entityType", entityType);
 			request.AddUrlSegment("since", since.ToString(DataFormats.DateTime_Format));
 			request.AddJsonBody(eventFilter);
@@ -225,7 +225,7 @@ namespace MiX.Integrate.API.Client
 
 		public CreatedSinceResult<Event> GetCreatedSinceForAssets(List<long> assetIds, string sinceToken, int quantity)
 		{
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.EVENTSCONTROLLER.GETCREATEDSINCEFORASSETSASYNC, HttpMethod.Post);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.EventsController.GETCREATEDSINCEFORASSETSASYNC, HttpMethod.Post);
 			request.AddUrlSegment("sinceToken", sinceToken);
 			request.AddUrlSegment("quantity", quantity.ToString());
 			request.AddJsonBody(assetIds);
@@ -240,7 +240,7 @@ namespace MiX.Integrate.API.Client
 
 		public async Task<CreatedSinceResult<Event>> GetCreatedSinceForAssetsAsync(List<long> assetIds, string sinceToken, int quantity)
 		{
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.EVENTSCONTROLLER.GETCREATEDSINCEFORASSETSASYNC, HttpMethod.Post);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.EventsController.GETCREATEDSINCEFORASSETSASYNC, HttpMethod.Post);
 			request.AddUrlSegment("sinceToken", sinceToken);
 			request.AddUrlSegment("quantity", quantity.ToString());
 			request.AddJsonBody(assetIds);
@@ -255,7 +255,7 @@ namespace MiX.Integrate.API.Client
 
 		public CreatedSinceResult<Event> GetCreatedSinceForDrivers(List<long> driverIds, string sinceToken, int quantity)
 		{
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.EVENTSCONTROLLER.GETCREATEDSINCEFORDRIVERSASYNC, HttpMethod.Post);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.EventsController.GETCREATEDSINCEFORDRIVERSASYNC, HttpMethod.Post);
 			request.AddUrlSegment("sinceToken", sinceToken);
 			request.AddUrlSegment("quantity", quantity.ToString());
 			request.AddJsonBody(driverIds);
@@ -270,7 +270,7 @@ namespace MiX.Integrate.API.Client
 
 		public async Task<CreatedSinceResult<Event>> GetCreatedSinceForDriversAsync(List<long> driverIds, string sinceToken, int quantity)
 		{
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.EVENTSCONTROLLER.GETCREATEDSINCEFORDRIVERSASYNC, HttpMethod.Post);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.EventsController.GETCREATEDSINCEFORDRIVERSASYNC, HttpMethod.Post);
 			request.AddUrlSegment("sinceToken", sinceToken);
 			request.AddUrlSegment("quantity", quantity.ToString());
 			request.AddJsonBody(driverIds);
@@ -285,7 +285,7 @@ namespace MiX.Integrate.API.Client
 
 		public CreatedSinceResult<Event> GetCreatedSinceForGroups(List<long> groupIds, string entityType, string sinceToken, int quantity)
 		{
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.EVENTSCONTROLLER.GETCREATEDSINCEFORGROUPSASYNC, HttpMethod.Post);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.EventsController.GETCREATEDSINCEFORGROUPSASYNC, HttpMethod.Post);
 			request.AddUrlSegment("entityType", entityType);
 			request.AddUrlSegment("sinceToken", sinceToken);
 			request.AddUrlSegment("quantity", quantity.ToString());
@@ -301,7 +301,7 @@ namespace MiX.Integrate.API.Client
 
 		public async Task<CreatedSinceResult<Event>> GetCreatedSinceForGroupsAsync(List<long> groupIds, string entityType, string sinceToken, int quantity)
 		{
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.EVENTSCONTROLLER.GETCREATEDSINCEFORGROUPSASYNC, HttpMethod.Post);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.EventsController.GETCREATEDSINCEFORGROUPSASYNC, HttpMethod.Post);
 			request.AddUrlSegment("entityType", entityType);
 			request.AddUrlSegment("sinceToken", sinceToken);
 			request.AddUrlSegment("quantity", quantity.ToString());

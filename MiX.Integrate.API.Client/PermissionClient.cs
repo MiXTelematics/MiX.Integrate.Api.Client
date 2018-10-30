@@ -14,7 +14,7 @@ namespace MiX.Integrate.API.Client
 
 		public async Task<PermissionRefreshResult> RefreshResolvedPermissionsAsync(long accountId)
 		{
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.PERMISSIONCONTROLLER.REFRESHPERMISSIONS, HttpMethod.Get);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.PermissionController.REFRESHPERMISSIONS, HttpMethod.Get);
 			request.AddUrlSegment("accountId", accountId.ToString());
 			IHttpRestResponse<PermissionRefreshResult> response = await ExecuteAsync<PermissionRefreshResult>(request).ConfigureAwait(false);
 			return response.Data;
@@ -22,7 +22,7 @@ namespace MiX.Integrate.API.Client
 
 		public PermissionRefreshResult RefreshResolvedPermissions(long accountId)
 		{
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.PERMISSIONCONTROLLER.REFRESHPERMISSIONS, HttpMethod.Get);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.PermissionController.REFRESHPERMISSIONS, HttpMethod.Get);
 			request.AddUrlSegment("accountId", accountId.ToString());
 			IHttpRestResponse<PermissionRefreshResult> response = Execute<PermissionRefreshResult>(request);
 			return response.Data;
