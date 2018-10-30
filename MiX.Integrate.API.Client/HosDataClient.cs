@@ -56,6 +56,46 @@ namespace MiX.Integrate.API.Client
 			return new CreatedSinceResult<HosEvent> { HasMoreItems = hasMoreItems, GetSinceToken = getSinceToken, Items = response.Data };
 		}
 
+		public CreatedSinceResult<HosEvent> GetHosEventDataSince(ParameterEntityType entityTypeId, List<long> entityIds, List<byte> eventTypeIds, string sinceToken)
+		{
+			var dataRequest = new HosEventDataRequest { EntityTypeId = entityTypeId, EntityIds = entityIds, EventTypeIds = eventTypeIds };
+
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.HOSDATACONTROLLER.GETHOSEVENTDATASINCE, HttpMethod.Post);
+
+			request.AddUrlSegment("sinceToken", sinceToken);
+			request.AddJsonBody(dataRequest);
+
+			IHttpRestResponse<List<HosEvent>> response = Execute<List<HosEvent>>(request);
+
+			var sHasMoreItems = GetResponseHeader(response.Headers, "HasMoreItems");
+			var getSinceToken = GetResponseHeader(response.Headers, "GetSinceToken");
+
+			if (!bool.TryParse(sHasMoreItems, out var hasMoreItems))
+				throw new Exception("Could not read the HasMoreItems header");
+
+			return new CreatedSinceResult<HosEvent> { HasMoreItems = hasMoreItems, GetSinceToken = getSinceToken, Items = response.Data };
+		}
+
+		public async Task<CreatedSinceResult<HosEvent>> GetHosEventDataSinceAsync(ParameterEntityType entityTypeId, List<long> entityIds, List<byte> eventTypeIds, string sinceToken)
+		{
+			var dataRequest = new HosEventDataRequest { EntityTypeId = entityTypeId, EntityIds = entityIds, EventTypeIds = eventTypeIds };
+
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.HOSDATACONTROLLER.GETHOSEVENTDATASINCE, HttpMethod.Post);
+
+			request.AddUrlSegment("sinceToken", sinceToken);
+			request.AddJsonBody(dataRequest);
+
+			IHttpRestResponse<List<HosEvent>> response = await ExecuteAsync<List<HosEvent>>(request).ConfigureAwait(false);
+
+			var sHasMoreItems = GetResponseHeader(response.Headers, "HasMoreItems");
+			var getSinceToken = GetResponseHeader(response.Headers, "GetSinceToken");
+
+			if (!bool.TryParse(sHasMoreItems, out var hasMoreItems))
+				throw new Exception("Could not read the HasMoreItems header");
+
+			return new CreatedSinceResult<HosEvent> { HasMoreItems = hasMoreItems, GetSinceToken = getSinceToken, Items = response.Data };
+		}
+
 		public List<HosEventDriverSummary> GetHosEventDataSummary(ParameterEntityType entityTypeId, List<long> entityIds, List<byte> eventTypeIds, DateTime fromDateTime, DateTime toDateTime)
 		{
 			var dataRequest = new HosEventDataRequest { EntityTypeId = entityTypeId, EntityIds = entityIds, EventTypeIds = eventTypeIds };

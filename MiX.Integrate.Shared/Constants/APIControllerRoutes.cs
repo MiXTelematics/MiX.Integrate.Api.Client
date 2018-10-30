@@ -274,6 +274,7 @@ namespace MiX.Integrate.Shared.Constants
 		public class HosDataController
 		{
 			public const string GETHOSEVENTDATA = "api/ghos/events/from/{from}/to/{to}";
+			public const string GETHOSEVENTDATASINCE = "api/ghos/events/since/{sinceToken}";
 			public const string GETHOSEVENTDATASUMMARY = "api/ghos/events/from/{from}/to/{to}/summary";
 			public const string GETHOSVIOLATIONS = "api/ghos/violations/driver/{driverId}/from/{from}/to/{to}";
 			public const string GETHOSAVAILABLEHOURS = "api/ghos/availablehours/driver/{driverId}/{displayHiddenTimeTypes}";
