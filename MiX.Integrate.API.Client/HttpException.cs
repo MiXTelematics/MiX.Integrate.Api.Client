@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Net;
 
-namespace MiX.Integrate.Api.Client
+namespace MiX.Integrate.API.Client
 {
 	public class HttpException : Exception
 	{

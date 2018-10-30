@@ -1,13 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
+﻿using MiX.Integrate.API.Client.Base;
 using MiX.Integrate.Shared.Constants;
-using MiX.Integrate.Shared.Entities.Locations;
-using MiX.Integrate.Api.Client.Base;
-using System.Net.Http;
 using MiX.Integrate.Shared.Entities.Events;
+using MiX.Integrate.Shared.Entities.Locations;
+using System;
+using System.Collections.Generic;
+using System.Net.Http;
+using System.Threading.Tasks;
 
-namespace MiX.Integrate.Api.Client
+namespace MiX.Integrate.API.Client
 {
 	public class LocationsClient : BaseClient, ILocationsClient
 	{
@@ -17,7 +17,7 @@ namespace MiX.Integrate.Api.Client
 
 		public async Task<Location> GetAsync(long locationId)
 		{
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.LOCATIONSCONTROLLER.GET, HttpMethod.Get);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.LocationsController.GET, HttpMethod.Get);
 			request.AddUrlSegment("locationId", locationId.ToString());
 			IHttpRestResponse<Location> response = await ExecuteAsync<Location>(request).ConfigureAwait(false);
 			return response.Data;
@@ -25,7 +25,7 @@ namespace MiX.Integrate.Api.Client
 
 		public Location Get(long locationId)
 		{
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.LOCATIONSCONTROLLER.GET, HttpMethod.Get);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.LocationsController.GET, HttpMethod.Get);
 			request.AddUrlSegment("locationId", locationId.ToString());
 			IHttpRestResponse<Location> response = Execute<Location>(request);
 			return response.Data;
@@ -33,14 +33,14 @@ namespace MiX.Integrate.Api.Client
 
 		public async Task<List<Location>> GetAllAsync(long groupId)
 		{
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.LOCATIONSCONTROLLER.GETALL, HttpMethod.Get);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.LocationsController.GETALL, HttpMethod.Get);
 			request.AddUrlSegment("groupId", groupId.ToString());
 			IHttpRestResponse<List<Location>> response = await ExecuteAsync<List<Location>>(request).ConfigureAwait(false);
 			return response.Data;
 		}
 		public List<Location> GetAll(long groupId)
 		{
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.LOCATIONSCONTROLLER.GETALL, HttpMethod.Get);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.LocationsController.GETALL, HttpMethod.Get);
 			request.AddUrlSegment("groupId", groupId.ToString());
 			IHttpRestResponse<List<Location>> response = Execute<List<Location>>(request);
 			return response.Data;
@@ -48,14 +48,14 @@ namespace MiX.Integrate.Api.Client
 
 		public async Task UpdateAsync(Location location, long groupId)
 		{
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.LOCATIONSCONTROLLER.UPDATE, HttpMethod.Put);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.LocationsController.UPDATE, HttpMethod.Put);
 			request.AddUrlSegment("groupId", groupId.ToString());
 			request.AddJsonBody(location);
 			await ExecuteAsync(request).ConfigureAwait(false);
 		}
 		public void Update(Location location, long groupId)
 		{
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.LOCATIONSCONTROLLER.UPDATE, HttpMethod.Put);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.LocationsController.UPDATE, HttpMethod.Put);
 			request.AddUrlSegment("groupId", groupId.ToString());
 			request.AddJsonBody(location);
 			Execute(request);
@@ -63,7 +63,7 @@ namespace MiX.Integrate.Api.Client
 
 		public async Task<long> AddAsync(Location location, long groupId)
 		{
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.LOCATIONSCONTROLLER.ADD, HttpMethod.Post);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.LocationsController.ADD, HttpMethod.Post);
 			request.AddUrlSegment("groupId", groupId.ToString());
 			request.AddJsonBody(location);
 			IHttpRestResponse response = await ExecuteAsync(request).ConfigureAwait(false);
@@ -73,7 +73,7 @@ namespace MiX.Integrate.Api.Client
 
 		public long Add(Location location, long groupId)
 		{
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.LOCATIONSCONTROLLER.ADD, HttpMethod.Post);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.LocationsController.ADD, HttpMethod.Post);
 			request.AddUrlSegment("groupId", groupId.ToString());
 			request.AddJsonBody(location);
 			IHttpRestResponse response = Execute(request);
@@ -83,7 +83,7 @@ namespace MiX.Integrate.Api.Client
 
 		public async Task DeleteAsync(long groupId, long locationId)
 		{
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.LOCATIONSCONTROLLER.DELETE, HttpMethod.Delete);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.LocationsController.DELETE, HttpMethod.Delete);
 			request.AddUrlSegment("groupId", groupId.ToString());
 			request.AddUrlSegment("locationId", locationId.ToString());
 			await ExecuteAsync(request).ConfigureAwait(false); ;
@@ -91,7 +91,7 @@ namespace MiX.Integrate.Api.Client
 
 		public void Delete(long groupId, long locationId)
 		{
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.LOCATIONSCONTROLLER.DELETE, HttpMethod.Delete);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.LocationsController.DELETE, HttpMethod.Delete);
 			request.AddUrlSegment("groupId", groupId.ToString());
 			request.AddUrlSegment("locationId", locationId.ToString());
 			Execute(request);
@@ -99,7 +99,7 @@ namespace MiX.Integrate.Api.Client
 
 		public List<Location> InRange(long groupId, Coordinate coordinate, long meters)
 		{
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.LOCATIONSCONTROLLER.INRANGE, HttpMethod.Post);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.LocationsController.INRANGE, HttpMethod.Post);
 			request.AddUrlSegment("groupId", groupId.ToString());
 			request.AddUrlSegment("meters", meters.ToString());
 			request.AddJsonBody(coordinate);
@@ -109,7 +109,7 @@ namespace MiX.Integrate.Api.Client
 
 		public async Task<List<Location>> InRangeAsync(long groupId, Coordinate coordinate, long meters)
 		{
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.LOCATIONSCONTROLLER.INRANGE, HttpMethod.Post);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.LocationsController.INRANGE, HttpMethod.Post);
 			request.AddUrlSegment("groupId", groupId.ToString());
 			request.AddUrlSegment("meters", meters.ToString());
 			request.AddJsonBody(coordinate);
@@ -119,7 +119,7 @@ namespace MiX.Integrate.Api.Client
 
 		public ProximityQueryResult Nearest(long groupId, Coordinate coordinate)
 		{
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.LOCATIONSCONTROLLER.NEAREST, HttpMethod.Post);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.LocationsController.NEAREST, HttpMethod.Post);
 			request.AddUrlSegment("groupId", groupId.ToString());
 			request.AddJsonBody(coordinate);
 			IHttpRestResponse<ProximityQueryResult> response = Execute<ProximityQueryResult>(request);
@@ -128,7 +128,7 @@ namespace MiX.Integrate.Api.Client
 
 		public async Task<ProximityQueryResult> NearestAsync(long groupId, Coordinate coordinate)
 		{
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.LOCATIONSCONTROLLER.NEAREST, HttpMethod.Post);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.LocationsController.NEAREST, HttpMethod.Post);
 			request.AddUrlSegment("groupId", groupId.ToString());
 			request.AddJsonBody(coordinate);
 			IHttpRestResponse<ProximityQueryResult> response = await ExecuteAsync<ProximityQueryResult>(request).ConfigureAwait(false);
@@ -138,7 +138,7 @@ namespace MiX.Integrate.Api.Client
 		/// <inheritdoc />
 		public List<Location> GetChangedSince(long organisationId, DateTime since)
 		{
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.LOCATIONSCONTROLLER.CHANGEDSINCE, HttpMethod.Get);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.LocationsController.CHANGEDSINCE, HttpMethod.Get);
 			request.AddUrlSegment("organisationId", organisationId.ToString());
 			request.AddUrlSegment("since", $"{since:yyyyMMddHHmmss}");
 			IHttpRestResponse<List<Location>> response = Execute<List<Location>>(request);
@@ -148,7 +148,7 @@ namespace MiX.Integrate.Api.Client
 		/// <inheritdoc />
 		public async Task<List<Location>> GetChangedSinceAsync(long organisationId, DateTime since)
 		{
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.LOCATIONSCONTROLLER.CHANGEDSINCE, HttpMethod.Get);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.LocationsController.CHANGEDSINCE, HttpMethod.Get);
 			request.AddUrlSegment("organisationId", organisationId.ToString());
 			request.AddUrlSegment("since", $"{since:yyyyMMddHHmmss}");
 			IHttpRestResponse<List<Location>> response = await ExecuteAsync<List<Location>>(request).ConfigureAwait(false);

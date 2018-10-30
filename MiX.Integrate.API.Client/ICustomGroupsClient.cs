@@ -1,9 +1,9 @@
-﻿using MiX.Integrate.Shared.Entities.CustomGroups;
+﻿using MiX.Integrate.API.Client.Base;
+using MiX.Integrate.Shared.Entities.CustomGroups;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using MiX.Integrate.Api.Client.Base;
 
-namespace MiX.Integrate.Api.Client
+namespace MiX.Integrate.API.Client
 {
 	public interface ICustomGroupsClient : IBaseClient
 	{

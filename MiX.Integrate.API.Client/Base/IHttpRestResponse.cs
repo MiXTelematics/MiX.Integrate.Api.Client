@@ -1,11 +1,9 @@
-﻿using MiX.Integrate.Api.Client.Base;
-using System;
+﻿using System;
 using System.Net;
 using System.Net.Http.Headers;
 
-namespace MiX.Integrate.Api.Client.Base
+namespace MiX.Integrate.API.Client.Base
 {
-
 	public interface IHttpRestResponse<T> : IHttpRestResponse
 	{
 		T Data { get; set; }
@@ -21,5 +19,4 @@ namespace MiX.Integrate.Api.Client.Base
 		bool IsSuccessStatusCode { get; }
 		Exception ErrorException { get; set; }
 	}
-
 }
