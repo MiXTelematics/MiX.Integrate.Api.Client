@@ -67,8 +67,7 @@ namespace MiX.Integrate.Shared.Constants
 		//MiX.Integrate.Api.Controllers.UserController
 		public class UserController
 		{
-			public const string GET = "api/users/{userId}";
-			public const string GETBYEMAIL = "api/users/group/{groupId}/email";
+			public const string GETACCOUNTID = "api/users/account-id";
 		}
 
 		//MiX.Integrate.Api RemindersController
@@ -268,7 +267,7 @@ namespace MiX.Integrate.Shared.Constants
 
 		public class PermissionController
 		{
-			public const string REFRESHPERMISSIONS = "api/permissions/account/{accountId}/refresh";
+			public const string REFRESHPERMISSIONS = "api/permissions/account/refresh";
 		}
 
 		//MiX.Integrate.Api.Controllers.HosDataController

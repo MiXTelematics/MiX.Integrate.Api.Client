@@ -12,18 +12,16 @@ namespace MiX.Integrate.API.Client
 		public PermissionClient(string url, IdServerResourceOwnerClientSettings settings, bool setTestRequestHeader = false) : base(url, settings, setTestRequestHeader) { }
 
 
-		public async Task<PermissionRefreshResult> RefreshResolvedPermissionsAsync(long accountId)
+		public async Task<PermissionRefreshResult> RefreshResolvedPermissionsAsync()
 		{
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.PermissionController.REFRESHPERMISSIONS, HttpMethod.Get);
-			request.AddUrlSegment("accountId", accountId.ToString());
 			IHttpRestResponse<PermissionRefreshResult> response = await ExecuteAsync<PermissionRefreshResult>(request).ConfigureAwait(false);
 			return response.Data;
 		}
 
-		public PermissionRefreshResult RefreshResolvedPermissions(long accountId)
+		public PermissionRefreshResult RefreshResolvedPermissions()
 		{
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.PermissionController.REFRESHPERMISSIONS, HttpMethod.Get);
-			request.AddUrlSegment("accountId", accountId.ToString());
 			IHttpRestResponse<PermissionRefreshResult> response = Execute<PermissionRefreshResult>(request);
 			return response.Data;
 		}

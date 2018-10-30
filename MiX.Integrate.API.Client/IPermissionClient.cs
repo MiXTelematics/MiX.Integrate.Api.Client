@@ -11,13 +11,13 @@ namespace MiX.Integrate.API.Client
 		/// </summary>
 		/// <param name="accountId"></param>
 		/// <returns>A PermissionRefreshResult object to indicate the refresh status</returns>
-		Task<PermissionRefreshResult> RefreshResolvedPermissionsAsync(long accountId);
+		Task<PermissionRefreshResult> RefreshResolvedPermissionsAsync();
 
 		/// <summary>
 		/// Refresh the users resolved permission
 		/// </summary>
 		/// <param name="accountId"></param>
 		/// <returns>A PermissionRefreshResult object to indicate the refresh status</returns>
-		PermissionRefreshResult RefreshResolvedPermissions(long accountId);
+		PermissionRefreshResult RefreshResolvedPermissions();
 	}
 }
