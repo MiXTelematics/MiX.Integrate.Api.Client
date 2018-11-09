@@ -278,6 +278,7 @@ namespace MiX.Integrate.Shared.Constants
 			public const string GETHOSEVENTDATASUMMARY = "api/ghos/events/from/{from}/to/{to}/summary";
 			public const string GETHOSVIOLATIONS = "api/ghos/violations/driver/{driverId}/from/{from}/to/{to}";
 			public const string GETHOSAVAILABLEHOURS = "api/ghos/availablehours/driver/{driverId}/{displayHiddenTimeTypes}";
+			public const string GETHOSDRIVERAPPROVERS = "api/ghos/drivertimeapprovers/driver/{driverId}/isSelectedOnly/{isSelectedOnly}";
 		}
 	}
 }
