@@ -175,6 +175,21 @@ namespace MiX.Integrate.API.Client
 
 			return response.Data;
 		}
+		public Dictionary<byte, string> GetWorkStateStatusSourceTypes()
+		{
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.HosDataController.GETWORKSTATESTATUSSOURCETYPES, HttpMethod.Get);
+
+			IHttpRestResponse<Dictionary<byte, string>> response = Execute<Dictionary<byte, string>>(request);
+
+			return response.Data;
+		}
+		public async Task<Dictionary<byte, string>> GetWorkStateStatusSourceTypesAsync()
+		{
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.HosDataController.GETWORKSTATESTATUSSOURCETYPES, HttpMethod.Get);
+
+			IHttpRestResponse<Dictionary<byte, string>> response = await ExecuteAsync<Dictionary<byte, string>>(request).ConfigureAwait(false);
+			return response.Data;
+		}
 		public List<RuleSetSummary> GetRuleSetSummaries(long organisationGroupId)
 		{
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.HosDataController.GETRULESETSUMMARIES, HttpMethod.Get);
