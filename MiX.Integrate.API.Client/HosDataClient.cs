@@ -175,5 +175,25 @@ namespace MiX.Integrate.API.Client
 
 			return response.Data;
 		}
+		public List<RuleSetSummary> GetRuleSetSummaries(long organisationGroupId)
+		{
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.HosDataController.GETRULESETSUMMARIES, HttpMethod.Get);
+
+			request.AddUrlSegment("organisationId", organisationGroupId.ToString());
+
+			IHttpRestResponse<List<RuleSetSummary>> response = Execute<List<RuleSetSummary>>(request);
+
+			return response.Data;
+		}
+		public async Task<List<RuleSetSummary>> GetRuleSetSummariesAsync(long organisationGroupId)
+		{
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.HosDataController.GETRULESETSUMMARIES, HttpMethod.Get);
+
+			request.AddUrlSegment("organisationId", organisationGroupId.ToString());
+
+			IHttpRestResponse<List<RuleSetSummary>> response = await ExecuteAsync<List<RuleSetSummary>>(request).ConfigureAwait(false);
+
+			return response.Data;
+		}
 	}
 }
