@@ -175,6 +175,21 @@ namespace MiX.Integrate.API.Client
 
 			return response.Data;
 		}
+		public Dictionary<byte, string> GetWorkStateStatusSourceTypes()
+		{
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.HosDataController.GETWORKSTATESTATUSSOURCETYPES, HttpMethod.Get);
+
+			IHttpRestResponse<Dictionary<byte, string>> response = Execute<Dictionary<byte, string>>(request);
+
+			return response.Data;
+		}
+		public async Task<Dictionary<byte, string>> GetWorkStateStatusSourceTypesAsync()
+		{
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.HosDataController.GETWORKSTATESTATUSSOURCETYPES, HttpMethod.Get);
+
+			IHttpRestResponse<Dictionary<byte, string>> response = await ExecuteAsync<Dictionary<byte, string>>(request).ConfigureAwait(false);
+			return response.Data;
+		}
 		public List<RuleSetSummary> GetRuleSetSummaries(long organisationGroupId)
 		{
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.HosDataController.GETRULESETSUMMARIES, HttpMethod.Get);
@@ -192,6 +207,28 @@ namespace MiX.Integrate.API.Client
 			request.AddUrlSegment("organisationId", organisationGroupId.ToString());
 
 			IHttpRestResponse<List<RuleSetSummary>> response = await ExecuteAsync<List<RuleSetSummary>>(request).ConfigureAwait(false);
+
+			return response.Data;
+		}
+
+		public List<HosWorkStateDetail> GetHosWorkStatePerRegion(string region)
+		{
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.HosDataController.GETHOSWORKSTATEPERREGION, HttpMethod.Get);
+
+			request.AddUrlSegment("region", region);
+
+			IHttpRestResponse<List<HosWorkStateDetail>> response = Execute<List<HosWorkStateDetail>>(request);
+
+			return response.Data;
+		}
+
+		public async Task<List<HosWorkStateDetail>> GetHosWorkStatePerRegionAsync(string region)
+		{
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.HosDataController.GETHOSWORKSTATEPERREGION, HttpMethod.Get);
+
+			request.AddUrlSegment("region", region);
+
+			IHttpRestResponse<List<HosWorkStateDetail>> response = await ExecuteAsync<List<HosWorkStateDetail>>(request).ConfigureAwait(false);
 
 			return response.Data;
 		}
