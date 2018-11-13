@@ -232,5 +232,23 @@ namespace MiX.Integrate.API.Client
 
 			return response.Data;
 		}
+
+		public List<HosEventTypeCategories> GetHosEventTypeCategories()
+		{
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.HosDataController.GETHOSEVENTTYPECATEGORIES, HttpMethod.Get);
+
+			IHttpRestResponse<List<HosEventTypeCategories>> response = Execute<List<HosEventTypeCategories>>(request);
+
+			return response.Data;
+		}
+
+		public async Task<List<HosEventTypeCategories>> GetHosEventTypeCategoriesAsync()
+		{
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.HosDataController.GETHOSEVENTTYPECATEGORIES, HttpMethod.Get);
+
+			IHttpRestResponse<List<HosEventTypeCategories>> response = await ExecuteAsync<List<HosEventTypeCategories>>(request).ConfigureAwait(false);
+
+			return response.Data;
+		}
 	}
 }

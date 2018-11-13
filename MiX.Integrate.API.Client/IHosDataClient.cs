@@ -29,5 +29,8 @@ namespace MiX.Integrate.API.Client
 
 		List<RuleSetSummary> GetRuleSetSummaries(long organisationGroupId);
 		Task<List<RuleSetSummary>> GetRuleSetSummariesAsync(long organisationGroupId);
+
+		List<HosEventTypeCategories> GetHosEventTypeCategories();
+		Task<List<HosEventTypeCategories>> GetHosEventTypeCategoriesAsync();
 	}
 }
