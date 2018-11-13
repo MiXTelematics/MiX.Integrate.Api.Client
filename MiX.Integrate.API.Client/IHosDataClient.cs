@@ -23,5 +23,11 @@ namespace MiX.Integrate.API.Client
 
 		HosAvailableHours GetHosAvailableHours(long driverId, bool displayHiddenTimeTypes = false);
 		Task<HosAvailableHours> GetHosAvailableHoursAsync(long driverId, bool displayHiddenTimeTypes = false);
+
+		Dictionary<byte, string> GetWorkStateStatusSourceTypes();
+		Task<Dictionary<byte, string>> GetWorkStateStatusSourceTypesAsync();
+
+		List<RuleSetSummary> GetRuleSetSummaries(long organisationGroupId);
+		Task<List<RuleSetSummary>> GetRuleSetSummariesAsync(long organisationGroupId);
 	}
 }
