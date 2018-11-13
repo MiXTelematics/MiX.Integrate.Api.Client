@@ -251,6 +251,30 @@ namespace MiX.Integrate.API.Client
 			return response.Data;
 		}
 
+		public List<HosDriverTimeApprovers> GetHosDriverApprovers(long driverId, bool isSelectedOnly)
+		{
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.HosDataController.GETHOSDRIVERAPPROVERS, HttpMethod.Get);
+
+			request.AddUrlSegment("driverId", driverId.ToString());
+			request.AddUrlSegment("isSelectedOnly", isSelectedOnly.ToString());
+
+			IHttpRestResponse<List<HosDriverTimeApprovers>> response = Execute<List<HosDriverTimeApprovers>>(request);
+
+			return response.Data;
+		}
+
+		public async Task<List<HosDriverTimeApprovers>> GetHosDriverApproversAsync(long driverId, bool isSelectedOnly)
+		{
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.HosDataController.GETHOSDRIVERAPPROVERS, HttpMethod.Get);
+
+			request.AddUrlSegment("driverId", driverId.ToString());
+			request.AddUrlSegment("isSelectedOnly", isSelectedOnly.ToString());
+
+			IHttpRestResponse<List<HosDriverTimeApprovers>> response = await ExecuteAsync<List<HosDriverTimeApprovers>>(request).ConfigureAwait(false);
+
+			return response.Data;
+		}
+
 		public List<HosDriverInfoSummary> GetHosDriverInfoByOrgId(long organisationGroupId)
 		{
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.HosDataController.GETHOSDRIVERINFOBYORGID, HttpMethod.Get);

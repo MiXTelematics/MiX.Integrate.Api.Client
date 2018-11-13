@@ -283,6 +283,7 @@ namespace MiX.Integrate.Shared.Constants
 			public const string GETHOSDRIVERINFOBYORGID = "api/ghos/driverinfo/organisationId/{organisationId}";
 			public const string GETHOSWORKSTATEPERREGION = "api/ghos/workstateperregion/region/{region}";
 			public const string GETHOSEVENTTYPECATEGORIES = "api/ghos/eventtypecategories";
+			public const string GETHOSDRIVERAPPROVERS = "api/ghos/driverapprovers/driver/{driverId}/isSelectedOnly/{isSelectedOnly}";
 		}
 	}
 }
