@@ -280,6 +280,7 @@ namespace MiX.Integrate.Shared.Constants
 			public const string GETHOSAVAILABLEHOURS = "api/ghos/availablehours/driver/{driverId}/{displayHiddenTimeTypes}";
 			public const string GETWORKSTATESTATUSSOURCETYPES = "api/ghos/workstatestatussourcetypes";
 			public const string GETRULESETSUMMARIES = "api/ghos/ruleset/{organisationId}/summaries";
+			public const string GETHOSDRIVERINFOBYORGID = "api/ghos/driverinfo/organisationId/{organisationId}";
 			public const string GETHOSWORKSTATEPERREGION = "api/ghos/workstateperregion/region/{region}";
 			public const string GETHOSEVENTTYPECATEGORIES = "api/ghos/eventtypecategories";
 			public const string GETHOSDRIVERAPPROVERS = "api/ghos/driverapprovers/driver/{driverId}/isSelectedOnly/{isSelectedOnly}";
