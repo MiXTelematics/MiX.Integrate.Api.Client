@@ -210,5 +210,27 @@ namespace MiX.Integrate.API.Client
 
 			return response.Data;
 		}
+
+		public List<HosWorkStateDetail> GetHosWorkStatePerRegion(string region)
+		{
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.HosDataController.GETHOSWORKSTATEPERREGION, HttpMethod.Get);
+
+			request.AddUrlSegment("region", region);
+
+			IHttpRestResponse<List<HosWorkStateDetail>> response = Execute<List<HosWorkStateDetail>>(request);
+
+			return response.Data;
+		}
+
+		public async Task<List<HosWorkStateDetail>> GetHosWorkStatePerRegionAsync(string region)
+		{
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.HosDataController.GETHOSWORKSTATEPERREGION, HttpMethod.Get);
+
+			request.AddUrlSegment("region", region);
+
+			IHttpRestResponse<List<HosWorkStateDetail>> response = await ExecuteAsync<List<HosWorkStateDetail>>(request).ConfigureAwait(false);
+
+			return response.Data;
+		}
 	}
 }
