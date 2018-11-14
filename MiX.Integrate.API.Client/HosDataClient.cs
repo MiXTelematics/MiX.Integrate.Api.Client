@@ -300,7 +300,7 @@ namespace MiX.Integrate.API.Client
 
 		public List<HosDriverInfoSummary> GetHosDriverInfoByOrgId(long organisationGroupId)
 		{
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.HosDataController.GETHOSDRIVERINFOBYORGID, HttpMethod.Get);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.HosDataController.GETHOSDRIVERINFOLISTBYORGID, HttpMethod.Get);
 
 			request.AddUrlSegment("organisationId", organisationGroupId.ToString());
 
@@ -311,11 +311,12 @@ namespace MiX.Integrate.API.Client
 
 		public async Task<List<HosDriverInfoSummary>> GetHosDriverInfoByOrgIdAsync(long organisationGroupId)
 		{
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.HosDataController.GETHOSDRIVERINFOBYORGID, HttpMethod.Get);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.HosDataController.GETHOSDRIVERINFOLISTBYORGID, HttpMethod.Get);
 
 			request.AddUrlSegment("organisationId", organisationGroupId.ToString());
 
 			IHttpRestResponse<List<HosDriverInfoSummary>> response = await ExecuteAsync<List<HosDriverInfoSummary>>(request).ConfigureAwait(false);
+
 			return response.Data;
 		}
 	}
