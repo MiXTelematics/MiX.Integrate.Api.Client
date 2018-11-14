@@ -175,6 +175,29 @@ namespace MiX.Integrate.API.Client
 
 			return response.Data;
 		}
+		public HosEvent GetPreviousEvent(long driverId, long eventTypeId, DateTime timeStamp)
+		{
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.HosDataController.GETPREVIOUSEVENT, HttpMethod.Get);
+
+			request.AddUrlSegment("driverId", driverId.ToString());
+			request.AddUrlSegment("eventTypeId", driverId.ToString());
+			request.AddUrlSegment("timeStamp", timeStamp.ToString(DataFormats.DateTime_Format_WithMilliseconds));
+
+			IHttpRestResponse<HosEvent> response = Execute<HosEvent>(request);
+
+			return response.Data;
+		}
+		public async Task<HosEvent> GetPreviousEventAsync(long driverId, long eventTypeId, DateTime timeStamp)
+		{
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.HosDataController.GETPREVIOUSEVENT, HttpMethod.Get);
+
+			request.AddUrlSegment("driverId", driverId.ToString());
+			request.AddUrlSegment("eventTypeId", driverId.ToString());
+			request.AddUrlSegment("timeStamp", timeStamp.ToString(DataFormats.DateTime_Format_WithMilliseconds));
+
+			IHttpRestResponse<HosEvent> response = await ExecuteAsync<HosEvent>(request).ConfigureAwait(false);
+			return response.Data;
+		}
 		public Dictionary<byte, string> GetWorkStateStatusSourceTypes()
 		{
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.HosDataController.GETWORKSTATESTATUSSOURCETYPES, HttpMethod.Get);
@@ -272,6 +295,27 @@ namespace MiX.Integrate.API.Client
 
 			IHttpRestResponse<List<HosDriverTimeApprovers>> response = await ExecuteAsync<List<HosDriverTimeApprovers>>(request).ConfigureAwait(false);
 
+			return response.Data;
+		}
+
+		public List<HosDriverInfoSummary> GetHosDriverInfoByOrgId(long organisationGroupId)
+		{
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.HosDataController.GETHOSDRIVERINFOBYORGID, HttpMethod.Get);
+
+			request.AddUrlSegment("organisationId", organisationGroupId.ToString());
+
+			IHttpRestResponse<List<HosDriverInfoSummary>> response = Execute<List<HosDriverInfoSummary>>(request);
+
+			return response.Data;
+		}
+
+		public async Task<List<HosDriverInfoSummary>> GetHosDriverInfoByOrgIdAsync(long organisationGroupId)
+		{
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.HosDataController.GETHOSDRIVERINFOBYORGID, HttpMethod.Get);
+
+			request.AddUrlSegment("organisationId", organisationGroupId.ToString());
+
+			IHttpRestResponse<List<HosDriverInfoSummary>> response = await ExecuteAsync<List<HosDriverInfoSummary>>(request).ConfigureAwait(false);
 			return response.Data;
 		}
 
