@@ -298,7 +298,7 @@ namespace MiX.Integrate.API.Client
 			return response.Data;
 		}
 
-		public List<HosDriverInfoSummary> GetHosDriverInfoByOrgId(long organisationGroupId)
+		public List<HosDriverInfoSummary> GetHosDriverInfoListByOrgId(long organisationGroupId)
 		{
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.HosDataController.GETHOSDRIVERINFOLISTBYORGID, HttpMethod.Get);
 
@@ -309,7 +309,7 @@ namespace MiX.Integrate.API.Client
 			return response.Data;
 		}
 
-		public async Task<List<HosDriverInfoSummary>> GetHosDriverInfoByOrgIdAsync(long organisationGroupId)
+		public async Task<List<HosDriverInfoSummary>> GetHosDriverInfoListByOrgIdAsync(long organisationGroupId)
 		{
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.HosDataController.GETHOSDRIVERINFOLISTBYORGID, HttpMethod.Get);
 
