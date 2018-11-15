@@ -24,7 +24,7 @@ namespace MiX.Integrate.API.Client
 		HosAvailableHours GetHosAvailableHours(long driverId, bool displayHiddenTimeTypes = false);
 		Task<HosAvailableHours> GetHosAvailableHoursAsync(long driverId, bool displayHiddenTimeTypes = false);
 
-		HosEvent GetPreviousEvent(long driverId, long eventTypeId, DateTime timeStamp);
+		HosEvent GetPreviousEvent(long driverId, byte eventTypeId, DateTime timeStamp);
 		Task<HosEvent> GetPreviousEventAsync(long driverId, byte eventTypeId, DateTime timeStamp);
 
 		Dictionary<byte, string> GetWorkStateStatusSourceTypes();
