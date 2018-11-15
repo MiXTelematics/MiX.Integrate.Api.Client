@@ -175,24 +175,24 @@ namespace MiX.Integrate.API.Client
 
 			return response.Data;
 		}
-		public HosEvent GetPreviousEvent(long driverId, long eventTypeId, DateTime timeStamp)
+		public HosEvent GetPreviousEvent(long driverId, byte eventTypeId, DateTime timeStamp)
 		{
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.HosDataController.GETPREVIOUSEVENT, HttpMethod.Get);
 
 			request.AddUrlSegment("driverId", driverId.ToString());
-			request.AddUrlSegment("eventTypeId", driverId.ToString());
+			request.AddUrlSegment("eventTypeId", eventTypeId.ToString());
 			request.AddUrlSegment("timeStamp", timeStamp.ToString(DataFormats.DateTime_Format_WithMilliseconds));
 
 			IHttpRestResponse<HosEvent> response = Execute<HosEvent>(request);
 
 			return response.Data;
 		}
-		public async Task<HosEvent> GetPreviousEventAsync(long driverId, long eventTypeId, DateTime timeStamp)
+		public async Task<HosEvent> GetPreviousEventAsync(long driverId, byte eventTypeId, DateTime timeStamp)
 		{
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.HosDataController.GETPREVIOUSEVENT, HttpMethod.Get);
 
 			request.AddUrlSegment("driverId", driverId.ToString());
-			request.AddUrlSegment("eventTypeId", driverId.ToString());
+			request.AddUrlSegment("eventTypeId", eventTypeId.ToString());
 			request.AddUrlSegment("timeStamp", timeStamp.ToString(DataFormats.DateTime_Format_WithMilliseconds));
 
 			IHttpRestResponse<HosEvent> response = await ExecuteAsync<HosEvent>(request).ConfigureAwait(false);
@@ -318,7 +318,6 @@ namespace MiX.Integrate.API.Client
 			request.AddUrlSegment("resolveExtendedInfo", resolveExtendedInfo.ToString());
 
 			IHttpRestResponse<List<HosDriverInfoSummary>> response = await ExecuteAsync<List<HosDriverInfoSummary>>(request).ConfigureAwait(false);
-
 			return response.Data;
 		}
 	}
