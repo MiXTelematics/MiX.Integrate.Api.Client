@@ -33,8 +33,12 @@ namespace MiX.Integrate.API.Client
 		List<RuleSetSummary> GetRuleSetSummaries(long organisationGroupId);
 		Task<List<RuleSetSummary>> GetRuleSetSummariesAsync(long organisationGroupId);
 
+		List<HosDriverTimeApprovers> GetHosDriverApprovers(long driverId, bool isSelectedOnly);
+		Task<List<HosDriverTimeApprovers>> GetHosDriverApproversAsync(long driverId, bool isSelectedOnly);
+
 		List<HosEventTypeCategories> GetHosEventTypeCategories();
 		Task<List<HosEventTypeCategories>> GetHosEventTypeCategoriesAsync();
+
 		List<HosDriverInfoSummary> GetHosDriverInfoListByOrgId(long organisationGroupId, bool resolveExtendedInfo = true);
 		Task<List<HosDriverInfoSummary>> GetHosDriverInfoListByOrgIdAsync(long organisationGroupId, bool resolveExtendedInfo = true);
 	}
