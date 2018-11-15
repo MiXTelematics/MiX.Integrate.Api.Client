@@ -35,7 +35,7 @@ namespace MiX.Integrate.API.Client
 
 		List<HosEventTypeCategories> GetHosEventTypeCategories();
 		Task<List<HosEventTypeCategories>> GetHosEventTypeCategoriesAsync();
-		List<HosDriverInfoSummary> GetHosDriverInfoListByOrgId(long organisationGroupId);
-		Task<List<HosDriverInfoSummary>> GetHosDriverInfoListByOrgIdAsync(long organisationGroupId);
+		List<HosDriverInfoSummary> GetHosDriverInfoListByOrgId(long organisationGroupId, bool resolveExtendedInfo = true);
+		Task<List<HosDriverInfoSummary>> GetHosDriverInfoListByOrgIdAsync(long organisationGroupId, bool resolveExtendedInfo = true);
 	}
 }

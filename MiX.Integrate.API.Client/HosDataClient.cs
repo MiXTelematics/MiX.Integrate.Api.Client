@@ -298,22 +298,24 @@ namespace MiX.Integrate.API.Client
 			return response.Data;
 		}
 
-		public List<HosDriverInfoSummary> GetHosDriverInfoListByOrgId(long organisationGroupId)
+		public List<HosDriverInfoSummary> GetHosDriverInfoListByOrgId(long organisationGroupId, bool resolveExtendedInfo = true)
 		{
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.HosDataController.GETHOSDRIVERINFOLISTBYORGID, HttpMethod.Get);
 
 			request.AddUrlSegment("organisationId", organisationGroupId.ToString());
+			request.AddUrlSegment("resolveExtendedInfo", resolveExtendedInfo.ToString());
 
 			IHttpRestResponse<List<HosDriverInfoSummary>> response = Execute<List<HosDriverInfoSummary>>(request);
 
 			return response.Data;
 		}
 
-		public async Task<List<HosDriverInfoSummary>> GetHosDriverInfoListByOrgIdAsync(long organisationGroupId)
+		public async Task<List<HosDriverInfoSummary>> GetHosDriverInfoListByOrgIdAsync(long organisationGroupId, bool resolveExtendedInfo = true)
 		{
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.HosDataController.GETHOSDRIVERINFOLISTBYORGID, HttpMethod.Get);
 
 			request.AddUrlSegment("organisationId", organisationGroupId.ToString());
+			request.AddUrlSegment("resolveExtendedInfo", resolveExtendedInfo.ToString());
 
 			IHttpRestResponse<List<HosDriverInfoSummary>> response = await ExecuteAsync<List<HosDriverInfoSummary>>(request).ConfigureAwait(false);
 
