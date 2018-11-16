@@ -9,6 +9,7 @@ namespace MiX.Integrate.Shared.Entities.HosData
 		public long Id { get; set; }
 		public long DriverId { get; set; }
 		public long ApproverId { get; set; }
+		public string ApproverCode { get; set; }
 		public string DisplayName { get; set; }
 		public short ApproverLevel { get; set; }
 		public bool IsSelected { get; set; }
