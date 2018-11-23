@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
-namespace MiX.Integrate.Api.Client.Base
+namespace MiX.Integrate.API.Client.Base
 {
 	public static class RetryHelper
 	{
@@ -33,9 +30,9 @@ namespace MiX.Integrate.Api.Client.Base
 					if (ex.HttpStatusCode == System.Net.HttpStatusCode.Unauthorized && idServerResourceOwnerClientSettings != null)
 					{
 						AccessTokenCache.ClearIdServerAccessToken(idServerResourceOwnerClientSettings);
-					} 
+					}
 
-					await CreateDelay(attempts).ConfigureAwait(false); 
+					await CreateDelay(attempts).ConfigureAwait(false);
 				}
 				catch (HttpServerException ex)
 				{

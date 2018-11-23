@@ -4,14 +4,14 @@ namespace MiX.Integrate.Shared.Constants
 	public class APIControllerRoutes
 	{
 		//HealthCheckController
-		public class HEALTHCHECK
+		public class HealthCheck
 		{
 			public const string BASIC = "healthcheck/basic";
 			public const string EXTENDED = "healthcheck/extended";
 		}
 
 		//MiX.Integrate.Api.Controllers.ActiveEventController 
-		public class ACTIVEEVENTSCONTROLLER
+		public class ActiveEventsController
 		{
 			public const string GETLATESTFORGROUP = "api/activeevents/group/{groupId}/latest/{quantity}";
 			public const string GETLATESTPERASSETINGROUP = "api/activeevents/group/{groupId}/latestperasset/{quantity}";
@@ -23,7 +23,7 @@ namespace MiX.Integrate.Shared.Constants
 		}
 
 		//MiX.Integrate.Api.Controllers.DriversControllerpublic 
-		public class DRIVERSCONTROLLER
+		public class DriversController
 		{
 			public const string GETDRIVER = "api/drivers/group/{groupId}/driver/{driverId}";
 			public const string UPDATEDRIVER = "api/drivers";
@@ -33,7 +33,7 @@ namespace MiX.Integrate.Shared.Constants
 		}
 
 		//MiX.Integrate.Api.Controllers.DriverLicenceController
-		public class DRIVERLICENCECONTROLLER
+		public class DriverLicenceController
 		{
 			public const string GETDRIVERLICENCES = "api/driverlicence/organisation/{organisationId}/driver/{driverId}";
 			public const string GETDRIVERLICENCECATEGORIES = "api/driverlicence/organisation/{organisationId}/driver/{driverId}/licencecategories";
@@ -43,7 +43,7 @@ namespace MiX.Integrate.Shared.Constants
 			public const string DELETEDRIVERLICENCE = "api/driverlicence/organisation/{organisationId}/driver/{driverId}/licencecategory/{licenceCategoryId}";
 		}
 
-		public class DRIVERCERTIFICATIONCONTROLLER
+		public class DriverCertificationController
 		{
 			public const string GETDRIVERCERTIFICATIONS = "api/drivercertification/organisation/{organisationId}/driver/{driverId}";
 			public const string GETDRIVERCERTIFICATIONTYPES = "api/drivercertification/organisation/{organisationId}/driver/{driverId}/certificationcategories";
@@ -54,7 +54,7 @@ namespace MiX.Integrate.Shared.Constants
 		}
 
 		//MiX.Integrate.Api.Controllers.AssetsController
-		public class ASSETSCONTROLLER
+		public class AssetsController
 		{
 			public const string GETALL = "api/assets/group/{groupId}";
 			public const string GET = "api/assets/{assetId}";
@@ -64,9 +64,14 @@ namespace MiX.Integrate.Shared.Constants
 			public const string ADD = "api/assets";
 		}
 
+		//MiX.Integrate.Api.Controllers.UserController
+		public class UserController
+		{
+			public const string GETACCOUNTID = "api/users/account-id";
+		}
 
 		//MiX.Integrate.Api RemindersController
-		public class REMINDERSCONTROLLER
+		public class RemindersController
 		{
 			public const string GETASSETREMINDERS = "api/reminders/organisation/{organisationId}/asset/{assetId}";
 			public const string ASSETSERVICEREMINDERS = "api/reminders/organisation/{organisationId}/asset/{assetId}/service";
@@ -75,7 +80,7 @@ namespace MiX.Integrate.Shared.Constants
 		}
 
 		//MiX.Integrate.Api GroupsController
-		public class GROUPSCONTROLLER
+		public class GroupsController
 		{
 			public const string GETORGGROUPS = "api/organisationgroups";
 			public const string GETSUBGROUPS = "api/organisationgroups/subgroups/{groupId}";
@@ -86,10 +91,12 @@ namespace MiX.Integrate.Shared.Constants
 			public const string UPDATEGROUPNAME = "api/organisationgroups/{organisationId}/group/{groupId}/name";
 			public const string GETORGANISATIONDETAILS = "api/organisationgroups/details/{organisationId}";
 			public const string GETGROUP = "api/organisationgroups/group/{groupId}";
+
+			public const string GETORGANISATIONSITESWITHLEGACYID = "api/organisationgroups/siteswithlegacyid/{organisationId}";
 		}
 
 		//MiX.Integrate.Api PositionsController
-		public class POSITIONSCONTROLLER
+		public class PositionsController
 		{
 			public const string GETLATESTFORGROUPS = "api/positions/groups/latest/{quantity}";
 			public const string GETRANGEFORGROUPS = "api/positions/groups/from/{from}/to/{to}";
@@ -101,7 +108,7 @@ namespace MiX.Integrate.Shared.Constants
 		}
 
 		//MiX.Integrate.Api EventsController
-		public class EVENTSCONTROLLER
+		public class EventsController
 		{
 			public const string GETLATESTFORGROUPS = "api/events/groups/latest/entitytype/{entityType}/{quantity}";
 			public const string GETRANGEFORGROUPS = "api/events/groups/entitytype/{entityType}/from/{from}/to/{to}";
@@ -120,13 +127,13 @@ namespace MiX.Integrate.Shared.Constants
 		}
 
 		//MiX.Fleet.Services.Api TachoController
-		public class TACHOCONTROLLER
+		public class TachoController
 		{
 			public const string GETRANGEFORASSETASYNC = "api/tachos/asset/{assetId}/range/from/{from}/to/{to}";
 		}
 
 		//MiX.Integrate.Api TripsController
-		public class TRIPSCONTROLLER
+		public class TripsController
 		{
 			public const string GETLATESTFORGROUPS = "api/trips/groups/latest/{quantity}/entitytype/{entityType}";
 			public const string GETRANGEFORGROUPS = "api/trips/groups/from/{from}/to/{to}/entitytype/{entityType}";
@@ -147,7 +154,7 @@ namespace MiX.Integrate.Shared.Constants
 		}
 
 		//MiX.Integrate.Api.Controllers.JourneysController
-		public class JOURNEYSCONTROLLER
+		public class JourneysController
 		{
 			public const string ADDJOURNEY = "api/journeys/";
 			public const string GETJOURNEY = "api/journeys/{journeyId}";
@@ -167,7 +174,7 @@ namespace MiX.Integrate.Shared.Constants
 		}
 
 		//MiX.Integrate.Api.Controllers.LocationsController
-		public class LOCATIONSCONTROLLER
+		public class LocationsController
 		{
 			public const string GETALL = "api/locations/group/{groupId}";
 			public const string GET = "api/locations/{locationId}";
@@ -181,7 +188,7 @@ namespace MiX.Integrate.Shared.Constants
 		}
 
 		//MiX.Integrate.Api.Controllers.LoggableData
-		public class LOGGABLEDATACONTROLLER
+		public class LoggableDataController
 		{
 			public const string GETLOGGABLEDATAFORASSETSBYDATERANGE = "api/loggabledata/from/{from}/to/{to}";
 			public const string GETROVIMESSAGESFORASSETSSINCE = "api/loggabledata/rovimessages/since/{since}";
@@ -190,7 +197,7 @@ namespace MiX.Integrate.Shared.Constants
 		}
 
 		//MiX.Integrate.Api.Controllers.DeviceCommandsController
-		public class DEVICECOMMANDSCONTROLLER
+		public class DeviceCommandsController
 		{
 			public const string SENDPOSITIONREQUESTMESSAGE = "api/devicecommands/group/{groupId}/asset/{assetId}/sendpositionrequestmessage";
 			public const string SENDRELAYCOMMAND = "api/devicecommands/group/{groupId}/asset/{assetId}/sendrelaycommand/relayDrive/{relayDrive}/relayState/{relayState}";
@@ -204,19 +211,19 @@ namespace MiX.Integrate.Shared.Constants
 		}
 
 		//MiX.Integrate.Api.Controllers.DeviceConfigurationController
-		public class DEVICECONFIGCONTROLLER
+		public class DeviceConfigController
 		{
 			public const string GETCONNECTEDPERIPHERALSFORASSETS = "api/deviceconfiguration/group/{groupId}/assets/connectedperipherals";
 		}
 
 		//MiX.Integrate.Api.Controllers.LibraryEventsController
-		public class LIBRARYEVENTSCONTROLLER
+		public class LibraryEventsController
 		{
 			public const string GETALLLIBRARYEVENTS = "api/libraryevents/organisation/{organisationId}";
 		}
 
 		//MiX.Integrate.Api.Controllers.MessagesController
-		public class MESSAGESCONTROLLER
+		public class MessagesController
 		{
 			public const string GETSINCEID = "api/messages/organisation/{organisationId}/sincemessageid/{messageId}/maxrecords/{maxRecords}";
 			public const string GET = "api/messages/organisation/{organisationId}/messageid/{messageId}";
@@ -228,14 +235,14 @@ namespace MiX.Integrate.Shared.Constants
 		}
 
 		//MiX.Integrate.Api.Controllers.FuelController
-		public class FUELCONTROLLER
+		public class FuelController
 		{
 			public const string GETFUELBYDATERANGEFORGROUP = "api/fueltransactions/organisation/{organisationId}/from/{from}/to/{to}";
 			public const string ADDFUELTRANSACTIONS = "api/fueltransactions/organisation/{organisationId}";
 		}
 
 		//MiX.Integrate.Api.Controllers.CustomGroupsController
-		public class CUSTOMGROUPSCONTROLLER
+		public class CustomGroupsController
 		{
 			public const string GETALLCUSTOMGROUPS = "api/customgroups/organisation/{organisationId}";
 			public const string GETCUSTOMGROUPBYID = "api/customgroups/organisation/{organisationId}/customgroup/{customGroupId}";
@@ -252,22 +259,33 @@ namespace MiX.Integrate.Shared.Constants
 		}
 
 		//MiX.Integrate.Api.Controllers.TimeEntryController
-		public class TIMEENTRYCONTROLLER
+		public class TimeEntryController
 		{
 			public const string IMPORTAPPROVERS = "api/timeentry/approvers/organisation/{organisationId}/import";
 			public const string GETSTATUSCODES = "api/timeentry/statuscodes/{organisationId}";
 		}
 
-		public class PERMISSIONCONTROLLER
+		public class PermissionController
 		{
-			public const string REFRESHPERMISSIONS = "api/permissions/account/{accountId}/refresh";
+			public const string REFRESHPERMISSIONS = "api/permissions/account/refresh";
 		}
 
-
 		//MiX.Integrate.Api.Controllers.HosDataController
-		public class HOSDATACONTROLLER
+		public class HosDataController
 		{
 			public const string GETHOSEVENTDATA = "api/ghos/events/from/{from}/to/{to}";
+			public const string GETHOSEVENTDATASINCE = "api/ghos/events/since/{sinceToken}";
+			public const string GETHOSEVENTDATASUMMARY = "api/ghos/events/from/{from}/to/{to}/summary";
+			public const string GETHOSVIOLATIONS = "api/ghos/violations/driver/{driverId}/from/{from}/to/{to}";
+			public const string GETHOSAVAILABLEHOURS = "api/ghos/availablehours/driver/{driverId}/{displayHiddenTimeTypes}";
+			public const string GETPREVIOUSEVENT = "api/ghos/previousevent/driver/{driverId}/eventtype/{eventTypeId}/{timeStamp}";
+			public const string GETWORKSTATESTATUSSOURCETYPES = "api/ghos/workstatestatussourcetypes";
+			public const string GETRULESETSUMMARIES = "api/ghos/ruleset/{organisationId}/summaries";
+			public const string GETHOSDRIVERINFOLISTBYORGID = "api/ghos/driver/list/{organisationId}/resolveExtendedInfo/{resolveExtendedInfo}";
+			public const string GETHOSWORKSTATEPERREGION = "api/ghos/workstateperregion/region/{region}";
+			public const string GETHOSEVENTTYPECATEGORIES = "api/ghos/eventtypecategories";
+			public const string GETHOSDRIVERAPPROVERS = "api/ghos/driverapprovers/driver/{driverId}/isSelectedOnly/{isSelectedOnly}";
+			public const string GETHOSEVENTSTARTDATETIMEBYHOUR = "api/ghos/events/startdatetime/changedsince/{sinceToken}";
 		}
 
 		public class SERVERSIDEEVENTSCONTROLLER

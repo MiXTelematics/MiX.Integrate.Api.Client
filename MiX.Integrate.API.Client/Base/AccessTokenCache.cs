@@ -2,9 +2,8 @@
 using MiX.Identity.Client;
 using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 
-namespace MiX.Integrate.Api.Client.Base
+namespace MiX.Integrate.API.Client.Base
 {
 	public static class AccessTokenCache
 	{

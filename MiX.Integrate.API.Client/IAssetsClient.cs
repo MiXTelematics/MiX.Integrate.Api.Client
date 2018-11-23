@@ -1,13 +1,12 @@
-﻿using MiX.Integrate.Api.Client.Base;
+﻿using MiX.Integrate.API.Client.Base;
 using MiX.Integrate.Shared.Entities.Assets;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace MiX.Integrate.Api.Client
+namespace MiX.Integrate.API.Client
 {
 	public interface IAssetsClient : IBaseClient
 	{
-
 		List<Asset> GetAll(long groupId);
 		Task<List<Asset>> GetAllAsync(long groupId);
 		List<Asset> GetAll(long groupId, string filterType, string wildCard);
@@ -22,6 +21,5 @@ namespace MiX.Integrate.Api.Client
 		Task<bool> AddAssetStateAsync(long groupId, AssetState assetState);
 		long Add(Asset asset);
 		Task<long> AddAsync(Asset asset);
-
 	}
 }

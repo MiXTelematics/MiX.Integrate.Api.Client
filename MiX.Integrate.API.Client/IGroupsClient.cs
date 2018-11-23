@@ -1,10 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using MiX.Integrate.API.Client.Base;
 using MiX.Integrate.Shared.Entities.Groups;
-using System.Threading.Tasks;
-using MiX.Integrate.Api.Client.Base;
 using MiX.Integrate.Shared.Entities.Organisation;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
-namespace MiX.Integrate.Api.Client
+namespace MiX.Integrate.API.Client
 {
 	public interface IGroupsClient : IBaseClient
 	{
@@ -21,6 +21,7 @@ namespace MiX.Integrate.Api.Client
 		void UpdateGroupName(long organisationGroupId, long groupId, string name);
 		OrganisationDetail GetOrganisationDetail(long groupId);
 		Group GetGroup(long groupId);
+		Dictionary<long, int?> GetOrganisationSitesWithLegacyId(long groupId);
 
 		#endregion sync
 
@@ -34,6 +35,8 @@ namespace MiX.Integrate.Api.Client
 		Task UpdateGroupNameAsync(long organisationGroupId, long groupId, string name);
 		Task<OrganisationDetail> GetOrganisationDetailAsync(long groupId);
 		Task<Group> GetGroupAsync(long groupId);
+		Task<Dictionary<long, int?>> GetOrganisationSitesWithLegacyIdAsync(long groupId);
+
 
 		#endregion async
 	}

@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Net.Http;
-using System.Text;
 
-namespace MiX.Integrate.Api.Client.Base
+namespace MiX.Integrate.API.Client.Base
 {
 	public interface IHttpRestRequest
 	{
@@ -16,7 +14,7 @@ namespace MiX.Integrate.Api.Client.Base
 		Dictionary<string, string> UrlSegments { get; }
 
 		string QueryUrl { get; }
-		 
+
 		void AddJsonBody(object obj);
 		void SetHeader(string name, string value);
 		void AddQueryParameter(string name, string value);

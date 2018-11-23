@@ -1,9 +1,9 @@
 ﻿using System.Threading.Tasks;
 using System.Collections.Generic;
 using MiX.Integrate.Shared.Entities.Journeys;
-using MiX.Integrate.Api.Client.Base;
+using MiX.Integrate.API.Client.Base;
 
-namespace MiX.Integrate.Api.Client.Journeys
+namespace MiX.Integrate.API.Client.Journeys
 {
 	public interface IJourneysClient : IBaseClient
 	{
@@ -40,6 +40,6 @@ namespace MiX.Integrate.Api.Client.Journeys
 		int RemoveJourneyAssetPassengers(long journeyId, JourneyAssetAndPassengerData journeyAssetAndPassengerData);
 		Task<JourneyAssetAndPassengerData> GetJourneyAssetPassengersAsync(long journeyId);
 		JourneyAssetAndPassengerData GetJourneyAssetPassengers(long journeyId);
-		
+
 	}
 }
