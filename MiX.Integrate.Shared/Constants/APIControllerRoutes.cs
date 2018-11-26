@@ -287,5 +287,11 @@ namespace MiX.Integrate.Shared.Constants
 			public const string GETHOSDRIVERAPPROVERS = "api/ghos/driverapprovers/driver/{driverId}/isSelectedOnly/{isSelectedOnly}";
 			public const string GETHOSEVENTSTARTDATETIMEBYHOUR = "api/ghos/events/startdatetime/changedsince/{sinceToken}";
 		}
+
+		//MiX.Integrate.Api.Controllers.GlobalisationController
+		public class GlobalisationController
+		{
+			public const string GETTIMEZONEINFOBYID = "api/globalisation/timezoneinfo/{timeZoneId}";
+		}
 	}
 }
