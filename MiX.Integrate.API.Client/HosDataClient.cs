@@ -320,5 +320,33 @@ namespace MiX.Integrate.API.Client
 			IHttpRestResponse<List<HosDriverInfoSummary>> response = await ExecuteAsync<List<HosDriverInfoSummary>>(request).ConfigureAwait(false);
 			return response.Data;
 		}
+
+		public List<HosEventStartDateTimeByHourChangedSince> GetHosEventStartDateTimeByHourChangedSince(ParameterEntityType entityTypeId, List<long> entityIds, List<byte> eventTypeIds, string sinceToken)
+		{
+			var dataRequest = new HosEventDataRequest { EntityTypeId = entityTypeId, EntityIds = entityIds, EventTypeIds = eventTypeIds };
+
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.HosDataController.GETHOSEVENTSTARTDATETIMEBYHOUR, HttpMethod.Post);
+
+			request.AddUrlSegment("sinceToken", sinceToken);
+			request.AddJsonBody(dataRequest);
+
+			IHttpRestResponse<List<HosEventStartDateTimeByHourChangedSince>> response = Execute<List<HosEventStartDateTimeByHourChangedSince>>(request);
+
+			return response.Data;
+		}
+
+		public async Task<List<HosEventStartDateTimeByHourChangedSince>> GetHosEventStartDateTimeByHourChangedSinceAsync(ParameterEntityType entityTypeId, List<long> entityIds, List<byte> eventTypeIds, string sinceToken)
+		{
+			var dataRequest = new HosEventDataRequest { EntityTypeId = entityTypeId, EntityIds = entityIds, EventTypeIds = eventTypeIds };
+
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.HosDataController.GETHOSEVENTSTARTDATETIMEBYHOUR, HttpMethod.Post);
+
+			request.AddUrlSegment("sinceToken", sinceToken);
+			request.AddJsonBody(dataRequest);
+
+			IHttpRestResponse<List<HosEventStartDateTimeByHourChangedSince>> response = await ExecuteAsync<List<HosEventStartDateTimeByHourChangedSince>>(request).ConfigureAwait(false);
+
+			return response.Data;
+		}
 	}
 }

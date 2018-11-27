@@ -41,5 +41,9 @@ namespace MiX.Integrate.API.Client
 
 		List<HosDriverInfoSummary> GetHosDriverInfoListByOrgId(long organisationGroupId, bool resolveExtendedInfo = true);
 		Task<List<HosDriverInfoSummary>> GetHosDriverInfoListByOrgIdAsync(long organisationGroupId, bool resolveExtendedInfo = true);
+
+		List<HosEventStartDateTimeByHourChangedSince> GetHosEventStartDateTimeByHourChangedSince(ParameterEntityType entityTypeId, List<long> entityIds, List<byte> eventTypeIds, string sinceToken);
+		Task<List<HosEventStartDateTimeByHourChangedSince>> GetHosEventStartDateTimeByHourChangedSinceAsync(ParameterEntityType entityTypeId, List<long> entityIds, List<byte> eventTypeIds, string sinceToken);
+
 	}
 }
