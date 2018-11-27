@@ -44,6 +44,5 @@ namespace MiX.Integrate.API.Client
 
 		List<HosEventStartDateTimeByHourChangedSince> GetHosEventStartDateTimeByHourChangedSince(ParameterEntityType entityTypeId, List<long> entityIds, List<byte> eventTypeIds, string sinceToken);
 		Task<List<HosEventStartDateTimeByHourChangedSince>> GetHosEventStartDateTimeByHourChangedSinceAsync(ParameterEntityType entityTypeId, List<long> entityIds, List<byte> eventTypeIds, string sinceToken);
-
 	}
 }
