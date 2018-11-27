@@ -3,7 +3,6 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using MiX.Integrate.API.Client.Base;
 using MiX.Integrate.Shared.Constants;
-using MiX.Integrate.Shared.Entities.Globalisation;
 
 namespace MiX.Integrate.API.Client
 {
@@ -12,15 +11,17 @@ namespace MiX.Integrate.API.Client
 		public GlobalisationClient(string url, bool setTestRequestHeader = false) : base(url, setTestRequestHeader) { }
 		public GlobalisationClient(string url, IdServerResourceOwnerClientSettings settings, bool setTestRequestHeader = false) : base(url, settings, setTestRequestHeader) { }
 
+		#if !NETSTANDARD1_6
 		public TimeZoneInfo FindSystemTimeZoneById(string timeZoneId)
 		{
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.GlobalisationController.GETTIMEZONEINFOBYID, HttpMethod.Get);
 
 			request.AddUrlSegment("timeZoneId", timeZoneId);
 
-			IHttpRestResponse<TimeZoneInfoResult> response = Execute<TimeZoneInfoResult>(request);
+			IHttpRestResponse response = Execute(request);
 
-			return response.Data.TimeZoneInfo;
+			var timeZoneString = response.Content;
+			return TimeZoneInfo.FromSerializedString(timeZoneString);
 		}
 
 		public async Task<TimeZoneInfo> FindSystemTimeZoneByIdAsync(string timeZoneId)
@@ -29,9 +30,11 @@ namespace MiX.Integrate.API.Client
 
 			request.AddUrlSegment("timeZoneId", timeZoneId);
 
-			IHttpRestResponse<TimeZoneInfoResult> response = await ExecuteAsync<TimeZoneInfoResult>(request).ConfigureAwait(false);
+			IHttpRestResponse response = await ExecuteAsync(request).ConfigureAwait(false);
 
-			return response.Data.TimeZoneInfo;
+			var timeZoneString = response.Content;
+			return TimeZoneInfo.FromSerializedString(timeZoneString);
 		}
+		#endif
 	}
 }
