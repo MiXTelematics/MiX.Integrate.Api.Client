@@ -9,6 +9,9 @@ namespace MiX.Integrate.API.Client
 {
 	public class GlobalisationClient : BaseClient, IGlobalisationClient
 	{
+		public GlobalisationClient(string url, bool setTestRequestHeader = false) : base(url, setTestRequestHeader) { }
+		public GlobalisationClient(string url, IdServerResourceOwnerClientSettings settings, bool setTestRequestHeader = false) : base(url, settings, setTestRequestHeader) { }
+
 		public TimeZoneInfo FindSystemTimeZoneById(string timeZoneId)
 		{
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.GlobalisationController.GETTIMEZONEINFOBYID, HttpMethod.Get);
