@@ -291,7 +291,7 @@ namespace MiX.Integrate.Shared.Constants
 		//MiX.Integrate.Api.Controllers.GlobalisationController
 		public class GlobalisationController
 		{
-			public const string GETTIMEZONEINFOBYID = "api/globalisation/timezoneinfo/{timeZoneId}";
+			public const string GETTIMEZONEINFOBYID = "api/globalisation/timezoneinfo";
 		}
 	}
 }

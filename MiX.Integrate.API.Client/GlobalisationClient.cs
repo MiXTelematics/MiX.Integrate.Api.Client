@@ -14,9 +14,9 @@ namespace MiX.Integrate.API.Client
 		#if !NETSTANDARD1_6
 		public TimeZoneInfo FindSystemTimeZoneById(string timeZoneId)
 		{
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.GlobalisationController.GETTIMEZONEINFOBYID, HttpMethod.Get);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.GlobalisationController.GETTIMEZONEINFOBYID, HttpMethod.Post);
 
-			request.AddUrlSegment("timeZoneId", timeZoneId);
+			request.AddJsonBody(timeZoneId);
 
 			IHttpRestResponse response = Execute(request);
 
@@ -26,9 +26,9 @@ namespace MiX.Integrate.API.Client
 
 		public async Task<TimeZoneInfo> FindSystemTimeZoneByIdAsync(string timeZoneId)
 		{
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.GlobalisationController.GETTIMEZONEINFOBYID, HttpMethod.Get);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.GlobalisationController.GETTIMEZONEINFOBYID, HttpMethod.Post);
 
-			request.AddUrlSegment("timeZoneId", timeZoneId);
+			request.AddJsonBody(timeZoneId);
 
 			IHttpRestResponse response = await ExecuteAsync(request).ConfigureAwait(false);
 
