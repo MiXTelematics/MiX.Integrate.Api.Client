@@ -3,6 +3,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using MiX.Integrate.API.Client.Base;
 using MiX.Integrate.Shared.Constants;
+using MiX.Integrate.Shared.Entities.Globalisation;
 
 namespace MiX.Integrate.API.Client
 {
@@ -14,10 +15,9 @@ namespace MiX.Integrate.API.Client
 
 			request.AddUrlSegment("timeZoneId", timeZoneId);
 
-			IHttpRestResponse response = Execute(request);
+			IHttpRestResponse<TimeZoneInfoResult> response = Execute<TimeZoneInfoResult>(request);
 
-			var timeZoneString = response.Content;
-			return TimeZoneInfo.FromSerializedString(timeZoneString);
+			return response.Data.TimeZoneInfo;
 		}
 
 		public async Task<TimeZoneInfo> FindSystemTimeZoneByIdAsync(string timeZoneId)
@@ -26,10 +26,9 @@ namespace MiX.Integrate.API.Client
 
 			request.AddUrlSegment("timeZoneId", timeZoneId);
 
-			IHttpRestResponse response = await ExecuteAsync(request).ConfigureAwait(false);
+			IHttpRestResponse<TimeZoneInfoResult> response = await ExecuteAsync<TimeZoneInfoResult>(request).ConfigureAwait(false);
 
-			var timeZoneString = response.Content;
-			return TimeZoneInfo.FromSerializedString(timeZoneString);
+			return response.Data.TimeZoneInfo;
 		}
 	}
 }
