@@ -292,5 +292,11 @@ namespace MiX.Integrate.Shared.Constants
 		{
 			public const string LOCATIONBOUNDARYEVENT = "api/serversideevents/organisation/{organisationId}/locationboundaryevent";
 		}
+		
+		//MiX.Integrate.Api.Controllers.GlobalisationController
+		public class GlobalisationController
+		{
+			public const string GETTIMEZONEINFOBYID = "api/globalisation/timezoneinfo";
+		}
 	}
 }
