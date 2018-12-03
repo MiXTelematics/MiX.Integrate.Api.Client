@@ -10,7 +10,6 @@ namespace MiX.Integrate.Shared.Entities.Messages
 		public SendJobMessageCarrier() { }
 
 		public short VehicleId { get; set; }
-		public long AssetId { get; set; }
 		public string Description { get; set; }
 		public string UserDescription { get; set; }
 		public string Body { get; set; }
@@ -23,6 +22,5 @@ namespace MiX.Integrate.Shared.Entities.Messages
 		public int[] AddressList { get; set; }
 		public CommsTransports Transport { get; set; }
 		public bool Urgent { get; set; }
-		public string CreatedBy { get; set; }
 	}
 }

@@ -12,8 +12,9 @@ namespace MiX.Integrate.Shared.Entities.Messages
 
 		public SendFreeTextMessageCarrier() { }
 
-		public short VehicleId { get; set; }
-		public long AssetId { get; set; }
+		[Obsolete]
+		public short? VehicleId { get; set; }
+		public long? AssetId { get; set; }
 		public string Subject { get; set; }
 		public string Body { get; set; }
 		public string[] DefaultResponses { get; set; }
@@ -23,7 +24,6 @@ namespace MiX.Integrate.Shared.Entities.Messages
 		public bool NotifyWhenRepliedTo { get; set; }
 		public bool NotifyWhenDeleted { get; set; }
 		public CommsTransports Transport { get; set; }
-		public string CreatedBy { get; set; }
 
 	}
 }
