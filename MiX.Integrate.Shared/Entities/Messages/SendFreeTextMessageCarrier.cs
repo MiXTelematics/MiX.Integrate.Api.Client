@@ -19,7 +19,7 @@ namespace MiX.Integrate.Shared.Entities.Messages
 		public string Body { get; set; }
 		public string[] DefaultResponses { get; set; }
 		public bool Urgent { get; set; }
-		public DateTime ExpiryDate { get; set; }
+		public DateTime? ExpiryDate { get; set; }
 		public bool NotifyWhenRead { get; set; }
 		public bool NotifyWhenRepliedTo { get; set; }
 		public bool NotifyWhenDeleted { get; set; }
