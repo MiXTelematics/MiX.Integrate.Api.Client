@@ -1,14 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using MiX.Integrate.API.Client.Base;
 using MiX.Integrate.Shared.Constants;
-using MiX.Integrate.Shared.Entities.Trips;
-using System.Threading.Tasks;
-using MiX.Integrate.Api.Client.Base;
-using System.Net.Http;
 using MiX.Integrate.Shared.Entities.Carriers;
 using MiX.Integrate.Shared.Entities.Drivers;
+using MiX.Integrate.Shared.Entities.Trips;
+using System;
+using System.Collections.Generic;
+using System.Net.Http;
+using System.Threading.Tasks;
 
-namespace MiX.Integrate.Api.Client
+namespace MiX.Integrate.API.Client
 {
 	public class TripsClient : BaseClient, ITripsClient
 	{
@@ -24,7 +24,7 @@ namespace MiX.Integrate.Api.Client
 
 		public IList<Trip> GetLatestForAssets(List<long> assetIds, byte quantity = 1, DateTime? cachedSince = null, bool includeSubTrips = false)
 		{
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.TRIPSCONTROLLER.GETLATESTFORASSETS, HttpMethod.Post);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.TripsController.GETLATESTFORASSETS, HttpMethod.Post);
 			request.AddUrlSegment("quantity", quantity.ToString());
 			if (cachedSince.HasValue)
 				request.AddQueryParameter("cachedSince", cachedSince.Value.ToUniversalTime().ToString(DataFormats.DateTime_Format));
@@ -36,7 +36,7 @@ namespace MiX.Integrate.Api.Client
 
 		public async Task<IList<Trip>> GetLatestForAssetsAsync(List<long> assetIds, byte quantity = 1, DateTime? cachedSince = null, bool includeSubTrips = false)
 		{
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.TRIPSCONTROLLER.GETLATESTFORASSETS, HttpMethod.Post);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.TripsController.GETLATESTFORASSETS, HttpMethod.Post);
 			request.AddUrlSegment("quantity", quantity.ToString());
 			if (cachedSince.HasValue)
 				request.AddQueryParameter("cachedSince", cachedSince.Value.ToUniversalTime().ToString(DataFormats.DateTime_Format));
@@ -48,7 +48,7 @@ namespace MiX.Integrate.Api.Client
 
 		public IList<Trip> GetLatestForDrivers(List<long> driverIds, byte quantity = 1, DateTime? cachedSince = null, bool includeSubTrips = false)
 		{
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.TRIPSCONTROLLER.GETLATESTFORDRIVERS, HttpMethod.Post);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.TripsController.GETLATESTFORDRIVERS, HttpMethod.Post);
 			request.AddUrlSegment("quantity", quantity.ToString());
 			if (cachedSince.HasValue)
 				request.AddQueryParameter("cachedSince", cachedSince.Value.ToUniversalTime().ToString(DataFormats.DateTime_Format));
@@ -60,7 +60,7 @@ namespace MiX.Integrate.Api.Client
 
 		public async Task<IList<Trip>> GetLatestForDriversAsync(List<long> driverIds, byte quantity = 1, DateTime? cachedSince = null, bool includeSubTrips = false)
 		{
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.TRIPSCONTROLLER.GETLATESTFORDRIVERS, HttpMethod.Post);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.TripsController.GETLATESTFORDRIVERS, HttpMethod.Post);
 			request.AddUrlSegment("quantity", quantity.ToString());
 			if (cachedSince.HasValue)
 				request.AddQueryParameter("cachedSince", cachedSince.Value.ToUniversalTime().ToString(DataFormats.DateTime_Format));
@@ -72,7 +72,7 @@ namespace MiX.Integrate.Api.Client
 
 		public IList<Trip> GetLatestForGroups(List<long> groupIds, string entityType, byte quantity = 1, DateTime? cachedSince = null, bool includeSubTrips = false)
 		{
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.TRIPSCONTROLLER.GETLATESTFORGROUPS, HttpMethod.Post);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.TripsController.GETLATESTFORGROUPS, HttpMethod.Post);
 			request.AddUrlSegment("quantity", quantity.ToString());
 			request.AddUrlSegment("entityType", entityType);
 			if (cachedSince.HasValue)
@@ -85,7 +85,7 @@ namespace MiX.Integrate.Api.Client
 
 		public async Task<IList<Trip>> GetLatestForGroupsAsync(List<long> groupIds, string entityType, byte quantity = 1, DateTime? cachedSince = null, bool includeSubTrips = false)
 		{
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.TRIPSCONTROLLER.GETLATESTFORGROUPS, HttpMethod.Post);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.TripsController.GETLATESTFORGROUPS, HttpMethod.Post);
 			request.AddUrlSegment("quantity", quantity.ToString());
 			request.AddUrlSegment("entityType", entityType);
 			if (cachedSince.HasValue)
@@ -102,7 +102,7 @@ namespace MiX.Integrate.Api.Client
 
 		public IList<Trip> GetRangeForAssets(List<long> assetIds, DateTime from, DateTime to, bool includeSubTrips = false)
 		{
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.TRIPSCONTROLLER.GETRANGEFORASSETS, HttpMethod.Post);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.TripsController.GETRANGEFORASSETS, HttpMethod.Post);
 			request.AddUrlSegment("from", from.ToString(DataFormats.DateTime_Format));
 			request.AddUrlSegment("to", to.ToString(DataFormats.DateTime_Format));
 			request.AddQueryParameter("includeSubTrips", includeSubTrips.ToString());
@@ -113,7 +113,7 @@ namespace MiX.Integrate.Api.Client
 
 		public async Task<IList<Trip>> GetRangeForAssetsAsync(List<long> assetIds, DateTime from, DateTime to, bool includeSubTrips = false)
 		{
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.TRIPSCONTROLLER.GETRANGEFORASSETS, HttpMethod.Post);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.TripsController.GETRANGEFORASSETS, HttpMethod.Post);
 			request.AddUrlSegment("from", from.ToString(DataFormats.DateTime_Format));
 			request.AddUrlSegment("to", to.ToString(DataFormats.DateTime_Format));
 			request.AddQueryParameter("includeSubTrips", includeSubTrips.ToString());
@@ -124,7 +124,7 @@ namespace MiX.Integrate.Api.Client
 
 		public IList<Trip> GetRangeForDrivers(List<long> driverIds, DateTime from, DateTime to, bool includeSubTrips = false)
 		{
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.TRIPSCONTROLLER.GETRANGEFORDRIVERS, HttpMethod.Post);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.TripsController.GETRANGEFORDRIVERS, HttpMethod.Post);
 			request.AddUrlSegment("from", from.ToString(DataFormats.DateTime_Format));
 			request.AddUrlSegment("to", to.ToString(DataFormats.DateTime_Format));
 			request.AddQueryParameter("includeSubTrips", includeSubTrips.ToString());
@@ -135,7 +135,7 @@ namespace MiX.Integrate.Api.Client
 
 		public async Task<IList<Trip>> GetRangeForDriversAsync(List<long> driverIds, DateTime from, DateTime to, bool includeSubTrips = false)
 		{
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.TRIPSCONTROLLER.GETRANGEFORDRIVERS, HttpMethod.Post);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.TripsController.GETRANGEFORDRIVERS, HttpMethod.Post);
 			request.AddUrlSegment("from", from.ToString(DataFormats.DateTime_Format));
 			request.AddUrlSegment("to", to.ToString(DataFormats.DateTime_Format));
 			request.AddQueryParameter("includeSubTrips", includeSubTrips.ToString());
@@ -146,7 +146,7 @@ namespace MiX.Integrate.Api.Client
 
 		public IList<Trip> GetRangeForGroups(List<long> groupIds, string entityType, DateTime from, DateTime to, bool includeSubTrips = false)
 		{
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.TRIPSCONTROLLER.GETRANGEFORGROUPS, HttpMethod.Post);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.TripsController.GETRANGEFORGROUPS, HttpMethod.Post);
 			request.AddUrlSegment("entityType", entityType);
 			request.AddUrlSegment("from", from.ToString(DataFormats.DateTime_Format));
 			request.AddUrlSegment("to", to.ToString(DataFormats.DateTime_Format));
@@ -158,7 +158,7 @@ namespace MiX.Integrate.Api.Client
 
 		public async Task<IList<Trip>> GetRangeForGroupsAsync(List<long> groupIds, string entityType, DateTime from, DateTime to, bool includeSubTrips = false)
 		{
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.TRIPSCONTROLLER.GETRANGEFORGROUPS, HttpMethod.Post);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.TripsController.GETRANGEFORGROUPS, HttpMethod.Post);
 			request.AddUrlSegment("entityType", entityType);
 			request.AddUrlSegment("from", from.ToString(DataFormats.DateTime_Format));
 			request.AddUrlSegment("to", to.ToString(DataFormats.DateTime_Format));
@@ -174,7 +174,7 @@ namespace MiX.Integrate.Api.Client
 
 		public IList<Trip> GetSinceForAssets(List<long> assetIds, DateTime since, bool includeSubTrips = false)
 		{
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.TRIPSCONTROLLER.GETSINCEFORASSETS, HttpMethod.Post);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.TripsController.GETSINCEFORASSETS, HttpMethod.Post);
 			request.AddUrlSegment("since", since.ToString(DataFormats.DateTime_Format));
 			request.AddQueryParameter("includeSubTrips", includeSubTrips.ToString());
 			request.AddJsonBody(assetIds);
@@ -184,7 +184,7 @@ namespace MiX.Integrate.Api.Client
 
 		public async Task<IList<Trip>> GetSinceForAssetsAsync(List<long> assetIds, DateTime since, bool includeSubTrips = false)
 		{
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.TRIPSCONTROLLER.GETSINCEFORASSETS, HttpMethod.Post);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.TripsController.GETSINCEFORASSETS, HttpMethod.Post);
 			request.AddUrlSegment("since", since.ToString(DataFormats.DateTime_Format));
 			request.AddQueryParameter("includeSubTrips", includeSubTrips.ToString());
 			request.AddJsonBody(assetIds);
@@ -194,7 +194,7 @@ namespace MiX.Integrate.Api.Client
 
 		public IList<Trip> GetSinceForDrivers(List<long> driverIds, DateTime since, bool includeSubTrips = false)
 		{
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.TRIPSCONTROLLER.GETSINCEFORDRIVERS, HttpMethod.Post);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.TripsController.GETSINCEFORDRIVERS, HttpMethod.Post);
 			request.AddUrlSegment("since", since.ToString(DataFormats.DateTime_Format));
 			request.AddQueryParameter("includeSubTrips", includeSubTrips.ToString());
 			request.AddJsonBody(driverIds);
@@ -204,7 +204,7 @@ namespace MiX.Integrate.Api.Client
 
 		public async Task<IList<Trip>> GetSinceForDriversAsync(List<long> driverIds, DateTime since, bool includeSubTrips = false)
 		{
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.TRIPSCONTROLLER.GETSINCEFORDRIVERS, HttpMethod.Post);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.TripsController.GETSINCEFORDRIVERS, HttpMethod.Post);
 			request.AddUrlSegment("since", since.ToString(DataFormats.DateTime_Format));
 			request.AddQueryParameter("includeSubTrips", includeSubTrips.ToString());
 			request.AddJsonBody(driverIds);
@@ -214,7 +214,7 @@ namespace MiX.Integrate.Api.Client
 
 		public IList<Trip> GetSinceForGroups(List<long> groupIds, string entityType, DateTime since, bool includeSubTrips = false)
 		{
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.TRIPSCONTROLLER.GETSINCEFORGROUPS, HttpMethod.Post);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.TripsController.GETSINCEFORGROUPS, HttpMethod.Post);
 			request.AddUrlSegment("entityType", entityType);
 			request.AddUrlSegment("since", since.ToString(DataFormats.DateTime_Format));
 			request.AddQueryParameter("includeSubTrips", includeSubTrips.ToString());
@@ -225,7 +225,7 @@ namespace MiX.Integrate.Api.Client
 
 		public async Task<IList<Trip>> GetSinceForGroupsAsync(List<long> groupIds, string entityType, DateTime since, bool includeSubTrips = false)
 		{
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.TRIPSCONTROLLER.GETSINCEFORGROUPS, HttpMethod.Post);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.TripsController.GETSINCEFORGROUPS, HttpMethod.Post);
 			request.AddUrlSegment("entityType", entityType);
 			request.AddUrlSegment("since", since.ToString(DataFormats.DateTime_Format));
 			request.AddQueryParameter("includeSubTrips", includeSubTrips.ToString());
@@ -240,7 +240,7 @@ namespace MiX.Integrate.Api.Client
 
 		public CreatedSinceResult<Trip> GetCreatedSinceForAssets(List<long> assetIds, string sinceToken, int quantity, bool includeSubTrips = false)
 		{
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.TRIPSCONTROLLER.GETCREATEDSINCEFORASSETSASYNC, HttpMethod.Post);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.TripsController.GETCREATEDSINCEFORASSETSASYNC, HttpMethod.Post);
 			request.AddUrlSegment("sinceToken", sinceToken);
 			request.AddUrlSegment("quantity", quantity.ToString());
 			request.AddQueryParameter("includeSubTrips", includeSubTrips.ToString());
@@ -256,7 +256,7 @@ namespace MiX.Integrate.Api.Client
 
 		public async Task<CreatedSinceResult<Trip>> GetCreatedSinceForAssetsAsync(List<long> assetIds, string sinceToken, int quantity, bool includeSubTrips = false)
 		{
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.TRIPSCONTROLLER.GETCREATEDSINCEFORASSETSASYNC, HttpMethod.Post);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.TripsController.GETCREATEDSINCEFORASSETSASYNC, HttpMethod.Post);
 			request.AddUrlSegment("sinceToken", sinceToken);
 			request.AddUrlSegment("quantity", quantity.ToString());
 			request.AddQueryParameter("includeSubTrips", includeSubTrips.ToString());
@@ -272,7 +272,7 @@ namespace MiX.Integrate.Api.Client
 
 		public CreatedSinceResult<Trip> GetCreatedSinceForDrivers(List<long> driverIds, string sinceToken, int quantity, bool includeSubTrips = false)
 		{
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.TRIPSCONTROLLER.GETCREATEDSINCEFORDRIVERSASYNC, HttpMethod.Post);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.TripsController.GETCREATEDSINCEFORDRIVERSASYNC, HttpMethod.Post);
 			request.AddUrlSegment("sinceToken", sinceToken);
 			request.AddUrlSegment("quantity", quantity.ToString());
 			request.AddQueryParameter("includeSubTrips", includeSubTrips.ToString());
@@ -288,7 +288,7 @@ namespace MiX.Integrate.Api.Client
 
 		public async Task<CreatedSinceResult<Trip>> GetCreatedSinceForDriversAsync(List<long> driverIds, string sinceToken, int quantity, bool includeSubTrips = false)
 		{
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.TRIPSCONTROLLER.GETCREATEDSINCEFORDRIVERSASYNC, HttpMethod.Post);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.TripsController.GETCREATEDSINCEFORDRIVERSASYNC, HttpMethod.Post);
 			request.AddUrlSegment("sinceToken", sinceToken);
 			request.AddUrlSegment("quantity", quantity.ToString());
 			request.AddQueryParameter("includeSubTrips", includeSubTrips.ToString());
@@ -304,7 +304,7 @@ namespace MiX.Integrate.Api.Client
 
 		public CreatedSinceResult<Trip> GetCreatedSinceForGroups(List<long> groupIds, string entityType, string sinceToken, int quantity, bool includeSubTrips = false)
 		{
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.TRIPSCONTROLLER.GETCREATEDSINCEFORGROUPSASYNC, HttpMethod.Post);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.TripsController.GETCREATEDSINCEFORGROUPSASYNC, HttpMethod.Post);
 			request.AddUrlSegment("entityType", entityType);
 			request.AddUrlSegment("sinceToken", sinceToken);
 			request.AddUrlSegment("quantity", quantity.ToString());
@@ -321,7 +321,7 @@ namespace MiX.Integrate.Api.Client
 
 		public async Task<CreatedSinceResult<Trip>> GetCreatedSinceForGroupsAsync(List<long> groupIds, string entityType, string sinceToken, int quantity, bool includeSubTrips = false)
 		{
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.TRIPSCONTROLLER.GETCREATEDSINCEFORGROUPSASYNC, HttpMethod.Post);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.TripsController.GETCREATEDSINCEFORGROUPSASYNC, HttpMethod.Post);
 			request.AddUrlSegment("entityType", entityType);
 			request.AddUrlSegment("sinceToken", sinceToken);
 			request.AddUrlSegment("quantity", quantity.ToString());
@@ -342,7 +342,7 @@ namespace MiX.Integrate.Api.Client
 
 		public List<DriverScore> GetDriverScores(List<long> driverIds, DateTime from, DateTime to)
 		{
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.TRIPSCONTROLLER.GETDRIVERSCORES, HttpMethod.Post);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.TripsController.GETDRIVERSCORES, HttpMethod.Post);
 			request.AddUrlSegment("from", from.ToString(DataFormats.DateTime_Format));
 			request.AddUrlSegment("to", to.ToString(DataFormats.DateTime_Format));
 			request.AddJsonBody(driverIds);
@@ -352,7 +352,7 @@ namespace MiX.Integrate.Api.Client
 
 		public async Task<List<DriverScore>> GetDriverScoresAsync(List<long> driverIds, DateTime from, DateTime to)
 		{
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.TRIPSCONTROLLER.GETDRIVERSCORES, HttpMethod.Post);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.TripsController.GETDRIVERSCORES, HttpMethod.Post);
 			request.AddUrlSegment("from", from.ToString(DataFormats.DateTime_Format));
 			request.AddUrlSegment("to", to.ToString(DataFormats.DateTime_Format));
 			request.AddJsonBody(driverIds);

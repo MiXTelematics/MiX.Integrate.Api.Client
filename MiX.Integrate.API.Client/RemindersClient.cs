@@ -1,10 +1,10 @@
-﻿using MiX.Integrate.Api.Client.Base;
+﻿using MiX.Integrate.API.Client.Base;
 using MiX.Integrate.Shared.Constants;
 using MiX.Integrate.Shared.Entities.Reminders;
 using System.Net.Http;
 using System.Threading.Tasks;
 
-namespace MiX.Integrate.Api.Client
+namespace MiX.Integrate.API.Client
 {
 	public class RemindersClient : BaseClient, IRemindersClient
 	{
@@ -13,7 +13,7 @@ namespace MiX.Integrate.Api.Client
 
 	  public async Task<AssetReminders> GetAssetRemindersAsync(long organisationId, long assetId)
     {
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.REMINDERSCONTROLLER.GETASSETREMINDERS, HttpMethod.Get);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.RemindersController.GETASSETREMINDERS, HttpMethod.Get);
 			request.AddUrlSegment("organisationId", organisationId.ToString());
       request.AddUrlSegment("assetId", assetId.ToString());
 			IHttpRestResponse<AssetReminders> response = await ExecuteAsync<AssetReminders>(request).ConfigureAwait(false);
@@ -22,7 +22,7 @@ namespace MiX.Integrate.Api.Client
 
 		public async Task UpdateAssetLicenceReminderAsync(long organisationId, AssetLicenceReminder assetLicenceReminder)
 		{
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.REMINDERSCONTROLLER.ASSETLICENCEREMINDERS, HttpMethod.Put);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.RemindersController.ASSETLICENCEREMINDERS, HttpMethod.Put);
 			request.AddUrlSegment("organisationId", organisationId.ToString());
 			request.AddUrlSegment("assetId", assetLicenceReminder.AssetId.ToString());
 			request.AddJsonBody(assetLicenceReminder);
@@ -31,7 +31,7 @@ namespace MiX.Integrate.Api.Client
 
 		public async Task UpdateAssetServiceReminderAsync(long organisationId, AssetServiceReminder assetServiceReminder)
 		{
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.REMINDERSCONTROLLER.ASSETSERVICEREMINDERS, HttpMethod.Put);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.RemindersController.ASSETSERVICEREMINDERS, HttpMethod.Put);
 			request.AddUrlSegment("organisationId", organisationId.ToString());
 			request.AddUrlSegment("assetId", assetServiceReminder.AssetId.ToString());
 			request.AddJsonBody(assetServiceReminder);
@@ -40,7 +40,7 @@ namespace MiX.Integrate.Api.Client
 
 		public async Task UpdateAssetRoadworthyCertificateReminderAsync(long organisationId, AssetRoadworthyCertificateReminder assetRoadworthyCertificateReminder)
 		{
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.REMINDERSCONTROLLER.ASSETROADWORTHYREMINDERS, HttpMethod.Put);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.RemindersController.ASSETROADWORTHYREMINDERS, HttpMethod.Put);
 			request.AddUrlSegment("organisationId", organisationId.ToString());
 			request.AddUrlSegment("assetId", assetRoadworthyCertificateReminder.AssetId.ToString());
 			request.AddJsonBody(assetRoadworthyCertificateReminder);
@@ -50,7 +50,7 @@ namespace MiX.Integrate.Api.Client
 
 		public AssetReminders GetAssetReminders(long organisationId, long assetId)
     {
-      IHttpRestRequest request = GetRequest(APIControllerRoutes.REMINDERSCONTROLLER.GETASSETREMINDERS, HttpMethod.Get);
+      IHttpRestRequest request = GetRequest(APIControllerRoutes.RemindersController.GETASSETREMINDERS, HttpMethod.Get);
 	    request.AddUrlSegment("organisationId", organisationId.ToString());
 	    request.AddUrlSegment("assetId", assetId.ToString());
       IHttpRestResponse<AssetReminders> response = Execute<AssetReminders>(request);
@@ -59,7 +59,7 @@ namespace MiX.Integrate.Api.Client
 
 		public void UpdateAssetLicenceReminder(long organisationId, AssetLicenceReminder assetLicenceReminder)
 		{
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.REMINDERSCONTROLLER.ASSETLICENCEREMINDERS, HttpMethod.Put);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.RemindersController.ASSETLICENCEREMINDERS, HttpMethod.Put);
 			request.AddUrlSegment("organisationId", organisationId.ToString());
 			request.AddUrlSegment("assetId", assetLicenceReminder.AssetId.ToString());
 			request.AddJsonBody(assetLicenceReminder);
@@ -68,7 +68,7 @@ namespace MiX.Integrate.Api.Client
 
 		public void UpdateAssetServiceReminder(long organisationId, AssetServiceReminder assetServiceReminder)
 		{
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.REMINDERSCONTROLLER.ASSETSERVICEREMINDERS, HttpMethod.Put);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.RemindersController.ASSETSERVICEREMINDERS, HttpMethod.Put);
 			request.AddUrlSegment("organisationId", organisationId.ToString());
 			request.AddUrlSegment("assetId", assetServiceReminder.AssetId.ToString());
 			request.AddJsonBody(assetServiceReminder);
@@ -77,7 +77,7 @@ namespace MiX.Integrate.Api.Client
 
 		public void UpdateAssetRoadworthyCertificateReminder(long organisationId, AssetRoadworthyCertificateReminder assetRoadworthyCertificateReminder)
 		{
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.REMINDERSCONTROLLER.ASSETROADWORTHYREMINDERS, HttpMethod.Put);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.RemindersController.ASSETROADWORTHYREMINDERS, HttpMethod.Put);
 			request.AddUrlSegment("organisationId", organisationId.ToString());
 			request.AddUrlSegment("assetId", assetRoadworthyCertificateReminder.AssetId.ToString());
 			request.AddJsonBody(assetRoadworthyCertificateReminder);

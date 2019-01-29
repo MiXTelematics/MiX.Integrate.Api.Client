@@ -1,13 +1,13 @@
-﻿using System;
+﻿using MiX.Integrate.API.Client.Base;
 using MiX.Integrate.Shared.Constants;
-using System.Threading.Tasks;
-using MiX.Integrate.Api.Client.Base;
-using System.Net.Http;
 using MiX.Integrate.Shared.Entities.Tacho;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
+using System.Threading.Tasks;
 
-namespace MiX.Integrate.Api.Client
+namespace MiX.Integrate.API.Client
 {
 	public class TachoClient : BaseClient, ITachoClient
 	{
@@ -16,7 +16,7 @@ namespace MiX.Integrate.Api.Client
 
 		public TachoData GetRangeForAsset(long assetId, DateTime from, DateTime to)
 		{
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.TACHOCONTROLLER.GETRANGEFORASSETASYNC, HttpMethod.Get);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.TachoController.GETRANGEFORASSETASYNC, HttpMethod.Get);
 			request.AddUrlSegment("assetId", assetId.ToString());
 			request.AddUrlSegment("from", from.ToString(DataFormats.DateTime_Format));
 			request.AddUrlSegment("to", to.ToString(DataFormats.DateTime_Format));
@@ -26,7 +26,7 @@ namespace MiX.Integrate.Api.Client
 
 		public async Task<TachoData> GetRangeForAssetAsync(long assetId, DateTime from, DateTime to)
 		{
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.TACHOCONTROLLER.GETRANGEFORASSETASYNC, HttpMethod.Get);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.TachoController.GETRANGEFORASSETASYNC, HttpMethod.Get);
 			request.AddUrlSegment("assetId", assetId.ToString());
 			request.AddUrlSegment("from", from.ToString(DataFormats.DateTime_Format));
 			request.AddUrlSegment("to", to.ToString(DataFormats.DateTime_Format));

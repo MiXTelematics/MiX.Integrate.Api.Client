@@ -1,8 +1,8 @@
-﻿using MiX.Integrate.Api.Client.Base;
+﻿using MiX.Integrate.API.Client.Base;
 using MiX.Integrate.Shared.Entities.Reminders;
 using System.Threading.Tasks;
 
-namespace MiX.Integrate.Api.Client
+namespace MiX.Integrate.API.Client
 {
 	public interface IRemindersClient : IBaseClient
 	{

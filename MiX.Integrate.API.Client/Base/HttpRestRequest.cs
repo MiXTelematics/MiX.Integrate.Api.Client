@@ -1,13 +1,9 @@
-﻿using MiX.Integrate.Api.Client;
-using MiX.Integrate.Api.Client.Base;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using System.Net.Http;
-using System.Text;
 
-namespace MiX.Integrate.Api.Client.Base
+namespace MiX.Integrate.API.Client.Base
 {
 	public class HttpRestRequest : IHttpRestRequest
 	{

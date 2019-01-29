@@ -9,7 +9,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MiX.Integrate.Api.Client.Base
+namespace MiX.Integrate.API.Client.Base
 {
 	public class BaseClient : IBaseClient
 	{
@@ -124,22 +124,25 @@ namespace MiX.Integrate.Api.Client.Base
 			return request;
 		}
 
-		public IHttpRestResponse<T> Execute<T>(IHttpRestRequest request, int maxRetryAttempts = 3) where T : new()
+		public IHttpRestResponse<T> Execute<T>(IHttpRestRequest request,int maxRetryAttempts = 3) where T : new()
 		{
 			IHttpRestResponse<T> respT = ExecuteAsync<T>(request, maxRetryAttempts).ConfigureAwait(false).GetAwaiter().GetResult();
 			return respT;
 		}
-		public IHttpRestResponse Execute(IHttpRestRequest request, int maxRetryAttempts = 3)
+
+		public IHttpRestResponse Execute(IHttpRestRequest request,int maxRetryAttempts = 3)
 		{
 			IHttpRestResponse resp = ExecuteAsync(request, maxRetryAttempts).ConfigureAwait(false).GetAwaiter().GetResult();
 			return resp;
 		}
+
 		public async Task<IHttpRestResponse<T>> ExecuteAsync<T>(IHttpRestRequest request, int maxRetryAttempts = 3) where T : new()
 		{
 			IHttpRestResponse resp = await ExecuteAsync(request, maxRetryAttempts).ConfigureAwait(false);
 			IHttpRestResponse<T> respT = CloneInTo<T>(resp);
 			return respT;
 		}
+
 		public async Task<IHttpRestResponse> ExecuteAsync(IHttpRestRequest request, int maxRetryAttempts = 3)
 		{
 			IHttpRestResponse resp = null;

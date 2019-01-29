@@ -1,9 +1,9 @@
-﻿using MiX.Integrate.Api.Client.Base;
+﻿using MiX.Integrate.API.Client.Base;
 using MiX.Integrate.Shared.Entities.Tacho;
 using System;
 using System.Threading.Tasks;
 
-namespace MiX.Integrate.Api.Client
+namespace MiX.Integrate.API.Client
 {
 	public interface ITachoClient : IBaseClient
 	{

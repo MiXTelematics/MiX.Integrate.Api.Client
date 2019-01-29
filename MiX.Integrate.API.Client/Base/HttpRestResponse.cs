@@ -1,9 +1,9 @@
-﻿using MiX.Integrate.Api.Client.Base;
+﻿using MiX.Integrate.API.Client.Base;
 using System;
 using System.Net;
 using System.Net.Http.Headers;
 
-namespace MiX.Integrate.Api.Client.Base
+namespace MiX.Integrate.API.Client.Base
 {
 
 	public class HttpRestResponse : HttpRestResponseBase, IHttpRestResponse { }

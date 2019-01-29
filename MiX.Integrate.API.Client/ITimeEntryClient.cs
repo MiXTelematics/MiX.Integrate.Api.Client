@@ -1,12 +1,14 @@
-﻿using System.Threading.Tasks;
-using MiX.Integrate.Api.Client.Base;
+﻿using MiX.Integrate.API.Client.Base;
 using MiX.Integrate.Shared.Entities.TimeEntry;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
-namespace MiX.Integrate.Api.Client
+namespace MiX.Integrate.API.Client
 {
 	public interface ITimeEntryClient : IBaseClient
 	{
-		bool ImportApprovers(long groupId, TimeApproverImport timeApproverImport);
-		Task<bool> ImportApproversAsync(long groupId, TimeApproverImport timeApproverImport);
+		bool ImportApprovers(long organisationId, TimeApproverImport timeApproverImport);
+		Task<bool> ImportApproversAsync(long organisationId, TimeApproverImport timeApproverImport);
+		Task<List<GroupSubstatus>> GetStatusCodes(long organisationId);
 	}
 }
