@@ -72,10 +72,6 @@ namespace MiX.Integrate.Shared.Entities.Positions
 		/// </summary>
 		public ushort? DistanceSinceReadingKilometres { get; set; }
 		/// <summary>
-		/// Whether the ignition was seen to be on.
-		/// </summary>
-		public bool? IgnitionOn { get; set; }
-		/// <summary>
 		/// Odometer of the asset.
 		/// </summary>
 		public float? OdometerKilometres { get; set; }
