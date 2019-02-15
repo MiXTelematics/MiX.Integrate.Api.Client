@@ -20,7 +20,6 @@ namespace MiX.Integrate.Shared.Entities.Messages
 		public bool UseFirstAddressForSummary { get; set; }
 		public JobMessageActionNotifications NotificationSettings { get; set; }
 		public int[] AddressList { get; set; }
-		public long?[] LocationList { get; set; }
 		public CommsTransports Transport { get; set; }
 		public bool Urgent { get; set; }
 	}
