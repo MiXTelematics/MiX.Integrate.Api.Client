@@ -64,7 +64,7 @@ namespace MiX.Integrate.API.Client
 
 		public async Task<List<MobileUnitConfigurationState>> GetConfigurationStateAsync(List<long> assetIds)
 		{
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.DeviceConfigController.GETCAMERASETTINGS, HttpMethod.Post);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.DeviceConfigController.GETCONFIGURATIONSTATE, HttpMethod.Post);
 			request.AddJsonBody(assetIds);
 			IHttpRestResponse<List<MobileUnitConfigurationState>> response = await ExecuteAsync<List<MobileUnitConfigurationState>>(request).ConfigureAwait(false);
 			return response.Data;
@@ -72,7 +72,7 @@ namespace MiX.Integrate.API.Client
 
 		public List<MobileUnitConfigurationState> GetConfigurationState(List<long> assetIds)
 		{
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.DeviceConfigController.GETCAMERASETTINGS, HttpMethod.Post);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.DeviceConfigController.GETCONFIGURATIONSTATE, HttpMethod.Post);
 			request.AddJsonBody(assetIds);
 			IHttpRestResponse<List<MobileUnitConfigurationState>> response = Execute<List<MobileUnitConfigurationState>>(request);
 			return response.Data;
