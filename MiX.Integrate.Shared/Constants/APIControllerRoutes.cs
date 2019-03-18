@@ -293,12 +293,5 @@ namespace MiX.Integrate.Shared.Constants
 		{
 			public const string GETTIMEZONEINFOBYID = "api/globalisation/timezoneinfo";
 		}
-
-		//MiX.Integrate.Api.Controllers.HosDataController
-		public class HOSDATACONTROLLER
-		{
-			public const string GETHOSVIOLATIONS = "api/ghos/violations/driver/{driverId}/from/{from}/to/{to}";
-			public const string GETHOSAVAILABLEHOURS = "api/ghos/availablehours/driver/{driverId}";
-		}
 	}
 }
