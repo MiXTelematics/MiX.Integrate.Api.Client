@@ -162,7 +162,7 @@ namespace MiX.Integrate.API.Client.Base
 
 			if (_hasIDServerResourceOwnerClientSettings)
 			{
-				string bearerToken = AccessTokenCache.GetIdServerAccessToken(_idServerResourceOwnerClientSettings);
+				string bearerToken = await AccessTokenCache.GetIdServerAccessToken(_idServerResourceOwnerClientSettings).ConfigureAwait(false);
 				request.SetHeader("Authorization", string.Format("Bearer {0}", bearerToken));
 			}
 
