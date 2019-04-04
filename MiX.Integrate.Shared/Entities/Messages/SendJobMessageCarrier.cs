@@ -9,7 +9,9 @@ namespace MiX.Integrate.Shared.Entities.Messages
 	{
 		public SendJobMessageCarrier() { }
 
+		[Obsolete("AssetId should be used if possible")]
 		public short VehicleId { get; set; }
+		public long AssetId { get; set; }
 		public string Description { get; set; }
 		public string UserDescription { get; set; }
 		public string Body { get; set; }
@@ -20,6 +22,7 @@ namespace MiX.Integrate.Shared.Entities.Messages
 		public bool UseFirstAddressForSummary { get; set; }
 		public JobMessageActionNotifications NotificationSettings { get; set; }
 		public int[] AddressList { get; set; }
+		public List<long> FullAddressList { get; set; }
 		public CommsTransports Transport { get; set; }
 		public bool Urgent { get; set; }
 	}
