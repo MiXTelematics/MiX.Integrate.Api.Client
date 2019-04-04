@@ -206,7 +206,6 @@ namespace MiX.Integrate.API.Client.Journeys
 			return response.Data;
 		}
 
-
 		public List<JourneyAssetDriver> GetJourneyAssetsAndDrivers(long journeyId)
 		{
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.JourneysController.GETJOURNEYASSETSANDDRIVERSASYNC, HttpMethod.Get);
@@ -387,6 +386,22 @@ namespace MiX.Integrate.API.Client.Journeys
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.JourneysController.GETJOURNEYASSETPASSENGERASYNC, HttpMethod.Get);
 			request.AddUrlSegment("journeyId", journeyId.ToString());
 			IHttpRestResponse<JourneyAssetAndPassengerData> response = Execute<JourneyAssetAndPassengerData>(request);
+			return response.Data;
+		}
+
+		public async Task<List<Customer>> GetCustomersAsync(long groupId)
+		{
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.JourneysController.GETCUSTOMERS, HttpMethod.Get);
+			request.AddUrlSegment("groupId", groupId.ToString());
+			IHttpRestResponse<List<Customer>> response = await ExecuteAsync<List<Customer>>(request).ConfigureAwait(false);
+			return response.Data;
+		}
+
+		public List<Customer> GetCustomers(long groupId)
+		{
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.JourneysController.GETCUSTOMERS, HttpMethod.Get);
+			request.AddUrlSegment("groupId", groupId.ToString());
+			IHttpRestResponse<List<Customer>> response = Execute<List<Customer>>(request);
 			return response.Data;
 		}
 
