@@ -289,11 +289,6 @@ namespace MiX.Integrate.Shared.Constants
 			public const string GETHOSEVENTSTARTDATETIMEBYHOUR = "api/ghos/events/startdatetime/changedsince/{sinceToken}";
 		}
 
-		public class SERVERSIDEEVENTSCONTROLLER
-		{
-			public const string LOCATIONBOUNDARYEVENT = "api/serversideevents/organisation/{organisationId}/locationboundaryevent";
-		}
-		
 		//MiX.Integrate.Api.Controllers.GlobalisationController
 		public class GlobalisationController
 		{
