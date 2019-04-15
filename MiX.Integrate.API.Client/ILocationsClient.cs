@@ -42,7 +42,7 @@ namespace MiX.Integrate.API.Client
 		/// <returns>Locations that have changed since the specified date and time</returns>
 		Task<List<Location>> GetChangedSinceAsync(long organisationId, DateTime since);
 
-	  /// <summary>Returns, for a given organisation, a list of the location ids and the migrated legacy location ids</summary>
+		/// <summary>Returns, for a given organisation, a list of the location ids and the migrated legacy location ids</summary>
 		/// <param name="organisationId">The identifier of the organisation to query</param>
 		/// <returns>Locations ids and the location legacy ids</returns>
 		Task<List<LocationLegacy>> MigrateLegacyIdsAsync(long organisationId);
