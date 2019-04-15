@@ -154,5 +154,13 @@ namespace MiX.Integrate.API.Client
 			IHttpRestResponse<List<Location>> response = await ExecuteAsync<List<Location>>(request).ConfigureAwait(false);
 			return response.Data;
 		}
+
+		/// <inheritdoc />
+		public async Task<List<LocationLegacy>> MigrateLegacyIdsAsync(long organisationId)
+		{
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.LocationsController.MIGRATELEGACYIDS, HttpMethod.Get);
+			IHttpRestResponse<List<LocationLegacy>> response = await ExecuteAsync<List<LocationLegacy>>(request).ConfigureAwait(false);
+			return response.Data;
+		}
 	}
 }

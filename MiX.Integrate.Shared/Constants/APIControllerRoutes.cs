@@ -93,6 +93,7 @@ namespace MiX.Integrate.Shared.Constants
 			public const string GETGROUP = "api/organisationgroups/group/{groupId}";
 
 			public const string GETORGANISATIONSITESWITHLEGACYID = "api/organisationgroups/siteswithlegacyid/{organisationId}";
+			public const string GETLONGIDFROMSHORTID = "api/organisationgroups/legacy/convert/{shortId}";
 		}
 
 		//MiX.Integrate.Api PositionsController
@@ -184,6 +185,7 @@ namespace MiX.Integrate.Shared.Constants
 			public const string INRANGE = "api/locations/group/{groupId}/inrange/{meters}";
 			public const string NEAREST = "api/locations/group/{groupId}/nearest";
 			public const string CHANGEDSINCE = "api/locations/organisation/{organisationId}/changedsince/since/{since}";
+			public const string MIGRATELEGACYIDS = "/api/locations/organisation/{organisationId}/migratelegacyids";
 
 		}
 
