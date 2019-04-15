@@ -93,7 +93,6 @@ namespace MiX.Integrate.Shared.Constants
 			public const string GETGROUP = "api/organisationgroups/group/{groupId}";
 
 			public const string GETORGANISATIONSITESWITHLEGACYID = "api/organisationgroups/siteswithlegacyid/{organisationId}";
-			public const string GETLONGIDFROMSHORTID = "api/organisationgroups/legacy/convert/{shortId}";
 		}
 
 		//MiX.Integrate.Api PositionsController
