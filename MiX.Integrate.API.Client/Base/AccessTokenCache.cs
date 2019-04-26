@@ -1,72 +1,81 @@
-﻿using IdentityModel.Client;
+using IdentityModel.Client;
 using MiX.Identity.Client;
 using System;
 using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace MiX.Integrate.API.Client.Base
-{
+{ 
 	public static class AccessTokenCache
-	{
-		private static Dictionary<int, TokenResponse> _idServerAccessTokens = new Dictionary<int, TokenResponse>();
-		private static object _lock = new object();
- 
-		public static string GetIdServerAccessToken(IdServerResourceOwnerClientSettings settings)
-		{
-			lock (_lock)
-			{
-				if (settings == null)
-				{
-					throw new ArgumentException("Parameter IdServerResourceOwnerClientSettings not provided");
-				}
+    {
+        private static Dictionary<int, TokenResponse> _idServerAccessTokens = new Dictionary<int, TokenResponse>();
+        private static object _lock = new object();
+        private static SemaphoreSlim semaphoreSlim = new SemaphoreSlim(1);
 
-				int settingsHash = $"{settings.BaseAddress}|{settings.ClientId}|{settings.ClientSecret}|{settings.Scopes}|{settings.UserName}|{settings.Password}".GetHashCode();
+        public static async Task<string> GetIdServerAccessToken(IdServerResourceOwnerClientSettings settings)
+        {
+            await semaphoreSlim.WaitAsync();
+            try
+            {
+                if (settings == null)
+                {
+                    throw new ArgumentException("Parameter IdServerResourceOwnerClientSettings not provided");
+                }
 
-				if (_idServerAccessTokens.ContainsKey(settingsHash) && _idServerAccessTokens[settingsHash] != null)
-				{
-					TokenResponse response = _idServerAccessTokens[settingsHash]; 
-					//ToDo: possibly preemptively check if token is still valid 
-					return response.AccessToken;
-				}
+                int settingsHash = $"{settings.BaseAddress}|{settings.ClientId}|{settings.ClientSecret}|{settings.Scopes}|{settings.UserName}|{settings.Password}".GetHashCode();
 
-				try
-				{ 
+                if (_idServerAccessTokens.ContainsKey(settingsHash) && _idServerAccessTokens[settingsHash] != null)
+                {
+                    TokenResponse response = _idServerAccessTokens[settingsHash];
+                    //ToDo: possibly preemptively check if token is still valid 
+                    return response.AccessToken;
+                }
 
-					IdentityClient identityClient = new IdentityClient(settings.BaseAddress, settings.ClientId, settings.ClientSecret);
-					TokenResponse reponse = identityClient.RequestToken(settings.UserName, settings.Password, settings.Scopes);
+                try
+                {
+                    IdentityClient identityClient = new IdentityClient(settings.BaseAddress, settings.ClientId, settings.ClientSecret);
 
-					if (reponse == null || string.IsNullOrEmpty(reponse.AccessToken))
-					{
-						throw new HttpClientException(System.Net.HttpStatusCode.Unauthorized, "Authorisation error: No AccessToken returned");
-					}
+                    TokenResponse reponse = await identityClient.RequestTokenAsync(settings.UserName, settings.Password, settings.Scopes).ConfigureAwait(false);
 
-					_idServerAccessTokens.Add(settingsHash, reponse);
-					 
-					return reponse.AccessToken;
-				}
-				catch (Exception exc)
-				{
-					throw new HttpClientException(System.Net.HttpStatusCode.Unauthorized, $"Authorisation error: {exc.Message}");
-				}
-			}
-		}
+                    if (reponse == null || string.IsNullOrEmpty(reponse.AccessToken))
+                    {
+                        throw new HttpClientException(System.Net.HttpStatusCode.Unauthorized, "Authorisation error: No AccessToken returned");
+                    }
 
-		public static void ClearIdServerAccessToken(IdServerResourceOwnerClientSettings settings)
-		{
-			lock (_lock)
-			{
-				if (settings == null)
-				{
-					throw new ArgumentException("Parameter IdServerResourceOwnerClientSettings not provided");
-				}
+                    _idServerAccessTokens.Add(settingsHash, reponse);
 
-				int settingsHash = $"{settings.BaseAddress}|{settings.ClientId}|{settings.ClientSecret}|{settings.Scopes}|{settings.UserName}|{settings.Password}".GetHashCode();
- 
-				if (_idServerAccessTokens.ContainsKey(settingsHash))
-				{
-					_idServerAccessTokens.Remove(settingsHash);
-				}
-			}
-		}
+                    return reponse.AccessToken;
+                }
+                catch (Exception exc)
+                {
+                    throw new HttpClientException(System.Net.HttpStatusCode.Unauthorized, $"Authorisation error: {exc.Message}");
+                }
+            }
+            finally
+            {
+                semaphoreSlim.Release();
+            }
+        }
 
-	}
+        public static void ClearIdServerAccessToken(IdServerResourceOwnerClientSettings settings)
+        {
+            lock (_lock)
+            {
+                if (settings == null)
+                {
+                    throw new ArgumentException("Parameter IdServerResourceOwnerClientSettings not provided");
+                }
+
+                int settingsHash = $"{settings.BaseAddress}|{settings.ClientId}|{settings.ClientSecret}|{settings.Scopes}|{settings.UserName}|{settings.Password}".GetHashCode();
+
+                if (_idServerAccessTokens.ContainsKey(settingsHash))
+                {
+                    _idServerAccessTokens.Remove(settingsHash);
+                }
+            }
+        }
+
+    }
+		
 }

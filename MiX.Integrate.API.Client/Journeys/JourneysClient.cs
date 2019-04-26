@@ -206,6 +206,7 @@ namespace MiX.Integrate.API.Client.Journeys
 			return response.Data;
 		}
 
+
 		public List<JourneyAssetDriver> GetJourneyAssetsAndDrivers(long journeyId)
 		{
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.JourneysController.GETJOURNEYASSETSANDDRIVERSASYNC, HttpMethod.Get);
