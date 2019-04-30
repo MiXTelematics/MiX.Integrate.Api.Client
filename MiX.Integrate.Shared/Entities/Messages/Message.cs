@@ -30,6 +30,7 @@ namespace MiX.Integrate.Shared.Entities.Messages
 		#region Public Properties
 
 		public int MessageId { get; set; }
+		public long AssetId { get; set; }
 		public string ID { get; set; }
 		public int OrgID { get; set; }
 		public int CompanyID { get; set; }
