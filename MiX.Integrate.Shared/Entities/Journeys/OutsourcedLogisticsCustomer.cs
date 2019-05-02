@@ -4,7 +4,7 @@ using System.Text;
 
 namespace MiX.Integrate.Shared.Entities.Journeys
 {
-	public class Customer
+	public class OutsourcedLogisticsCustomer
 	{
 		public long Id { get; set; }
 		public long AssociateId { get; set; }
