@@ -35,7 +35,7 @@ namespace MiX.Integrate.API.Client.Base
 					{
 						var handler = new HttpClientHandler();
 						handler.AutomaticDecompression = DecompressionMethods.Deflate | DecompressionMethods.GZip;
-						_httpClient = new HttpClient(handler) { Timeout = _timeout == null ? TimeSpan.FromSeconds(‭480‬) : _timeout };
+						_httpClient = new HttpClient(handler) { Timeout = _timeout == null ? TimeSpan.FromSeconds(480) : _timeout };
 						_httpClient.DefaultRequestHeaders.ExpectContinue = false;
 					}
 					else
