@@ -16,7 +16,9 @@ namespace MiX.Integrate.Shared.Entities.Journeys
 		public bool IsHazardous { get; set; }
 		public bool IsOversizeVehicle { get; set; }
 		public bool IsOversizeLoad { get; set; }
-		public long? CustomerId { get; set; }
-		public long? CustomerSiteId { get; set; }
+
+		//OL-110
+		//public long? CustomerId { get; set; }
+		//public long? CustomerSiteId { get; set; }
 	}
 }
