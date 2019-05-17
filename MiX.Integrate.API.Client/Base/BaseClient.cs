@@ -23,6 +23,9 @@ namespace MiX.Integrate.API.Client.Base
 		private static HttpClient _httpClient;
 		private bool _notFoundShouldReturnNull;
 		private static bool _compressionEnabled = true;
+		private static TimeSpan _timeout { get; set; }
+
+
 
 		private static HttpClient HttpClient
 		{
@@ -39,7 +42,7 @@ namespace MiX.Integrate.API.Client.Base
 #endif
 					if (_compressionEnabled)
 						handler.AutomaticDecompression = DecompressionMethods.Deflate | DecompressionMethods.GZip;
-					_httpClient = new HttpClient(handler);
+					_httpClient = new HttpClient(handler) { Timeout = _timeout == null ? TimeSpan.FromSeconds(480) : _timeout };
 					_httpClient.DefaultRequestHeaders.ExpectContinue = false;
 
 				}
@@ -51,7 +54,7 @@ namespace MiX.Integrate.API.Client.Base
 
 		internal BaseClient() { }
 
-		public BaseClient(string url, bool setTestRequestHeader = false)
+		public BaseClient(string url, bool setTestRequestHeader = false, TimeSpan? timeout = null)
 		{
 			if (String.IsNullOrEmpty(url))
 			{
@@ -61,9 +64,10 @@ namespace MiX.Integrate.API.Client.Base
 			_url = url;
 			_setTestRequestHeader = setTestRequestHeader;
 			_hasIDServerResourceOwnerClientSettings = false;
+			_timeout = timeout == null ? TimeSpan.FromSeconds(480) : timeout.Value;
 		}
 
-		public BaseClient(string url, IdServerResourceOwnerClientSettings settings, bool setTestRequestHeader = false)
+		public BaseClient(string url, IdServerResourceOwnerClientSettings settings, bool setTestRequestHeader = false, TimeSpan? timeout = null)
 		{
 			if (String.IsNullOrEmpty(url))
 			{
@@ -88,6 +92,7 @@ namespace MiX.Integrate.API.Client.Base
 			_setTestRequestHeader = setTestRequestHeader;
 			_hasIDServerResourceOwnerClientSettings = true;
 			_idServerResourceOwnerClientSettings = settings;
+			_timeout = timeout == null ? TimeSpan.FromSeconds(480) : timeout.Value;
 		}
 
 		/// <summary>
