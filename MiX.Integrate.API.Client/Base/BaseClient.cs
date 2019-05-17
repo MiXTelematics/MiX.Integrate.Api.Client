@@ -8,6 +8,8 @@ using System.Net.Http.Headers;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using System.Net.Security;
+using System.Security.Authentication;
 
 namespace MiX.Integrate.API.Client.Base
 {
@@ -31,18 +33,18 @@ namespace MiX.Integrate.API.Client.Base
 			{
 				if (_httpClient == null)
 				{
+
+					var handler = new HttpClientHandler();
+#if (NET452 || NET462)
+					ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;
+#else
+					handler.SslProtocols = SslProtocols.Tls12 | SslProtocols.Tls11 | SslProtocols.Tls;
+#endif
 					if (_compressionEnabled)
-					{
-						var handler = new HttpClientHandler();
 						handler.AutomaticDecompression = DecompressionMethods.Deflate | DecompressionMethods.GZip;
-						_httpClient = new HttpClient(handler) { Timeout = _timeout == null ? TimeSpan.FromSeconds(480) : _timeout };
-						_httpClient.DefaultRequestHeaders.ExpectContinue = false;
-					}
-					else
-					{
-						_httpClient = new HttpClient();
-						_httpClient.DefaultRequestHeaders.ExpectContinue = false;
-					}
+					_httpClient = new HttpClient(handler) { Timeout = _timeout == null ? TimeSpan.FromSeconds(480) : _timeout };
+					_httpClient.DefaultRequestHeaders.ExpectContinue = false;
+
 				}
 				return _httpClient;
 			}
