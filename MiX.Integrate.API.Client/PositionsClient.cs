@@ -171,7 +171,7 @@ namespace MiX.Integrate.API.Client
 
 		public CreatedSinceResult<Position> GetCreatedSinceForOrganisation(long organisationId, string sinceToken, int quantity)
 		{
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.PositionsController.GETCREATEDSINCEFORORGANISATION, HttpMethod.Post);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.PositionsController.GETCREATEDSINCEFORORGANISATION, HttpMethod.Get);
 			request.AddUrlSegment("organisationId", organisationId.ToString());
 			request.AddUrlSegment("sinceToken", sinceToken);
 			request.AddUrlSegment("quantity", quantity.ToString());
