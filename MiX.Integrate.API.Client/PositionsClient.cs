@@ -1,5 +1,4 @@
-﻿using MiX.Integrate.API.Client;
-using MiX.Integrate.API.Client.Base;
+﻿using MiX.Integrate.API.Client.Base;
 using MiX.Integrate.Shared.Constants;
 using MiX.Integrate.Shared.Entities.Carriers;
 using MiX.Integrate.Shared.Entities.Positions;
@@ -161,6 +160,36 @@ namespace MiX.Integrate.API.Client
 			request.AddUrlSegment("sinceToken", sinceToken);
 			request.AddUrlSegment("quantity", quantity.ToString());
 			request.AddJsonBody(groupIds);
+			IHttpRestResponse<List<Position>> response = await ExecuteAsync<List<Position>>(request).ConfigureAwait(false);
+			string sHasMoreItems = GetResponseHeader(response.Headers, "HasMoreItems");
+			string getSinceToken = GetResponseHeader(response.Headers, "GetSinceToken");
+			bool hasMoreItems = false;
+			if (!bool.TryParse(sHasMoreItems, out hasMoreItems))
+				throw new Exception("Could not read the HasMoreItems header");
+			return new CreatedSinceResult<Position>() { HasMoreItems = hasMoreItems, GetSinceToken = getSinceToken, Items = response.Data };
+		}
+
+		public CreatedSinceResult<Position> GetCreatedSinceForOrganisation(long organisationId, string sinceToken, int quantity)
+		{
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.PositionsController.GETCREATEDSINCEFORORGANISATION, HttpMethod.Post);
+			request.AddUrlSegment("organisationId", organisationId.ToString());
+			request.AddUrlSegment("sinceToken", sinceToken);
+			request.AddUrlSegment("quantity", quantity.ToString());
+			IHttpRestResponse<List<Position>> response = Execute<List<Position>>(request);
+			string sHasMoreItems = GetResponseHeader(response.Headers, "HasMoreItems");
+			string getSinceToken = GetResponseHeader(response.Headers, "GetSinceToken");
+			bool hasMoreItems = false;
+			if (!bool.TryParse(sHasMoreItems, out hasMoreItems))
+				throw new Exception("Could not read the HasMoreItems header");
+			return new CreatedSinceResult<Position>() { HasMoreItems = hasMoreItems, GetSinceToken = getSinceToken, Items = response.Data };
+		}
+
+		public async Task<CreatedSinceResult<Position>> GetCreatedSinceForOrganisationAsync(long organisationId, string sinceToken, int quantity)
+		{
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.PositionsController.GETCREATEDSINCEFORORGANISATION, HttpMethod.Get);
+			request.AddUrlSegment("organisationId", organisationId.ToString());
+			request.AddUrlSegment("sinceToken", sinceToken);
+			request.AddUrlSegment("quantity", quantity.ToString());
 			IHttpRestResponse<List<Position>> response = await ExecuteAsync<List<Position>>(request).ConfigureAwait(false);
 			string sHasMoreItems = GetResponseHeader(response.Headers, "HasMoreItems");
 			string getSinceToken = GetResponseHeader(response.Headers, "GetSinceToken");
