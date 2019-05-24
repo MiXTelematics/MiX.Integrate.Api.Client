@@ -23,5 +23,7 @@ namespace MiX.Integrate.API.Client
 		Task<List<Position>> GetByDateRangeByDriverIdsAsync(List<long> driverIds, DateTime fromDate, DateTime toDate);
 		CreatedSinceResult<Position> GetCreatedSinceForGroups(List<long> groupIds, string entityType, string sinceToken, int quantity);
 		Task<CreatedSinceResult<Position>> GetCreatedSinceForGroupsAsync(List<long> groupIds, string entityType, string sinceToken, int quantity);
+		CreatedSinceResult<Position> GetCreatedSinceForOrganisation(long organisationId, string sinceToken, int quantity);
+		Task<CreatedSinceResult<Position>> GetCreatedSinceForOrganisationAsync(long organisationId, string sinceToken, int quantity);
 	}
 }
