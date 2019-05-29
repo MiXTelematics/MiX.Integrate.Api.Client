@@ -94,7 +94,7 @@ namespace MiX.Integrate.API.Client.Base
 			//Calling assembly 
 			var entryAssemblyName = Assembly.GetEntryAssembly().GetName().Name;
 			var algorithm = System.Security.Cryptography.SHA256.Create();
-			var entryAssemblyNameHash = BitConverter.ToString(algorithm.ComputeHash(Encoding.UTF8.GetBytes(entryAssemblyName)));
+			var entryAssemblyNameHash = BitConverter.ToString(algorithm.ComputeHash(Encoding.UTF8.GetBytes(entryAssemblyName))).Replace("-", "");
 			algorithm.Dispose();
 			//Build custom headers
 			_customHeaders = new Dictionary<string, string>();
