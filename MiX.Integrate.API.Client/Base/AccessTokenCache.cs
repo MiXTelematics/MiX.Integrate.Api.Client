@@ -1,7 +1,10 @@
-﻿using IdentityModel.Client;
+using IdentityModel.Client;
 using MiX.Identity.Client;
 using System;
 using System.Collections.Generic;
+using System.Net.Http;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace MiX.Integrate.API.Client.Base
 {
@@ -9,10 +12,12 @@ namespace MiX.Integrate.API.Client.Base
 	{
 		private static Dictionary<int, TokenResponse> _idServerAccessTokens = new Dictionary<int, TokenResponse>();
 		private static object _lock = new object();
- 
-		public static string GetIdServerAccessToken(IdServerResourceOwnerClientSettings settings)
+		private static SemaphoreSlim semaphoreSlim = new SemaphoreSlim(1);
+
+		public static async Task<string> GetIdServerAccessToken(IdServerResourceOwnerClientSettings settings, HttpClientHandler httpClientHandler)
 		{
-			lock (_lock)
+			await semaphoreSlim.WaitAsync();
+			try
 			{
 				if (settings == null)
 				{
@@ -23,16 +28,16 @@ namespace MiX.Integrate.API.Client.Base
 
 				if (_idServerAccessTokens.ContainsKey(settingsHash) && _idServerAccessTokens[settingsHash] != null)
 				{
-					TokenResponse response = _idServerAccessTokens[settingsHash]; 
+					TokenResponse response = _idServerAccessTokens[settingsHash];
 					//ToDo: possibly preemptively check if token is still valid 
 					return response.AccessToken;
 				}
 
 				try
-				{ 
+				{
+					IdentityClient identityClient = new IdentityClient(settings.BaseAddress, settings.ClientId, settings.ClientSecret, httpClientHandler);
 
-					IdentityClient identityClient = new IdentityClient(settings.BaseAddress, settings.ClientId, settings.ClientSecret);
-					TokenResponse reponse = identityClient.RequestToken(settings.UserName, settings.Password, settings.Scopes);
+					TokenResponse reponse = await identityClient.RequestTokenAsync(settings.UserName, settings.Password, settings.Scopes).ConfigureAwait(false);
 
 					if (reponse == null || string.IsNullOrEmpty(reponse.AccessToken))
 					{
@@ -40,13 +45,17 @@ namespace MiX.Integrate.API.Client.Base
 					}
 
 					_idServerAccessTokens.Add(settingsHash, reponse);
-					 
+
 					return reponse.AccessToken;
 				}
 				catch (Exception exc)
 				{
 					throw new HttpClientException(System.Net.HttpStatusCode.Unauthorized, $"Authorisation error: {exc.Message}");
 				}
+			}
+			finally
+			{
+				semaphoreSlim.Release();
 			}
 		}
 
@@ -60,7 +69,7 @@ namespace MiX.Integrate.API.Client.Base
 				}
 
 				int settingsHash = $"{settings.BaseAddress}|{settings.ClientId}|{settings.ClientSecret}|{settings.Scopes}|{settings.UserName}|{settings.Password}".GetHashCode();
- 
+
 				if (_idServerAccessTokens.ContainsKey(settingsHash))
 				{
 					_idServerAccessTokens.Remove(settingsHash);
@@ -69,4 +78,5 @@ namespace MiX.Integrate.API.Client.Base
 		}
 
 	}
+
 }

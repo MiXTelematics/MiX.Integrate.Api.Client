@@ -29,6 +29,53 @@ namespace MiX.Integrate.API.Client
 			IHttpRestResponse<List<ConnectedPeripheral>> response = Execute<List<ConnectedPeripheral>>(request);
 			return response.Data;
 		}
-		 
+
+		public async Task<List<MobileUnitCommunicationSettings>> GetCommunicationSettingsAsync(List<long> assetIds)
+		{
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.DeviceConfigController.GETCOMMUNICATIONSETTINGS, HttpMethod.Post);
+			request.AddJsonBody(assetIds);
+			IHttpRestResponse<List<MobileUnitCommunicationSettings>> response = await ExecuteAsync<List<MobileUnitCommunicationSettings>>(request).ConfigureAwait(false);
+			return response.Data;
+		}
+
+		public List<MobileUnitCommunicationSettings> GetCommunicationSettings(List<long> assetIds)
+		{
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.DeviceConfigController.GETCOMMUNICATIONSETTINGS, HttpMethod.Post);
+			request.AddJsonBody(assetIds);
+			IHttpRestResponse<List<MobileUnitCommunicationSettings>> response = Execute<List<MobileUnitCommunicationSettings>>(request);
+			return response.Data;
+		}
+
+		public async Task<List<MobileUnitCameraSettings>> GetCameraSettingsAsync(List<long> assetIds)
+		{
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.DeviceConfigController.GETCAMERASETTINGS, HttpMethod.Post);
+			request.AddJsonBody(assetIds);
+			IHttpRestResponse<List<MobileUnitCameraSettings>> response = await ExecuteAsync<List<MobileUnitCameraSettings>>(request).ConfigureAwait(false);
+			return response.Data;
+		}
+
+		public List<MobileUnitCameraSettings> GetCameraSettings(List<long> assetIds)
+		{
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.DeviceConfigController.GETCAMERASETTINGS, HttpMethod.Post);
+			request.AddJsonBody(assetIds);
+			IHttpRestResponse<List<MobileUnitCameraSettings>> response = Execute<List<MobileUnitCameraSettings>>(request);
+			return response.Data;
+		}
+
+		public async Task<List<MobileUnitConfigurationState>> GetConfigurationStateAsync(List<long> assetIds)
+		{
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.DeviceConfigController.GETCONFIGURATIONSTATE, HttpMethod.Post);
+			request.AddJsonBody(assetIds);
+			IHttpRestResponse<List<MobileUnitConfigurationState>> response = await ExecuteAsync<List<MobileUnitConfigurationState>>(request).ConfigureAwait(false);
+			return response.Data;
+		}
+
+		public List<MobileUnitConfigurationState> GetConfigurationState(List<long> assetIds)
+		{
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.DeviceConfigController.GETCONFIGURATIONSTATE, HttpMethod.Post);
+			request.AddJsonBody(assetIds);
+			IHttpRestResponse<List<MobileUnitConfigurationState>> response = Execute<List<MobileUnitConfigurationState>>(request);
+			return response.Data;
+		}
 	}
 }
