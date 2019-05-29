@@ -6,6 +6,8 @@ using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Reflection;
+using System.Runtime.Versioning;
+using System.Security.Authentication;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -21,6 +23,41 @@ namespace MiX.Integrate.API.Client.Base
 		private static HttpClient _httpClient;
 		private bool _notFoundShouldReturnNull;
 		private static bool _compressionEnabled = true;
+		private static TimeSpan _timeout { get; set; }
+		private static HttpClientHandler _httpClientHandler { get; set; }
+#if (NET452 || NET462 || NETSTANDARD2_0)
+		private static WebProxy _webProxy { get; set; }
+#endif
+		private static Dictionary<string, string> _customHeaders { get; set; }
+
+		private static HttpClientHandler InternalHttpClientHandler
+		{
+			get
+			{
+				if (_httpClientHandler == null)
+				{
+#if (NET452 || NET462 || NETSTANDARD2_0)
+					ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;
+#endif
+					_httpClientHandler = new HttpClientHandler();
+#if (NET462 || NETSTANDARD1_6 || NETSTANDARD2_0)
+					_httpClientHandler.SslProtocols = SslProtocols.Tls12 | SslProtocols.Tls11 | SslProtocols.Tls;
+#endif
+					if (_compressionEnabled)
+					{
+						_httpClientHandler.AutomaticDecompression = DecompressionMethods.Deflate | DecompressionMethods.GZip;
+					}
+#if (NET452 || NET462 || NETSTANDARD2_0)
+					if (_webProxy != null)
+					{
+						_httpClientHandler.Proxy = _webProxy;
+					}
+#endif
+				}
+				return _httpClientHandler;
+			}
+			set { _httpClientHandler = value; }
+		}
 
 		private static HttpClient HttpClient
 		{
@@ -28,17 +65,14 @@ namespace MiX.Integrate.API.Client.Base
 			{
 				if (_httpClient == null)
 				{
-					if (_compressionEnabled)
+					_httpClient = new HttpClient(InternalHttpClientHandler) { Timeout = _timeout == null ? TimeSpan.FromSeconds(480) : _timeout };
+					_httpClient.DefaultRequestHeaders.ExpectContinue = false;
+					if (_customHeaders != null)
 					{
-						var handler = new HttpClientHandler();
-						handler.AutomaticDecompression = DecompressionMethods.Deflate | DecompressionMethods.GZip;
-						_httpClient = new HttpClient(handler);
-						_httpClient.DefaultRequestHeaders.ExpectContinue = false;
-					}
-					else
-					{
-						_httpClient = new HttpClient();
-						_httpClient.DefaultRequestHeaders.ExpectContinue = false;
+						foreach (var key in _customHeaders.Keys)
+						{
+							_httpClient.DefaultRequestHeaders.Add(key, _customHeaders[key]);
+						}
 					}
 				}
 				return _httpClient;
@@ -46,10 +80,32 @@ namespace MiX.Integrate.API.Client.Base
 			set { _httpClient = value; }
 		}
 
+		internal BaseClient()
+		{
+			//This assembly
+			var assembly = typeof(BaseClient).GetTypeInfo().Assembly;
+			var assemblyName = assembly.GetName();
+			var version = assemblyName.Version;
+			var imageRuntimeVersion = assembly.ImageRuntimeVersion;
+			var assemblyFileVersionAttribute = (AssemblyFileVersionAttribute)assembly.GetCustomAttributes(typeof(AssemblyFileVersionAttribute)).FirstOrDefault();
+			var targetFrameworkAttribute = (TargetFrameworkAttribute)assembly.GetCustomAttributes(typeof(TargetFrameworkAttribute)).FirstOrDefault();
+			var assemblyFileVersion = (assemblyFileVersionAttribute != null) ? assemblyFileVersionAttribute.Version : "NULL";
+			var targetFramework = (targetFrameworkAttribute != null) ? targetFrameworkAttribute.FrameworkName : "NULL";
+			//Calling assembly 
+			var entryAssemblyName = Assembly.GetEntryAssembly().GetName().Name;
+			var algorithm = System.Security.Cryptography.SHA256.Create();
+			var entryAssemblyNameHash = BitConverter.ToString(algorithm.ComputeHash(Encoding.UTF8.GetBytes(entryAssemblyName)));
+			algorithm.Dispose();
+			//Build custom headers
+			_customHeaders = new Dictionary<string, string>();
+			_customHeaders.Add("X-MiX-LibraryInfo", $"Name: {assemblyName.Name}, Version: {assemblyName.Version.ToString()}, FileVersion: {assemblyFileVersion}, TargetFramework: {targetFramework}, Runtime: {imageRuntimeVersion}, EntryAssembly: {entryAssemblyNameHash}");
+		}
 
-		internal BaseClient() { }
+		public BaseClient(string url, bool setTestRequestHeader = false) : this(url, setTestRequestHeader, null)
+		{
+		}
 
-		public BaseClient(string url, bool setTestRequestHeader = false)
+		public BaseClient(string url, bool setTestRequestHeader = false, TimeSpan? timeout = null) : this()
 		{
 			if (String.IsNullOrEmpty(url))
 			{
@@ -59,9 +115,14 @@ namespace MiX.Integrate.API.Client.Base
 			_url = url;
 			_setTestRequestHeader = setTestRequestHeader;
 			_hasIDServerResourceOwnerClientSettings = false;
+			_timeout = timeout == null ? TimeSpan.FromSeconds(480) : timeout.Value;
 		}
 
-		public BaseClient(string url, IdServerResourceOwnerClientSettings settings, bool setTestRequestHeader = false)
+		public BaseClient(string url, IdServerResourceOwnerClientSettings settings, bool setTestRequestHeader = false) : this(url, settings, setTestRequestHeader, null)
+		{
+		}
+
+		public BaseClient(string url, IdServerResourceOwnerClientSettings settings, bool setTestRequestHeader = false, TimeSpan? timeout = null) : this()
 		{
 			if (String.IsNullOrEmpty(url))
 			{
@@ -86,6 +147,7 @@ namespace MiX.Integrate.API.Client.Base
 			_setTestRequestHeader = setTestRequestHeader;
 			_hasIDServerResourceOwnerClientSettings = true;
 			_idServerResourceOwnerClientSettings = settings;
+			_timeout = timeout == null ? TimeSpan.FromSeconds(480) : timeout.Value;
 		}
 
 		/// <summary>
@@ -99,8 +161,39 @@ namespace MiX.Integrate.API.Client.Base
 			{
 				_compressionEnabled = value;
 				_httpClient = null;
+				_httpClientHandler = null;
 			}
 		}
+
+		/// <summary>
+		/// Set Timeout 
+		/// </summary>
+		public TimeSpan Timeout
+		{
+			get { return _timeout; }
+			set
+			{
+				_timeout = value == null ? TimeSpan.FromSeconds(480) : value;
+				_httpClient = null;
+				_httpClientHandler = null;
+			}
+		}
+
+#if (NET452 || NET462 || NETSTANDARD2_0)
+		/// <summary>
+		/// Set Proxy 
+		/// </summary>
+		public WebProxy Proxy
+		{
+			get { return _webProxy; }
+			set
+			{
+				_webProxy = value;
+				_httpClient = null;
+				_httpClientHandler = null;
+			}
+		}
+#endif
 
 		public bool HTTPStatusNotFoundShouldReturnNull
 		{
@@ -124,13 +217,13 @@ namespace MiX.Integrate.API.Client.Base
 			return request;
 		}
 
-		public IHttpRestResponse<T> Execute<T>(IHttpRestRequest request,int maxRetryAttempts = 3) where T : new()
+		public IHttpRestResponse<T> Execute<T>(IHttpRestRequest request, int maxRetryAttempts = 3) where T : new()
 		{
 			IHttpRestResponse<T> respT = ExecuteAsync<T>(request, maxRetryAttempts).ConfigureAwait(false).GetAwaiter().GetResult();
 			return respT;
 		}
 
-		public IHttpRestResponse Execute(IHttpRestRequest request,int maxRetryAttempts = 3)
+		public IHttpRestResponse Execute(IHttpRestRequest request, int maxRetryAttempts = 3)
 		{
 			IHttpRestResponse resp = ExecuteAsync(request, maxRetryAttempts).ConfigureAwait(false).GetAwaiter().GetResult();
 			return resp;
@@ -162,7 +255,7 @@ namespace MiX.Integrate.API.Client.Base
 
 			if (_hasIDServerResourceOwnerClientSettings)
 			{
-				string bearerToken = await AccessTokenCache.GetIdServerAccessToken(_idServerResourceOwnerClientSettings).ConfigureAwait(false);
+				string bearerToken = await AccessTokenCache.GetIdServerAccessToken(_idServerResourceOwnerClientSettings, InternalHttpClientHandler).ConfigureAwait(false);
 				request.SetHeader("Authorization", string.Format("Bearer {0}", bearerToken));
 			}
 
