@@ -105,6 +105,7 @@ namespace MiX.Integrate.Shared.Constants
 			public const string GETSINCEFORASSETS = "api/positions/assets/since/{since}";
 			public const string GETRANGEFORDRIVERS = "api/positions/drivers/from/{from}/to/{to}";
 			public const string GETCREATEDSINCEFORGROUPSASYNC = "api/positions/groups/createdsince/entitytype/{entityType}/sincetoken/{sinceToken}/quantity/{quantity}";
+			public const string GETCREATEDSINCEFORORGANISATION = "api/positions/groups/createdsince/organisation/{organisationId}/sincetoken/{sinceToken}/quantity/{quantity}";
 		}
 
 		//MiX.Integrate.Api EventsController
@@ -184,6 +185,7 @@ namespace MiX.Integrate.Shared.Constants
 			public const string INRANGE = "api/locations/group/{groupId}/inrange/{meters}";
 			public const string NEAREST = "api/locations/group/{groupId}/nearest";
 			public const string CHANGEDSINCE = "api/locations/organisation/{organisationId}/changedsince/since/{since}";
+			public const string MIGRATELEGACYIDS = "api/locations/organisation/{organisationId}/migratelegacyids";
 
 		}
 

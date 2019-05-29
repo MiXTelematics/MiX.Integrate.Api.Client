@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace MiX.Integrate.Shared.Entities.Drivers
 {
@@ -36,5 +37,6 @@ namespace MiX.Integrate.Shared.Entities.Drivers
 		public string ExtendedDriverId { get; set; }
 		public ExtendedDriverIdType ExtendedDriverIdType { get; set; }
 		public string Country { get; set; }
+		public List<DriverAdditionalDetailField> AdditionalDetailFields { get; set; }
 	}
 }

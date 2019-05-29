@@ -10,6 +10,8 @@ using System.Runtime.Versioning;
 using System.Security.Authentication;
 using System.Text;
 using System.Threading.Tasks;
+using System.Net.Security;
+using System.Security.Authentication;
 
 namespace MiX.Integrate.API.Client.Base
 {
