@@ -336,6 +336,36 @@ namespace MiX.Integrate.API.Client
 			return new CreatedSinceResult<Trip>() { HasMoreItems = hasMoreItems, GetSinceToken = getSinceToken, Items = response.Data };
 		}
 
+		public CreatedSinceResult<Trip> GetCreatedSinceForOrganisation(long organisationId, string sinceToken, int quantity)
+		{
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.TripsController.GETCREATEDSINCEFORORGANISATION, HttpMethod.Get);
+			request.AddUrlSegment("organisationId", organisationId.ToString());
+			request.AddUrlSegment("sinceToken", sinceToken);
+			request.AddUrlSegment("quantity", quantity.ToString());
+			IHttpRestResponse<List<Trip>> response = Execute<List<Trip>>(request);
+			string sHasMoreItems = GetResponseHeader(response.Headers, "HasMoreItems");
+			string getSinceToken = GetResponseHeader(response.Headers, "GetSinceToken");
+			bool hasMoreItems = false;
+			if (!bool.TryParse(sHasMoreItems, out hasMoreItems))
+				throw new Exception("Could not read the HasMoreItems header");
+			return new CreatedSinceResult<Trip>() { HasMoreItems = hasMoreItems, GetSinceToken = getSinceToken, Items = response.Data };
+		}
+
+		public async Task<CreatedSinceResult<Trip>> GetCreatedSinceForOrganisationAsync(long organisationId, string sinceToken, int quantity)
+		{
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.TripsController.GETCREATEDSINCEFORORGANISATION, HttpMethod.Get);
+			request.AddUrlSegment("organisationId", organisationId.ToString());
+			request.AddUrlSegment("sinceToken", sinceToken);
+			request.AddUrlSegment("quantity", quantity.ToString());
+			IHttpRestResponse<List<Trip>> response = await ExecuteAsync<List<Trip>>(request).ConfigureAwait(false);
+			string sHasMoreItems = GetResponseHeader(response.Headers, "HasMoreItems");
+			string getSinceToken = GetResponseHeader(response.Headers, "GetSinceToken");
+			bool hasMoreItems = false;
+			if (!bool.TryParse(sHasMoreItems, out hasMoreItems))
+				throw new Exception("Could not read the HasMoreItems header");
+			return new CreatedSinceResult<Trip>() { HasMoreItems = hasMoreItems, GetSinceToken = getSinceToken, Items = response.Data };
+		}
+
 		#endregion
 
 		#region DriverScores
