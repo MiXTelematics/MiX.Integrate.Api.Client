@@ -92,9 +92,10 @@ namespace MiX.Integrate.API.Client.Base
 			var assemblyFileVersion = (assemblyFileVersionAttribute != null) ? assemblyFileVersionAttribute.Version : "NULL";
 			var targetFramework = (targetFrameworkAttribute != null) ? targetFrameworkAttribute.FrameworkName : "NULL";
 			//Calling assembly 
-			var entryAssemblyName = Assembly.GetEntryAssembly().GetName().Name;
+			Assembly entryAssembly = Assembly.GetEntryAssembly();
+			var entryAssemblyName = entryAssembly != null ? entryAssembly.GetName().Name : "NA";
 			var algorithm = System.Security.Cryptography.SHA256.Create();
-			var entryAssemblyNameHash = BitConverter.ToString(algorithm.ComputeHash(Encoding.UTF8.GetBytes(entryAssemblyName))).Replace("-", "");
+			var entryAssemblyNameHash = entryAssemblyName == "NA" ? "NA" : BitConverter.ToString(algorithm.ComputeHash(Encoding.UTF8.GetBytes(entryAssemblyName))).Replace("-", "");
 			algorithm.Dispose();
 			//Build custom headers
 			_customHeaders = new Dictionary<string, string>();
