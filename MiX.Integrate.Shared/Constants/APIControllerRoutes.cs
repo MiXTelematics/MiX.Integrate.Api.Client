@@ -20,6 +20,7 @@ namespace MiX.Integrate.Shared.Constants
 			public const string GETCREATEDSINCEFORGROUPSASYNC = "api/activeevents/groups/createdsince/entitytype/{entityType}/sincetoken/{sinceToken}/quantity/{quantity}";
 			public const string GETCREATEDSINCEFORASSETSASYNC = "api/activeevents/assets/createdsince/sincetoken/{sinceToken}/quantity/{quantity}";
 			public const string GETCREATEDSINCEFORDRIVERSASYNC = "api/activeevents/drivers/createdsince/sincetoken/{sinceToken}/quantity/{quantity}";
+			public const string GETCREATEDSINCEFORORGANISATION = "api/activeevents/groups/createdsince/organisation/{organisationId}/sincetoken/{sinceToken}/quantity/{quantity}";
 		}
 
 		//MiX.Integrate.Api.Controllers.DriversControllerpublic 
@@ -125,6 +126,7 @@ namespace MiX.Integrate.Shared.Constants
 			public const string GETRANGEFORDRIVERS = "api/events/drivers/from/{from}/to/{to}";
 			public const string GETSINCEFORDRIVERS = "api/events/drivers/since/{since}/quantity/{quantity}";
 			public const string GETCREATEDSINCEFORDRIVERSASYNC = "api/events/drivers/createdsince/sincetoken/{sinceToken}/quantity/{quantity}";
+			public const string GETCREATEDSINCEFORORGANISATION = "api/events/groups/createdsince/organisation/{organisationId}/sincetoken/{sinceToken}/quantity/{quantity}";
 		}
 
 		//MiX.Fleet.Services.Api TachoController
@@ -152,6 +154,7 @@ namespace MiX.Integrate.Shared.Constants
 			public const string GETCREATEDSINCEFORDRIVERSASYNC = "api/trips/drivers/createdsince/sincetoken/{sinceToken}/quantity/{quantity}";
 
 			public const string GETDRIVERSCORES = "api/trips/driverscore/standard/from/{from}/to/{to}";
+			public const string GETCREATEDSINCEFORORGANISATION = "api/trips/groups/createdsince/organisation/{organisationId}/sincetoken/{sinceToken}/quantity/{quantity}";
 		}
 
 		//MiX.Integrate.Api.Controllers.JourneysController

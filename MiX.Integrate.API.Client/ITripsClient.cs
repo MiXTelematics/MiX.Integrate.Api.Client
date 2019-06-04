@@ -40,5 +40,8 @@ namespace MiX.Integrate.API.Client
 
 		List<DriverScore> GetDriverScores(List<long> driverIds, DateTime from, DateTime to);
 		Task<List<DriverScore>> GetDriverScoresAsync(List<long> driverIds, DateTime from, DateTime to);
+
+		CreatedSinceResult<Trip> GetCreatedSinceForOrganisation(long organisationId, string sinceToken, int quantity);
+		Task<CreatedSinceResult<Trip>> GetCreatedSinceForOrganisationAsync(long organisationId, string sinceToken, int quantity);
 	}
 }
