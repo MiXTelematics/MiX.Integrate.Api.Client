@@ -152,6 +152,35 @@ namespace MiX.Integrate.API.Client
 			return response.Data;
 		}
 
+		public List<HosViolation> GetDriverViolationsByListOfDriverIdsInDateRange(ParameterEntityType entityTypeId, List<long> entityIds, List<byte> eventTypeIds, DateTime fromDateTime, DateTime toDateTime)
+		{
+			var dataRequest = new HosEventDataRequest { EntityTypeId = entityTypeId, EntityIds = entityIds, EventTypeIds = eventTypeIds };
+
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.HosDataController.GETDRIVERVIOLATIONSBYLISTOFDRIVERIDSINDATERANGE, HttpMethod.Get);
+
+			request.AddUrlSegment("from", fromDateTime.ToString(DataFormats.DateTime_Format));
+			request.AddUrlSegment("to", toDateTime.ToString(DataFormats.DateTime_Format));
+			request.AddJsonBody(dataRequest);
+
+			IHttpRestResponse<List<HosViolation>> response = Execute<List<HosViolation>>(request);
+
+			return response.Data;
+		}
+
+		public async Task<List<HosViolation>> GetDriverViolationsByListOfDriverIdsInDateRangeAsync(ParameterEntityType entityTypeId, List<long> entityIds, List<byte> eventTypeIds, DateTime fromDateTime, DateTime toDateTime)
+		{
+			var dataRequest = new HosEventDataRequest { EntityTypeId = entityTypeId, EntityIds = entityIds, EventTypeIds = eventTypeIds };
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.HosDataController.GETDRIVERVIOLATIONSBYLISTOFDRIVERIDSINDATERANGE, HttpMethod.Get);
+
+			request.AddUrlSegment("from", fromDateTime.ToString(DataFormats.DateTime_Format));
+			request.AddUrlSegment("to", toDateTime.ToString(DataFormats.DateTime_Format));
+			request.AddJsonBody(dataRequest);
+
+			IHttpRestResponse<List<HosViolation>> response = await ExecuteAsync<List<HosViolation>>(request).ConfigureAwait(false);
+
+			return response.Data;
+		}
+
 		public HosAvailableHours GetHosAvailableHours(long driverId, bool displayHiddenTimeTypes = false)
 		{
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.HosDataController.GETHOSAVAILABLEHOURS, HttpMethod.Get);

@@ -294,6 +294,7 @@ namespace MiX.Integrate.Shared.Constants
 			public const string GETHOSEVENTTYPECATEGORIES = "api/ghos/eventtypecategories";
 			public const string GETHOSDRIVERAPPROVERS = "api/ghos/driverapprovers/driver/{driverId}/isSelectedOnly/{isSelectedOnly}";
 			public const string GETHOSEVENTSTARTDATETIMEBYHOUR = "api/ghos/events/startdatetime/changedsince/{sinceToken}";
+			public const string GETDRIVERVIOLATIONSBYLISTOFDRIVERIDSINDATERANGE = "api/ghos/violations/drivers/from/{fromDateTime}/to/{toDateTime}/{recalculateViolations}";
 		}
 
 		//MiX.Integrate.Api.Controllers.GlobalisationController
