@@ -152,14 +152,15 @@ namespace MiX.Integrate.API.Client
 			return response.Data;
 		}
 
-		public List<HosViolation> GetDriverViolationsByListOfDriverIdsInDateRange(ParameterEntityType entityTypeId, List<long> entityIds, List<byte> eventTypeIds, DateTime fromDateTime, DateTime toDateTime)
+		public List<HosViolation> GetDriverViolationsByListOfDriverIdsInDateRange(ParameterEntityType entityTypeId, List<long> entityIds, DateTime fromDateTime, DateTime toDateTime, bool recalculateViolations = false)
 		{
-			var dataRequest = new HosEventDataRequest { EntityTypeId = entityTypeId, EntityIds = entityIds, EventTypeIds = eventTypeIds };
+			var dataRequest = new HosEventDataRequest { EntityTypeId = entityTypeId, EntityIds = entityIds };
 
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.HosDataController.GETDRIVERVIOLATIONSBYLISTOFDRIVERIDSINDATERANGE, HttpMethod.Get);
 
 			request.AddUrlSegment("from", fromDateTime.ToString(DataFormats.DateTime_Format));
 			request.AddUrlSegment("to", toDateTime.ToString(DataFormats.DateTime_Format));
+			request.AddUrlSegment("recalculateViolations", recalculateViolations.ToString());
 			request.AddJsonBody(dataRequest);
 
 			IHttpRestResponse<List<HosViolation>> response = Execute<List<HosViolation>>(request);
@@ -167,13 +168,14 @@ namespace MiX.Integrate.API.Client
 			return response.Data;
 		}
 
-		public async Task<List<HosViolation>> GetDriverViolationsByListOfDriverIdsInDateRangeAsync(ParameterEntityType entityTypeId, List<long> entityIds, List<byte> eventTypeIds, DateTime fromDateTime, DateTime toDateTime)
+		public async Task<List<HosViolation>> GetDriverViolationsByListOfDriverIdsInDateRangeAsync(ParameterEntityType entityTypeId, List<long> entityIds, DateTime fromDateTime, DateTime toDateTime, bool recalculateViolations = false)
 		{
-			var dataRequest = new HosEventDataRequest { EntityTypeId = entityTypeId, EntityIds = entityIds, EventTypeIds = eventTypeIds };
+			var dataRequest = new HosEventDataRequest { EntityTypeId = entityTypeId, EntityIds = entityIds };
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.HosDataController.GETDRIVERVIOLATIONSBYLISTOFDRIVERIDSINDATERANGE, HttpMethod.Get);
 
 			request.AddUrlSegment("from", fromDateTime.ToString(DataFormats.DateTime_Format));
 			request.AddUrlSegment("to", toDateTime.ToString(DataFormats.DateTime_Format));
+			request.AddUrlSegment("recalculateViolations", recalculateViolations.ToString());
 			request.AddJsonBody(dataRequest);
 
 			IHttpRestResponse<List<HosViolation>> response = await ExecuteAsync<List<HosViolation>>(request).ConfigureAwait(false);

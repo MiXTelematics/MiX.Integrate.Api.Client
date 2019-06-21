@@ -21,9 +21,8 @@ namespace MiX.Integrate.API.Client
 		List<HosViolation> GetHosViolations(long driverId, DateTime fromDateTime, DateTime toDateTime);
 		Task<List<HosViolation>> GetHosViolationsAsync(long driverId, DateTime fromDateTime, DateTime toDateTime);
 
-		List<HosViolation> GetDriverViolationsByListOfDriverIdsInDateRange(ParameterEntityType entityTypeId, List<long> entityIds, List<byte> eventTypeIds, DateTime fromDateTime, DateTime toDateTime);
-		Task<List<HosViolation>> GetDriverViolationsByListOfDriverIdsInDateRangeAsync(ParameterEntityType entityTypeId, List<long> entityIds, List<byte> eventTypeIds, DateTime fromDateTime, DateTime toDateTime);
-
+		List<HosViolation> GetDriverViolationsByListOfDriverIdsInDateRange(ParameterEntityType entityTypeId, List<long> entityIds, DateTime fromDateTime, DateTime toDateTime, bool recalculateViolations = false);
+		Task<List<HosViolation>> GetDriverViolationsByListOfDriverIdsInDateRangeAsync(ParameterEntityType entityTypeId, List<long> entityIds, DateTime fromDateTime, DateTime toDateTime, bool recalculateViolations = false);
 		HosAvailableHours GetHosAvailableHours(long driverId, bool displayHiddenTimeTypes = false);
 		Task<HosAvailableHours> GetHosAvailableHoursAsync(long driverId, bool displayHiddenTimeTypes = false);
 
