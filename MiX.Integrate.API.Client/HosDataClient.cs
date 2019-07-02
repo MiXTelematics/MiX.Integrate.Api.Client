@@ -154,7 +154,7 @@ namespace MiX.Integrate.API.Client
 
 		public List<HosViolation> GetDriverViolationsByListOfDriverIdsInDateRange(ParameterEntityType entityTypeId, List<long> entityIds, DateTime fromDateTime, DateTime toDateTime)
 		{
-			var dataRequest = new DataRequestParameters { EntityTypeId = entityTypeId, EntityIds = entityIds };
+			var dataRequest = new HosDataRequest { EntityTypeId = entityTypeId, EntityIds = entityIds };
 
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.HosDataController.GETDRIVERVIOLATIONSBYLISTOFDRIVERIDSINDATERANGE, HttpMethod.Post);
 
@@ -169,7 +169,7 @@ namespace MiX.Integrate.API.Client
 
 		public async Task<List<HosViolation>> GetDriverViolationsByListOfDriverIdsInDateRangeAsync(ParameterEntityType entityTypeId, List<long> entityIds, DateTime fromDateTime, DateTime toDateTime)
 		{
-			var dataRequest = new DataRequestParameters { EntityTypeId = entityTypeId, EntityIds = entityIds };
+			var dataRequest = new HosDataRequest { EntityTypeId = entityTypeId, EntityIds = entityIds };
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.HosDataController.GETDRIVERVIOLATIONSBYLISTOFDRIVERIDSINDATERANGE, HttpMethod.Post);
 
 			request.AddUrlSegment("from", fromDateTime.ToString(DataFormats.DateTime_Format));
