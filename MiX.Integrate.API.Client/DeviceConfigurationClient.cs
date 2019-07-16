@@ -77,5 +77,37 @@ namespace MiX.Integrate.API.Client
 			IHttpRestResponse<List<MobileUnitConfigurationState>> response = Execute<List<MobileUnitConfigurationState>>(request);
 			return response.Data;
 		}
-	}
+
+		public async Task<List<MobileUnitDeviceConfiguration>> GetMobileUnitDeviceConfigurationsByAssetIdsAsync(List<long> assetIds)
+		{
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.DeviceConfigController.GETCONFIGURATIONSBYASSETIDS, HttpMethod.Post);
+			request.AddJsonBody(assetIds);
+			IHttpRestResponse<List<MobileUnitDeviceConfiguration>> response = await ExecuteAsync<List<MobileUnitDeviceConfiguration>>(request).ConfigureAwait(false);
+			return response.Data;
+		}
+
+		public List<MobileUnitDeviceConfiguration> GetMobileUnitDeviceConfigurationsByAssetIds(List<long> assetIds)
+		{
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.DeviceConfigController.GETCONFIGURATIONSBYASSETIDS, HttpMethod.Post);
+			request.AddJsonBody(assetIds);
+			IHttpRestResponse<List<MobileUnitDeviceConfiguration>> response = Execute<List<MobileUnitDeviceConfiguration>>(request);
+			return response.Data;
+		}
+
+		public async Task<List<MobileUnitDeviceConfiguration>> GetMobileUnitDeviceConfigurationsByGroupIdAsync(long groupId)
+		{
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.DeviceConfigController.GETCONFIGURATIONSBYGROUPID, HttpMethod.Get);
+			request.AddUrlSegment("groupId", groupId.ToString());
+			IHttpRestResponse<List<MobileUnitDeviceConfiguration>> response = await ExecuteAsync<List<MobileUnitDeviceConfiguration>>(request).ConfigureAwait(false);
+			return response.Data;
+		}
+
+		public List<MobileUnitDeviceConfiguration> GetMobileUnitDeviceConfigurationsByGroupId(long groupId)
+		{
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.DeviceConfigController.GETCONFIGURATIONSBYGROUPID, HttpMethod.Get);
+			request.AddUrlSegment("groupId", groupId.ToString());
+			IHttpRestResponse<List<MobileUnitDeviceConfiguration>> response = Execute<List<MobileUnitDeviceConfiguration>>(request);
+			return response.Data;
+		}
+  }
 }
