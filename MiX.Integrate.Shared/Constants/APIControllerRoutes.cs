@@ -222,6 +222,8 @@ namespace MiX.Integrate.Shared.Constants
 			public const string GETCAMERASETTINGS = "api/deviceconfiguration/assets/camerasettings";
 			public const string GETCONFIGURATIONSTATE = "api/deviceconfiguration/assets/configurationstate";
 			public const string GETCOMMUNICATIONSETTINGS = "api/deviceconfiguration/assets/communicationsettings";
+			public const string GETCONFIGURATIONSBYASSETIDS = "api/deviceconfiguration/assets";
+			public const string GETCONFIGURATIONSBYGROUPID = "api/deviceconfiguration/organisation/{groupId}";
 		}
 
 		//MiX.Integrate.Api.Controllers.LibraryEventsController

@@ -15,5 +15,9 @@ namespace MiX.Integrate.API.Client
 		List<MobileUnitCameraSettings> GetCameraSettings(List<long> assetIds);
 		Task<List<MobileUnitConfigurationState>> GetConfigurationStateAsync(List<long> assetIds);
 		List<MobileUnitConfigurationState> GetConfigurationState(List<long> assetIds);
+		Task<List<MobileUnitDeviceConfiguration>> GetMobileUnitDeviceConfigurationsByAssetIdsAsync(List<long> assetIds);
+		List<MobileUnitDeviceConfiguration> GetMobileUnitDeviceConfigurationsByAssetIds(List<long> assetIds);
+		Task<List<MobileUnitDeviceConfiguration>> GetMobileUnitDeviceConfigurationsByGroupIdAsync(long groupId);
+		List<MobileUnitDeviceConfiguration> GetMobileUnitDeviceConfigurationsByGroupId(long groupId);
 	}
 }
