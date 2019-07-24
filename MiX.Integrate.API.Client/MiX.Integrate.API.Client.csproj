@@ -21,7 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="MiX.Identity.Client" Version="2019.7.24.1-pre" />
+    <PackageReference Include="MiX.Identity.Client" Version="2019.7.24.1" />
     <PackageReference Include="System.Net.Http" Version="4.3.3" />
   </ItemGroup>
 
