@@ -7,6 +7,7 @@ namespace MiX.Integrate.Shared.Entities.Positions
 		Satellite = 1,
 		Beacon = 2,
 		Calculated = 3,
-		Hos = 4
+		Hos = 4,
+		Sms = 5
 	}
 }
