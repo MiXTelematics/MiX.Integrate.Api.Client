@@ -60,6 +60,19 @@ namespace MiX.Integrate.API.Client
 			request.AddJsonBody(driver);
 			await ExecuteAsync(request).ConfigureAwait(false);
 		}
+		public void UpdateDriverExtendedId(ExtendedDriverIdUpdate driver)
+		{
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.DriversController.UPDATEDRIVEREXTENTEDID, HttpMethod.Put);
+			request.AddJsonBody(driver);
+			Execute(request);
+		}
+
+		public async Task UpdateDriverExtendedIdAsync(ExtendedDriverIdUpdate driver)
+		{
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.DriversController.UPDATEDRIVEREXTENTEDID, HttpMethod.Put);
+			request.AddJsonBody(driver);
+			await ExecuteAsync(request).ConfigureAwait(false);
+		}
 
 		public long AddDriver(Driver driver)
 		{
