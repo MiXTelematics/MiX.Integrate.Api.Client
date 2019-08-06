@@ -28,6 +28,7 @@ namespace MiX.Integrate.Shared.Constants
 		{
 			public const string GETDRIVER = "api/drivers/group/{groupId}/driver/{driverId}";
 			public const string UPDATEDRIVER = "api/drivers";
+			public const string UPDATEDRIVEREXTENTEDID = "api/drivers/extentedid";
 			public const string ADDDRIVER = "api/drivers";
 			public const string UPDATEDRIVERNAMEBYEXTENDEDIDIFAUTOCREATED = "api/drivers/group/{groupId}/extended/{extendedDriverId}/ifautocreated";
 			public const string GETALLDRIVERS = "api/drivers/organisation/{organisationId}";

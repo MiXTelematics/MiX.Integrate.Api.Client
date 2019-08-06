@@ -34,6 +34,9 @@ namespace MiX.Integrate.Shared.Entities.Drivers
 		public bool IsSystemDriver { get { return (FmDriverId == 0 || FmDriverId == 1); } }
 		public string MobileNumber { get; set; }
 		public string Email { get; set; }
+		/// <summary>
+		/// You can update the ExtendedDriverId by using the UpdateDriverExtendedId method
+		/// </summary>
 		public string ExtendedDriverId { get; set; }
 		public ExtendedDriverIdType ExtendedDriverIdType { get; set; }
 		public string Country { get; set; }
