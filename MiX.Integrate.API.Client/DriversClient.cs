@@ -76,7 +76,6 @@ namespace MiX.Integrate.API.Client
 
 		public long AddDriver(Driver driver)
 		{
-			if (driver.FmDriverId == -1 || driver.FmDriverId == 0 || driver.FmDriverId == 1) throw new ArgumentException("FmDriverId -1, 0 and 1 was reserved");
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.DriversController.ADDDRIVER, HttpMethod.Post);
 			request.AddJsonBody(driver);
 			IHttpRestResponse response = Execute(request);
@@ -89,7 +88,6 @@ namespace MiX.Integrate.API.Client
 
 		public async Task<long> AddDriverAsync(Driver driver)
 		{
-			if (driver.FmDriverId == -1 || driver.FmDriverId == 0 || driver.FmDriverId == 1) throw new ArgumentException("FmDriverId -1, 0 and 1 was reserved");
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.DriversController.ADDDRIVER, HttpMethod.Post);
 			request.AddJsonBody(driver);
 			IHttpRestResponse response = await ExecuteAsync(request).ConfigureAwait(false);
