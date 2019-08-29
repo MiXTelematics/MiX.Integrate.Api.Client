@@ -336,12 +336,13 @@ namespace MiX.Integrate.API.Client
 			return new CreatedSinceResult<Trip>() { HasMoreItems = hasMoreItems, GetSinceToken = getSinceToken, Items = response.Data };
 		}
 
-		public CreatedSinceResult<Trip> GetCreatedSinceForOrganisation(long organisationId, string sinceToken, int quantity)
+		public CreatedSinceResult<Trip> GetCreatedSinceForOrganisation(long organisationId, string sinceToken, int quantity, bool includeSubTrips = false)
 		{
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.TripsController.GETCREATEDSINCEFORORGANISATION, HttpMethod.Get);
 			request.AddUrlSegment("organisationId", organisationId.ToString());
 			request.AddUrlSegment("sinceToken", sinceToken);
 			request.AddUrlSegment("quantity", quantity.ToString());
+			request.AddQueryParameter("includeSubTrips", includeSubTrips.ToString());
 			IHttpRestResponse<List<Trip>> response = Execute<List<Trip>>(request);
 			string sHasMoreItems = GetResponseHeader(response.Headers, "HasMoreItems");
 			string getSinceToken = GetResponseHeader(response.Headers, "GetSinceToken");
@@ -351,12 +352,13 @@ namespace MiX.Integrate.API.Client
 			return new CreatedSinceResult<Trip>() { HasMoreItems = hasMoreItems, GetSinceToken = getSinceToken, Items = response.Data };
 		}
 
-		public async Task<CreatedSinceResult<Trip>> GetCreatedSinceForOrganisationAsync(long organisationId, string sinceToken, int quantity)
+		public async Task<CreatedSinceResult<Trip>> GetCreatedSinceForOrganisationAsync(long organisationId, string sinceToken, int quantity, bool includeSubTrips = false)
 		{
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.TripsController.GETCREATEDSINCEFORORGANISATION, HttpMethod.Get);
 			request.AddUrlSegment("organisationId", organisationId.ToString());
 			request.AddUrlSegment("sinceToken", sinceToken);
 			request.AddUrlSegment("quantity", quantity.ToString());
+			request.AddQueryParameter("includeSubTrips", includeSubTrips.ToString());
 			IHttpRestResponse<List<Trip>> response = await ExecuteAsync<List<Trip>>(request).ConfigureAwait(false);
 			string sHasMoreItems = GetResponseHeader(response.Headers, "HasMoreItems");
 			string getSinceToken = GetResponseHeader(response.Headers, "GetSinceToken");
