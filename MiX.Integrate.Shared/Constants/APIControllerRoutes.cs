@@ -219,9 +219,9 @@ namespace MiX.Integrate.Shared.Constants
 		public class DeviceConfigController
 		{
 			public const string GETCONNECTEDPERIPHERALSFORASSETS = "api/deviceconfiguration/group/{groupId}/assets/connectedperipherals";
-			public const string GETCAMERASETTINGS = "api/deviceconfiguration/assets/camerasettings";
-			public const string GETCONFIGURATIONSTATE = "api/deviceconfiguration/assets/configurationstate";
-			public const string GETCOMMUNICATIONSETTINGS = "api/deviceconfiguration/assets/communicationsettings";
+			public const string GETCAMERASETTINGS = "api/deviceconfiguration/group/{groupId}/assets/camerasettings";
+			public const string GETCONFIGURATIONSTATE = "api/deviceconfiguration/group/{groupId}/assets/configurationstate";
+			public const string GETCOMMUNICATIONSETTINGS = "api/deviceconfiguration/group/{groupId}/assets/communicationsettings";
 			public const string GETCONFIGURATIONSBYASSETIDS = "api/deviceconfiguration/assets";
 			public const string GETCONFIGURATIONSBYGROUPID = "api/deviceconfiguration/organisation/{groupId}";
 		}
