@@ -129,6 +129,40 @@ namespace MiX.Integrate.API.Client.Journeys
 		}
 
 		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="groupId"></param>
+		/// <param name="startDate"></param>
+		/// <param name="endDate"></param>
+		/// <returns></returns>
+		public List<long> GetJourneyIdList(long groupId, DateTime startDate, DateTime endDate)
+		{
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.JourneysController.GETJOURNEYIDLIST, HttpMethod.Get);
+			request.AddUrlSegment("groupId", groupId.ToString());
+			request.AddUrlSegment("startDate", startDate.ToString(DataFormats.DateTime_Format));
+			request.AddUrlSegment("endDate", endDate.ToString(DataFormats.DateTime_Format));
+			IHttpRestResponse<List<long>> response = Execute<List<long>>(request);
+			return response.Data;
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="groupId"></param>
+		/// <param name="startDate"></param>
+		/// <param name="endDate"></param>
+		/// <returns></returns>
+		public async Task<List<long>> GetJourneyIdListAsync(long groupId, DateTime startDate, DateTime endDate)
+		{
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.JourneysController.GETJOURNEYIDLIST, HttpMethod.Get);
+			request.AddUrlSegment("groupId", groupId.ToString());
+			request.AddUrlSegment("startDate", startDate.ToString(DataFormats.DateTime_Format));
+			request.AddUrlSegment("endDate", endDate.ToString(DataFormats.DateTime_Format));
+			IHttpRestResponse<List<long>> response = await ExecuteAsync<List<long>>(request).ConfigureAwait(false);
+			return response.Data;
+		}
+
+		/// <summary>
 		/// Gets the route list.
 		/// </summary>
 		/// <param name="groupId">The group identifier.</param>
