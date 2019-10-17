@@ -163,7 +163,7 @@ namespace MiX.Integrate.Shared.Constants
 		{
 			public const string ADDJOURNEY = "api/journeys/";
 			public const string GETJOURNEY = "api/journeys/{journeyId}";
-			public const string GETJOURNEYIDLIST = "api/journeys/getJourneyIdList/{groupId:long}/startDate/{startDate}/endDate/{endDate}";
+			public const string GETJOURNEYIDLIST = "api/journeys/getJourneyIdList/{groupId}/startDate/{startDate}/endDate/{endDate}";
 			public const string GETJOURNEYROUTE = "api/journeys/routes/{groupId}";
 			public const string GETJOURNEYPROGRESS = "api/journeys/progress/{journeyId}";
 			public const string GETJOURNEYINPROGRESSCURRENTSTATUS = "api/journeys/inprogress/currentstatus/{groupId}";
