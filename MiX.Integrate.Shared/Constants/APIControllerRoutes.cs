@@ -20,6 +20,7 @@ namespace MiX.Integrate.Shared.Constants
 			public const string GETCREATEDSINCEFORGROUPSASYNC = "api/activeevents/groups/createdsince/entitytype/{entityType}/sincetoken/{sinceToken}/quantity/{quantity}";
 			public const string GETCREATEDSINCEFORASSETSASYNC = "api/activeevents/assets/createdsince/sincetoken/{sinceToken}/quantity/{quantity}";
 			public const string GETCREATEDSINCEFORDRIVERSASYNC = "api/activeevents/drivers/createdsince/sincetoken/{sinceToken}/quantity/{quantity}";
+			public const string GETCREATEDSINCEFORORGANISATION = "api/activeevents/groups/createdsince/organisation/{organisationId}/sincetoken/{sinceToken}/quantity/{quantity}";
 		}
 
 		//MiX.Integrate.Api.Controllers.DriversControllerpublic 
@@ -27,6 +28,7 @@ namespace MiX.Integrate.Shared.Constants
 		{
 			public const string GETDRIVER = "api/drivers/group/{groupId}/driver/{driverId}";
 			public const string UPDATEDRIVER = "api/drivers";
+			public const string UPDATEDRIVEREXTENTEDID = "api/drivers/extentedid";
 			public const string ADDDRIVER = "api/drivers";
 			public const string UPDATEDRIVERNAMEBYEXTENDEDIDIFAUTOCREATED = "api/drivers/group/{groupId}/extended/{extendedDriverId}/ifautocreated";
 			public const string GETALLDRIVERS = "api/drivers/organisation/{organisationId}";
@@ -105,6 +107,7 @@ namespace MiX.Integrate.Shared.Constants
 			public const string GETSINCEFORASSETS = "api/positions/assets/since/{since}";
 			public const string GETRANGEFORDRIVERS = "api/positions/drivers/from/{from}/to/{to}";
 			public const string GETCREATEDSINCEFORGROUPSASYNC = "api/positions/groups/createdsince/entitytype/{entityType}/sincetoken/{sinceToken}/quantity/{quantity}";
+			public const string GETCREATEDSINCEFORORGANISATION = "api/positions/groups/createdsince/organisation/{organisationId}/sincetoken/{sinceToken}/quantity/{quantity}";
 		}
 
 		//MiX.Integrate.Api EventsController
@@ -124,6 +127,7 @@ namespace MiX.Integrate.Shared.Constants
 			public const string GETRANGEFORDRIVERS = "api/events/drivers/from/{from}/to/{to}";
 			public const string GETSINCEFORDRIVERS = "api/events/drivers/since/{since}/quantity/{quantity}";
 			public const string GETCREATEDSINCEFORDRIVERSASYNC = "api/events/drivers/createdsince/sincetoken/{sinceToken}/quantity/{quantity}";
+			public const string GETCREATEDSINCEFORORGANISATION = "api/events/groups/createdsince/organisation/{organisationId}/sincetoken/{sinceToken}/quantity/{quantity}";
 		}
 
 		//MiX.Fleet.Services.Api TachoController
@@ -151,6 +155,7 @@ namespace MiX.Integrate.Shared.Constants
 			public const string GETCREATEDSINCEFORDRIVERSASYNC = "api/trips/drivers/createdsince/sincetoken/{sinceToken}/quantity/{quantity}";
 
 			public const string GETDRIVERSCORES = "api/trips/driverscore/standard/from/{from}/to/{to}";
+			public const string GETCREATEDSINCEFORORGANISATION = "api/trips/groups/createdsince/organisation/{organisationId}/sincetoken/{sinceToken}/quantity/{quantity}";
 		}
 
 		//MiX.Integrate.Api.Controllers.JourneysController
@@ -184,6 +189,7 @@ namespace MiX.Integrate.Shared.Constants
 			public const string INRANGE = "api/locations/group/{groupId}/inrange/{meters}";
 			public const string NEAREST = "api/locations/group/{groupId}/nearest";
 			public const string CHANGEDSINCE = "api/locations/organisation/{organisationId}/changedsince/since/{since}";
+			public const string MIGRATELEGACYIDS = "api/locations/organisation/{organisationId}/migratelegacyids";
 
 		}
 
@@ -217,6 +223,8 @@ namespace MiX.Integrate.Shared.Constants
 			public const string GETCAMERASETTINGS = "api/deviceconfiguration/assets/camerasettings";
 			public const string GETCONFIGURATIONSTATE = "api/deviceconfiguration/assets/configurationstate";
 			public const string GETCOMMUNICATIONSETTINGS = "api/deviceconfiguration/assets/communicationsettings";
+			public const string GETCONFIGURATIONSBYASSETIDS = "api/deviceconfiguration/assets";
+			public const string GETCONFIGURATIONSBYGROUPID = "api/deviceconfiguration/organisation/{groupId}";
 		}
 
 		//MiX.Integrate.Api.Controllers.LibraryEventsController
@@ -289,6 +297,7 @@ namespace MiX.Integrate.Shared.Constants
 			public const string GETHOSEVENTTYPECATEGORIES = "api/ghos/eventtypecategories";
 			public const string GETHOSDRIVERAPPROVERS = "api/ghos/driverapprovers/driver/{driverId}/isSelectedOnly/{isSelectedOnly}";
 			public const string GETHOSEVENTSTARTDATETIMEBYHOUR = "api/ghos/events/startdatetime/changedsince/{sinceToken}";
+			public const string GETDRIVERVIOLATIONSBYLISTOFDRIVERIDSINDATERANGE = "api/ghos/violations/drivers/from/{from}/to/{to}";
 		}
 
 		//MiX.Integrate.Api.Controllers.GlobalisationController

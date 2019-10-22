@@ -14,7 +14,6 @@ namespace MiX.Integrate.API.Client
 		public LocationsClient(string url, bool setTestRequestHeader = false) : base(url, setTestRequestHeader) { }
 		public LocationsClient(string url, IdServerResourceOwnerClientSettings settings, bool setTestRequestHeader = false) : base(url, settings, setTestRequestHeader) { }
 
-
 		public async Task<Location> GetAsync(long locationId)
 		{
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.LocationsController.GET, HttpMethod.Get);
@@ -31,18 +30,23 @@ namespace MiX.Integrate.API.Client
 			return response.Data;
 		}
 
-		public async Task<List<Location>> GetAllAsync(long groupId)
+		public async Task<List<Location>> GetAllAsync(long groupId, bool includeShape = false, bool includeDeleted = false)
 		{
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.LocationsController.GETALL, HttpMethod.Get);
 			request.AddUrlSegment("groupId", groupId.ToString());
+			request.AddQueryParameter("includeShape", includeShape.ToString());
+			request.AddQueryParameter("includeDeleted", includeDeleted.ToString());
 			IHttpRestResponse<List<Location>> response = await ExecuteAsync<List<Location>>(request).ConfigureAwait(false);
 			return response.Data;
 		}
-		public List<Location> GetAll(long groupId)
+
+		public List<Location> GetAll(long groupId, bool includeShape = false, bool includeDeleted = false)
 		{
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.LocationsController.GETALL, HttpMethod.Get);
 			request.AddUrlSegment("groupId", groupId.ToString());
-			IHttpRestResponse<List<Location>> response = Execute<List<Location>>(request);
+			request.AddQueryParameter("includeShape", includeShape.ToString());
+			request.AddQueryParameter("includeDeleted", includeDeleted.ToString());
+			IHttpRestResponse <List<Location>> response = Execute<List<Location>>(request);
 			return response.Data;
 		}
 
@@ -53,6 +57,7 @@ namespace MiX.Integrate.API.Client
 			request.AddJsonBody(location);
 			await ExecuteAsync(request).ConfigureAwait(false);
 		}
+
 		public void Update(Location location, long groupId)
 		{
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.LocationsController.UPDATE, HttpMethod.Put);
@@ -152,6 +157,15 @@ namespace MiX.Integrate.API.Client
 			request.AddUrlSegment("organisationId", organisationId.ToString());
 			request.AddUrlSegment("since", $"{since:yyyyMMddHHmmss}");
 			IHttpRestResponse<List<Location>> response = await ExecuteAsync<List<Location>>(request).ConfigureAwait(false);
+			return response.Data;
+		}
+
+		/// <inheritdoc />
+		public async Task<List<LocationLegacy>> MigrateLegacyIdsAsync(long organisationId)
+		{
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.LocationsController.MIGRATELEGACYIDS, HttpMethod.Get);
+			request.AddUrlSegment("organisationId", organisationId.ToString());
+			IHttpRestResponse<List<LocationLegacy>> response = await ExecuteAsync<List<LocationLegacy>>(request).ConfigureAwait(false);
 			return response.Data;
 		}
 	}

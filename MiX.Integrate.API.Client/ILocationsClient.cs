@@ -12,8 +12,23 @@ namespace MiX.Integrate.API.Client
 		Task<Location> GetAsync(long locationId);
 		Location Get(long locationId);
 
-		Task<List<Location>> GetAllAsync(long groupId);
-		List<Location> GetAll(long groupId);
+		/// <summary>
+		/// Get all Locations belonging to the specified group
+		/// </summary>
+		/// <param name="groupId">Group id locations belong to</param>
+		/// <param name="includeShape">Should shape data be returned</param>
+		/// <param name="includeDeleted">Should deleted locations be included</param>
+		/// <returns></returns>
+		Task<List<Location>> GetAllAsync(long groupId, bool includeShape = false, bool includeDeleted = false);
+
+		/// <summary>
+		/// Get all Locations belonging to the specified group
+		/// </summary>
+		/// <param name="groupId">Group id locations belong to</param>
+		/// <param name="includeShape">Should shape data be returned</param>
+		/// <param name="includeDeleted">Should deleted locations be included</param>
+		/// <returns></returns>
+		List<Location> GetAll(long groupId, bool includeShape = false, bool includeDeleted = false);
 
 		Task UpdateAsync(Location location, long groupId);
 		void Update(Location location, long groupId);
@@ -41,6 +56,11 @@ namespace MiX.Integrate.API.Client
 		/// <param name="since">The date and time used for the query</param>
 		/// <returns>Locations that have changed since the specified date and time</returns>
 		Task<List<Location>> GetChangedSinceAsync(long organisationId, DateTime since);
+
+		/// <summary>Returns, for a given organisation, a list of the location ids and the migrated legacy location ids</summary>
+		/// <param name="organisationId">The identifier of the organisation to query</param>
+		/// <returns>Locations ids and the location legacy ids</returns>
+		Task<List<LocationLegacy>> MigrateLegacyIdsAsync(long organisationId);
 	}
 }
 

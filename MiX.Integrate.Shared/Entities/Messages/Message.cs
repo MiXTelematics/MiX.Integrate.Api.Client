@@ -32,7 +32,7 @@ namespace MiX.Integrate.Shared.Entities.Messages
 		public int MessageId { get; set; }
 		public long AssetId { get; set; }
 		public string ID { get; set; }
-		public int OrgID { get; set; }
+		public long OrgID { get; set; }
 		public int CompanyID { get; set; }
 		public short RecipientID { get; set; }
 		public string RecipientAddr { get; set; }
