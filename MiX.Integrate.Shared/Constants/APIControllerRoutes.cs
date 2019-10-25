@@ -22,6 +22,8 @@ namespace MiX.Integrate.Shared.Constants
 			public const string GETRANGEFORDRIVERS = "api/activeevents/drivers/from/{from}/to/{to}";
 			public const string GETRANGEPAGEDFORDRIVERS = "api/activeevents/drivers/from/{from}/to/{to}/size/{pageSize}/paged";
 
+			public const string GETRANGEFORGROUPSPAGED = "api/activeevents/groups/entitytype/{entityType}/from/{from}/to/{to}/size/{pageSize}/paged";
+
 			public const string GETCREATEDSINCEFORGROUPSASYNC = "api/activeevents/groups/createdsince/entitytype/{entityType}/sincetoken/{sinceToken}/quantity/{quantity}";
 			public const string GETCREATEDSINCEFORASSETSASYNC = "api/activeevents/assets/createdsince/sincetoken/{sinceToken}/quantity/{quantity}";
 			public const string GETCREATEDSINCEFORDRIVERSASYNC = "api/activeevents/drivers/createdsince/sincetoken/{sinceToken}/quantity/{quantity}";
@@ -122,18 +124,21 @@ namespace MiX.Integrate.Shared.Constants
 			public const string GETRANGEFORGROUPS = "api/events/groups/entitytype/{entityType}/from/{from}/to/{to}";
 			public const string GETRANGEPAGEDFORGROUPS = "api/events/groups/entitytype/{entityType}/from/{from}/to/{to}/size/{pageSize}/paged";
 			public const string GETSINCEFORGROUPS = "api/events/groups/since/entitytype/{entityType}/{since}";
+			public const string GETSINCEPAGEDFORGROUPS = "api/events/groups/since/entitytype/{entityType}/since/{since}/size/{pageSize}/paged";
 			public const string GETCREATEDSINCEFORGROUPSASYNC = "api/events/groups/createdsince/entitytype/{entityType}/sincetoken/{sinceToken}/quantity/{quantity}";
 
 			public const string GETLATESTFORASSETS = "api/events/assets/latest/{quantity}";
 			public const string GETRANGEFORASSETS = "api/events/assets/from/{from}/to/{to}";
 			public const string GETRANGEPAGEDFORASSETS = "api/events/assets/from/{from}/to/{to}/size/{pageSize}/paged";
 			public const string GETSINCEFORASSETS = "api/events/assets/since/{since}/quantity/{quantity}";
+			public const string GETSINCEPAGEDFORASSETS = "api/events/assets/since/{since}/size/{pageSize}/paged";
 			public const string GETCREATEDSINCEFORASSETSASYNC = "api/events/assets/createdsince/sincetoken/{sinceToken}/quantity/{quantity}";
 
 			public const string GETLATESTFORDRIVERS = "api/events/drivers/latest/{quantity}";
 			public const string GETRANGEFORDRIVERS = "api/events/drivers/from/{from}/to/{to}";
 			public const string GETRANGEPAGEDFORDRIVERS = "api/events/drivers/from/{from}/to/{to}/size/{pageSize}/paged";
 			public const string GETSINCEFORDRIVERS = "api/events/drivers/since/{since}/quantity/{quantity}";
+			public const string GETSINCEPAGEDFORDRIVERS = "api/events/drivers/since/{since}/size/{pageSize}/paged";
 			public const string GETCREATEDSINCEFORDRIVERSASYNC = "api/events/drivers/createdsince/sincetoken/{sinceToken}/quantity/{quantity}";
 			public const string GETCREATEDSINCEFORORGANISATION = "api/events/groups/createdsince/organisation/{organisationId}/sincetoken/{sinceToken}/quantity/{quantity}";
 		}
