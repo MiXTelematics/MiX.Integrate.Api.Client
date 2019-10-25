@@ -159,16 +159,6 @@ namespace MiX.Integrate.API.Client
 			return response.Data;
 		}
 
-
-
-
-
-
-
-
-
-
-
 		public CreatedSinceResult<ActiveEvent> GetCreatedSinceForDrivers(List<long> driverIds, string sinceToken, int quantity)
 		{
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.ActiveEventsController.GETCREATEDSINCEFORDRIVERSASYNC, HttpMethod.Post);
