@@ -59,7 +59,7 @@ namespace MiX.Integrate.API.Client
 			return response.Data;
 		}
 
-		public async Task<PagedResult<ActiveEvent>> GetRangePagedForAssetsAsync(List<long> assetIds, DateTime from, DateTime to, int pageSize, List<long> eventTypeIds = null)
+		public async Task<PagedResult<ActiveEvent>> GetRangePagedForAssetsAsync(List<long> assetIds, DateTime from, DateTime to, byte pageSize, List<long> eventTypeIds = null)
 		{
 			EventFilter eventFilter = new EventFilter() { EntityIds = assetIds, EventTypeIds = eventTypeIds };
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.ActiveEventsController.GETRANGEPAGEDFORASSETS, HttpMethod.Post);
@@ -71,7 +71,7 @@ namespace MiX.Integrate.API.Client
 			return response.Data;
 		}
 
-		public PagedResult<ActiveEvent> GetRangePagedForAssets(List<long> assetIds, DateTime from, DateTime to, int pageSize, List<long> eventTypeIds = null)
+		public PagedResult<ActiveEvent> GetRangePagedForAssets(List<long> assetIds, DateTime from, DateTime to, byte pageSize, List<long> eventTypeIds = null)
 		{
 			EventFilter eventFilter = new EventFilter() { EntityIds = assetIds, EventTypeIds = eventTypeIds };
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.ActiveEventsController.GETRANGEPAGEDFORASSETS, HttpMethod.Post);
@@ -135,7 +135,7 @@ namespace MiX.Integrate.API.Client
 			return response.Data;
 		}
 
-		public async Task<PagedResult<ActiveEvent>> GetRangePagedForDriversAsync(List<long> driverIds, DateTime from, DateTime to, int pageSize, List<long> eventTypeIds = null)
+		public async Task<PagedResult<ActiveEvent>> GetRangePagedForDriversAsync(List<long> driverIds, DateTime from, DateTime to, byte pageSize, List<long> eventTypeIds = null)
 		{
 			EventFilter eventFilter = new EventFilter() { EntityIds = driverIds, EventTypeIds = eventTypeIds };
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.ActiveEventsController.GETRANGEPAGEDFORDRIVERS, HttpMethod.Post);
@@ -147,7 +147,7 @@ namespace MiX.Integrate.API.Client
 			return response.Data;
 		}
 
-		public PagedResult<ActiveEvent> GetRangePagedForDrivers(List<long> driverIds, DateTime from, DateTime to, int pageSize, List<long> eventTypeIds = null)
+		public PagedResult<ActiveEvent> GetRangePagedForDrivers(List<long> driverIds, DateTime from, DateTime to, byte pageSize, List<long> eventTypeIds = null)
 		{
 			EventFilter eventFilter = new EventFilter() { EntityIds = driverIds, EventTypeIds = eventTypeIds };
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.ActiveEventsController.GETRANGEPAGEDFORDRIVERS, HttpMethod.Post);
