@@ -111,6 +111,30 @@ namespace MiX.Integrate.API.Client
 			return response.Data;
 		}
 
+		public PagedResult<Event> GetRangePagedForAssets(List<long> assetIds, DateTime from, DateTime to, int pageSize, List<long> eventTypeIds = null, string menuId = null)
+		{
+			EventFilter eventFilter = new EventFilter() { EntityIds = assetIds, EventTypeIds = eventTypeIds, MenuId = menuId };
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.EventsController.GETRANGEPAGEDFORASSETS, HttpMethod.Post);
+			request.AddUrlSegment("from", from.ToString(DataFormats.DateTime_Format));
+			request.AddUrlSegment("to", to.ToString(DataFormats.DateTime_Format));
+			request.AddUrlSegment("pageSize", pageSize.ToString());
+			request.AddJsonBody(eventFilter);
+			IHttpRestResponse<PagedResult<Event>> response = Execute<PagedResult<Event>>(request);
+			return response.Data;
+		}
+
+		public async Task<PagedResult<Event>> GetRangePagedForAssetsAsync(List<long> assetIds, DateTime from, DateTime to, int pageSize, List<long> eventTypeIds = null, string menuId = null)
+		{
+			EventFilter eventFilter = new EventFilter() { EntityIds = assetIds, EventTypeIds = eventTypeIds, MenuId = menuId };
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.EventsController.GETRANGEPAGEDFORASSETS, HttpMethod.Post);
+			request.AddUrlSegment("from", from.ToString(DataFormats.DateTime_Format));
+			request.AddUrlSegment("to", to.ToString(DataFormats.DateTime_Format));
+			request.AddUrlSegment("pageSize", pageSize.ToString());
+			request.AddJsonBody(eventFilter);
+			IHttpRestResponse<PagedResult<Event>> response = await ExecuteAsync<PagedResult<Event>>(request).ConfigureAwait(false);
+			return response.Data;
+		}
+
 		public IList<Event> GetRangeForDrivers(List<long> driverIds, DateTime from, DateTime to, List<long> eventTypeIds = null, string menuId = null)
 		{
 			EventFilter eventFilter = new EventFilter() { EntityIds = driverIds, EventTypeIds = eventTypeIds, MenuId = menuId };
@@ -130,6 +154,30 @@ namespace MiX.Integrate.API.Client
 			request.AddUrlSegment("to", to.ToString(DataFormats.DateTime_Format));
 			request.AddJsonBody(eventFilter);
 			IHttpRestResponse<List<Event>> response = await ExecuteAsync<List<Event>>(request).ConfigureAwait(false);
+			return response.Data;
+		}
+
+		public PagedResult<Event> GetRangePagedForDrivers(List<long> driverIds, DateTime from, DateTime to, int pageSize, List<long> eventTypeIds = null, string menuId = null)
+		{
+			EventFilter eventFilter = new EventFilter() { EntityIds = driverIds, EventTypeIds = eventTypeIds, MenuId = menuId };
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.EventsController.GETRANGEPAGEDFORDRIVERS, HttpMethod.Post);
+			request.AddUrlSegment("from", from.ToString(DataFormats.DateTime_Format));
+			request.AddUrlSegment("to", to.ToString(DataFormats.DateTime_Format));
+			request.AddUrlSegment("pageSize", pageSize.ToString());
+			request.AddJsonBody(eventFilter);
+			IHttpRestResponse<PagedResult<Event>> response = Execute<PagedResult<Event>>(request);
+			return response.Data;
+		}
+
+		public async Task<PagedResult<Event>> GetRangePagedForDriversAsync(List<long> driverIds, DateTime from, DateTime to, int pageSize, List<long> eventTypeIds = null, string menuId = null)
+		{
+			EventFilter eventFilter = new EventFilter() { EntityIds = driverIds, EventTypeIds = eventTypeIds, MenuId = menuId };
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.EventsController.GETRANGEPAGEDFORDRIVERS, HttpMethod.Post);
+			request.AddUrlSegment("from", from.ToString(DataFormats.DateTime_Format));
+			request.AddUrlSegment("to", to.ToString(DataFormats.DateTime_Format));
+			request.AddUrlSegment("pageSize", pageSize.ToString());
+			request.AddJsonBody(eventFilter);
+			IHttpRestResponse<PagedResult<Event>> response = await ExecuteAsync<PagedResult<Event>>(request).ConfigureAwait(false);
 			return response.Data;
 		}
 
@@ -154,6 +202,32 @@ namespace MiX.Integrate.API.Client
 			request.AddUrlSegment("to", to.ToString(DataFormats.DateTime_Format));
 			request.AddJsonBody(eventFilter);
 			IHttpRestResponse<List<Event>> response = await ExecuteAsync<List<Event>>(request).ConfigureAwait(false);
+			return response.Data;
+		}
+
+		public PagedResult<Event> GetRangePagedForGroups(List<long> groupIds, string entityType, DateTime from, DateTime to, int pageSize, List<long> eventTypeIds = null, string menuId = null)
+		{
+			EventFilter eventFilter = new EventFilter() { EntityIds = groupIds, EventTypeIds = eventTypeIds, MenuId = menuId };
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.EventsController.GETRANGEPAGEDFORGROUPS, HttpMethod.Post);
+			request.AddUrlSegment("entityType", entityType);
+			request.AddUrlSegment("from", from.ToString(DataFormats.DateTime_Format));
+			request.AddUrlSegment("to", to.ToString(DataFormats.DateTime_Format));
+			request.AddUrlSegment("pageSize", pageSize.ToString());
+			request.AddJsonBody(eventFilter);
+			IHttpRestResponse<PagedResult<Event>> response = Execute<PagedResult<Event>>(request);
+			return response.Data;
+		}
+
+		public async Task<PagedResult<Event>> GetRangePagedForGroupsAsync(List<long> groupIds, string entityType, DateTime from, DateTime to, int pageSize, List<long> eventTypeIds = null, string menuId = null)
+		{
+			EventFilter eventFilter = new EventFilter() { EntityIds = groupIds, EventTypeIds = eventTypeIds, MenuId = menuId };
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.EventsController.GETRANGEPAGEDFORGROUPS, HttpMethod.Post);
+			request.AddUrlSegment("entityType", entityType);
+			request.AddUrlSegment("from", from.ToString(DataFormats.DateTime_Format));
+			request.AddUrlSegment("to", to.ToString(DataFormats.DateTime_Format));
+			request.AddUrlSegment("pageSize", pageSize.ToString());
+			request.AddJsonBody(eventFilter);
+			IHttpRestResponse<PagedResult<Event>> response = await ExecuteAsync<PagedResult<Event>>(request).ConfigureAwait(false);
 			return response.Data;
 		}
 

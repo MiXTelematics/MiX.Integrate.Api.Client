@@ -17,17 +17,22 @@ namespace MiX.Integrate.API.Client
 		Task<IList<Event>> GetLatestForGroupsAsync(List<long> groupIds, string entityType, byte quantity = 1, DateTime? cachedSince = null, List<long> eventTypeIds = null, string menuId = null);
 		IList<Event> GetRangeForAssets(List<long> assetIds, DateTime from, DateTime to, List<long> eventTypeIds = null, string menuId = null);
 		Task<IList<Event>> GetRangeForAssetsAsync(List<long> assetIds, DateTime from, DateTime to, List<long> eventTypeIds = null, string menuId = null);
+		PagedResult<Event> GetRangePagedForAssets(List<long> assetIds, DateTime from, DateTime to, int pageSize, List<long> eventTypeIds = null, string menuId = null);
+		Task<PagedResult<Event>> GetRangePagedForAssetsAsync(List<long> assetIds, DateTime from, DateTime to, int pageSize, List<long> eventTypeIds = null, string menuId = null);
 		IList<Event> GetRangeForDrivers(List<long> driverIds, DateTime from, DateTime to, List<long> eventTypeIds = null, string menuId = null);
 		Task<IList<Event>> GetRangeForDriversAsync(List<long> driverIds, DateTime from, DateTime to, List<long> eventTypeIds = null, string menuId = null);
+		PagedResult<Event> GetRangePagedForDrivers(List<long> driverIds, DateTime from, DateTime to, int pageSize, List<long> eventTypeIds = null, string menuId = null);
+		Task<PagedResult<Event>> GetRangePagedForDriversAsync(List<long> driverIds, DateTime from, DateTime to, int pageSize, List<long> eventTypeIds = null, string menuId = null);
 		IList<Event> GetRangeForGroups(List<long> groupIds, string entityType, DateTime from, DateTime to, List<long> eventTypeIds = null, string menuId = null);
 		Task<IList<Event>> GetRangeForGroupsAsync(List<long> groupIds, string entityType, DateTime from, DateTime to, List<long> eventTypeIds = null, string menuId = null);
+		PagedResult<Event> GetRangePagedForGroups(List<long> groupIds, string entityType, DateTime from, DateTime to, int pageSize, List<long> eventTypeIds = null, string menuId = null);
+		Task<PagedResult<Event>> GetRangePagedForGroupsAsync(List<long> groupIds, string entityType, DateTime from, DateTime to, int pageSize, List<long> eventTypeIds = null, string menuId = null);
 		IList<Event> GetSinceForAssets(List<long> assetIds, DateTime since, byte quantity, List<long> eventTypeIds = null, string menuId = null);
 		Task<IList<Event>> GetSinceForAssetsAsync(List<long> assetIds, DateTime since, byte quantity, List<long> eventTypeIds = null, string menuId = null);
 		IList<Event> GetSinceForDrivers(List<long> driverIds, DateTime since, byte quantity, List<long> eventTypeIds = null, string menuId = null);
 		Task<IList<Event>> GetSinceForDriversAsync(List<long> driverIds, DateTime since, byte quantity, List<long> eventTypeIds = null, string menuId = null);
 		IList<Event> GetSinceForGroups(List<long> groupIds, string entityType, DateTime since, List<long> eventTypeIds = null, string menuId = null);
 		Task<IList<Event>> GetSinceForGroupsAsync(List<long> groupIds, string entityType, DateTime since, List<long> eventTypeIds = null, string menuId = null);
-
 		CreatedSinceResult<Event> GetCreatedSinceForAssets(List<long> assetIds, string sinceToken, int quantity);
 		Task<CreatedSinceResult<Event>> GetCreatedSinceForAssetsAsync(List<long> assetIds, string sinceToken, int quantity);
 		CreatedSinceResult<Event> GetCreatedSinceForDrivers(List<long> assetIds, string sinceToken, int quantity);
