@@ -61,7 +61,7 @@ namespace MiX.Integrate.API.Client
 		/// <param name="assetIds">The IDs of the assets to be queried</param>
 		/// <param name="from">The start of the date range</param>
 		/// <param name="to">The end of the date range</param>
-		/// <param name="pageSize">The amount of events to return per request</param>
+		/// <param name="pageSize">The amount of events to return per request (max 255)</param>
 		/// <param name="eventTypeIds">(Optional) A list of event type ids to use in filtering the results</param>
 		/// <returns>
 		/// A list of active events in the specified data range (up to the page size) and a new from date to start the next request
@@ -74,7 +74,7 @@ namespace MiX.Integrate.API.Client
 		/// <param name="assetIds">The IDs of the assets to be queried</param>
 		/// <param name="from">The start of the date range</param>
 		/// <param name="to">The end of the date range</param>
-		/// <param name="pageSize">The amount of events to return per request</param>
+		/// <param name="pageSize">The amount of events to return per request (max 255)</param>
 		/// <param name="eventTypeIds">(Optional) A list of event type ids to use in filtering the results</param>
 		/// <returns>
 		/// A list of active events in the specified data range (up to the page size) and a new from date to start the next request
@@ -114,7 +114,7 @@ namespace MiX.Integrate.API.Client
 		/// <param name="driverIds">The IDs of the drivers to be queried</param>
 		/// <param name="from">The start of the date range</param>
 		/// <param name="to">The end of the date range</param>
-		/// <param name="pageSize">The amount of events to return per request</param>
+		/// <param name="pageSize">The amount of events to return per request (max 255)</param>
 		/// <param name="eventTypeIds">(Optional) A list of event type ids to use in filtering the results</param>
 		/// <returns>
 		/// A list of active events in the specified data range (up to the page size) and a new from date to start the next request
@@ -127,7 +127,7 @@ namespace MiX.Integrate.API.Client
 		/// <param name="driverIds">The IDs of the drivers to be queried</param>
 		/// <param name="from">The start of the date range</param>
 		/// <param name="to">The end of the date range</param>
-		/// <param name="pageSize">The amount of events to return per request</param>
+		/// <param name="pageSize">The amount of events to return per request (max 255)</param>
 		/// <param name="eventTypeIds">(Optional) A list of event type ids to use in filtering the results</param>
 		/// <returns>
 		/// A list of active events in the specified data range (up to the page size) and a new from date to start the next request
