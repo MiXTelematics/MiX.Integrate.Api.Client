@@ -66,7 +66,7 @@ namespace MiX.Integrate.API.Client
 		/// <returns>
 		/// A list of active events in the specified data range (up to the page size) and a new from date to start the next request
 		/// </returns>
-		PagedResult<ActiveEvent> GetRangePagedForAssets(List<long> assetIds, DateTime from, DateTime to, int pageSize, List<long> eventTypeIds = null);
+		PagedResult<ActiveEvent> GetRangePagedForAssets(List<long> assetIds, DateTime from, DateTime to, byte pageSize, List<long> eventTypeIds = null);
 
 		/// <summary>
 		/// Gets the active events in a specified date range (max 30 days), up to the page size, for assets
@@ -79,7 +79,7 @@ namespace MiX.Integrate.API.Client
 		/// <returns>
 		/// A list of active events in the specified data range (up to the page size) and a new from date to start the next request
 		/// </returns>
-		Task<PagedResult<ActiveEvent>> GetRangePagedForAssetsAsync(List<long> assetIds, DateTime from, DateTime to, int pageSize, List<long> eventTypeIds = null);
+		Task<PagedResult<ActiveEvent>> GetRangePagedForAssetsAsync(List<long> assetIds, DateTime from, DateTime to, byte pageSize, List<long> eventTypeIds = null);
 
 		CreatedSinceResult<ActiveEvent> GetCreatedSinceForAssets(List<long> assetIds, string sinceToken, int quantity);
 		Task<CreatedSinceResult<ActiveEvent>> GetCreatedSinceForAssetsAsync(List<long> assetIds, string sinceToken, int quantity);
@@ -119,7 +119,7 @@ namespace MiX.Integrate.API.Client
 		/// <returns>
 		/// A list of active events in the specified data range (up to the page size) and a new from date to start the next request
 		/// </returns>
-		PagedResult<ActiveEvent> GetRangePagedForDrivers(List<long> driverIds, DateTime from, DateTime to, int pageSize, List<long> eventTypeIds = null);
+		PagedResult<ActiveEvent> GetRangePagedForDrivers(List<long> driverIds, DateTime from, DateTime to, byte pageSize, List<long> eventTypeIds = null);
 
 		/// <summary>
 		/// Gets the active events in a specified date range (max 30 days), up to the page size, for drivers
@@ -132,7 +132,7 @@ namespace MiX.Integrate.API.Client
 		/// <returns>
 		/// A list of active events in the specified data range (up to the page size) and a new from date to start the next request
 		/// </returns>
-		Task<PagedResult<ActiveEvent>> GetRangePagedForDriversAsync(List<long> driverIds, DateTime from, DateTime to, int pageSize, List<long> eventTypeIds = null);
+		Task<PagedResult<ActiveEvent>> GetRangePagedForDriversAsync(List<long> driverIds, DateTime from, DateTime to, byte pageSize, List<long> eventTypeIds = null);
 
 		CreatedSinceResult<ActiveEvent> GetCreatedSinceForDrivers(List<long> assetIds, string sinceToken, int quantity);
 		Task<CreatedSinceResult<ActiveEvent>> GetCreatedSinceForDriversAsync(List<long> driverIds, string sinceToken, int quantity);
