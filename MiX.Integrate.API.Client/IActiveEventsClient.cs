@@ -66,7 +66,7 @@ namespace MiX.Integrate.API.Client
 		/// <returns>
 		/// A list of active events in the specified data range (up to the page size) and a new from date to start the next request
 		/// </returns>
-		PagedResult<ActiveEvent> GetRangePagedForAssets(List<long> assetIds, DateTime from, DateTime to, byte pageSize, List<long> eventTypeIds = null);
+		PagedResult<ActiveEvent> GetRangeForAssetsPaged(List<long> assetIds, DateTime from, DateTime to, byte pageSize, List<long> eventTypeIds = null);
 
 		/// <summary>
 		/// Gets the active events in a specified date range (max 30 days), up to the page size, for assets
@@ -79,7 +79,7 @@ namespace MiX.Integrate.API.Client
 		/// <returns>
 		/// A list of active events in the specified data range (up to the page size) and a new from date to start the next request
 		/// </returns>
-		Task<PagedResult<ActiveEvent>> GetRangePagedForAssetsAsync(List<long> assetIds, DateTime from, DateTime to, byte pageSize, List<long> eventTypeIds = null);
+		Task<PagedResult<ActiveEvent>> GetRangeForAssetsPagedAsync(List<long> assetIds, DateTime from, DateTime to, byte pageSize, List<long> eventTypeIds = null);
 
 		CreatedSinceResult<ActiveEvent> GetCreatedSinceForAssets(List<long> assetIds, string sinceToken, int quantity);
 		Task<CreatedSinceResult<ActiveEvent>> GetCreatedSinceForAssetsAsync(List<long> assetIds, string sinceToken, int quantity);
@@ -119,7 +119,7 @@ namespace MiX.Integrate.API.Client
 		/// <returns>
 		/// A list of active events in the specified data range (up to the page size) and a new from date to start the next request
 		/// </returns>
-		PagedResult<ActiveEvent> GetRangePagedForDrivers(List<long> driverIds, DateTime from, DateTime to, byte pageSize, List<long> eventTypeIds = null);
+		PagedResult<ActiveEvent> GetRangeForDriversPaged(List<long> driverIds, DateTime from, DateTime to, byte pageSize, List<long> eventTypeIds = null);
 
 		/// <summary>
 		/// Gets the active events in a specified date range (max 30 days), up to the page size, for drivers
@@ -132,7 +132,35 @@ namespace MiX.Integrate.API.Client
 		/// <returns>
 		/// A list of active events in the specified data range (up to the page size) and a new from date to start the next request
 		/// </returns>
-		Task<PagedResult<ActiveEvent>> GetRangePagedForDriversAsync(List<long> driverIds, DateTime from, DateTime to, byte pageSize, List<long> eventTypeIds = null);
+		Task<PagedResult<ActiveEvent>> GetRangeForDriversPagedAsync(List<long> driverIds, DateTime from, DateTime to, byte pageSize, List<long> eventTypeIds = null);
+
+		/// <summary>
+		/// Gets the active events in a specified date range (max 30 days), up to the page size, for groups
+		/// </summary>
+		/// <param name="groupIds">The IDs of the groups to be queried</param>
+		/// <param name="entityType">The type of entiities to look for</param>
+		/// <param name="from">The start of the date range</param>
+		/// <param name="to">The end of the date range</param>
+		/// <param name="pageSize">The amount of events to return per request (max 255)</param>
+		/// <param name="eventTypeIds">(Optional) A list of event type ids to use in filtering the results</param>
+		/// <returns>
+		/// A list of active events in the specified data range (up to the page size) and a new from date to start the next request
+		/// </returns>
+		PagedResult<ActiveEvent> GetRangeForGroupsPaged(List<long> groupIds, string entityType, DateTime from, DateTime to, byte pageSize, List<long> eventTypeIds = null);
+
+		/// <summary>
+		/// Gets the active events in a specified date range (max 30 days), up to the page size, for groups
+		/// </summary>
+		/// <param name="groupIds">The IDs of the groups to be queried</param>
+		/// <param name="entityType">The type of entiities to look for</param>
+		/// <param name="from">The start of the date range</param>
+		/// <param name="to">The end of the date range</param>
+		/// <param name="pageSize">The amount of events to return per request (max 255)</param>
+		/// <param name="eventTypeIds">(Optional) A list of event type ids to use in filtering the results</param>
+		/// <returns>
+		/// A list of active events in the specified data range (up to the page size) and a new from date to start the next request
+		/// </returns>
+		Task<PagedResult<ActiveEvent>> GetRangeForGroupsPagedAsync(List<long> groupIds, string entityType, DateTime from, DateTime to, byte pageSize, List<long> eventTypeIds = null);
 
 		CreatedSinceResult<ActiveEvent> GetCreatedSinceForDrivers(List<long> assetIds, string sinceToken, int quantity);
 		Task<CreatedSinceResult<ActiveEvent>> GetCreatedSinceForDriversAsync(List<long> driverIds, string sinceToken, int quantity);
