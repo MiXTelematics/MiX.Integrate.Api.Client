@@ -62,7 +62,7 @@ namespace MiX.Integrate.API.Client
 		public async Task<PagedResult<ActiveEvent>> GetRangeForAssetsPagedAsync(List<long> assetIds, DateTime from, DateTime to, byte pageSize, List<long> eventTypeIds = null)
 		{
 			EventFilter eventFilter = new EventFilter() { EntityIds = assetIds, EventTypeIds = eventTypeIds };
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.ActiveEventsController.GETRANGEPAGEDFORASSETS, HttpMethod.Post);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.ActiveEventsController.GETRANGEFORASSETSPAGED, HttpMethod.Post);
 			request.AddUrlSegment("from", from.ToString(DataFormats.DateTime_Format));
 			request.AddUrlSegment("to", to.ToString(DataFormats.DateTime_Format));
 			request.AddUrlSegment("pageSize", pageSize.ToString());
@@ -74,7 +74,7 @@ namespace MiX.Integrate.API.Client
 		public PagedResult<ActiveEvent> GetRangeForAssetsPaged(List<long> assetIds, DateTime from, DateTime to, byte pageSize, List<long> eventTypeIds = null)
 		{
 			EventFilter eventFilter = new EventFilter() { EntityIds = assetIds, EventTypeIds = eventTypeIds };
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.ActiveEventsController.GETRANGEPAGEDFORASSETS, HttpMethod.Post);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.ActiveEventsController.GETRANGEFORASSETSPAGED, HttpMethod.Post);
 			request.AddUrlSegment("from", from.ToString(DataFormats.DateTime_Format));
 			request.AddUrlSegment("to", to.ToString(DataFormats.DateTime_Format));
 			request.AddUrlSegment("pageSize", pageSize.ToString());
@@ -138,7 +138,7 @@ namespace MiX.Integrate.API.Client
 		public async Task<PagedResult<ActiveEvent>> GetRangeForDriversPagedAsync(List<long> driverIds, DateTime from, DateTime to, byte pageSize, List<long> eventTypeIds = null)
 		{
 			EventFilter eventFilter = new EventFilter() { EntityIds = driverIds, EventTypeIds = eventTypeIds };
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.ActiveEventsController.GETRANGEPAGEDFORDRIVERS, HttpMethod.Post);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.ActiveEventsController.GETRANGEFORDRIVERSPAGED, HttpMethod.Post);
 			request.AddUrlSegment("from", from.ToString(DataFormats.DateTime_Format));
 			request.AddUrlSegment("to", to.ToString(DataFormats.DateTime_Format));
 			request.AddUrlSegment("pageSize", pageSize.ToString());
@@ -150,7 +150,7 @@ namespace MiX.Integrate.API.Client
 		public PagedResult<ActiveEvent> GetRangeForDriversPaged(List<long> driverIds, DateTime from, DateTime to, byte pageSize, List<long> eventTypeIds = null)
 		{
 			EventFilter eventFilter = new EventFilter() { EntityIds = driverIds, EventTypeIds = eventTypeIds };
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.ActiveEventsController.GETRANGEPAGEDFORDRIVERS, HttpMethod.Post);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.ActiveEventsController.GETRANGEFORDRIVERSPAGED, HttpMethod.Post);
 			request.AddUrlSegment("from", from.ToString(DataFormats.DateTime_Format));
 			request.AddUrlSegment("to", to.ToString(DataFormats.DateTime_Format));
 			request.AddUrlSegment("pageSize", pageSize.ToString());

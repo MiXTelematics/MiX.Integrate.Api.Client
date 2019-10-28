@@ -17,11 +17,12 @@ namespace MiX.Integrate.Shared.Constants
 			public const string GETLATESTPERASSETINGROUP = "api/activeevents/group/{groupId}/latestperasset/{quantity}";
 
 			public const string GETRANGEFORASSETS = "api/activeevents/assets/from/{from}/to/{to}";
-			public const string GETRANGEPAGEDFORASSETS = "api/activeevents/assets/from/{from}/to/{to}/size/{pageSize}/paged";
+			public const string GETRANGEFORASSETSPAGED = "api/activeevents/assets/from/{from}/to/{to}/size/{pageSize}/paged";
 
 			public const string GETRANGEFORDRIVERS = "api/activeevents/drivers/from/{from}/to/{to}";
-			public const string GETRANGEPAGEDFORDRIVERS = "api/activeevents/drivers/from/{from}/to/{to}/size/{pageSize}/paged";
+			public const string GETRANGEFORDRIVERSPAGED = "api/activeevents/drivers/from/{from}/to/{to}/size/{pageSize}/paged";
 
+			public const string GETRANGEFORGROUPS = "api/activeevents/groups/entitytype/{entityType}/from/{from}/to/{to}";
 			public const string GETRANGEFORGROUPSPAGED = "api/activeevents/groups/entitytype/{entityType}/from/{from}/to/{to}/size/{pageSize}/paged";
 
 			public const string GETCREATEDSINCEFORGROUPSASYNC = "api/activeevents/groups/createdsince/entitytype/{entityType}/sincetoken/{sinceToken}/quantity/{quantity}";
@@ -122,23 +123,23 @@ namespace MiX.Integrate.Shared.Constants
 		{
 			public const string GETLATESTFORGROUPS = "api/events/groups/latest/entitytype/{entityType}/{quantity}";
 			public const string GETRANGEFORGROUPS = "api/events/groups/entitytype/{entityType}/from/{from}/to/{to}";
-			public const string GETRANGEPAGEDFORGROUPS = "api/events/groups/entitytype/{entityType}/from/{from}/to/{to}/size/{pageSize}/paged";
+			public const string GETRANGEFORGROUPSPAGED = "api/events/groups/entitytype/{entityType}/from/{from}/to/{to}/size/{pageSize}/paged";
 			public const string GETSINCEFORGROUPS = "api/events/groups/since/entitytype/{entityType}/{since}";
-			public const string GETSINCEPAGEDFORGROUPS = "api/events/groups/since/entitytype/{entityType}/since/{since}/size/{pageSize}/paged";
+			public const string GETSINCEFORGROUPSPAGED = "api/events/groups/since/entitytype/{entityType}/since/{since}/size/{pageSize}/paged";
 			public const string GETCREATEDSINCEFORGROUPSASYNC = "api/events/groups/createdsince/entitytype/{entityType}/sincetoken/{sinceToken}/quantity/{quantity}";
 
 			public const string GETLATESTFORASSETS = "api/events/assets/latest/{quantity}";
 			public const string GETRANGEFORASSETS = "api/events/assets/from/{from}/to/{to}";
-			public const string GETRANGEPAGEDFORASSETS = "api/events/assets/from/{from}/to/{to}/size/{pageSize}/paged";
+			public const string GETRANGEFORASSETSPAGED = "api/events/assets/from/{from}/to/{to}/size/{pageSize}/paged";
 			public const string GETSINCEFORASSETS = "api/events/assets/since/{since}/quantity/{quantity}";
-			public const string GETSINCEPAGEDFORASSETS = "api/events/assets/since/{since}/size/{pageSize}/paged";
+			public const string GETSINCEFORASSETSPAGED = "api/events/assets/since/{since}/size/{pageSize}/paged";
 			public const string GETCREATEDSINCEFORASSETSASYNC = "api/events/assets/createdsince/sincetoken/{sinceToken}/quantity/{quantity}";
 
 			public const string GETLATESTFORDRIVERS = "api/events/drivers/latest/{quantity}";
 			public const string GETRANGEFORDRIVERS = "api/events/drivers/from/{from}/to/{to}";
-			public const string GETRANGEPAGEDFORDRIVERS = "api/events/drivers/from/{from}/to/{to}/size/{pageSize}/paged";
+			public const string GETRANGEFORDRIVERSPAGED = "api/events/drivers/from/{from}/to/{to}/size/{pageSize}/paged";
 			public const string GETSINCEFORDRIVERS = "api/events/drivers/since/{since}/quantity/{quantity}";
-			public const string GETSINCEPAGEDFORDRIVERS = "api/events/drivers/since/{since}/size/{pageSize}/paged";
+			public const string GETSINCEFORDRIVERSPAGED = "api/events/drivers/since/{since}/size/{pageSize}/paged";
 			public const string GETCREATEDSINCEFORDRIVERSASYNC = "api/events/drivers/createdsince/sincetoken/{sinceToken}/quantity/{quantity}";
 			public const string GETCREATEDSINCEFORORGANISATION = "api/events/groups/createdsince/organisation/{organisationId}/sincetoken/{sinceToken}/quantity/{quantity}";
 		}
