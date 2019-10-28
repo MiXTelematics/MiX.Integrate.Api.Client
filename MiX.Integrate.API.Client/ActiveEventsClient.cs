@@ -189,6 +189,30 @@ namespace MiX.Integrate.API.Client
 			return new CreatedSinceResult<ActiveEvent>() { HasMoreItems = hasMoreItems, GetSinceToken = getSinceToken, Items = response.Data };
 		}
 
+		public List<ActiveEvent> GetRangeForGroups(List<long> groupIds, string entityType, DateTime from, DateTime to, List<long> eventTypeIds = null)
+		{
+			EventFilter eventFilter = new EventFilter() { EntityIds = groupIds, EventTypeIds = eventTypeIds };
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.ActiveEventsController.GETRANGEFORGROUPS, HttpMethod.Post);
+			request.AddUrlSegment("entityType", entityType);
+			request.AddUrlSegment("from", from.ToString(DataFormats.DateTime_Format));
+			request.AddUrlSegment("to", to.ToString(DataFormats.DateTime_Format));
+			request.AddJsonBody(eventFilter);
+			IHttpRestResponse<List<ActiveEvent>> response = Execute<List<ActiveEvent>>(request);
+			return response.Data;
+		}
+
+		public async Task<List<ActiveEvent>> GetRangeForGroupsAsync(List<long> groupIds, string entityType, DateTime from, DateTime to, List<long> eventTypeIds = null)
+		{
+			EventFilter eventFilter = new EventFilter() { EntityIds = groupIds, EventTypeIds = eventTypeIds };
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.ActiveEventsController.GETRANGEFORGROUPS, HttpMethod.Post);
+			request.AddUrlSegment("entityType", entityType);
+			request.AddUrlSegment("from", from.ToString(DataFormats.DateTime_Format));
+			request.AddUrlSegment("to", to.ToString(DataFormats.DateTime_Format));
+			request.AddJsonBody(eventFilter);
+			IHttpRestResponse<List<ActiveEvent>> response = await ExecuteAsync<List<ActiveEvent>>(request).ConfigureAwait(false);
+			return response.Data;
+		}
+
 		public PagedResult<ActiveEvent> GetRangeForGroupsPaged(List<long> groupIds, string entityType, DateTime from, DateTime to, byte pageSize, List<long> eventTypeIds = null)
 		{
 			EventFilter eventFilter = new EventFilter() { EntityIds = groupIds, EventTypeIds = eventTypeIds };
