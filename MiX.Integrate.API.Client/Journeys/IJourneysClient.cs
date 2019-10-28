@@ -46,5 +46,7 @@ namespace MiX.Integrate.API.Client.Journeys
 		Task<JourneyAssetAndPassengerData> GetJourneyAssetPassengersAsync(long journeyId);
 		JourneyAssetAndPassengerData GetJourneyAssetPassengers(long journeyId);
 
+		List<CurrentJourney> GetJourneyCurrentIdList(List<long> journeyIdList);
+		Task<List<CurrentJourney>> GetJourneyCurrentIdListAsync(List<long> journeyIdList);
 	}
 }

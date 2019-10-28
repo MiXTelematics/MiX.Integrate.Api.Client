@@ -176,7 +176,7 @@ namespace MiX.Integrate.Shared.Constants
 			public const string GETJOURNEYASSETPASSENGERASYNC = "api/journeys/getJourneyAssetPassenger/{journeyId}";
 			public const string UPDATEJOURNEYASSETPASSENGERASYNC = "api/journeys/updateJourneyAssetPassenger/{journeyId}";
 			public const string REMOVEJOURNEYASSETPASSENGERASYNC = "api/journeys/removeJourneyAssetPassenger/{journeyId}";
-
+			public const string GETJOURNEYCURRENTIDLIST = "api/journeys/getJourneyCurrentIdList";
 		}
 
 		//MiX.Integrate.Api.Controllers.LocationsController

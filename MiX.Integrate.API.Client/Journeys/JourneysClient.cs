@@ -343,6 +343,32 @@ namespace MiX.Integrate.API.Client.Journeys
 
 		}
 
+		/// <summary>
+		/// Get journey current ID
+		/// </summary>
+		/// <param name="journeyIdList">Group identifier</param>
+		/// <returns>List of JourneyIds</returns>
+		public List<CurrentJourney> GetJourneyCurrentIdList(List<long> journeyIdList)
+		{
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.JourneysController.GETJOURNEYCURRENTIDLIST, HttpMethod.Post);
+			request.AddJsonBody(journeyIdList);
+			IHttpRestResponse<List<CurrentJourney>> response = Execute<List<CurrentJourney>>(request);
+			return response.Data;
+		}
+
+		/// <summary>
+		/// Get journey current ID asynchronous
+		/// </summary>
+		/// <param name="journeyIdList">Group identifier</param>
+		/// <returns>List of JourneyIds</returns>
+		public async Task<List<CurrentJourney>> GetJourneyCurrentIdListAsync(List<long> journeyIdList)
+		{
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.JourneysController.GETJOURNEYCURRENTIDLIST, HttpMethod.Post);
+			request.AddJsonBody(journeyIdList);
+			IHttpRestResponse<List<CurrentJourney>> response = await ExecuteAsync<List<CurrentJourney>>(request).ConfigureAwait(false);
+			return response.Data;
+		}
+
 		public async Task<bool> SubmitJourneyAsync(long journeyId)
 		{
 
