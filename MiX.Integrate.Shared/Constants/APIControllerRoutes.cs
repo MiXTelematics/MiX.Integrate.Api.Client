@@ -142,6 +142,8 @@ namespace MiX.Integrate.Shared.Constants
 			//public const string GETSINCEFORDRIVERSPAGED = "api/events/drivers/since/{since}/size/{pageSize}/paged";
 			public const string GETCREATEDSINCEFORDRIVERSASYNC = "api/events/drivers/createdsince/sincetoken/{sinceToken}/quantity/{quantity}";
 			public const string GETCREATEDSINCEFORORGANISATION = "api/events/groups/createdsince/organisation/{organisationId}/sincetoken/{sinceToken}/quantity/{quantity}";
+
+			public const string GETMEDIAURLS = "/api/events/organisation/{groupId}/urls";
 		}
 
 		//MiX.Fleet.Services.Api TachoController
