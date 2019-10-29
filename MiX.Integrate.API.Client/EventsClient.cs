@@ -111,30 +111,6 @@ namespace MiX.Integrate.API.Client
 			return response.Data;
 		}
 
-		//public PagedResult<Event> GetRangeForAssetsPaged(List<long> assetIds, DateTime from, DateTime to, byte pageSize, List<long> eventTypeIds = null, string menuId = null)
-		//{
-		//	EventFilter eventFilter = new EventFilter() { EntityIds = assetIds, EventTypeIds = eventTypeIds, MenuId = menuId };
-		//	IHttpRestRequest request = GetRequest(APIControllerRoutes.EventsController.GETRANGEFORASSETSPAGED, HttpMethod.Post);
-		//	request.AddUrlSegment("from", from.ToString(DataFormats.DateTime_Format));
-		//	request.AddUrlSegment("to", to.ToString(DataFormats.DateTime_Format));
-		//	request.AddUrlSegment("pageSize", pageSize.ToString());
-		//	request.AddJsonBody(eventFilter);
-		//	IHttpRestResponse<PagedResult<Event>> response = Execute<PagedResult<Event>>(request);
-		//	return response.Data;
-		//}
-
-		//public async Task<PagedResult<Event>> GetRangeForAssetsPagedAsync(List<long> assetIds, DateTime from, DateTime to, byte pageSize, List<long> eventTypeIds = null, string menuId = null)
-		//{
-		//	EventFilter eventFilter = new EventFilter() { EntityIds = assetIds, EventTypeIds = eventTypeIds, MenuId = menuId };
-		//	IHttpRestRequest request = GetRequest(APIControllerRoutes.EventsController.GETRANGEFORASSETSPAGED, HttpMethod.Post);
-		//	request.AddUrlSegment("from", from.ToString(DataFormats.DateTime_Format));
-		//	request.AddUrlSegment("to", to.ToString(DataFormats.DateTime_Format));
-		//	request.AddUrlSegment("pageSize", pageSize.ToString());
-		//	request.AddJsonBody(eventFilter);
-		//	IHttpRestResponse<PagedResult<Event>> response = await ExecuteAsync<PagedResult<Event>>(request).ConfigureAwait(false);
-		//	return response.Data;
-		//}
-
 		public IList<Event> GetRangeForDrivers(List<long> driverIds, DateTime from, DateTime to, List<long> eventTypeIds = null, string menuId = null)
 		{
 			EventFilter eventFilter = new EventFilter() { EntityIds = driverIds, EventTypeIds = eventTypeIds, MenuId = menuId };
@@ -156,30 +132,6 @@ namespace MiX.Integrate.API.Client
 			IHttpRestResponse<List<Event>> response = await ExecuteAsync<List<Event>>(request).ConfigureAwait(false);
 			return response.Data;
 		}
-
-		//public PagedResult<Event> GetRangeForDriversPaged(List<long> driverIds, DateTime from, DateTime to, byte pageSize, List<long> eventTypeIds = null, string menuId = null)
-		//{
-		//	EventFilter eventFilter = new EventFilter() { EntityIds = driverIds, EventTypeIds = eventTypeIds, MenuId = menuId };
-		//	IHttpRestRequest request = GetRequest(APIControllerRoutes.EventsController.GETRANGEFORDRIVERSPAGED, HttpMethod.Post);
-		//	request.AddUrlSegment("from", from.ToString(DataFormats.DateTime_Format));
-		//	request.AddUrlSegment("to", to.ToString(DataFormats.DateTime_Format));
-		//	request.AddUrlSegment("pageSize", pageSize.ToString());
-		//	request.AddJsonBody(eventFilter);
-		//	IHttpRestResponse<PagedResult<Event>> response = Execute<PagedResult<Event>>(request);
-		//	return response.Data;
-		//}
-
-		//public async Task<PagedResult<Event>> GetRangeForDriversPagedAsync(List<long> driverIds, DateTime from, DateTime to, byte pageSize, List<long> eventTypeIds = null, string menuId = null)
-		//{
-		//	EventFilter eventFilter = new EventFilter() { EntityIds = driverIds, EventTypeIds = eventTypeIds, MenuId = menuId };
-		//	IHttpRestRequest request = GetRequest(APIControllerRoutes.EventsController.GETRANGEFORDRIVERSPAGED, HttpMethod.Post);
-		//	request.AddUrlSegment("from", from.ToString(DataFormats.DateTime_Format));
-		//	request.AddUrlSegment("to", to.ToString(DataFormats.DateTime_Format));
-		//	request.AddUrlSegment("pageSize", pageSize.ToString());
-		//	request.AddJsonBody(eventFilter);
-		//	IHttpRestResponse<PagedResult<Event>> response = await ExecuteAsync<PagedResult<Event>>(request).ConfigureAwait(false);
-		//	return response.Data;
-		//}
 
 		public IList<Event> GetRangeForGroups(List<long> groupIds, string entityType, DateTime from, DateTime to, List<long> eventTypeIds = null, string menuId = null)
 		{
@@ -205,32 +157,6 @@ namespace MiX.Integrate.API.Client
 			return response.Data;
 		}
 
-		//public PagedResult<Event> GetRangeForGroupsPaged(List<long> groupIds, string entityType, DateTime from, DateTime to, byte pageSize, List<long> eventTypeIds = null, string menuId = null)
-		//{
-		//	EventFilter eventFilter = new EventFilter() { EntityIds = groupIds, EventTypeIds = eventTypeIds, MenuId = menuId };
-		//	IHttpRestRequest request = GetRequest(APIControllerRoutes.EventsController.GETRANGEFORGROUPSPAGED, HttpMethod.Post);
-		//	request.AddUrlSegment("entityType", entityType);
-		//	request.AddUrlSegment("from", from.ToString(DataFormats.DateTime_Format));
-		//	request.AddUrlSegment("to", to.ToString(DataFormats.DateTime_Format));
-		//	request.AddUrlSegment("pageSize", pageSize.ToString());
-		//	request.AddJsonBody(eventFilter);
-		//	IHttpRestResponse<PagedResult<Event>> response = Execute<PagedResult<Event>>(request);
-		//	return response.Data;
-		//}
-
-		//public async Task<PagedResult<Event>> GetRangeForGroupsPagedAsync(List<long> groupIds, string entityType, DateTime from, DateTime to, byte pageSize, List<long> eventTypeIds = null, string menuId = null)
-		//{
-		//	EventFilter eventFilter = new EventFilter() { EntityIds = groupIds, EventTypeIds = eventTypeIds, MenuId = menuId };
-		//	IHttpRestRequest request = GetRequest(APIControllerRoutes.EventsController.GETRANGEFORGROUPSPAGED, HttpMethod.Post);
-		//	request.AddUrlSegment("entityType", entityType);
-		//	request.AddUrlSegment("from", from.ToString(DataFormats.DateTime_Format));
-		//	request.AddUrlSegment("to", to.ToString(DataFormats.DateTime_Format));
-		//	request.AddUrlSegment("pageSize", pageSize.ToString());
-		//	request.AddJsonBody(eventFilter);
-		//	IHttpRestResponse<PagedResult<Event>> response = await ExecuteAsync<PagedResult<Event>>(request).ConfigureAwait(false);
-		//	return response.Data;
-		//}
-
 		public IList<Event> GetSinceForAssets(List<long> assetIds, DateTime since, byte quantity, List<long> eventTypeIds = null, string menuId = null)
 		{
 			EventFilter eventFilter = new EventFilter() { EntityIds = assetIds, EventTypeIds = eventTypeIds, MenuId = menuId };
@@ -252,28 +178,6 @@ namespace MiX.Integrate.API.Client
 			IHttpRestResponse<List<Event>> response = await ExecuteAsync<List<Event>>(request).ConfigureAwait(false);
 			return response.Data;
 		}
-
-		//public PagedResult<Event> GetSinceForAssetsPaged(List<long> assetIds, DateTime since, byte pageSize, List<long> eventTypeIds = null, string menuId = null)
-		//{
-		//	EventFilter eventFilter = new EventFilter() { EntityIds = assetIds, EventTypeIds = eventTypeIds, MenuId = menuId };
-		//	IHttpRestRequest request = GetRequest(APIControllerRoutes.EventsController.GETSINCEFORASSETSPAGED, HttpMethod.Post);
-		//	request.AddUrlSegment("since", since.ToString(DataFormats.DateTime_Format));
-		//	request.AddUrlSegment("pageSize", pageSize.ToString());
-		//	request.AddJsonBody(eventFilter);
-		//	IHttpRestResponse<PagedResult<Event>> response = Execute<PagedResult<Event>>(request);
-		//	return response.Data;
-		//}
-
-		//public async Task<PagedResult<Event>> GetSinceForAssetsPagedAsync(List<long> assetIds, DateTime since, byte pageSize, List<long> eventTypeIds = null, string menuId = null)
-		//{
-		//	EventFilter eventFilter = new EventFilter() { EntityIds = assetIds, EventTypeIds = eventTypeIds, MenuId = menuId };
-		//	IHttpRestRequest request = GetRequest(APIControllerRoutes.EventsController.GETSINCEFORASSETSPAGED, HttpMethod.Post);
-		//	request.AddUrlSegment("since", since.ToString(DataFormats.DateTime_Format));
-		//	request.AddUrlSegment("pageSize", pageSize.ToString());
-		//	request.AddJsonBody(eventFilter);
-		//	IHttpRestResponse<PagedResult<Event>> response = await ExecuteAsync<PagedResult<Event>>(request).ConfigureAwait(false);
-		//	return response.Data;
-		//}
 
 		public IList<Event> GetSinceForDrivers(List<long> driverIds, DateTime since, byte quantity, List<long> eventTypeIds = null, string menuId = null)
 		{
@@ -297,28 +201,6 @@ namespace MiX.Integrate.API.Client
 			return response.Data;
 		}
 
-		//public PagedResult<Event> GetSinceForDriversPaged(List<long> driverIds, DateTime since, byte pageSize, List<long> eventTypeIds = null, string menuId = null)
-		//{
-		//	EventFilter eventFilter = new EventFilter() { EntityIds = driverIds, EventTypeIds = eventTypeIds, MenuId = menuId };
-		//	IHttpRestRequest request = GetRequest(APIControllerRoutes.EventsController.GETSINCEFORDRIVERS, HttpMethod.Post);
-		//	request.AddUrlSegment("since", since.ToString(DataFormats.DateTime_Format));
-		//	request.AddUrlSegment("pageSize", pageSize.ToString());
-		//	request.AddJsonBody(eventFilter);
-		//	IHttpRestResponse<PagedResult<Event>> response = Execute<PagedResult<Event>>(request);
-		//	return response.Data;
-		//}
-
-		//public async Task<PagedResult<Event>> GetSinceForDriversPagedAsync(List<long> driverIds, DateTime since, byte pageSize, List<long> eventTypeIds = null, string menuId = null)
-		//{
-		//	EventFilter eventFilter = new EventFilter() { EntityIds = driverIds, EventTypeIds = eventTypeIds, MenuId = menuId };
-		//	IHttpRestRequest request = GetRequest(APIControllerRoutes.EventsController.GETSINCEFORDRIVERSPAGED, HttpMethod.Post);
-		//	request.AddUrlSegment("since", since.ToString(DataFormats.DateTime_Format));
-		//	request.AddUrlSegment("pageSize", pageSize.ToString());
-		//	request.AddJsonBody(eventFilter);
-		//	IHttpRestResponse<PagedResult<Event>> response = await ExecuteAsync<PagedResult<Event>>(request).ConfigureAwait(false);
-		//	return response.Data;
-		//}
-
 		public IList<Event> GetSinceForGroups(List<long> groupIds, string entityType, DateTime since, List<long> eventTypeIds = null, string menuId = null)
 		{
 			EventFilter eventFilter = new EventFilter() { EntityIds = groupIds, EventTypeIds = eventTypeIds, MenuId = menuId };
@@ -340,30 +222,6 @@ namespace MiX.Integrate.API.Client
 			IHttpRestResponse<List<Event>> response = await ExecuteAsync<List<Event>>(request).ConfigureAwait(false);
 			return response.Data;
 		}
-
-		//public PagedResult<Event> GetSinceForGroupsPaged(List<long> groupIds, string entityType, DateTime since, byte pageSize, List<long> eventTypeIds = null, string menuId = null)
-		//{
-		//	EventFilter eventFilter = new EventFilter() { EntityIds = groupIds, EventTypeIds = eventTypeIds, MenuId = menuId };
-		//	IHttpRestRequest request = GetRequest(APIControllerRoutes.EventsController.GETSINCEFORGROUPSPAGED, HttpMethod.Post);
-		//	request.AddUrlSegment("entityType", entityType);
-		//	request.AddUrlSegment("since", since.ToString(DataFormats.DateTime_Format));
-		//	request.AddUrlSegment("pageSize", pageSize.ToString());
-		//	request.AddJsonBody(eventFilter);
-		//	IHttpRestResponse<PagedResult<Event>> response = Execute<PagedResult<Event>>(request);
-		//	return response.Data;
-		//}
-
-		//public async Task<PagedResult<Event>> GetSinceForGroupsPagedAsync(List<long> groupIds, string entityType, DateTime since, byte pageSize, List<long> eventTypeIds = null, string menuId = null)
-		//{
-		//	EventFilter eventFilter = new EventFilter() { EntityIds = groupIds, EventTypeIds = eventTypeIds, MenuId = menuId };
-		//	IHttpRestRequest request = GetRequest(APIControllerRoutes.EventsController.GETSINCEFORGROUPSPAGED, HttpMethod.Post);
-		//	request.AddUrlSegment("entityType", entityType);
-		//	request.AddUrlSegment("since", since.ToString(DataFormats.DateTime_Format));
-		//	request.AddUrlSegment("pageSize", pageSize.ToString());
-		//	request.AddJsonBody(eventFilter);
-		//	IHttpRestResponse<PagedResult<Event>> response = await ExecuteAsync<PagedResult<Event>>(request).ConfigureAwait(false);
-		//	return response.Data;
-		//}
 
 		public CreatedSinceResult<Event> GetCreatedSinceForAssets(List<long> assetIds, string sinceToken, int quantity)
 		{
