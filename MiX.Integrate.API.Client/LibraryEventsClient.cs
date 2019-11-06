@@ -15,7 +15,7 @@ namespace MiX.Integrate.API.Client
 
 		public IList<LibraryEvent> GetAllLibraryEvents(long organisationId)
 		{
-			return GetAllLibraryEventsAsync(organisationId).Result;
+			return GetAllLibraryEventsAsync(organisationId).ConfigureAwait(false).GetAwaiter().GetResult();
 		}
 
 		public async Task<IList<LibraryEvent>> GetAllLibraryEventsAsync(long organisationId)
