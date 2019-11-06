@@ -268,6 +268,7 @@ namespace MiX.Integrate.Shared.Constants
 
 			public const string ADDCUSTOMGROUP = "api/customgroups/organisation/{organisationId}";
 			public const string UPDATECUSTOMGROUP = "api/customgroups/organisation/{organisationId}";
+			public const string DELETECUSTOMGROUP = "api/customgroups/organisation/{organisationId}/customgroup/{customGroupId}";
 
 			public const string ADDCUSTOMGROUPMEMBERS = "api/customgroups/organisation/{organisationId}/customgroup/{customGroupId}/members/entitytype/{entityType}";
 			public const string DELETECUSTOMGROUPMEMBERS = "api/customgroups/organisation/{organisationId}/customgroup/{customGroupId}/members/entitytype/{entityType}";
