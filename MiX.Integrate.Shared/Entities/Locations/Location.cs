@@ -43,5 +43,7 @@ namespace MiX.Integrate.Shared.Entities.Locations
 		};
 
 		public string ExternalReference { get; set; }
+
+		public LocationContact ContactDetails { get; set; }
 	}
 }
