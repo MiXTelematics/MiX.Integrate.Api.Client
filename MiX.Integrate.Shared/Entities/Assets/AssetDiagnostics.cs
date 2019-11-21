@@ -17,7 +17,5 @@ namespace MiX.Integrate.Shared.Entities.Assets
 		public string ServerPort { get; set; }
 
 		public string ServerAddress { get; set; }
-
-		public bool Ignition { get; set; }
   }
 }
