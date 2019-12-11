@@ -42,6 +42,7 @@ namespace MiX.Integrate.Shared.Constants
 		//MiX.Integrate.Api.Controllers.DriverLicenceController
 		public class DriverLicenceController
 		{
+			public const string GETDRIVERLICENCESFORGROUP = "api/driverlicence/group/{groupId}";
 			public const string GETDRIVERLICENCES = "api/driverlicence/organisation/{organisationId}/driver/{driverId}";
 			public const string GETDRIVERLICENCECATEGORIES = "api/driverlicence/organisation/{organisationId}/driver/{driverId}/licencecategories";
 			public const string GETDRIVERLICENCE = "api/driverlicence/organisation/{organisationId}/driver/{driverId}/licencecategory/{licenceCategoryId}";
