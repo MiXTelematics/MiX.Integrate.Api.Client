@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
     <id>MiX.Integrate.Shared</id>
-    <version>1.0.0</version>
+    <version>2019.12.11.1-beta</version>
     <title>MiX Integrate Shared</title>
     <authors>MiX Telematics</authors>
     <owners>MiX Telematics</owners>
