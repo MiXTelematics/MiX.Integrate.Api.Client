@@ -13,6 +13,28 @@ namespace MiX.Integrate.API.Client
 		public DriverCertificationClient(string url, IdServerResourceOwnerClientSettings settings, bool setTestRequestHeader = false) : base(url, settings, setTestRequestHeader) { }
 
 
+		/// <summary>Retrieves driver certifications for all drivers in the specified group and its descendants.</summary>
+		/// <param name="groupId">Identifies the <see cref="MiX.Integrate.Shared.Entities.Groups.Group">Group</see> to search,
+		/// which must be an OrganisationGroup, OrganisationSubgroup, SubGroup, or DefaultSite.</param>
+		public Dictionary<long, List<DriverCertification>> GetDriverCertificationsForGroup(long groupId)
+		{
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.DriverCertificationController.GETDRIVERCERTIFICATIONSFORGROUP, HttpMethod.Get);
+			request.AddUrlSegment("groupId", groupId.ToString());
+			IHttpRestResponse<Dictionary<long,List<DriverCertification>>> response = Execute<Dictionary<long,List<DriverCertification>>>(request);
+			return response.Data;
+		}
+
+		/// <summary>Retrieves driver certifications for all drivers in the specified group and its descendants.</summary>
+		/// <param name="groupId">Identifies the <see cref="MiX.Integrate.Shared.Entities.Groups.Group">Group</see> to search,
+		/// which must be an OrganisationGroup, OrganisationSubgroup, SubGroup, or DefaultSite.</param>
+		public async Task<Dictionary<long, List<DriverCertification>>> GetDriverCertificationsForGroupAsync(long groupId)
+		{
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.DriverCertificationController.GETDRIVERCERTIFICATIONSFORGROUP, HttpMethod.Get);
+			request.AddUrlSegment("groupId", groupId.ToString());
+			IHttpRestResponse<Dictionary<long,List<DriverCertification>>> response = await ExecuteAsync<Dictionary<long,List<DriverCertification>>>(request).ConfigureAwait(false);
+			return response.Data;
+		}
+
 		public DriverCertification GetDriverCertificationById(long organisationGroupId, long driverId, int certificationTypeId)
 		{
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.DriverCertificationController.GETDRIVERCERTIFICATION, HttpMethod.Get);
@@ -46,6 +68,26 @@ namespace MiX.Integrate.API.Client
 			request.AddUrlSegment("organisationId", organisationGroupId.ToString());
 			request.AddUrlSegment("driverId", driverId.ToString());
 			IHttpRestResponse<List<DriverCertification>> response = await ExecuteAsync<List<DriverCertification>>(request).ConfigureAwait(false);
+			return response.Data;
+		}
+
+		/// <summary>Retrieves driver certification types for the specified organisation</summary>
+		/// <param name="organisationGroupId">Identifies the organisation to query</param>
+		public List<CertificationType> GetDriverCertificationTypes(long organisationGroupId)
+		{
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.DriverCertificationController.GETDRIVERCERTIFICATIONTYPESFORORGANISATION, HttpMethod.Get);
+			request.AddUrlSegment("organisationId", organisationGroupId.ToString());
+			IHttpRestResponse<List<CertificationType>> response = Execute<List<CertificationType>>(request);
+			return response.Data;
+		}
+
+		/// <summary>Retrieves driver certification types for the specified organisation</summary>
+		/// <param name="organisationGroupId">Identifies the organisation to query</param>
+		public async Task<List<CertificationType>> GetDriverCertificationTypesAsync(long organisationGroupId)
+		{
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.DriverCertificationController.GETDRIVERCERTIFICATIONTYPESFORORGANISATION, HttpMethod.Get);
+			request.AddUrlSegment("organisationId", organisationGroupId.ToString());
+			IHttpRestResponse<List<CertificationType>> response = await ExecuteAsync<List<CertificationType>>(request).ConfigureAwait(false);
 			return response.Data;
 		}
 

@@ -72,6 +72,26 @@ namespace MiX.Integrate.API.Client
 			return response.Data;
 		}
 
+		/// <summary>Retrieves a list of driver licence categories for the specified organisation</summary>
+		/// <param name="organisationGroupId">Identifies the organisation to query</param>
+		public List<LicenceCategory> GetDriverLicenceCategories(long organisationGroupId)
+		{
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.DriverLicenceController.GETDRIVERLICENCECATEGORIESFORORGANISATION, HttpMethod.Get);
+			request.AddUrlSegment("organisationId", organisationGroupId.ToString());
+			IHttpRestResponse<List<LicenceCategory>> response = Execute<List<LicenceCategory>>(request);
+			return response.Data;
+		}
+
+		/// <summary>Retrieves a list of driver licence categories for the specified organisation</summary>
+		/// <param name="organisationGroupId">Identifies the organisation to query</param>
+		public async Task<List<LicenceCategory>> GetDriverLicenceCategoriesAsync(long organisationGroupId)
+		{
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.DriverLicenceController.GETDRIVERLICENCECATEGORIESFORORGANISATION, HttpMethod.Get);
+			request.AddUrlSegment("organisationId", organisationGroupId.ToString());
+			IHttpRestResponse<List<LicenceCategory>> response = await ExecuteAsync<List<LicenceCategory>>(request).ConfigureAwait(false);
+			return response.Data;
+		}
+
 		public IList<LicenceCategory> GetDriverLicenceCategories(long organisationGroupId, long driverId)
 		{
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.DriverLicenceController.GETDRIVERLICENCECATEGORIES, HttpMethod.Get);
