@@ -44,6 +44,7 @@ namespace MiX.Integrate.Shared.Constants
 		{
 			public const string GETDRIVERLICENCESFORGROUP = "api/driverlicence/group/{groupId}";
 			public const string GETDRIVERLICENCES = "api/driverlicence/organisation/{organisationId}/driver/{driverId}";
+			public const string GETDRIVERLICENCECATEGORIESFORORGANISATION = "api/driverlicence/organisation/{organisationId}/licencecategories";
 			public const string GETDRIVERLICENCECATEGORIES = "api/driverlicence/organisation/{organisationId}/driver/{driverId}/licencecategories";
 			public const string GETDRIVERLICENCE = "api/driverlicence/organisation/{organisationId}/driver/{driverId}/licencecategory/{licenceCategoryId}";
 			public const string ADDDRIVERLICENCE = "api/driverlicence/organisation/{organisationId}";
@@ -53,7 +54,9 @@ namespace MiX.Integrate.Shared.Constants
 
 		public class DriverCertificationController
 		{
+			public const string GETDRIVERCERTIFICATIONSFORGROUP = "api/drivercertification/group/{groupId}";
 			public const string GETDRIVERCERTIFICATIONS = "api/drivercertification/organisation/{organisationId}/driver/{driverId}";
+			public const string GETDRIVERCERTIFICATIONTYPESFORORGANISATION = "api/drivercertification/organisation/{organisationId}/certificationcategories";
 			public const string GETDRIVERCERTIFICATIONTYPES = "api/drivercertification/organisation/{organisationId}/driver/{driverId}/certificationcategories";
 			public const string GETDRIVERCERTIFICATION = "api/drivercertification/organisation/{organisationId}/driver/{driverId}/certificationtypeid/{certificationTypeId}";
 			public const string ADDDRIVERCERTIFICATION = "api/drivercertification/organisation/{organisationId}";
