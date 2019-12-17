@@ -89,6 +89,9 @@ namespace MiX.Integrate.Shared.Constants
 			public const string ASSETSERVICEREMINDERS = "api/reminders/organisation/{organisationId}/asset/{assetId}/service";
 			public const string ASSETLICENCEREMINDERS = "api/reminders/organisation/{organisationId}/asset/{assetId}/licence";
 			public const string ASSETROADWORTHYREMINDERS = "api/reminders/organisation/{organisationId}/asset/{assetId}/roadworthy-certificate";
+			public const string GETASSETSERVICEREMINDERSFORGROUP = "api/reminders/group/{groupId}/service";
+			public const string GETASSETLICENCEREMINDERSFORGROUP = "api/reminders/group/{groupId}/licence";
+			public const string GETASSETROADWORTHYREMINDERSFORGROUP = "api/reminders/group/{groupId}/roadworthy-certificate";
 		}
 
 		//MiX.Integrate.Api GroupsController
