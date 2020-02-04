@@ -5,6 +5,6 @@
 		/// <summary>
 		/// A comment regarding the trip classification
 		/// </summary>
-		public string ClassificationComment { get; set; }
+		public string Comment { get; set; }
 	}
 }

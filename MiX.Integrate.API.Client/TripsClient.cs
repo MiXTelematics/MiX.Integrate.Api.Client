@@ -402,6 +402,7 @@ namespace MiX.Integrate.API.Client
 			request.AddJsonBody(classification);
 			Execute(request);
 		}
+
 		public async Task UpdateTripClassificationAsync(long tripId, TripClassificationCategory classification)
 		{
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.TripsController.UPDATETRIPCLASSIFICATION, HttpMethod.Put);
@@ -414,14 +415,15 @@ namespace MiX.Integrate.API.Client
 		{
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.TripsController.UPDATETRIPCLASSIFICATIONCOMMENT, HttpMethod.Put);
 			request.AddUrlSegment("tripId", tripId.ToString());
-			request.AddJsonBody(comment);
+			request.AddJsonBody(new TripClassificationComment { Comment = comment });
 			Execute(request);
 		}
+
 		public async Task UpdateTripClassificationCommentAsync(long tripId, string comment)
 		{
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.TripsController.UPDATETRIPCLASSIFICATIONCOMMENT, HttpMethod.Put);
 			request.AddUrlSegment("tripId", tripId.ToString());
-			request.AddJsonBody(comment);
+			request.AddJsonBody(new TripClassificationComment { Comment = comment });
 			await ExecuteAsync(request).ConfigureAwait(false);
 		}
 		#endregion
