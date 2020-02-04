@@ -171,6 +171,9 @@ namespace MiX.Integrate.Shared.Constants
 
 			public const string GETDRIVERSCORES = "api/trips/driverscore/standard/from/{from}/to/{to}";
 			public const string GETCREATEDSINCEFORORGANISATION = "api/trips/groups/createdsince/organisation/{organisationId}/sincetoken/{sinceToken}/quantity/{quantity}";
+
+			public const string UPDATETRIPCLASSIFICATION = "api/trips/{tripId}/classification";
+			public const string UPDATETRIPCLASSIFICATIONCOMMENT = "api/trips/{tripId}/classification/comment";
 		}
 
 		//MiX.Integrate.Api.Controllers.JourneysController
