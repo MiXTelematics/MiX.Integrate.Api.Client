@@ -92,6 +92,17 @@ namespace MiX.Integrate.API.Client
 			await ExecuteAsync(request).ConfigureAwait(false);
 		}
 
+		/// <summary>Deletes a custom group</summary>
+		/// <param name="organisationId"></param>
+		/// <param name="customGroup"></param>
+		public async Task DeleteCustomGroupAsync(long organisationId, long customGroupId)
+		{
+			var request = GetRequest(APIControllerRoutes.CustomGroupsController.DELETECUSTOMGROUP, HttpMethod.Delete);
+			request.AddUrlSegment("organisationId", organisationId.ToString());
+			request.AddUrlSegment("customGroupId", customGroupId.ToString());
+			await ExecuteAsync(request).ConfigureAwait(false);
+		}
+
 		/// <summary>Adds members tp a custom groups</summary>
 		/// <param name="organisationId"></param>
 		/// <param name="customGroupId"></param>
@@ -127,7 +138,7 @@ namespace MiX.Integrate.API.Client
 		/// <returns></returns>
 		public IList<CustomGroup> GetAll(long organisationId)
 		{
-			return GetAllAsync(organisationId).Result;
+			return GetAllAsync(organisationId).ConfigureAwait(false).GetAwaiter().GetResult(); 
 		}
 
 		/// <summary>Gets a list of custom groups for an asset</summary>
@@ -162,7 +173,7 @@ namespace MiX.Integrate.API.Client
 		/// <returns></returns>
 		public CustomGroupDetails GetById(long organisationId, long customGroupId)
 		{
-			return GetByIdAsync(organisationId, customGroupId).Result;
+			return GetByIdAsync(organisationId, customGroupId).ConfigureAwait(false).GetAwaiter().GetResult();
 		}
 
 		/// <summary>Creates a new custom group</summary>
@@ -171,7 +182,7 @@ namespace MiX.Integrate.API.Client
 		/// <returns></returns>
 		public long AddCustomGroup(long organisationId, CustomGroup customGroup)
 		{
-			return AddCustomGroupAsync(organisationId, customGroup).Result;
+			return AddCustomGroupAsync(organisationId, customGroup).ConfigureAwait(false).GetAwaiter().GetResult();
 		}
 
 		/// <summary>Updates the details of a custom group</summary>
@@ -182,7 +193,13 @@ namespace MiX.Integrate.API.Client
 		{
 			UpdateCustomGroupAsync(organisationId, customGroup).ConfigureAwait(false).GetAwaiter().GetResult();
 		}
-
+		/// <summary>Deletes a custom group</summary>
+		/// <param name="organisationId"></param>
+		/// <param name="customGroup"></param>
+		public void DeleteCustomGroup(long organisationId, long customGroupId)
+		{
+			DeleteCustomGroupAsync(organisationId, customGroupId).ConfigureAwait(false).GetAwaiter().GetResult();
+		}
 		/// <summary>Adds members tp a custom groups</summary>
 		/// <param name="organisationId"></param>
 		/// <param name="customGroupId"></param>

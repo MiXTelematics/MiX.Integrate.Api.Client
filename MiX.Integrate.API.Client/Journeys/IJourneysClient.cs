@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using MiX.Integrate.Shared.Entities.Journeys;
 using MiX.Integrate.API.Client.Base;
+using System;
 
 namespace MiX.Integrate.API.Client.Journeys
 {
@@ -9,6 +10,10 @@ namespace MiX.Integrate.API.Client.Journeys
 	{
 		Journey GetJourney(long journeyId);
 		Task<Journey> GetJourneyAsync(long journeyId);
+
+		List<long> GetJourneyIdList(long groupId, DateTime startDate, DateTime endDate);
+		Task<List<long>> GetJourneyIdListAsync(long groupId, DateTime startDate, DateTime endDate);
+
 
 		long AddJourney(CreateJourney newjourney);
 		Task<long> AddJourneyAsync(CreateJourney newjourney);
@@ -41,5 +46,7 @@ namespace MiX.Integrate.API.Client.Journeys
 		Task<JourneyAssetAndPassengerData> GetJourneyAssetPassengersAsync(long journeyId);
 		JourneyAssetAndPassengerData GetJourneyAssetPassengers(long journeyId);
 
+		List<CurrentJourney> GetJourneyCurrentIdList(List<long> journeyIdList);
+		Task<List<CurrentJourney>> GetJourneyCurrentIdListAsync(List<long> journeyIdList);
 	}
 }

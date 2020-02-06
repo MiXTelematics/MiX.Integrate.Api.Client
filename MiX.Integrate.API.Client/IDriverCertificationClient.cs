@@ -7,6 +7,9 @@ namespace MiX.Integrate.API.Client
 {
 	public interface IDriverCertificationClient : IBaseClient
 	{
+		Dictionary<long,List<DriverCertification>> GetDriverCertificationsForGroup(long groupId);
+		Task<Dictionary<long,List<DriverCertification>>> GetDriverCertificationsForGroupAsync(long groupId);
+
 		DriverCertification GetDriverCertificationById(long organisationGroupId, long driverId, int certificationTypeId);
 		Task<DriverCertification> GetDriverCertificationByIdAsync(long organisationGroupId, long driverId, int certificationTypeId);
 
@@ -15,6 +18,9 @@ namespace MiX.Integrate.API.Client
 
 		IList<CertificationType> GetDriverCertificationTypes(long organisationGroupId, long driverId);
 		Task<IList<CertificationType>> GetDriverCertificationTypesAsync(long organisationGroupId, long driverId);
+
+		List<CertificationType> GetDriverCertificationTypes(long organisationGroupId);
+		Task<List<CertificationType>> GetDriverCertificationTypesAsync(long organisationGroupId);
 
 		void AddDriverCertification(long organisationGroupId, DriverCertification driverCertification);
 		Task AddDriverCertificationAsync(long organisationGroupId, DriverCertification driverCertification);

@@ -345,5 +345,22 @@ namespace MiX.Integrate.API.Client
 			return new CreatedSinceResult<Event>() { HasMoreItems = hasMoreItems, GetSinceToken = getSinceToken, Items = response.Data };
 		}
 
+		public IList<EventClipResponse> GetMediaUrls(long organisationId, List<EventClip> eventClips)
+		{
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.EventsController.GETMEDIAURLS, HttpMethod.Post);
+			request.AddUrlSegment("groupId", organisationId.ToString());
+			request.AddJsonBody(eventClips);
+			IHttpRestResponse<List<EventClipResponse>> response = Execute<List<EventClipResponse>>(request);
+			return response.Data;
+		}
+
+		public async Task<IList<EventClipResponse>> GetMediaUrlsAsync(long organisationId, List<EventClip> eventClips)
+		{
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.EventsController.GETMEDIAURLS, HttpMethod.Post);
+			request.AddUrlSegment("groupId", organisationId.ToString());
+			request.AddJsonBody(eventClips);
+			IHttpRestResponse<List<EventClipResponse>> response = await ExecuteAsync<List<EventClipResponse>>(request).ConfigureAwait(false);
+			return response.Data;
+		}
 	}
 }

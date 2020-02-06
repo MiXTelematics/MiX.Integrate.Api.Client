@@ -27,7 +27,6 @@ namespace MiX.Integrate.API.Client
 		Task<IList<Event>> GetSinceForDriversAsync(List<long> driverIds, DateTime since, byte quantity, List<long> eventTypeIds = null, string menuId = null);
 		IList<Event> GetSinceForGroups(List<long> groupIds, string entityType, DateTime since, List<long> eventTypeIds = null, string menuId = null);
 		Task<IList<Event>> GetSinceForGroupsAsync(List<long> groupIds, string entityType, DateTime since, List<long> eventTypeIds = null, string menuId = null);
-
 		CreatedSinceResult<Event> GetCreatedSinceForAssets(List<long> assetIds, string sinceToken, int quantity);
 		Task<CreatedSinceResult<Event>> GetCreatedSinceForAssetsAsync(List<long> assetIds, string sinceToken, int quantity);
 		CreatedSinceResult<Event> GetCreatedSinceForDrivers(List<long> assetIds, string sinceToken, int quantity);
@@ -36,5 +35,7 @@ namespace MiX.Integrate.API.Client
 		Task<CreatedSinceResult<Event>> GetCreatedSinceForGroupsAsync(List<long> groupIds, string entityType, string sinceToken, int quantity);
 		CreatedSinceResult<Event> GetCreatedSinceForOrganisation(long organisationId, string sinceToken, int quantity);
 		Task<CreatedSinceResult<Event>> GetCreatedSinceForOrganisationAsync(long organisationId, string sinceToken, int quantity);
+		IList<EventClipResponse> GetMediaUrls(long organisationId, List<EventClip> eventClips);
+		Task<IList<EventClipResponse>> GetMediaUrlsAsync(long organisationId, List<EventClip> eventClips);
 	}
 }

@@ -11,20 +11,8 @@ namespace MiX.Integrate.API.Client
 {
 	public class ActiveEventsClient : BaseClient, IActiveEventsClient
 	{
-
 		public ActiveEventsClient(string url, bool setTestRequestHeader = false) : base(url, setTestRequestHeader) { }
 		public ActiveEventsClient(string url, IdServerResourceOwnerClientSettings settings, bool setTestRequestHeader = false) : base(url, settings, setTestRequestHeader) { }
-
-		public List<ActiveEvent> GetRangeForAssets(List<long> assetIds, DateTime from, DateTime to, List<long> eventTypeIds = null)
-		{
-			EventFilter eventFilter = new EventFilter() { EntityIds = assetIds, EventTypeIds = eventTypeIds };
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.ActiveEventsController.GETRANGEFORASSETS, HttpMethod.Post);
-			request.AddUrlSegment("from", from.ToString(DataFormats.DateTime_Format));
-			request.AddUrlSegment("to", to.ToString(DataFormats.DateTime_Format));
-			request.AddJsonBody(eventFilter);
-			IHttpRestResponse<List<ActiveEvent>> response = Execute<List<ActiveEvent>>(request);
-			return response.Data;
-		}
 
 		public List<ActiveEvent> GetLatestForOrganisation(long organisationId, byte quantity = 1, List<long> eventTypeIds = null)
 		{
@@ -34,6 +22,17 @@ namespace MiX.Integrate.API.Client
 			request.AddUrlSegment("quantity", quantity.ToString());
 			request.AddJsonBody(eventFilter);
 			IHttpRestResponse<List<ActiveEvent>> response = Execute<List<ActiveEvent>>(request);
+			return response.Data;
+		}
+
+		public async Task<List<ActiveEvent>> GetLatestForOrganisationAsync(long organisationId, byte quantity = 1, List<long> eventTypeIds = null)
+		{
+			EventFilter eventFilter = new EventFilter() { EventTypeIds = eventTypeIds };
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.ActiveEventsController.GETLATESTFORGROUP, HttpMethod.Post);
+			request.AddUrlSegment("groupId", organisationId.ToString());
+			request.AddUrlSegment("quantity", quantity.ToString());
+			request.AddJsonBody(eventFilter);
+			IHttpRestResponse<List<ActiveEvent>> response = await ExecuteAsync<List<ActiveEvent>>(request).ConfigureAwait(false);
 			return response.Data;
 		}
 
@@ -48,14 +47,14 @@ namespace MiX.Integrate.API.Client
 			return response.Data;
 		}
 
-		public async Task<List<ActiveEvent>> GetLatestForOrganisationAsync(long organisationId, byte quantity = 1, List<long> eventTypeIds = null)
+		public List<ActiveEvent> GetRangeForAssets(List<long> assetIds, DateTime from, DateTime to, List<long> eventTypeIds = null)
 		{
-			EventFilter eventFilter = new EventFilter() { EventTypeIds = eventTypeIds };
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.ActiveEventsController.GETLATESTFORGROUP, HttpMethod.Post);
-			request.AddUrlSegment("groupId", organisationId.ToString());
-			request.AddUrlSegment("quantity", quantity.ToString());
+			EventFilter eventFilter = new EventFilter() { EntityIds = assetIds, EventTypeIds = eventTypeIds };
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.ActiveEventsController.GETRANGEFORASSETS, HttpMethod.Post);
+			request.AddUrlSegment("from", from.ToString(DataFormats.DateTime_Format));
+			request.AddUrlSegment("to", to.ToString(DataFormats.DateTime_Format));
 			request.AddJsonBody(eventFilter);
-			IHttpRestResponse<List<ActiveEvent>> response = await ExecuteAsync<List<ActiveEvent>>(request).ConfigureAwait(false);
+			IHttpRestResponse<List<ActiveEvent>> response = Execute<List<ActiveEvent>>(request);
 			return response.Data;
 		}
 
@@ -180,6 +179,5 @@ namespace MiX.Integrate.API.Client
 				throw new Exception("Could not read the HasMoreItems header");
 			return new CreatedSinceResult<ActiveEvent>() { HasMoreItems = hasMoreItems, GetSinceToken = getSinceToken, Items = response.Data };
 		}
-
 	}
 }

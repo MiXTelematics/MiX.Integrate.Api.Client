@@ -15,7 +15,12 @@ namespace MiX.Integrate.Shared.Constants
 		{
 			public const string GETLATESTFORGROUP = "api/activeevents/group/{groupId}/latest/{quantity}";
 			public const string GETLATESTPERASSETINGROUP = "api/activeevents/group/{groupId}/latestperasset/{quantity}";
+
 			public const string GETRANGEFORASSETS = "api/activeevents/assets/from/{from}/to/{to}";
+
+			public const string GETRANGEFORDRIVERS = "api/activeevents/drivers/from/{from}/to/{to}";
+
+			public const string GETRANGEFORGROUPS = "api/activeevents/groups/entitytype/{entityType}/from/{from}/to/{to}";
 
 			public const string GETCREATEDSINCEFORGROUPSASYNC = "api/activeevents/groups/createdsince/entitytype/{entityType}/sincetoken/{sinceToken}/quantity/{quantity}";
 			public const string GETCREATEDSINCEFORASSETSASYNC = "api/activeevents/assets/createdsince/sincetoken/{sinceToken}/quantity/{quantity}";
@@ -37,7 +42,9 @@ namespace MiX.Integrate.Shared.Constants
 		//MiX.Integrate.Api.Controllers.DriverLicenceController
 		public class DriverLicenceController
 		{
+			public const string GETDRIVERLICENCESFORGROUP = "api/driverlicence/group/{groupId}";
 			public const string GETDRIVERLICENCES = "api/driverlicence/organisation/{organisationId}/driver/{driverId}";
+			public const string GETDRIVERLICENCECATEGORIESFORORGANISATION = "api/driverlicence/organisation/{organisationId}/licencecategories";
 			public const string GETDRIVERLICENCECATEGORIES = "api/driverlicence/organisation/{organisationId}/driver/{driverId}/licencecategories";
 			public const string GETDRIVERLICENCE = "api/driverlicence/organisation/{organisationId}/driver/{driverId}/licencecategory/{licenceCategoryId}";
 			public const string ADDDRIVERLICENCE = "api/driverlicence/organisation/{organisationId}";
@@ -47,7 +54,9 @@ namespace MiX.Integrate.Shared.Constants
 
 		public class DriverCertificationController
 		{
+			public const string GETDRIVERCERTIFICATIONSFORGROUP = "api/drivercertification/group/{groupId}";
 			public const string GETDRIVERCERTIFICATIONS = "api/drivercertification/organisation/{organisationId}/driver/{driverId}";
+			public const string GETDRIVERCERTIFICATIONTYPESFORORGANISATION = "api/drivercertification/organisation/{organisationId}/certificationcategories";
 			public const string GETDRIVERCERTIFICATIONTYPES = "api/drivercertification/organisation/{organisationId}/driver/{driverId}/certificationcategories";
 			public const string GETDRIVERCERTIFICATION = "api/drivercertification/organisation/{organisationId}/driver/{driverId}/certificationtypeid/{certificationTypeId}";
 			public const string ADDDRIVERCERTIFICATION = "api/drivercertification/organisation/{organisationId}";
@@ -64,6 +73,7 @@ namespace MiX.Integrate.Shared.Constants
 			public const string UPDATE = "api/assets";
 			public const string ADDASSETSTATE = "api/assets/group/{groupId}/state";
 			public const string ADD = "api/assets";
+			public const string GETASSETDIAG = "api/assets/diagnostics/group/{groupId}";
 		}
 
 		//MiX.Integrate.Api.Controllers.UserController
@@ -79,6 +89,9 @@ namespace MiX.Integrate.Shared.Constants
 			public const string ASSETSERVICEREMINDERS = "api/reminders/organisation/{organisationId}/asset/{assetId}/service";
 			public const string ASSETLICENCEREMINDERS = "api/reminders/organisation/{organisationId}/asset/{assetId}/licence";
 			public const string ASSETROADWORTHYREMINDERS = "api/reminders/organisation/{organisationId}/asset/{assetId}/roadworthy-certificate";
+			public const string GETASSETSERVICEREMINDERSFORGROUP = "api/reminders/group/{groupId}/service";
+			public const string GETASSETLICENCEREMINDERSFORGROUP = "api/reminders/group/{groupId}/licence";
+			public const string GETASSETROADWORTHYREMINDERSFORGROUP = "api/reminders/group/{groupId}/roadworthy-certificate";
 		}
 
 		//MiX.Integrate.Api GroupsController
@@ -128,6 +141,8 @@ namespace MiX.Integrate.Shared.Constants
 			public const string GETSINCEFORDRIVERS = "api/events/drivers/since/{since}/quantity/{quantity}";
 			public const string GETCREATEDSINCEFORDRIVERSASYNC = "api/events/drivers/createdsince/sincetoken/{sinceToken}/quantity/{quantity}";
 			public const string GETCREATEDSINCEFORORGANISATION = "api/events/groups/createdsince/organisation/{organisationId}/sincetoken/{sinceToken}/quantity/{quantity}";
+
+			public const string GETMEDIAURLS = "api/events/organisation/{groupId}/urls";
 		}
 
 		//MiX.Fleet.Services.Api TachoController
@@ -163,6 +178,7 @@ namespace MiX.Integrate.Shared.Constants
 		{
 			public const string ADDJOURNEY = "api/journeys/";
 			public const string GETJOURNEY = "api/journeys/{journeyId}";
+			public const string GETJOURNEYIDLIST = "api/journeys/getJourneyIdList/{groupId}/startDate/{startDate}/endDate/{endDate}";
 			public const string GETJOURNEYROUTE = "api/journeys/routes/{groupId}";
 			public const string GETJOURNEYPROGRESS = "api/journeys/progress/{journeyId}";
 			public const string GETJOURNEYINPROGRESSCURRENTSTATUS = "api/journeys/inprogress/currentstatus/{groupId}";
@@ -175,7 +191,7 @@ namespace MiX.Integrate.Shared.Constants
 			public const string GETJOURNEYASSETPASSENGERASYNC = "api/journeys/getJourneyAssetPassenger/{journeyId}";
 			public const string UPDATEJOURNEYASSETPASSENGERASYNC = "api/journeys/updateJourneyAssetPassenger/{journeyId}";
 			public const string REMOVEJOURNEYASSETPASSENGERASYNC = "api/journeys/removeJourneyAssetPassenger/{journeyId}";
-
+			public const string GETJOURNEYCURRENTIDLIST = "api/journeys/getJourneyCurrentIdList";
 		}
 
 		//MiX.Integrate.Api.Controllers.LocationsController
@@ -260,6 +276,7 @@ namespace MiX.Integrate.Shared.Constants
 
 			public const string ADDCUSTOMGROUP = "api/customgroups/organisation/{organisationId}";
 			public const string UPDATECUSTOMGROUP = "api/customgroups/organisation/{organisationId}";
+			public const string DELETECUSTOMGROUP = "api/customgroups/organisation/{organisationId}/customgroup/{customGroupId}";
 
 			public const string ADDCUSTOMGROUPMEMBERS = "api/customgroups/organisation/{organisationId}/customgroup/{customGroupId}/members/entitytype/{entityType}";
 			public const string DELETECUSTOMGROUPMEMBERS = "api/customgroups/organisation/{organisationId}/customgroup/{customGroupId}/members/entitytype/{entityType}";
