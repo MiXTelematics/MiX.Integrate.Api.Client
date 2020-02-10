@@ -395,7 +395,7 @@ namespace MiX.Integrate.API.Client
 		#endregion
 
 		#region TripClassification
-		public void UpdateTripClassification(long tripId, TripClassification classification)
+		public void UpdateTripClassification(long tripId, TripClassificationForUpdate classification)
 		{
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.TripsController.UPDATETRIPCLASSIFICATION, HttpMethod.Put);
 			request.AddUrlSegment("tripId", tripId.ToString());
@@ -403,7 +403,7 @@ namespace MiX.Integrate.API.Client
 			Execute(request);
 		}
 
-		public async Task UpdateTripClassificationAsync(long tripId, TripClassification classification)
+		public async Task UpdateTripClassificationAsync(long tripId, TripClassificationForUpdate classification)
 		{
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.TripsController.UPDATETRIPCLASSIFICATION, HttpMethod.Put);
 			request.AddUrlSegment("tripId", tripId.ToString());

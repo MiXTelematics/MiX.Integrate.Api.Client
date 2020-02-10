@@ -1,11 +1,11 @@
 ﻿namespace MiX.Integrate.Shared.Entities.Trips
 {
-	public class TripClassification
+	public class TripClassificationForUpdate
 	{
 		/// <summary>
-		/// Trip classification i.e. None, Business or Private
+		/// Trip classification i.e. Business or Private
 		/// </summary>
-		public TripClassificationCategory Classification { get; set; }
+		public TripClassificationUpdateCategory Classification { get; set; }
 		/// <summary>
 		/// A comment regarding the trip classification
 		/// </summary>
