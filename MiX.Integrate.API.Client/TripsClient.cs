@@ -395,37 +395,37 @@ namespace MiX.Integrate.API.Client
 		#endregion
 
 		#region TripClassification
-		public void UpdateTripClassification(long tripId, TripClassificationForUpdate classification)
-		{
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.TripsController.UPDATETRIPCLASSIFICATION, HttpMethod.Put);
-			request.AddUrlSegment("tripId", tripId.ToString());
-			request.AddJsonBody(classification);
-			Execute(request);
-		}
+		//public void UpdateTripClassification(long tripId, TripClassificationForUpdate classification)
+		//{
+		//	IHttpRestRequest request = GetRequest(APIControllerRoutes.TripsController.UPDATETRIPCLASSIFICATION, HttpMethod.Put);
+		//	request.AddUrlSegment("tripId", tripId.ToString());
+		//	request.AddJsonBody(classification);
+		//	Execute(request);
+		//}
 
-		public async Task UpdateTripClassificationAsync(long tripId, TripClassificationForUpdate classification)
-		{
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.TripsController.UPDATETRIPCLASSIFICATION, HttpMethod.Put);
-			request.AddUrlSegment("tripId", tripId.ToString());
-			request.AddJsonBody(classification);
-			await ExecuteAsync(request).ConfigureAwait(false);
-		}
+		//public async Task UpdateTripClassificationAsync(long tripId, TripClassificationForUpdate classification)
+		//{
+		//	IHttpRestRequest request = GetRequest(APIControllerRoutes.TripsController.UPDATETRIPCLASSIFICATION, HttpMethod.Put);
+		//	request.AddUrlSegment("tripId", tripId.ToString());
+		//	request.AddJsonBody(classification);
+		//	await ExecuteAsync(request).ConfigureAwait(false);
+		//}
 
-		public void UpdateTripClassificationComment(long tripId, string comment)
-		{
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.TripsController.UPDATETRIPCLASSIFICATIONCOMMENT, HttpMethod.Put);
-			request.AddUrlSegment("tripId", tripId.ToString());
-			request.AddJsonBody(new TripClassificationComment { Comment = comment });
-			Execute(request);
-		}
+		//public void UpdateTripClassificationComment(long tripId, string comment)
+		//{
+		//	IHttpRestRequest request = GetRequest(APIControllerRoutes.TripsController.UPDATETRIPCLASSIFICATIONCOMMENT, HttpMethod.Put);
+		//	request.AddUrlSegment("tripId", tripId.ToString());
+		//	request.AddJsonBody(new TripClassificationComment { Comment = comment });
+		//	Execute(request);
+		//}
 
-		public async Task UpdateTripClassificationCommentAsync(long tripId, string comment)
-		{
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.TripsController.UPDATETRIPCLASSIFICATIONCOMMENT, HttpMethod.Put);
-			request.AddUrlSegment("tripId", tripId.ToString());
-			request.AddJsonBody(new TripClassificationComment { Comment = comment });
-			await ExecuteAsync(request).ConfigureAwait(false);
-		}
+		//public async Task UpdateTripClassificationCommentAsync(long tripId, string comment)
+		//{
+		//	IHttpRestRequest request = GetRequest(APIControllerRoutes.TripsController.UPDATETRIPCLASSIFICATIONCOMMENT, HttpMethod.Put);
+		//	request.AddUrlSegment("tripId", tripId.ToString());
+		//	request.AddJsonBody(new TripClassificationComment { Comment = comment });
+		//	await ExecuteAsync(request).ConfigureAwait(false);
+		//}
 		#endregion
 	}
 }

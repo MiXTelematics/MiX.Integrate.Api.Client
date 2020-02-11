@@ -43,9 +43,9 @@ namespace MiX.Integrate.API.Client
 
 		CreatedSinceResult<Trip> GetCreatedSinceForOrganisation(long organisationId, string sinceToken, int quantity, bool includeSubTrips = false);
 		Task<CreatedSinceResult<Trip>> GetCreatedSinceForOrganisationAsync(long organisationId, string sinceToken, int quantity, bool includeSubTrips = false);
-		void UpdateTripClassification(long tripId, TripClassificationForUpdate classification);
-		Task UpdateTripClassificationAsync(long tripId, TripClassificationForUpdate classification);
-		void UpdateTripClassificationComment(long tripId, string comment);
-		Task UpdateTripClassificationCommentAsync(long tripId, string comment);
+		//void UpdateTripClassification(long tripId, TripClassificationForUpdate classification);
+		//Task UpdateTripClassificationAsync(long tripId, TripClassificationForUpdate classification);
+		//void UpdateTripClassificationComment(long tripId, string comment);
+		//Task UpdateTripClassificationCommentAsync(long tripId, string comment);
 	}
 }
