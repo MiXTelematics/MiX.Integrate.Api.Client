@@ -10,8 +10,6 @@ using System.Runtime.Versioning;
 using System.Security.Authentication;
 using System.Text;
 using System.Threading.Tasks;
-using System.Net.Security;
-using System.Security.Authentication;
 
 namespace MiX.Integrate.API.Client.Base
 {
@@ -22,6 +20,7 @@ namespace MiX.Integrate.API.Client.Base
 		private bool _setTestRequestHeader;
 		private bool _hasIDServerResourceOwnerClientSettings;
 		private IdServerResourceOwnerClientSettings _idServerResourceOwnerClientSettings;
+
 		private static HttpClient _httpClient;
 		private bool _notFoundShouldReturnNull;
 		private static bool _compressionEnabled = true;
@@ -58,7 +57,6 @@ namespace MiX.Integrate.API.Client.Base
 				}
 				return _httpClientHandler;
 			}
-			set { _httpClientHandler = value; }
 		}
 
 		private static HttpClient HttpClient
@@ -67,7 +65,7 @@ namespace MiX.Integrate.API.Client.Base
 			{
 				if (_httpClient == null)
 				{
-					_httpClient = new HttpClient(InternalHttpClientHandler) { Timeout = _timeout == null ? TimeSpan.FromSeconds(480) : _timeout };
+					_httpClient = new HttpClient(InternalHttpClientHandler) { Timeout = _timeout };
 					_httpClient.DefaultRequestHeaders.ExpectContinue = false;
 					if (_customHeaders != null)
 					{
@@ -79,7 +77,6 @@ namespace MiX.Integrate.API.Client.Base
 				}
 				return _httpClient;
 			}
-			set { _httpClient = value; }
 		}
 
 		static BaseClient()
@@ -87,7 +84,6 @@ namespace MiX.Integrate.API.Client.Base
 			//This assembly
 			var assembly = typeof(BaseClient).GetTypeInfo().Assembly;
 			var assemblyName = assembly.GetName();
-			var version = assemblyName.Version;
 			var imageRuntimeVersion = assembly.ImageRuntimeVersion;
 			var assemblyFileVersionAttribute = (AssemblyFileVersionAttribute)assembly.GetCustomAttributes(typeof(AssemblyFileVersionAttribute)).FirstOrDefault();
 			var targetFrameworkAttribute = (TargetFrameworkAttribute)assembly.GetCustomAttributes(typeof(TargetFrameworkAttribute)).FirstOrDefault();
@@ -101,14 +97,14 @@ namespace MiX.Integrate.API.Client.Base
 			algorithm.Dispose();
 			//Build custom headers
 			_customHeaders = new Dictionary<string, string>();
-			_customHeaders.Add("X-MiX-LibraryInfo", $"Name: {assemblyName.Name}, Version: {assemblyName.Version.ToString()}, FileVersion: {assemblyFileVersion}, TargetFramework: {targetFramework}, Runtime: {imageRuntimeVersion}, EntryAssembly: {entryAssemblyNameHash}");
+			_customHeaders.Add("X-MiX-LibraryInfo", $"Name: {assemblyName.Name}, Version: {assemblyName.Version}, FileVersion: {assemblyFileVersion}, TargetFramework: {targetFramework}, Runtime: {imageRuntimeVersion}, EntryAssembly: {entryAssemblyNameHash}");
 		}
 
 		public BaseClient(string url, bool setTestRequestHeader = false) : this(url, setTestRequestHeader, null)
 		{
 		}
 
-		public BaseClient(string url, bool setTestRequestHeader = false, TimeSpan? timeout = null) : this()
+		public BaseClient(string url, bool setTestRequestHeader = false, TimeSpan? timeout = null) 
 		{
 			if (String.IsNullOrEmpty(url))
 			{
@@ -125,7 +121,7 @@ namespace MiX.Integrate.API.Client.Base
 		{
 		}
 
-		public BaseClient(string url, IdServerResourceOwnerClientSettings settings, bool setTestRequestHeader = false, TimeSpan? timeout = null) : this()
+		public BaseClient(string url, IdServerResourceOwnerClientSettings settings, bool setTestRequestHeader = false, TimeSpan? timeout = null) 
 		{
 			if (String.IsNullOrEmpty(url))
 			{
@@ -176,7 +172,7 @@ namespace MiX.Integrate.API.Client.Base
 			get { return _timeout; }
 			set
 			{
-				_timeout = value == null ? TimeSpan.FromSeconds(480) : value;
+				_timeout = value;
 				_httpClient = null;
 				_httpClientHandler = null;
 			}
@@ -265,7 +261,7 @@ namespace MiX.Integrate.API.Client.Base
 			requestMessage.Headers.Add("Accept", "application/json");
 			foreach (KeyValuePair<string, string> item in request.Headers)
 			{
-				requestMessage.Headers.Add(item.Key, item.Value.ToString());
+				requestMessage.Headers.Add(item.Key, item.Value);
 			}
 			if (request.JsonBody.Length > 0)
 			{
@@ -318,7 +314,7 @@ namespace MiX.Integrate.API.Client.Base
 			if ((int)response.StatusCode >= 400 & (int)response.StatusCode < 500)
 			{
 				string content = GetResponseContent(response);
-				dynamic responseForInvalidStatusCode = response.Content.ReadAsStringAsync();
+				_ = response.Content.ReadAsStringAsync();
 				throw new HttpClientException(response.StatusCode, content);
 			}
 			if ((int)response.StatusCode >= 500 & (int)response.StatusCode < 600)
@@ -374,7 +370,7 @@ namespace MiX.Integrate.API.Client.Base
 			if (!IsEnumarable(item)) return false;
 			var enumerable = item as System.Collections.IEnumerable;
 			if (enumerable == null) return false;
-			foreach (var obj in enumerable)
+			foreach (var _ in enumerable)
 			{
 				return true;
 			}
