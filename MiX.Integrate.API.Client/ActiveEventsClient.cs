@@ -179,5 +179,56 @@ namespace MiX.Integrate.API.Client
 				throw new Exception("Could not read the HasMoreItems header");
 			return new CreatedSinceResult<ActiveEvent>() { HasMoreItems = hasMoreItems, GetSinceToken = getSinceToken, Items = response.Data };
 		}
+
+		/// <summary>Gets up to 1000 active events of the specified type(s) created for an organisation since the specified token time</summary>
+		/// <param name="organisationId">Id of the organisation</param>
+		/// <param name="sinceToken">Token denoting the "since" time for the query in "yyyyMMddHHmmssfff" format.
+		/// This may not be more than than 7 days old, and is expressed in UTC.
+		/// If no token is not available, use the NEW keyword to default to the current time.
+		/// Use the GetSinceToken property of the results for the next call to this method.</param>
+		/// <param name="quantity">Number of active events (up to 1000) to retrieve. Result may include more items than requested due to server-side quantisation constraints</param>
+		/// <param name="eventTypeIds">EventTypeIds to include - limits the results to include only active events with a matching EventTypeId</param>
+		/// <returns>A <see cref="CreatedSinceResult{ActiveEvent}"/> containing the result of the call</returns>
+		public CreatedSinceResult<ActiveEvent> GetCreatedSinceForOrganisationFiltered(long organisationId, string sinceToken, int quantity, List<long> eventTypeIds)
+		{
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.ActiveEventsController.GETCREATEDSINCEFORORGANISATION, HttpMethod.Post);
+			request.AddUrlSegment("organisationId", organisationId.ToString());
+			request.AddUrlSegment("sinceToken", sinceToken);
+			request.AddUrlSegment("quantity", quantity.ToString());
+			request.AddJsonBody(eventTypeIds);
+			IHttpRestResponse<List<ActiveEvent>> response = Execute<List<ActiveEvent>>(request);
+			string sHasMoreItems = GetResponseHeader(response.Headers, "HasMoreItems");
+			string getSinceToken = GetResponseHeader(response.Headers, "GetSinceToken");
+			bool hasMoreItems = false;
+			if (!bool.TryParse(sHasMoreItems, out hasMoreItems))
+				throw new Exception("Could not read the HasMoreItems header");
+			return new CreatedSinceResult<ActiveEvent>() { HasMoreItems = hasMoreItems, GetSinceToken = getSinceToken, Items = response.Data };
+		}
+
+		/// <summary>Gets up to 1000 active events of the specified type(s) created for an organisation since the specified token time</summary>
+		/// <param name="organisationId">Id of the organisation</param>
+		/// <param name="sinceToken">Token denoting the "since" time for the query in "yyyyMMddHHmmssfff" format.
+		/// This may not be more than than 7 days old, and is expressed in UTC.
+		/// If no token is not available, use the NEW keyword to default to the current time.
+		/// Use the GetSinceToken property of the results for the next call to this method.</param>
+		/// <param name="quantity">Number of active events (up to 1000) to retrieve. Result may include more items than requested due to server-side quantisation constraints</param>
+		/// <param name="eventTypeIds">EventTypeIds to include - limits the results to include only active events with a matching EventTypeId</param>
+		/// <returns>A <see cref="CreatedSinceResult{ActiveEvent}"/> containing the result of the call</returns>
+		public async Task<CreatedSinceResult<ActiveEvent>> GetCreatedSinceForOrganisationFilteredAsync(long organisationId, string sinceToken, int quantity, List<long> eventTypeIds)
+		{
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.ActiveEventsController.GETCREATEDSINCEFORORGANISATION, HttpMethod.Post);
+			request.AddUrlSegment("organisationId", organisationId.ToString());
+			request.AddUrlSegment("sinceToken", sinceToken);
+			request.AddUrlSegment("quantity", quantity.ToString());
+			request.AddJsonBody(eventTypeIds);
+			IHttpRestResponse<List<ActiveEvent>> response = await ExecuteAsync<List<ActiveEvent>>(request).ConfigureAwait(false);
+			string sHasMoreItems = GetResponseHeader(response.Headers, "HasMoreItems");
+			string getSinceToken = GetResponseHeader(response.Headers, "GetSinceToken");
+			bool hasMoreItems = false;
+			if (!bool.TryParse(sHasMoreItems, out hasMoreItems))
+				throw new Exception("Could not read the HasMoreItems header");
+			return new CreatedSinceResult<ActiveEvent>() { HasMoreItems = hasMoreItems, GetSinceToken = getSinceToken, Items = response.Data };
+		}
+
 	}
 }
