@@ -73,7 +73,7 @@ namespace MiX.Integrate.API.Client
 		/// <param name="quantity">Number of active events (up to 1000) to retrieve. Result may include more items than requested due to server-side quantisation constraints</param>
 		/// <param name="eventTypeIds">EventTypeIds to include - limits the results to include only active events with a matching EventTypeId</param>
 		/// <returns>A <see cref="CreatedSinceResult{ActiveEvent}"/> containing the result of the call</returns>
-		CreatedSinceResult<ActiveEvent> GetCreatedSinceForOrganisationFiltered(long organisationId, string sinceToken, int quantity);
+		CreatedSinceResult<ActiveEvent> GetCreatedSinceForOrganisationFiltered(long organisationId, string sinceToken, int quantity, List<long> eventTypeIds);
 
 		/// <summary>Gets up to 1000 active events of the specified type(s) created for an organisation since the specified token time</summary>
 		/// <param name="organisationId">Id of the organisation</param>
@@ -84,6 +84,6 @@ namespace MiX.Integrate.API.Client
 		/// <param name="quantity">Number of active events (up to 1000) to retrieve. Result may include more items than requested due to server-side quantisation constraints</param>
 		/// <param name="eventTypeIds">EventTypeIds to include - limits the results to include only active events with a matching EventTypeId</param>
 		/// <returns>A <see cref="CreatedSinceResult{ActiveEvent}"/> containing the result of the call</returns>
-		Task<CreatedSinceResult<ActiveEvent>> GetCreatedSinceForOrganisationFilteredAsync(long organisationId, string sinceToken, int quantity);
+		Task<CreatedSinceResult<ActiveEvent>> GetCreatedSinceForOrganisationFilteredAsync(long organisationId, string sinceToken, int quantity, List<long> eventTypeIds);
 	}
 }
