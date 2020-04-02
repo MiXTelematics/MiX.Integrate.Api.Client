@@ -35,6 +35,30 @@ namespace MiX.Integrate.API.Client
 		Task<CreatedSinceResult<Event>> GetCreatedSinceForGroupsAsync(List<long> groupIds, string entityType, string sinceToken, int quantity);
 		CreatedSinceResult<Event> GetCreatedSinceForOrganisation(long organisationId, string sinceToken, int quantity);
 		Task<CreatedSinceResult<Event>> GetCreatedSinceForOrganisationAsync(long organisationId, string sinceToken, int quantity);
+
+
+		/// <summary>Gets up to 1000 events of the specified type(s) created for an organisation since the specified token time</summary>
+		/// <param name="organisationId">Id of the organisation</param>
+		/// <param name="sinceToken">Token denoting the "since" time for the query in "yyyyMMddHHmmssfff" format.
+		/// This may not be more than than 7 days old, and is expressed in UTC.
+		/// If no token is not available, use the NEW keyword to default to the current time.
+		/// Use the GetSinceToken property of the results for the next call to this method.</param>
+		/// <param name="quantity">Number of events (up to 1000) to retrieve. Result may include more items than requested due to server-side quantisation constraints</param>
+		/// <param name="eventTypeIds">EventTypeIds to include - limits the results to include only events with a matching EventTypeId</param>
+		/// <returns>A <see cref="CreatedSinceResult{Event}"/> containing the result of the call</returns>
+		CreatedSinceResult<Event> GetCreatedSinceForOrganisationFiltered(long organisationId, string sinceToken, int quantity, List<long> eventTypeIds);
+
+		/// <summary>Gets up to 1000 events of the specified type(s) created for an organisation since the specified token time</summary>
+		/// <param name="organisationId">Id of the organisation</param>
+		/// <param name="sinceToken">Token denoting the "since" time for the query in "yyyyMMddHHmmssfff" format.
+		/// This may not be more than than 7 days old, and is expressed in UTC.
+		/// If no token is not available, use the NEW keyword to default to the current time.
+		/// Use the GetSinceToken property of the results for the next call to this method.</param>
+		/// <param name="quantity">Number of events (up to 1000) to retrieve. Result may include more items than requested due to server-side quantisation constraints</param>
+		/// <param name="eventTypeIds">EventTypeIds to include - limits the results to include only events with a matching EventTypeId</param>
+		/// <returns>A <see cref="CreatedSinceResult{Event}"/> containing the result of the call</returns>
+		Task<CreatedSinceResult<Event>> GetCreatedSinceForOrganisationFilteredAsync(long organisationId, string sinceToken, int quantity, List<long> eventTypeIds);
+
 		IList<EventClipResponse> GetMediaUrls(long organisationId, List<EventClip> eventClips);
 		Task<IList<EventClipResponse>> GetMediaUrlsAsync(long organisationId, List<EventClip> eventClips);
 	}
