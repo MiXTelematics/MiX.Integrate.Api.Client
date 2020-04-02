@@ -325,5 +325,13 @@ namespace MiX.Integrate.Shared.Constants
 		{
 			public const string GETTIMEZONEINFOBYID = "api/globalisation/timezoneinfo";
 		}
+
+
+		//MiX.Integrate.Api.Controllers.ScoringController
+		public class ScoringController
+		{
+			public const string GETFLEXIBLEDRIVERSORECARD = "api/scoring/scorecard_flexibledriver";
+		}
+
 	}
 }
