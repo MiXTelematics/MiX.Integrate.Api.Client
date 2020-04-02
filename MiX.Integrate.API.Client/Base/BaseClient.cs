@@ -108,7 +108,7 @@ namespace MiX.Integrate.API.Client.Base
 		{
 		}
 
-		public BaseClient(string url, bool setTestRequestHeader = false, TimeSpan? timeout = null) : this()
+		public BaseClient(string url, bool setTestRequestHeader = false, TimeSpan? timeout = null) 
 		{
 			if (String.IsNullOrEmpty(url))
 			{
@@ -125,7 +125,7 @@ namespace MiX.Integrate.API.Client.Base
 		{
 		}
 
-		public BaseClient(string url, IdServerResourceOwnerClientSettings settings, bool setTestRequestHeader = false, TimeSpan? timeout = null) : this()
+		public BaseClient(string url, IdServerResourceOwnerClientSettings settings, bool setTestRequestHeader = false, TimeSpan? timeout = null) 
 		{
 			if (String.IsNullOrEmpty(url))
 			{
