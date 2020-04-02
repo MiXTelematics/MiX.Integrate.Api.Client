@@ -82,7 +82,7 @@ namespace MiX.Integrate.API.Client.Base
 			set { _httpClient = value; }
 		}
 
-		internal BaseClient()
+		static BaseClient()
 		{
 			//This assembly
 			var assembly = typeof(BaseClient).GetTypeInfo().Assembly;
