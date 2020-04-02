@@ -59,7 +59,7 @@ namespace MiX.Integrate.Shared.Entities.Scoring
 		public string EventScoreMetric { get; set; }
 		public decimal AmberBandStart { get; set; }
 		public decimal AmberBandEnd { get; set; }
-		public int EventDurationMultiple { get; set; }
+		public int EventDurationSize { get; set; }
 	}
 
 }

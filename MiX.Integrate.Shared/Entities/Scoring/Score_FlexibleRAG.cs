@@ -29,15 +29,15 @@ namespace MiX.Integrate.Shared.Entities.Scoring
 		//Score
 		public decimal TotalScore { get; set; }
 		public bool IsScored { get; set; }
-		public List<ScorePerEventTypes> ScorePerEventTypes { get; set; }
+		public List<ScoreByEventType> ScorePerEventTypes { get; set; }
 
 		//SiteScore
 		public decimal SiteTotalScore { get; set; }
 		public bool SiteIsScored { get; set; }
-		public List<ScorePerEventTypes> SiteScorePerEventTypes { get; set; }
+		public List<ScoreByEventType> SiteScorePerEventTypes { get; set; }
 	}
 
-	public class ScorePerEventTypes
+	public class ScoreByEventType
 	{
 		public string EventDescription { get; set; }
 		public List<long> EventTypeIds { get; set; }

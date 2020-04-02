@@ -6,7 +6,7 @@ namespace MiX.Integrate.Shared.Entities.Scoring
 	public class Score_FlexibleDriver
 	{
 		public decimal SiteTotalScore { get; set; }
-		public List<EventPenaltyScore> EventPenaltyScores { get; set; }
+		public List<PenaltyScoreByEventType> EventPenaltyScores { get; set; }
 		public bool IsScored { get; set; }
 		public decimal TotalScore { get; set; }
 		public int SiteRank { get; set; }
@@ -23,10 +23,10 @@ namespace MiX.Integrate.Shared.Entities.Scoring
 		public string Period { get; set; }
 		public DateTime DateKey { get; set; }
 		public decimal TripsDuration { get; set; }
-		public List<EventPenaltyScore> SitePointsPerEventTypes { get; set; }
+		public List<PenaltyScoreByEventType> SitePointsPerEventTypes { get; set; }
 	}
 
-	public class EventPenaltyScore
+	public class PenaltyScoreByEventType
 	{
 		public string EventDescription { get; set; }
 		public List<long> EventTypeIds { get; set; }
