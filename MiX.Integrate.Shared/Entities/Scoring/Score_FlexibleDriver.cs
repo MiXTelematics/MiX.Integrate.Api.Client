@@ -30,7 +30,7 @@ namespace MiX.Integrate.Shared.Entities.Scoring
 	{
 		public string EventDescription { get; set; }
 		public List<long> EventTypeIds { get; set; }
-		public int Occurances { get; set; }
+		public int Occurrences { get; set; }
 		public int EventCount { get; set; }
 		public decimal Duration { get; set; }
 		public decimal PenaltyPoints { get; set; }
