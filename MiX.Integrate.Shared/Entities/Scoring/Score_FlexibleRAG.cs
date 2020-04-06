@@ -19,7 +19,6 @@ namespace MiX.Integrate.Shared.Entities.Scoring
 		public decimal TripsDuration { get; set; }
 		public decimal TripsDrivingTime { get; set; }
 		public decimal TripsMaxSpeed { get; set; }
-		public int PeriodsWithTrips { get; set; }
 
 		//Ranking
 		public decimal RankingScore() { return TotalScore; }
