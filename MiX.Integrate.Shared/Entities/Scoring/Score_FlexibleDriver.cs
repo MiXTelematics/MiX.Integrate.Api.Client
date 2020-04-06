@@ -11,7 +11,6 @@ namespace MiX.Integrate.Shared.Entities.Scoring
 		public decimal TotalScore { get; set; }
 		public int SiteRank { get; set; }
 		public int OrganisationRank { get; set; }
-		public int PeriodsWithTrips { get; set; }
 		public decimal TripsMaxSpeed { get; set; }
 		public bool SiteIsScored { get; set; }
 		public decimal TripsDrivingTime { get; set; }
