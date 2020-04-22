@@ -67,6 +67,10 @@ namespace MiX.Integrate.Shared.Entities.Events
 		/// The value recorded for the event.
 		/// </summary>
 		public double? Value { get; set; }
+
+		/// <summary>The amount of fuel used, in litres, during the event</summary>
+		public float? FuelUsedLitres { get; set; }
+
 		/// <summary>
 		/// The type of value recorded for the event, Minumum, Maximum, Average or current.
 		/// </summary>
