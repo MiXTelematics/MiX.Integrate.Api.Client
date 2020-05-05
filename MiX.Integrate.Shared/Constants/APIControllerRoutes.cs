@@ -151,6 +151,12 @@ namespace MiX.Integrate.Shared.Constants
 			public const string GETRANGEFORASSETASYNC = "api/tachos/asset/{assetId}/range/from/{from}/to/{to}";
 		}
 
+		//MiX.Integrate.Api.Controllers.TrailersController
+		public class TrailersController
+		{
+			public const string GETALL = "api/trailers/group/{groupId}";
+		}
+
 		//MiX.Integrate.Api TripsController
 		public class TripsController
 		{
