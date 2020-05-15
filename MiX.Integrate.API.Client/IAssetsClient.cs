@@ -21,5 +21,7 @@ namespace MiX.Integrate.API.Client
 		Task<bool> AddAssetStateAsync(long groupId, AssetState assetState);
 		long Add(Asset asset);
 		Task<long> AddAsync(Asset asset);
+		List<Trailer> GetTrailers(long organisationId);
+		Task<List<Trailer>> GetTrailersAsync(long organisationId);
 	}
 }
