@@ -47,5 +47,19 @@ namespace MiX.Integrate.API.Client
 		//Task UpdateTripClassificationAsync(long tripId, TripClassificationForUpdate classification);
 		//void UpdateTripClassificationComment(long tripId, string comment);
 		//Task UpdateTripClassificationCommentAsync(long tripId, string comment);
+
+		/// <summary>Gets the RIBAS metrics of trips by the specified drivers in the specified date range</summary>
+		/// <param name="driverIds">Ids of the drivers for whom trip metrics are required</param>
+		/// <param name="from">Start of date range for query</param>
+		/// <param name="to">End of date range for query</param>
+		/// <returns>RIBAS metrics for trips by the specified drivers in the specified date range</returns>
+		List<TripRibasMetrics> GetRibasMetricsForDrivers(List<long> driverIds, DateTime from, DateTime to);
+
+		/// <summary>Gets the RIBAS metrics of trips by the specified drivers in the specified date range as an asynchronous operation</summary>
+		/// <param name="driverIds">Ids of the drivers for whom trip metrics are required</param>
+		/// <param name="from">Start of date range for query</param>
+		/// <param name="to">End of date range for query</param>
+		/// <returns>The task object representing the asynchronous operation</returns>
+		Task<List<TripRibasMetrics>> GetRibasMetricsForDriversAsync(List<long> driverIds, DateTime from, DateTime to);
 	}
 }
