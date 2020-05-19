@@ -368,6 +368,30 @@ namespace MiX.Integrate.API.Client
 			return new CreatedSinceResult<Trip>() { HasMoreItems = hasMoreItems, GetSinceToken = getSinceToken, Items = response.Data };
 		}
 
+		public List<TripRibasMetrics> GetRibasMetricsForDrivers(List<long> driverIds, DateTime @from, DateTime to)
+		{
+			if ((driverIds?.Count ?? 0) == 0 ) throw new ArgumentException("No driver ids specified",nameof(driverIds));
+			if (from.CompareTo(to) > 0) throw new ArgumentException("Invalid date range specified");
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.TripsController.GETTRIPRIBASMETRICSBYDATERANGEFORDRIVERS, HttpMethod.Post);
+			request.AddUrlSegment("from", from.ToString(DataFormats.DateTime_Format));
+			request.AddUrlSegment("to", to.ToString(DataFormats.DateTime_Format));
+			request.AddJsonBody(driverIds);
+			IHttpRestResponse<List<TripRibasMetrics>> response =  Execute<List<TripRibasMetrics>>(request);
+			return response.Data;
+		}
+
+		public async Task<List<TripRibasMetrics>> GetRibasMetricsForDriversAsync(List<long> driverIds, DateTime @from, DateTime to)
+		{
+			if ((driverIds?.Count ?? 0) == 0 ) throw new ArgumentException("No driver ids specified",nameof(driverIds));
+			if (from.CompareTo(to) > 0) throw new ArgumentException("Invalid date range specified");
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.TripsController.GETTRIPRIBASMETRICSBYDATERANGEFORDRIVERS, HttpMethod.Post);
+			request.AddUrlSegment("from", from.ToString(DataFormats.DateTime_Format));
+			request.AddUrlSegment("to", to.ToString(DataFormats.DateTime_Format));
+			request.AddJsonBody(driverIds);
+			IHttpRestResponse<List<TripRibasMetrics>> response = await ExecuteAsync<List<TripRibasMetrics>>(request).ConfigureAwait(false);
+			return response.Data;
+		}
+
 		#endregion
 
 		#region DriverScores
