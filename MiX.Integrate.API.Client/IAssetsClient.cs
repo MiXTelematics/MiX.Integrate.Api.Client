@@ -21,7 +21,15 @@ namespace MiX.Integrate.API.Client
 		Task<bool> AddAssetStateAsync(long groupId, AssetState assetState);
 		long Add(Asset asset);
 		Task<long> AddAsync(Asset asset);
+
+		/// <summary>Gets <see cref="Trailer"/> assets for the specified organisation as an asynchronous operation</summary>
+		/// <param name="organisationId">Identifies the organisation to be queried</param>
+		/// <returns>A list of <see cref="Trailer"/> objects for the specified organisation</returns>
 		List<Trailer> GetTrailers(long organisationId);
+
+		/// <summary>Gets <see cref="Trailer"/> assets for the specified organisation as an asynchronous operation</summary>
+		/// <param name="organisationId">Identifies the organisation to be queried</param>
+		/// <returns>The task object representing the asynchronous operation</returns>
 		Task<List<Trailer>> GetTrailersAsync(long organisationId);
 	}
 }
