@@ -176,6 +176,8 @@ namespace MiX.Integrate.Shared.Constants
 
 			public const string UPDATETRIPCLASSIFICATION = "api/trips/{tripId}/classification";
 			public const string UPDATETRIPCLASSIFICATIONCOMMENT = "api/trips/{tripId}/classification/comment";
+
+			public const string GETTRIPRIBASMETRICSBYDATERANGEFORDRIVERS = "api/trips/drivers/from/{from}/to/{to}/ribasmetrics";
 		}
 
 		//MiX.Integrate.Api.Controllers.JourneysController
