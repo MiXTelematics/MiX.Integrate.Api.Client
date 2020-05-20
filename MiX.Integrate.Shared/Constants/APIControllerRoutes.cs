@@ -1,4 +1,5 @@
 ﻿
+// ReSharper disable InconsistentNaming
 namespace MiX.Integrate.Shared.Constants
 {
 	public class APIControllerRoutes
@@ -74,6 +75,7 @@ namespace MiX.Integrate.Shared.Constants
 			public const string ADDASSETSTATE = "api/assets/group/{groupId}/state";
 			public const string ADD = "api/assets";
 			public const string GETASSETDIAG = "api/assets/diagnostics/group/{groupId}";
+			public const string GETTRAILERSFORORGANISATION = "api/assets/organisation/{organisationId}/trailers";
 		}
 
 		//MiX.Integrate.Api.Controllers.UserController
