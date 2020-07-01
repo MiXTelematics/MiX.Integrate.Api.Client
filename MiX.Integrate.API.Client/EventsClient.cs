@@ -412,5 +412,30 @@ namespace MiX.Integrate.API.Client
 			IHttpRestResponse<List<EventClipResponse>> response = await ExecuteAsync<List<EventClipResponse>>(request).ConfigureAwait(false);
 			return response.Data;
 		}
+
+		
+		#region DEMT amendments
+
+		public List<EventAmendment> GetEventAmendmentsForOrganisation(long organisationId, string from, string to)
+		{
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.EventsController.GETDEMTEVENTAMENDMENTS, HttpMethod.Get);
+			request.AddUrlSegment("organisationId", organisationId.ToString());
+			request.AddUrlSegment("from", from);
+			request.AddUrlSegment("to", to);
+			IHttpRestResponse<List<EventAmendment>> response = Execute<List<EventAmendment>>(request);
+			return response.Data;
+		}
+
+		public async Task<List<EventAmendment>> GetEventAmendmentsForOrganisationAsync(long organisationId, string from, string to)
+		{
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.EventsController.GETDEMTEVENTAMENDMENTS, HttpMethod.Get);
+			request.AddUrlSegment("organisationId", organisationId.ToString());
+			request.AddUrlSegment("from", from);
+			request.AddUrlSegment("to", to);
+			IHttpRestResponse<List<EventAmendment>> response = await ExecuteAsync<List<EventAmendment>>(request).ConfigureAwait(false);
+			return response.Data;
+		}
+
+		#endregion
 	}
 }
