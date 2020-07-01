@@ -368,6 +368,10 @@ namespace MiX.Integrate.API.Client
 			return new CreatedSinceResult<Trip>() { HasMoreItems = hasMoreItems, GetSinceToken = getSinceToken, Items = response.Data };
 		}
 
+		#endregion
+
+		#region RIBAS Metrics
+
 		public List<TripRibasMetrics> GetRibasMetricsForDrivers(List<long> driverIds, DateTime @from, DateTime to)
 		{
 			if ((driverIds?.Count ?? 0) == 0 ) throw new ArgumentException("No driver ids specified",nameof(driverIds));
@@ -413,6 +417,30 @@ namespace MiX.Integrate.API.Client
 			request.AddUrlSegment("to", to.ToString(DataFormats.DateTime_Format));
 			request.AddJsonBody(driverIds);
 			IHttpRestResponse<List<DriverScore>> response = await ExecuteAsync<List<DriverScore>>(request).ConfigureAwait(false);
+			return response.Data;
+		}
+
+		#endregion
+
+		#region DEMT amendments
+
+		public List<TripAmendment> GetTripAmendmentsForOrganisation(long organisationId, string from, string to)
+		{
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.TripsController.GETDEMTTRIPAMENDMENTS, HttpMethod.Get);
+			request.AddUrlSegment("organisationId", organisationId.ToString());
+			request.AddUrlSegment("from", from);
+			request.AddUrlSegment("to", to);
+			IHttpRestResponse<List<TripAmendment>> response = Execute<List<TripAmendment>>(request);
+			return response.Data;
+		}
+
+		public async Task<List<TripAmendment>> GetTripAmendmentsForOrganisationAsync(long organisationId, string from, string to)
+		{
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.TripsController.GETDEMTTRIPAMENDMENTS, HttpMethod.Get);
+			request.AddUrlSegment("organisationId", organisationId.ToString());
+			request.AddUrlSegment("from", from);
+			request.AddUrlSegment("to", to);
+			IHttpRestResponse<List<TripAmendment>> response = await ExecuteAsync<List<TripAmendment>>(request).ConfigureAwait(false);
 			return response.Data;
 		}
 

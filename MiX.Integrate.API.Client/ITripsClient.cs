@@ -61,5 +61,20 @@ namespace MiX.Integrate.API.Client
 		/// <param name="to">End of date range for query</param>
 		/// <returns>The task object representing the asynchronous operation</returns>
 		Task<List<TripRibasMetrics>> GetRibasMetricsForDriversAsync(List<long> driverIds, DateTime from, DateTime to);
+
+		/// <summary>Gets occurrences of DEMT amendments made to trips for an organisation</summary>
+		/// <param name="organisationId">Identifier of the organisation</param>
+		/// <param name="from">Start of query date range as YYYYMMDD</param>
+		/// <param name="to">End of query date range as YYYYMMDD</param>
+		/// <returns>DEMT amendments made to trips during the date range specified</returns>
+		List<TripAmendment> GetTripAmendmentsForOrganisation(long organisationId, string from, string to);
+
+		/// <summary>Gets occurrences of DEMT amendments made to trips for an organisation as an asynchronous operation</summary>
+		/// <param name="organisationId">Identifier of the organisation</param>
+		/// <param name="from">Start of query date range as YYYYMMDD</param>
+		/// <param name="to">End of query date range as YYYYMMDD</param>
+		/// <returns>A <see cref="Task"/> representing the asynchronous operation</returns>
+		Task<List<TripAmendment>> GetTripAmendmentsForOrganisationAsync(long organisationId, string from, string to);
+
 	}
 }
