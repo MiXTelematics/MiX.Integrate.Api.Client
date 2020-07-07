@@ -34,6 +34,22 @@ namespace MiX.Integrate.API.Client
 			return response.Data;
 		}
 
+		public Report_FlexibleRAG GetFlexibleRAGScorecard(ReportQuery reportQuery)
+		{
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.ScoringController.GETFLEXIBLEDRIVERSORECARD, HttpMethod.Post);
+			request.AddJsonBody(reportQuery);
+			IHttpRestResponse<Report_FlexibleDriver> response = Execute<Report_FlexibleDriver>(request);
+			return response.Data;
+		}
+
+		public async Task<Report_FlexibleRAG> GetFlexibleRAGScorecardAsync(ReportQuery reportQuery)
+		{
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.ScoringController.GETFLEXIBLEDRIVERSORECARD, HttpMethod.Post);
+			request.AddJsonBody(reportQuery);
+			IHttpRestResponse<Report_FlexibleDriver> response = await ExecuteAsync<Report_FlexibleDriver>(request).ConfigureAwait(false);
+			return response.Data;
+		}
+
 		#endregion
 
 	}
