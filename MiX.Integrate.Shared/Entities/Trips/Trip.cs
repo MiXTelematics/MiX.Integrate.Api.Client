@@ -1,14 +1,13 @@
 ﻿using System;
-using System.Linq;
 using System.Collections.Generic;
 using MiX.Integrate.Shared.Entities.Positions;
 
 namespace MiX.Integrate.Shared.Entities.Trips
 {
-	/// <summary>
-	/// Definition of a Trip
-	/// </summary>
-	public class Trip
+  /// <summary>
+  /// Definition of a Trip
+  /// </summary>
+  public class Trip
 	{
 		/// <summary>
 		/// Initializes a new instance of the Trip c;ass.

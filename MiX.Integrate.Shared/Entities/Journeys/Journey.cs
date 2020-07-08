@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace MiX.Integrate.Shared.Entities.Journeys
+﻿namespace MiX.Integrate.Shared.Entities.Journeys
 {
 	public class Journey
 	{
