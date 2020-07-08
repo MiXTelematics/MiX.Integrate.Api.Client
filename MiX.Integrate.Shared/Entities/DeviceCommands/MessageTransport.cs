@@ -1,6 +1,4 @@
-﻿using System.ComponentModel;
-
-namespace MiX.Integrate.Shared.Entities.DeviceCommands
+﻿namespace MiX.Integrate.Shared.Entities.DeviceCommands
 {
 	public enum MessageTransport : byte
 	{

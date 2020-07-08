@@ -1,9 +1,12 @@
-﻿using System;
+﻿#if DEBUG
 using System.Diagnostics;
+#endif
 
 namespace MiX.Integrate.Shared.Entities.Drivers
 { 
-	[DebuggerDisplay("{LicenceCategoryId}:{LicenceCode}")]
+#if DEBUG
+  [DebuggerDisplay("{LicenceCategoryId}:{LicenceCode}")]
+#endif
 	public class LicenceCategory
 	{
 		public LicenceCategory()

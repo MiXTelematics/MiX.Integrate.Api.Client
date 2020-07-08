@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace MiX.Integrate.Shared.Entities.Assets
 {
@@ -79,7 +75,7 @@ namespace MiX.Integrate.Shared.Entities.Assets
 
 		public static List<string> GetAssetIconColours()
 		{
-			return AssetIconColours.Keys.ToList();
+			return new List<string>(AssetIconColours.Keys);
 		}
 	}
 }

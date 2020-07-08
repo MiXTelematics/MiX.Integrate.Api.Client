@@ -1,4 +1,4 @@
-﻿using System; 
+﻿using System;
 using MiX.Integrate.Shared.Entities.Communications;
 
 namespace MiX.Integrate.Shared.Entities.Messages

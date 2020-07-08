@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using MiX.Integrate.Shared.Entities.CustomGroups;
 
 namespace MiX.Integrate.Shared.Entities.CustomGroups
 {

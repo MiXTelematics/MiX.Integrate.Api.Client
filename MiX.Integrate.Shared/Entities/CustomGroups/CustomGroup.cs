@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace MiX.Integrate.Shared.Entities.CustomGroups
+﻿namespace MiX.Integrate.Shared.Entities.CustomGroups
 {
 	/// <summary>
 	/// Definition of a custom group

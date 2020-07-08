@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace MiX.Integrate.Shared.Entities.CustomGroups
+﻿namespace MiX.Integrate.Shared.Entities.CustomGroups
 {
 	/// <summary>Member of a custom group</summary> 
 	public class CustomGroupMember
