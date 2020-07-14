@@ -74,10 +74,11 @@ namespace MiX.Integrate.Shared.Entities.Scoring
 
 	public sealed class ScoreSetting_FlexibleStandard
 	{
+		public string Description { get; set; }
 		public List<long> EventTypeIds { get; set; }
 		public decimal Weight { get; set; }
-		public decimal? ScoreTriggerValue { get; set; }
-		public decimal? ThreshHoldValue { get; set; }
+		public decimal DurationPerc { get; set; }
+		public decimal SeverityPerc { get; set; }
 		public decimal AmberBandStart { get; set; }
 		public decimal AmberBandEnd { get; set; }
 	}
