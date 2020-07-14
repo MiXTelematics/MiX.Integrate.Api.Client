@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MiX.Integrate.Shared.Entities.Reminders
 {
-	public class AssetServiceReminder
+  public class AssetServiceReminder
 	{
 		public long AssetId { get; set; }
 

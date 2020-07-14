@@ -1,4 +1,4 @@
-﻿using System; 
+﻿using System;
 
 namespace MiX.Integrate.Shared.Entities.Assets
 {

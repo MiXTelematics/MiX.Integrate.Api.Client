@@ -1,6 +1,4 @@
-﻿using System.ComponentModel;
-
-namespace MiX.Integrate.Shared.Entities.Locations
+﻿namespace MiX.Integrate.Shared.Entities.Locations
 {
 	/// <summary>
 	/// Indicates the type of a location.

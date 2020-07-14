@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using MiX.Integrate.Shared.Entities.Communications;
 
 namespace MiX.Integrate.Shared.Entities.Messages

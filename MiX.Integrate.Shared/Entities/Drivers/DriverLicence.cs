@@ -1,10 +1,13 @@
 ﻿using System;
+#if DEBUG	
 using System.Diagnostics;
-
+#endif
 
 namespace MiX.Integrate.Shared.Entities.Drivers
 { 
+#if DEBUG	
 	[DebuggerDisplay("{DriverId}:{LicenceNumber}")]
+#endif
 	public class DriverLicence
 	{
 		public DriverLicence()

@@ -1,11 +1,9 @@
-﻿using System;
-using System.Linq;
-
-using MiX.Integrate.Shared.Entities.Measurement;
+﻿using MiX.Integrate.Shared.Entities.Measurement;
+using System;
 
 namespace MiX.Integrate.Shared.Entities.Assets
 {
-	public class Asset
+  public class Asset
 	{
 		public Asset()
 		{
@@ -59,6 +57,7 @@ namespace MiX.Integrate.Shared.Entities.Assets
 		}
 		public string Colour { get; set; }
 		private string _assetImage;
+
 		public string AssetImage
 		{
 			get
@@ -66,18 +65,21 @@ namespace MiX.Integrate.Shared.Entities.Assets
 				if (_assetImage != null)
 					return _assetImage;
 				var assetType = AssetType.GetById(AssetTypeId);
-				if (assetType != null)
-					return assetType.DefaultImage;
-				return null;
+				return assetType?.DefaultImage;
 			}
 			set { _assetImage = value; }
 		}
+
 		public bool IsDefaultImage
 		{
 			get
 			{
-				var assetImage = AssetImage;
-				return assetImage == null || AssetType.All.Any(a => a.DefaultImage == assetImage);
+				if (AssetImage == null) return true;
+				foreach (var assetType in AssetType.All)
+					if (assetType.DefaultImage.Equals(AssetImage))
+						return true;
+
+				return false;
 			}
 		}
 		public string AssetImageUrl { get; set; }

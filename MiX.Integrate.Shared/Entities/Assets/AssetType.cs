@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MiX.Integrate.Shared.Entities.Assets
 {
@@ -48,17 +45,33 @@ namespace MiX.Integrate.Shared.Entities.Assets
 
 		public static AssetType GetById(int id)
 		{
-			return _all.SingleOrDefault(a => a.AssetTypeId == id);
+			for (var i = 0; i < _all.Count; i++)
+				if (_all[i].AssetTypeId == id) return _all[i];
+					
+			return default(AssetType);
 		}
 
 		public static AssetType GetByName(string name)
 		{
-			return _all.SingleOrDefault(a => a.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
+			for (var i = 0; i < _all.Count; i++)
+				if (_all[i].Name.Equals(name, StringComparison.OrdinalIgnoreCase)) return _all[i];
+					
+			return default(AssetType);
 		}
 
 		public static implicit operator AssetType(int id)
 		{
-			return _all.Single(a => a.AssetTypeId == id);
+
+			for (var i = 0; i < _all.Count; i++)
+				if (_all[i].AssetTypeId == id)
+				{
+					var result = _all[i];
+					while (i < _all.Count)
+						if (_all[i++].AssetTypeId == id)
+							throw new InvalidOperationException("More than one match found");
+					return result;
+				}
+			throw new InvalidOperationException("No match found");
 		}
 
 		public static implicit operator int(AssetType assetType)

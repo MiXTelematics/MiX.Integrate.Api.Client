@@ -7,11 +7,10 @@
     <authors>MiX Telematics</authors>
     <owners>MiX Telematics</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>The MiX.Integrate.Api.Client assembly implements a client library for accessing the MiX Integrate Api</description>
+    <description>The MiX.Integrate.Api.Client assembly implements a client library for accessing the MiX Integrate API</description>
     <releaseNotes />
-    <copyright>Copyright 2017</copyright>
-    <licenseUrl>https://raw.githubusercontent.com/MiXTelematics/MiX.Integrate.Api.Client/master/License.txt</licenseUrl>
-    <tags>MiX Integrate Api Client</tags>
+    <copyright>Copyright 2020</copyright>
+    <tags>MiX Integrate API Client</tags>
     <dependencies>
       <group targetFramework=".NETStandard2.0">
         <dependency id="NETStandard.Library" version="2.0.0" />
