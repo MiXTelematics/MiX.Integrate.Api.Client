@@ -340,6 +340,8 @@ namespace MiX.Integrate.Shared.Constants
 		public class ScoringController
 		{
 			public const string GETFLEXIBLEDRIVERSORECARD = "api/scoring/scorecard_flexibledriver";
+			public const string GETFLEXIBLERAGSCORINGREPORT = "api/scoring/scorecard_flexiblerag";
+			public const string GETFLEXIBLESTANDARDSCORINGREPORT = "api/scoring/scorecard_flexiblestandard";
 		}
 
 	}
