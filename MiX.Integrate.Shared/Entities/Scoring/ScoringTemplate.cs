@@ -30,17 +30,7 @@ namespace MiX.Integrate.Shared.Entities.Scoring
 		public string RankType { get; set; }
 	}
 
-	public class ScoreSetting_FlexibleDriver
-	{
-		public string Description { get; set; }
-		public List<long> EventTypeIds { get; set; }
-		public decimal PenaltyPoints { get; set; }
-		public int CumulativeViolationTime { get; set; }
-		public decimal AmberBandStart { get; set; }
-		public decimal AmberBandEnd { get; set; }
-	}
-
-	public class ModelSettings_FlexibleRAG : IModelSettings
+	public sealed class ModelSettings_FlexibleRAG : IModelSettings
 	{
 		public string TripScoreMetric { get; set; }
 		public decimal DistanceMultiple { get; set; }
@@ -52,6 +42,26 @@ namespace MiX.Integrate.Shared.Entities.Scoring
 		public string RankType { get; set; }
 	}
 
+	public sealed class ModelSettings_FlexibleStandard : IModelSettings
+	{
+		public decimal TotalScoreAmberBandStart { get; set; }
+		public decimal TotalScoreAmberBandEnd { get; set; }
+		public List<ScoreSetting_FlexibleStandard> ScoreSettings { get; set; }
+		public decimal MinDistance { get; set; }
+		public string RankOrder { get; set; }
+		public string RankType { get; set; }
+	}
+
+	public sealed class ScoreSetting_FlexibleDriver
+	{
+		public string Description { get; set; }
+		public List<long> EventTypeIds { get; set; }
+		public decimal PenaltyPoints { get; set; }
+		public int CumulativeViolationTime { get; set; }
+		public decimal AmberBandStart { get; set; }
+		public decimal AmberBandEnd { get; set; }
+	}
+
 	public sealed class ScoreSetting_FlexibleRAG
 	{
 		public string EventDescription { get; set; }
@@ -60,6 +70,16 @@ namespace MiX.Integrate.Shared.Entities.Scoring
 		public decimal AmberBandStart { get; set; }
 		public decimal AmberBandEnd { get; set; }
 		public int EventDurationSize { get; set; }
+	}
+
+	public sealed class ScoreSetting_FlexibleStandard
+	{
+		public List<long> EventTypeIds { get; set; }
+		public decimal Weight { get; set; }
+		public decimal? ScoreTriggerValue { get; set; }
+		public decimal? ThreshHoldValue { get; set; }
+		public decimal AmberBandStart { get; set; }
+		public decimal AmberBandEnd { get; set; }
 	}
 
 }
