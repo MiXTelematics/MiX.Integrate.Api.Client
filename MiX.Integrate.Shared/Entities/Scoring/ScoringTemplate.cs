@@ -3,53 +3,53 @@ using System.Collections.Generic;
 
 namespace MiX.Integrate.Shared.Entities.Scoring
 {
-	public class ScoringTemplate
+	public class ScoringTemplate<T> where T:ModelSettings
 	{
 		public long TemplateId { get; set; }
 		public long OrganisationId { get; set; }
 		public string TemplateType { get; set; }
 		public string ModelType { get; set; }
-		public IModelSettings ModelSettings { get; set; }
+		public T ModelSettings { get; set; }
 		public DateTime DateValidFrom { get; set; }
 	}
 
-	public interface IModelSettings
+	public class ModelSettings
 	{
-		decimal MinDistance { get; set; }
-		string RankOrder { get; }
-		string RankType { get; }
+		public decimal MinDistance { get; set; }
+		public string RankOrder { get; set; }
+		public string RankType { get; set;  }
 	}
 
-	public sealed class ModelSettings_FlexibleDriver : IModelSettings
+	public sealed class ModelSettings_FlexibleDriver : ModelSettings
 	{
 		public List<ScoreSetting_FlexibleDriver> PenaltySettings { get; set; }
 		public decimal TotalScoreAmberBandStart { get; set; }
 		public decimal TotalScoreAmberBandEnd { get; set; }
-		public decimal MinDistance { get; set; }
-		public string RankOrder { get; set; }
-		public string RankType { get; set; }
+		//public decimal MinDistance { get; set; }
+		//public string RankOrder { get; set; }
+		//public string RankType { get; set; }
 	}
 
-	public sealed class ModelSettings_FlexibleRAG : IModelSettings
+	public sealed class ModelSettings_FlexibleRAG : ModelSettings
 	{
 		public string TripScoreMetric { get; set; }
 		public decimal DistanceMultiple { get; set; }
 		public List<ScoreSetting_FlexibleRAG> EventSettings { get; set; }
 		public decimal TotalScoreAmberBandStart { get; set; }
 		public decimal TotalScoreAmberBandEnd { get; set; }
-		public decimal MinDistance { get; set; }
-		public string RankOrder { get; set; }
-		public string RankType { get; set; }
+		//public decimal MinDistance { get; set; }
+		//public string RankOrder { get; set; }
+		//public string RankType { get; set; }
 	}
 
-	public sealed class ModelSettings_FlexibleStandard : IModelSettings
+	public sealed class ModelSettings_FlexibleStandard : ModelSettings
 	{
 		public decimal TotalScoreAmberBandStart { get; set; }
 		public decimal TotalScoreAmberBandEnd { get; set; }
 		public List<ScoreSetting_FlexibleStandard> ScoreSettings { get; set; }
-		public decimal MinDistance { get; set; }
-		public string RankOrder { get; set; }
-		public string RankType { get; set; }
+		//public decimal MinDistance { get; set; }
+		//public string RankOrder { get; set; }
+		//public string RankType { get; set; }
 	}
 
 	public sealed class ScoreSetting_FlexibleDriver
