@@ -62,14 +62,14 @@ namespace MiX.Integrate.API.Client
 		IList<EventClipResponse> GetMediaUrls(long organisationId, List<EventClip> eventClips);
 		Task<IList<EventClipResponse>> GetMediaUrlsAsync(long organisationId, List<EventClip> eventClips);
 
-		/// <summary>Gets occurrences of DEMT amendments made to events for an organisation</summary>
+		/// <summary>Gets occurrences of DEMT amendments made to events for an organisation in a specified period not exceeding 7 days</summary>
 		/// <param name="organisationId">Identifier of the organisation</param>
 		/// <param name="from">Start of query date range as YYYYMMDD</param>
 		/// <param name="to">End of query date range as YYYYMMDD</param>
 		/// <returns>DEMT amendments made to events during the date range specified</returns>
 		List<EventAmendment> GetEventAmendmentsForOrganisation(long organisationId, string from, string to);
 
-		/// <summary>Gets occurrences of DEMT amendments made to events for an organisation as an asynchronous operation</summary>
+		/// <summary>Gets occurrences of DEMT amendments made to events for an organisation in a specified period not exceeding 7 days, as an asynchronous operation</summary>
 		/// <param name="organisationId">Identifier of the organisation</param>
 		/// <param name="from">Start of query date range as YYYYMMDD</param>
 		/// <param name="to">End of query date range as YYYYMMDD</param>

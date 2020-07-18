@@ -4,6 +4,7 @@ using MiX.Integrate.Shared.Entities.Carriers;
 using MiX.Integrate.Shared.Entities.Events;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Net.Http;
 using System.Threading.Tasks;
 
@@ -418,6 +419,15 @@ namespace MiX.Integrate.API.Client
 
 		public List<EventAmendment> GetEventAmendmentsForOrganisation(long organisationId, string from, string to)
 		{
+			if (!DateTime.TryParseExact(from, "yyyyMMdd", CultureInfo.InvariantCulture, DateTimeStyles.None, out var dateFrom))
+				throw new ArgumentException("The date range start value must be a valid date in the form YYYYMMDD", nameof(from));
+			if (!DateTime.TryParseExact(to, "yyyMMdd", CultureInfo.InvariantCulture, DateTimeStyles.None, out var dateTo))
+				throw new ArgumentException("The date range end value must be a valid date in the form YYYYMMDD", nameof(to));
+			if (dateTo.CompareTo(dateFrom) > 0)
+				throw new ArgumentException("The date range end may not precede the start", nameof(to));
+			if (dateTo.CompareTo(dateFrom.AddDays(6)) > 0)
+				throw new ArgumentException("The date range may not exceed 7 days", nameof(to));
+			
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.EventsController.GETDEMTEVENTAMENDMENTS, HttpMethod.Get);
 			request.AddUrlSegment("organisationId", organisationId.ToString());
 			request.AddUrlSegment("from", from);
@@ -428,6 +438,15 @@ namespace MiX.Integrate.API.Client
 
 		public async Task<List<EventAmendment>> GetEventAmendmentsForOrganisationAsync(long organisationId, string from, string to)
 		{
+			if (!DateTime.TryParseExact(from, "yyyyMMdd", CultureInfo.InvariantCulture, DateTimeStyles.None, out var dateFrom))
+				throw new ArgumentException("The date range start value must be a valid date in the form YYYYMMDD", nameof(from));
+			if (!DateTime.TryParseExact(to, "yyyMMdd", CultureInfo.InvariantCulture, DateTimeStyles.None, out var dateTo))
+				throw new ArgumentException("The date range end value must be a valid date in the form YYYYMMDD", nameof(to));
+			if (dateTo.CompareTo(dateFrom) > 0)
+				throw new ArgumentException("The date range end may not precede the start", nameof(to));
+			if (dateTo.CompareTo(dateFrom.AddDays(6)) > 0)
+				throw new ArgumentException("The date range may not exceed 7 days", nameof(to));
+			
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.EventsController.GETDEMTEVENTAMENDMENTS, HttpMethod.Get);
 			request.AddUrlSegment("organisationId", organisationId.ToString());
 			request.AddUrlSegment("from", from);
