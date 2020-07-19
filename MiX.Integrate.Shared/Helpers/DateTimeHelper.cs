@@ -78,5 +78,29 @@ namespace MiX.Integrate.Shared.Helpers
 			return dt.ToString(DataFormats.DateTime_Format);
 		}
 
+		/// <summary>
+		/// Attempts to parse a date string into a UTC DateTime object
+		/// </summary>
+		/// <param name="dateString">The date string which is expected to be in the format yyyyMMdd</param>
+		/// <param name="dateTime">The resultant DateTime object</param>
+		public static bool TryParseUtcDateString(this string dateString, out DateTime dateTime)
+		{
+			dateTime = DateTime.MinValue;
+			try
+			{
+				if (dateString.Length != 8) return false;
+
+				if (!int.TryParse(dateString.Substring(0, 4), out int year)) return false;
+				if (!int.TryParse(dateString.Substring(4, 2), out int month)) return false;
+				if (!int.TryParse(dateString.Substring(6, 2), out int day)) return false;
+
+				dateTime = new DateTime(year, month, day, 0, 0, 0, DateTimeKind.Utc);
+				return dateTime != DateTime.MinValue && dateTime != DateTime.MaxValue;
+			}
+			catch
+			{
+				return false;
+			}
+		}
 	}
 }

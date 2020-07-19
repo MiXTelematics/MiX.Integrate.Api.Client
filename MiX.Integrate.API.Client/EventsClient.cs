@@ -2,15 +2,15 @@
 using MiX.Integrate.Shared.Constants;
 using MiX.Integrate.Shared.Entities.Carriers;
 using MiX.Integrate.Shared.Entities.Events;
+using MiX.Integrate.Shared.Helpers;
 using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace MiX.Integrate.API.Client
 {
-	public class EventsClient : BaseClient, IEventsClient
+  public class EventsClient : BaseClient, IEventsClient
 	{
 
 		public EventsClient(string url, bool setTestRequestHeader = false) : base(url, setTestRequestHeader) { }
@@ -419,9 +419,9 @@ namespace MiX.Integrate.API.Client
 
 		public List<EventAmendment> GetEventAmendmentsForOrganisation(long organisationId, string from, string to)
 		{
-			if (!DateTime.TryParseExact(from, "yyyyMMdd", CultureInfo.InvariantCulture, DateTimeStyles.None, out var dateFrom))
+			if (!from.TryParseUtcDateString(out var dateFrom))
 				throw new ArgumentException("The date range start value must be a valid date in the form YYYYMMDD", nameof(from));
-			if (!DateTime.TryParseExact(to, "yyyMMdd", CultureInfo.InvariantCulture, DateTimeStyles.None, out var dateTo))
+			if (!to.TryParseUtcDateString(out var dateTo))
 				throw new ArgumentException("The date range end value must be a valid date in the form YYYYMMDD", nameof(to));
 			if (dateTo.CompareTo(dateFrom) > 0)
 				throw new ArgumentException("The date range end may not precede the start", nameof(to));
@@ -438,9 +438,9 @@ namespace MiX.Integrate.API.Client
 
 		public async Task<List<EventAmendment>> GetEventAmendmentsForOrganisationAsync(long organisationId, string from, string to)
 		{
-			if (!DateTime.TryParseExact(from, "yyyyMMdd", CultureInfo.InvariantCulture, DateTimeStyles.None, out var dateFrom))
+			if (!from.TryParseUtcDateString(out var dateFrom))
 				throw new ArgumentException("The date range start value must be a valid date in the form YYYYMMDD", nameof(from));
-			if (!DateTime.TryParseExact(to, "yyyMMdd", CultureInfo.InvariantCulture, DateTimeStyles.None, out var dateTo))
+			if (!to.TryParseUtcDateString(out var dateTo))
 				throw new ArgumentException("The date range end value must be a valid date in the form YYYYMMDD", nameof(to));
 			if (dateTo.CompareTo(dateFrom) > 0)
 				throw new ArgumentException("The date range end may not precede the start", nameof(to));
