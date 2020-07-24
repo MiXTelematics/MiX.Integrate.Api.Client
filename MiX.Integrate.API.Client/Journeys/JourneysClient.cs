@@ -162,6 +162,16 @@ namespace MiX.Integrate.API.Client.Journeys
 			return response.Data;
 		}
 
+		public async Task<List<JourneyIdStatus>> GetJourneyIdStatusListAsync(long groupId, DateTime startDate, DateTime endDate)
+		{
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.JourneysController.GETJOURNEYIDSTATUSLIST, HttpMethod.Get);
+			request.AddUrlSegment("groupId", groupId.ToString());
+			request.AddUrlSegment("startDate", startDate.ToString(DataFormats.DateTime_Format));
+			request.AddUrlSegment("endDate", endDate.ToString(DataFormats.DateTime_Format));
+			IHttpRestResponse<List<JourneyIdStatus>> response = await ExecuteAsync<List<JourneyIdStatus>>(request).ConfigureAwait(false);
+			return response.Data;
+		}
+
 		/// <summary>
 		/// Gets the route list.
 		/// </summary>
