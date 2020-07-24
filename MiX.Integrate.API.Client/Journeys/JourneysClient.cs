@@ -146,7 +146,7 @@ namespace MiX.Integrate.API.Client.Journeys
 		}
 
 		/// <summary>
-		/// 
+		/// Returns the List of JourneyId's that are currently in an active state with a departure date between the supplied dates
 		/// </summary>
 		/// <param name="groupId"></param>
 		/// <param name="startDate"></param>
@@ -162,6 +162,14 @@ namespace MiX.Integrate.API.Client.Journeys
 			return response.Data;
 		}
 
+		/// <summary>
+		/// Returns the List of JourneyId's that are currently in an active state with a departure date between the supplied dates
+		/// with the current status and the date the the journey details was last updated
+		/// </summary>
+		/// <param name="groupId"></param>
+		/// <param name="startDate"></param>
+		/// <param name="endDate"></param>
+		/// <returns></returns>
 		public async Task<List<JourneyIdStatus>> GetJourneyIdStatusListAsync(long groupId, DateTime startDate, DateTime endDate)
 		{
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.JourneysController.GETJOURNEYIDSTATUSLIST, HttpMethod.Get);
