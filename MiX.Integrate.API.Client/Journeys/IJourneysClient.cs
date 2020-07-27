@@ -13,7 +13,7 @@ namespace MiX.Integrate.API.Client.Journeys
 
 		List<long> GetJourneyIdList(long groupId, DateTime startDate, DateTime endDate);
 		Task<List<long>> GetJourneyIdListAsync(long groupId, DateTime startDate, DateTime endDate);
-
+		Task<List<JourneyIdStatus>> GetJourneyIdStatusListAsync(long groupId, DateTime startDate, DateTime endDate);
 
 		long AddJourney(CreateJourney newjourney);
 		Task<long> AddJourneyAsync(CreateJourney newjourney);
