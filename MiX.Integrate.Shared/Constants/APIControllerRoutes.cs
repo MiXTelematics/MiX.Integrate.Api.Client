@@ -330,12 +330,6 @@ namespace MiX.Integrate.Shared.Constants
 			public const string GETDRIVERVIOLATIONSBYLISTOFDRIVERIDSINDATERANGE = "api/ghos/violations/drivers/from/{from}/to/{to}";
 		}
 
-		//MiX.Integrate.Api.Controllers.GlobalisationController
-		public class GlobalisationController
-		{
-			public const string GETTIMEZONEINFOBYID = "api/globalisation/timezoneinfo";
-		}
-
 
 		//MiX.Integrate.Api.Controllers.ScoringController
 		public class ScoringController
