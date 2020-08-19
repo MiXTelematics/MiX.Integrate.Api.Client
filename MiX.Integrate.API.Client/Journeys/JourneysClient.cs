@@ -44,6 +44,17 @@ namespace MiX.Integrate.API.Client.Journeys
 			return response.Data;
 		}
 
+
+		public long BulkJourneyAdd(CreateJourney newJourney)
+		{
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.JourneysController.BULKJOURNEYADD, HttpMethod.Put);
+			request.AddJsonBody(newJourney);
+			IHttpRestResponse<long> response = Execute<long>(request, 1);
+			return response.Data;
+		}
+
+
+
 		/// <summary>
 		/// Adds the journey.
 		/// </summary>
