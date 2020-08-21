@@ -189,7 +189,7 @@ namespace MiX.Integrate.Shared.Constants
 		public class JourneysController
 		{
 			public const string ADDJOURNEY = "api/journeys/";
-			public const string BULKJOURNEYADD = "api/Journeys/bulk";
+			public const string BULKJOURNEYADD = "api/journeys/bulk";
 			public const string GETJOURNEY = "api/journeys/{journeyId}";
 			public const string GETJOURNEYIDLIST = "api/journeys/getJourneyIdList/{groupId}/startDate/{startDate}/endDate/{endDate}";
 			public const string GETJOURNEYIDSTATUSLIST = "api/journeys/getJourneyIdStatusList/{groupId}/startDate/{startDate}/endDate/{endDate}";
