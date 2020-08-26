@@ -53,7 +53,14 @@ namespace MiX.Integrate.API.Client.Journeys
 			return response.Data;
 		}
 
-
+		public BulkAddResult GetBulkAddResult(long GroupId, long CorrelationId)
+		{
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.JourneysController.BULKJOURNEYADDRESULT, HttpMethod.Get);
+			request.AddUrlSegment("groupId", GroupId.ToString());
+			request.AddUrlSegment("correlationId", CorrelationId.ToString());
+			IHttpRestResponse<BulkAddResult> response = Execute<BulkAddResult>(request, 1);
+			return response.Data;
+		}
 
 		/// <summary>
 		/// Adds the journey.
