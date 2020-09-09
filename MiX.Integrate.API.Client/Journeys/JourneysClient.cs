@@ -486,6 +486,14 @@ namespace MiX.Integrate.API.Client.Journeys
 			return response.Data;
 		}
 
+		public async Task<List<AutomatedMonitoring>> GetBulkJourneyProgressAsync(List<long> bulkJourneyProgress)
+		{
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.JourneysController.GETBULKJOURNEYPROGRESSASYNC, HttpMethod.Post);
+			request.AddJsonBody(bulkJourneyProgress);
+			IHttpRestResponse<List<AutomatedMonitoring>> response = await ExecuteAsync<List<AutomatedMonitoring>>(request).ConfigureAwait(false);
+			return response.Data;
+		}
+
 		#endregion
 	}
 }
