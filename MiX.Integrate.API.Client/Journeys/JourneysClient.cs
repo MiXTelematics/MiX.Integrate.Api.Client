@@ -494,6 +494,14 @@ namespace MiX.Integrate.API.Client.Journeys
 			return response.Data;
 		}
 
+		public async Task<List<BulkSubmitJourney>> SubmitBulkJourneysAsync(List<long> journeyIds)
+		{
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.JourneysController.SUBMITBULKJOURNEY, HttpMethod.Post);
+			request.AddJsonBody(journeyIds);
+			IHttpRestResponse<List<BulkSubmitJourney>> response = await ExecuteAsync<List<BulkSubmitJourney>>(request).ConfigureAwait(false);
+			return response.Data;
+		}
+
 		#endregion
 	}
 }
