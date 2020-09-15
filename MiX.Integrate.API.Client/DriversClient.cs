@@ -98,18 +98,18 @@ namespace MiX.Integrate.API.Client
 			return driverId;
 		}
 
-		public List<Driver> GetAllDrivers(long organisationId)
+		public List<Driver> GetAllDrivers(long groupId)
 		{
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.DriversController.GETALLDRIVERS, HttpMethod.Get);
-			request.AddUrlSegment("organisationId", organisationId.ToString());
+			request.AddUrlSegment("groupId", groupId.ToString());
 			IHttpRestResponse<List<Driver>> response = Execute<List<Driver>>(request);
 			return response.Data;
 		}
 
-		public async Task<List<Driver>> GetAllDriversAsync(long organisationId)
+		public async Task<List<Driver>> GetAllDriversAsync(long groupId)
 		{
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.DriversController.GETALLDRIVERS, HttpMethod.Get);
-			request.AddUrlSegment("organisationId", organisationId.ToString());
+			request.AddUrlSegment("groupId", groupId.ToString());
 			IHttpRestResponse<List<Driver>> response = await ExecuteAsync<List<Driver>>(request).ConfigureAwait(false);
 			return response.Data;
 		}
