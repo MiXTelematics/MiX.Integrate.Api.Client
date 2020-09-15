@@ -49,6 +49,6 @@ namespace MiX.Integrate.API.Client.Journeys
 		List<CurrentJourney> GetJourneyCurrentIdList(List<long> journeyIdList);
 		Task<List<CurrentJourney>> GetJourneyCurrentIdListAsync(List<long> journeyIdList);
 		Task<List<AutomatedMonitoring>> GetBulkJourneyProgressAsync(List<long> bulkJourneyProgress);
-		Task<List<BulkSubmitJourney>> SubmitBulkJourniesAsync(List<long> journeyIds)
+		Task<List<BulkSubmitJourney>> SubmitBulkJourniesAsync(List<long> journeyIds);
 	}
 }
