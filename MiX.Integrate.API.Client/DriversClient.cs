@@ -98,17 +98,33 @@ namespace MiX.Integrate.API.Client
 			return driverId;
 		}
 
-		public List<Driver> GetAllDrivers(long groupId)
+		public List<Driver> GetAllDrivers(long organisationId)
 		{
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.DriversController.GETALLDRIVERS, HttpMethod.Get);
+			request.AddUrlSegment("organisationId", organisationId.ToString());
+			IHttpRestResponse<List<Driver>> response = Execute<List<Driver>>(request);
+			return response.Data;
+		}
+
+		public async Task<List<Driver>> GetAllDriversAsync(long organisationId)
+		{
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.DriversController.GETALLDRIVERS, HttpMethod.Get);
+			request.AddUrlSegment("organisationId", organisationId.ToString());
+			IHttpRestResponse<List<Driver>> response = await ExecuteAsync<List<Driver>>(request).ConfigureAwait(false);
+			return response.Data;
+		}
+
+		public List<Driver> GetGroupDrivers(long groupId)
+		{
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.DriversController.GETGROUPDRIVERS, HttpMethod.Get);
 			request.AddUrlSegment("groupId", groupId.ToString());
 			IHttpRestResponse<List<Driver>> response = Execute<List<Driver>>(request);
 			return response.Data;
 		}
 
-		public async Task<List<Driver>> GetAllDriversAsync(long groupId)
+		public async Task<List<Driver>> GetGroupDriversAsync(long groupId)
 		{
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.DriversController.GETALLDRIVERS, HttpMethod.Get);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.DriversController.GETGROUPDRIVERS, HttpMethod.Get);
 			request.AddUrlSegment("groupId", groupId.ToString());
 			IHttpRestResponse<List<Driver>> response = await ExecuteAsync<List<Driver>>(request).ConfigureAwait(false);
 			return response.Data;

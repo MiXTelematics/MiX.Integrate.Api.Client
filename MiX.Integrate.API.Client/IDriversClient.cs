@@ -15,6 +15,8 @@ namespace MiX.Integrate.API.Client
 		Task<long> AddDriverAsync(Driver driver);
 		List<Driver> GetAllDrivers(long organisationId);
 		Task<List<Driver>> GetAllDriversAsync(long organisationId);
+		List<Driver> GetGroupDrivers(long groupId);
+		Task<List<Driver>> GetGroupDriversAsync(long groupId);
 		List<Driver> GetAllDrivers(long organisationId, string filterType, string wildCard);
 		Task<List<Driver>> GetAllDriversAsync(long organisationId, string filterType, string wildCard);
 		void UpdateDriverExtendedId(ExtendedDriverIdUpdate driver);
