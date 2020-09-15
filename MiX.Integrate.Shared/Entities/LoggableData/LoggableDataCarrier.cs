@@ -1,5 +1,5 @@
-﻿using MiX.Integrate.Shared.Entities.Positions;
-using System;
+﻿using System;
+using MiX.Integrate.Shared.Entities.Positions;
 
 namespace MiX.Integrate.Shared.Entities.LoggableData
 {

@@ -1,4 +1,5 @@
 ﻿
+// ReSharper disable InconsistentNaming
 namespace MiX.Integrate.Shared.Constants
 {
 	public class APIControllerRoutes
@@ -75,6 +76,7 @@ namespace MiX.Integrate.Shared.Constants
 			public const string ADDASSETSTATE = "api/assets/group/{groupId}/state";
 			public const string ADD = "api/assets";
 			public const string GETASSETDIAG = "api/assets/diagnostics/group/{groupId}";
+			public const string GETTRAILERSFORORGANISATION = "api/assets/organisation/{organisationId}/trailers";
 		}
 
 		//MiX.Integrate.Api.Controllers.UserController
@@ -144,6 +146,9 @@ namespace MiX.Integrate.Shared.Constants
 			public const string GETCREATEDSINCEFORORGANISATION = "api/events/groups/createdsince/organisation/{organisationId}/sincetoken/{sinceToken}/quantity/{quantity}";
 
 			public const string GETMEDIAURLS = "api/events/organisation/{groupId}/urls";
+
+			public const string GETDEMTEVENTAMENDMENTS = "api/events/groups/amended/{organisationId}/from/{from}/to/{to}";
+
 		}
 
 		//MiX.Fleet.Services.Api TachoController
@@ -175,14 +180,21 @@ namespace MiX.Integrate.Shared.Constants
 
 			public const string UPDATETRIPCLASSIFICATION = "api/trips/{tripId}/classification";
 			public const string UPDATETRIPCLASSIFICATIONCOMMENT = "api/trips/{tripId}/classification/comment";
+
+			public const string GETTRIPRIBASMETRICSBYDATERANGEFORDRIVERS = "api/trips/drivers/from/{from}/to/{to}/ribasmetrics";
+
+			public const string GETDEMTTRIPAMENDMENTS = "api/trips/groups/amended/{organisationId}/from/{from}/to/{to}";
 		}
 
 		//MiX.Integrate.Api.Controllers.JourneysController
 		public class JourneysController
 		{
 			public const string ADDJOURNEY = "api/journeys/";
+			public const string BULKJOURNEYADD = "api/journeys/bulk";
+			public const string BULKJOURNEYADDRESULT = "api/journeys/bulkResult/{groupId}/correlationId/{correlationId}";
 			public const string GETJOURNEY = "api/journeys/{journeyId}";
 			public const string GETJOURNEYIDLIST = "api/journeys/getJourneyIdList/{groupId}/startDate/{startDate}/endDate/{endDate}";
+			public const string GETJOURNEYIDSTATUSLIST = "api/journeys/getJourneyIdStatusList/{groupId}/startDate/{startDate}/endDate/{endDate}";
 			public const string GETJOURNEYROUTE = "api/journeys/routes/{groupId}";
 			public const string GETJOURNEYPROGRESS = "api/journeys/progress/{journeyId}";
 			public const string GETJOURNEYINPROGRESSCURRENTSTATUS = "api/journeys/inprogress/currentstatus/{groupId}";
@@ -196,6 +208,7 @@ namespace MiX.Integrate.Shared.Constants
 			public const string UPDATEJOURNEYASSETPASSENGERASYNC = "api/journeys/updateJourneyAssetPassenger/{journeyId}";
 			public const string REMOVEJOURNEYASSETPASSENGERASYNC = "api/journeys/removeJourneyAssetPassenger/{journeyId}";
 			public const string GETJOURNEYCURRENTIDLIST = "api/journeys/getJourneyCurrentIdList";
+			public const string GETBULKJOURNEYPROGRESSASYNC = "api/journeys/getBulkJourneyProgress";
 		}
 
 		//MiX.Integrate.Api.Controllers.LocationsController
@@ -321,17 +334,13 @@ namespace MiX.Integrate.Shared.Constants
 			public const string GETDRIVERVIOLATIONSBYLISTOFDRIVERIDSINDATERANGE = "api/ghos/violations/drivers/from/{from}/to/{to}";
 		}
 
-		//MiX.Integrate.Api.Controllers.GlobalisationController
-		public class GlobalisationController
-		{
-			public const string GETTIMEZONEINFOBYID = "api/globalisation/timezoneinfo";
-		}
-
 
 		//MiX.Integrate.Api.Controllers.ScoringController
 		public class ScoringController
 		{
 			public const string GETFLEXIBLEDRIVERSORECARD = "api/scoring/scorecard_flexibledriver";
+			public const string GETFLEXIBLERAGSCORINGREPORT = "api/scoring/scorecard_flexiblerag";
+			public const string GETFLEXIBLESTANDARDSCORINGREPORT = "api/scoring/scorecard_flexiblestandard";
 		}
 
 	}

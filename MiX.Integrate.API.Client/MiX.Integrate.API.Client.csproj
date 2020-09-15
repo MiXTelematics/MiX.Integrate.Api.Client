@@ -6,19 +6,8 @@
     <Version>1.0.0.0</Version>
     <FileVersion>1.0.0.0</FileVersion>
     <ProductVersion>1.0.0.0</ProductVersion>
+	  <PackageLicenseExpression></PackageLicenseExpression>
   </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|netstandard1.6|AnyCPU'">
-    <OutputPath>bin\Debug\</OutputPath>
-  </PropertyGroup>
-
-  <ItemGroup>
-    <None Remove="License.txt" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Include="License.txt" />
-  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="MiX.Identity.Client" Version="2019.7.24.1" />

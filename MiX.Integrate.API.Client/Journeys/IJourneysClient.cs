@@ -13,7 +13,7 @@ namespace MiX.Integrate.API.Client.Journeys
 
 		List<long> GetJourneyIdList(long groupId, DateTime startDate, DateTime endDate);
 		Task<List<long>> GetJourneyIdListAsync(long groupId, DateTime startDate, DateTime endDate);
-
+		Task<List<JourneyIdStatus>> GetJourneyIdStatusListAsync(long groupId, DateTime startDate, DateTime endDate);
 
 		long AddJourney(CreateJourney newjourney);
 		Task<long> AddJourneyAsync(CreateJourney newjourney);
@@ -48,5 +48,6 @@ namespace MiX.Integrate.API.Client.Journeys
 
 		List<CurrentJourney> GetJourneyCurrentIdList(List<long> journeyIdList);
 		Task<List<CurrentJourney>> GetJourneyCurrentIdListAsync(List<long> journeyIdList);
+		Task<List<AutomatedMonitoring>> GetBulkJourneyProgressAsync(List<long> bulkJourneyProgress);
 	}
 }

@@ -146,5 +146,24 @@ namespace MiX.Integrate.API.Client
 			return assetId;
 		}
 
+		/// <summary>Gets a list of the <see cref="Trailer"/> assets for the specified organisation</summary>
+		public List<Trailer> GetTrailers(long organisationId)
+		{
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.AssetsController.GETTRAILERSFORORGANISATION, HttpMethod.Get);
+			request.AddUrlSegment("organisationId", organisationId.ToString());
+			IHttpRestResponse<List<Trailer>> response = Execute<List<Trailer>>(request);
+			return response.Data;
+		}
+
+		/// <summary>Gets a list of the <see cref="Trailer"/> assets for the specified organisation</summary>
+		public async Task<List<Trailer>> GetTrailersAsync(long organisationId)
+		{
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.AssetsController.GETTRAILERSFORORGANISATION, HttpMethod.Get);
+			request.AddUrlSegment("organisationId", organisationId.ToString());
+			IHttpRestResponse<List<Trailer>> response = await ExecuteAsync<List<Trailer>>(request).ConfigureAwait(false);
+			return response.Data;
+		}
+
+
 	}
 }

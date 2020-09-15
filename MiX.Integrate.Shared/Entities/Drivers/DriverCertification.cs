@@ -1,13 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
+#if DEBUG
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+#endif
 
 namespace MiX.Integrate.Shared.Entities.Drivers
-{ 
+{
+#if DEBUG	
 	[DebuggerDisplay("{DriverId}:{CertificationTypeId}")]
+#endif
 	public class DriverCertification
 	{
 		public DriverCertification()

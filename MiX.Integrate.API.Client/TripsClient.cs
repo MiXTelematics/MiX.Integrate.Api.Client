@@ -3,6 +3,7 @@ using MiX.Integrate.Shared.Constants;
 using MiX.Integrate.Shared.Entities.Carriers;
 using MiX.Integrate.Shared.Entities.Drivers;
 using MiX.Integrate.Shared.Entities.Trips;
+using MiX.Integrate.Shared.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
@@ -10,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace MiX.Integrate.API.Client
 {
-	public class TripsClient : BaseClient, ITripsClient
+  public class TripsClient : BaseClient, ITripsClient
 	{
 
 		#region constructors
@@ -370,6 +371,34 @@ namespace MiX.Integrate.API.Client
 
 		#endregion
 
+		#region RIBAS Metrics
+
+		public List<TripRibasMetrics> GetRibasMetricsForDrivers(List<long> driverIds, DateTime @from, DateTime to)
+		{
+			if ((driverIds?.Count ?? 0) == 0 ) throw new ArgumentException("No driver ids specified",nameof(driverIds));
+			if (from.CompareTo(to) > 0) throw new ArgumentException("Invalid date range specified");
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.TripsController.GETTRIPRIBASMETRICSBYDATERANGEFORDRIVERS, HttpMethod.Post);
+			request.AddUrlSegment("from", from.ToString(DataFormats.DateTime_Format));
+			request.AddUrlSegment("to", to.ToString(DataFormats.DateTime_Format));
+			request.AddJsonBody(driverIds);
+			IHttpRestResponse<List<TripRibasMetrics>> response =  Execute<List<TripRibasMetrics>>(request);
+			return response.Data;
+		}
+
+		public async Task<List<TripRibasMetrics>> GetRibasMetricsForDriversAsync(List<long> driverIds, DateTime @from, DateTime to)
+		{
+			if ((driverIds?.Count ?? 0) == 0 ) throw new ArgumentException("No driver ids specified",nameof(driverIds));
+			if (from.CompareTo(to) > 0) throw new ArgumentException("Invalid date range specified");
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.TripsController.GETTRIPRIBASMETRICSBYDATERANGEFORDRIVERS, HttpMethod.Post);
+			request.AddUrlSegment("from", from.ToString(DataFormats.DateTime_Format));
+			request.AddUrlSegment("to", to.ToString(DataFormats.DateTime_Format));
+			request.AddJsonBody(driverIds);
+			IHttpRestResponse<List<TripRibasMetrics>> response = await ExecuteAsync<List<TripRibasMetrics>>(request).ConfigureAwait(false);
+			return response.Data;
+		}
+
+		#endregion
+
 		#region DriverScores
 
 		public List<DriverScore> GetDriverScores(List<long> driverIds, DateTime from, DateTime to)
@@ -389,6 +418,48 @@ namespace MiX.Integrate.API.Client
 			request.AddUrlSegment("to", to.ToString(DataFormats.DateTime_Format));
 			request.AddJsonBody(driverIds);
 			IHttpRestResponse<List<DriverScore>> response = await ExecuteAsync<List<DriverScore>>(request).ConfigureAwait(false);
+			return response.Data;
+		}
+
+		#endregion
+
+		#region DEMT amendments
+
+		public List<TripAmendment> GetTripAmendmentsForOrganisation(long organisationId, string from, string to)
+		{
+			if (!from.TryParseUtcDateString(out var dateFrom))
+				throw new ArgumentException("The date range start value must be a valid date in the form YYYYMMDD", nameof(from));
+			if (!to.TryParseUtcDateString(out var dateTo))
+				throw new ArgumentException("The date range end value must be a valid date in the form YYYYMMDD", nameof(to));
+			if (dateTo.CompareTo(dateFrom) < 0)
+				throw new ArgumentException("The date range end may not precede the start", nameof(to));
+			if (dateTo.CompareTo(dateFrom.AddDays(6)) > 0)
+				throw new ArgumentException("The date range may not exceed 7 days", nameof(to));
+			
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.TripsController.GETDEMTTRIPAMENDMENTS, HttpMethod.Get);
+			request.AddUrlSegment("organisationId", organisationId.ToString());
+			request.AddUrlSegment("from", from);
+			request.AddUrlSegment("to", to);
+			IHttpRestResponse<List<TripAmendment>> response = Execute<List<TripAmendment>>(request);
+			return response.Data;
+		}
+
+		public async Task<List<TripAmendment>> GetTripAmendmentsForOrganisationAsync(long organisationId, string from, string to)
+		{
+			if (!from.TryParseUtcDateString(out var dateFrom))
+				throw new ArgumentException("The date range start value must be a valid date in the form YYYYMMDD", nameof(from));
+			if (!to.TryParseUtcDateString(out var dateTo))
+				throw new ArgumentException("The date range end value must be a valid date in the form YYYYMMDD", nameof(to));
+			if (dateTo.CompareTo(dateFrom) < 0)
+				throw new ArgumentException("The date range end may not precede the start", nameof(to));
+			if (dateTo.CompareTo(dateFrom.AddDays(6)) > 0)
+				throw new ArgumentException("The date range may not exceed 7 days", nameof(to));
+			
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.TripsController.GETDEMTTRIPAMENDMENTS, HttpMethod.Get);
+			request.AddUrlSegment("organisationId", organisationId.ToString());
+			request.AddUrlSegment("from", from);
+			request.AddUrlSegment("to", to);
+			IHttpRestResponse<List<TripAmendment>> response = await ExecuteAsync<List<TripAmendment>>(request).ConfigureAwait(false);
 			return response.Data;
 		}
 
