@@ -24,16 +24,4 @@ namespace MiX.Integrate.Shared.Entities.Scoring
 		public decimal TripsDuration { get; set; }
 		public List<PenaltyScoreByEventType> SitePointsPerEventTypes { get; set; }
 	}
-
-	public class PenaltyScoreByEventType
-	{
-		public string EventDescription { get; set; }
-		public List<long> EventTypeIds { get; set; }
-		public int Occurrences { get; set; }
-		public int EventCount { get; set; }
-		public decimal Duration { get; set; }
-		public decimal PenaltyPoints { get; set; }
-		public decimal Score { get; set; }
-	}
-
 }

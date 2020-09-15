@@ -28,24 +28,11 @@ namespace MiX.Integrate.Shared.Entities.Scoring
 		//Score
 		public decimal TotalScore { get; set; }
 		public bool IsScored { get; set; }
-		public List<ScoreByEventType> ScorePerEventTypes { get; set; }
+		public List<ScoreByEventType> ScoresByEventType { get; set; }
 
 		//SiteScore
 		public decimal SiteTotalScore { get; set; }
 		public bool SiteIsScored { get; set; }
-		public List<ScoreByEventType> SiteScorePerEventTypes { get; set; }
+		public List<ScoreByEventType> SiteScoresByEventType { get; set; }
 	}
-
-	public class ScoreByEventType
-	{
-		public string EventDescription { get; set; }
-		public List<long> EventTypeIds { get; set; }
-		public int EventOccurrences { get; set; }
-		public int EventCount { get; set; }
-		public decimal EventDuration { get; set; }
-		public decimal EventMinValue { get; set; }
-		public decimal EventMaxValue { get; set; }
-		public decimal EventScore { get; set; }
-	}
-
 }

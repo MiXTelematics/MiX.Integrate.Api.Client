@@ -1,74 +1,59 @@
-﻿using MiX.Integrate.Shared.Constants;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Globalization;
-using System.Text;
+using MiX.Integrate.Shared.Constants;
 
 namespace MiX.Integrate.Shared.Helpers
 {
 	public static class DateTimeHelper
 	{
 
-		/// <summary>
-		/// Parse String To DateTime
-		/// Throw ArgumentException
-		/// </summary>
-		/// <param name="s">Use format yyyyMMddHHmmss or yyyyMMddHHmmssfff</param>
-		/// <returns>Throw ArgumentException if not valid</returns>
+		/// <summary>Converts the specified string representation of a UTC timestamp
+		/// to its <see cref="DateTime"/> equivalent</summary>
+		/// <param name="s">A string in the format yyyyMMddHHmmss or yyyyMMddHHmmssfff that contains a date and time to convert</param>
+		/// <returns>A <see cref="DateTime"/> that is equivalent to the UTC date and time represented in <paramref name="s"/></returns>
+		/// <exception cref="ArgumentException">If the value could not be parsed</exception>
 		public static DateTime ParseExactToUtc(this string s)
 		{
-			DateTime dt;
 			try
 			{
 				if (s.Length == DataFormats.DateTime_Format_WithMilliseconds.Length)
 				{
-					dt = DateTime.ParseExact(s, DataFormats.DateTime_Format_WithMilliseconds, CultureInfo.CurrentUICulture);
-					dt = DateTime.SpecifyKind(dt, DateTimeKind.Utc);
+					return DateTime.SpecifyKind(DateTime.ParseExact(s, DataFormats.DateTime_Format_WithMilliseconds, CultureInfo.InvariantCulture),
+						DateTimeKind.Utc);
 				}
 				else
 				{
-					dt = DateTime.ParseExact(s, DataFormats.DateTime_Format, CultureInfo.CurrentUICulture);
-					dt = DateTime.SpecifyKind(dt, DateTimeKind.Utc);
+					return DateTime.SpecifyKind(DateTime.ParseExact(s, DataFormats.DateTime_Format, CultureInfo.InvariantCulture), DateTimeKind.Utc);
 				}
 			}
 			catch (Exception)
 			{
 				throw new ArgumentException($"Could not parse parameter value [{s}] to DateTime");
 			}
-			return dt;
 		}
 
-		/// <summary>
-		/// Parse String To DateTime
-		/// Return defaultValue if not valid
-		/// </summary>
-		/// <param name="s"></param>
-		/// <param name="">Use format yyyyMMddHHmmss or yyyyMMddHHmmssfff</param>
-		/// <returns>Return defaultValue if not valid</returns>
+		/// <summary>Converts the specified string representation of a UTC timestamp
+		/// to its <see cref="DateTime"/> equivalent or a specified default value</summary>
+		/// <param name="s">A string in the format yyyyMMddHHmmss or yyyyMMddHHmmssfff that contains a date and time to convert</param>
+		/// <returns>A <see cref="DateTime"/> that is equivalent to the UTC date and time represented in <paramref name="s"/>, or
+		/// <paramref name="defaultValue"/> if the string could not be converted</returns>
 		public static DateTime ParseExactToUtc(this string s, DateTime defaultValue)
 		{
 			try
 			{
 				if (s.Length == DataFormats.DateTime_Format_WithMilliseconds.Length)
 				{
-					DateTime dt;
-					bool parsed = DateTime.TryParseExact(s, DataFormats.DateTime_Format_WithMilliseconds, CultureInfo.CurrentUICulture, DateTimeStyles.None, out dt);
-					if (!parsed) return defaultValue;
-					dt = DateTime.SpecifyKind(dt, DateTimeKind.Utc);
-					return dt;
+					if (!DateTime.TryParseExact(s, DataFormats.DateTime_Format_WithMilliseconds, CultureInfo.InvariantCulture, DateTimeStyles.None, out var dt))
+					 return defaultValue;
+					return DateTime.SpecifyKind(dt, DateTimeKind.Utc);
 				}
-				else if (s.Length == DataFormats.DateTime_Format.Length)
+				if (s.Length == DataFormats.DateTime_Format.Length)
 				{
-					DateTime dt;
-					bool parsed = DateTime.TryParseExact(s, DataFormats.DateTime_Format, CultureInfo.CurrentUICulture, DateTimeStyles.None, out dt);
-					if (!parsed) return defaultValue;
-					dt = DateTime.SpecifyKind(dt, DateTimeKind.Utc);
-					return dt;
+					if (!DateTime.TryParseExact(s, DataFormats.DateTime_Format, CultureInfo.InvariantCulture, DateTimeStyles.None, out var dt))
+						return defaultValue;
+					return DateTime.SpecifyKind(dt, DateTimeKind.Utc);
 				}
-				else
-				{
-					return defaultValue;
-				}
+				return defaultValue;
 			}
 			catch (Exception)
 			{
@@ -76,11 +61,7 @@ namespace MiX.Integrate.Shared.Helpers
 			}
 		}
 
-		/// <summary>
-		/// Parse DateTime To String
-		/// </summary>
-		/// <param name="dt"></param>
-		/// <returns>yyyyMMddHHmmssfff</returns>
+		/// <summary>Formats a DateTime</summary>
 		public static string To24HourUtc_WithMilliseconds(this DateTime dt)
 		{
 			//if (dt.Kind != DateTimeKind.Utc) dt = TimeZoneInfo.ConvertTimeToUtc(dt);
@@ -89,18 +70,36 @@ namespace MiX.Integrate.Shared.Helpers
 			return s;
 		}
 
-		/// <summary>
-		/// Parse DateTime To String
-		/// </summary>
-		/// <param name="dt"></param>
-		/// <returns>yyyyMMddHHmmss</returns>
+		/// <summary>Formats a DateTime</summary>
 		public static string To24HourUtc(this DateTime dt)
 		{
-			//if (dt.Kind != DateTimeKind.Utc) dt = TimeZoneInfo.ConvertTimeToUtc(dt);
 			if (dt.Kind != DateTimeKind.Utc) dt = TimeZoneInfo.ConvertTime(dt, TimeZoneInfo.Utc);
-			string s = dt.ToString(DataFormats.DateTime_Format);
-			return s;
+			return dt.ToString(DataFormats.DateTime_Format);
 		}
 
+		/// <summary>
+		/// Attempts to parse a date string into a UTC DateTime object
+		/// </summary>
+		/// <param name="dateString">The date string which is expected to be in the format yyyyMMdd</param>
+		/// <param name="dateTime">The resultant DateTime object</param>
+		public static bool TryParseUtcDateString(this string dateString, out DateTime dateTime)
+		{
+			dateTime = DateTime.MinValue;
+			try
+			{
+				if (dateString.Length != 8) return false;
+
+				if (!int.TryParse(dateString.Substring(0, 4), out int year)) return false;
+				if (!int.TryParse(dateString.Substring(4, 2), out int month)) return false;
+				if (!int.TryParse(dateString.Substring(6, 2), out int day)) return false;
+
+				dateTime = new DateTime(year, month, day, 0, 0, 0, DateTimeKind.Utc);
+				return dateTime != DateTime.MinValue && dateTime != DateTime.MaxValue;
+			}
+			catch
+			{
+				return false;
+			}
+		}
 	}
 }

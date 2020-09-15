@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace MiX.Integrate.Shared.Entities.Journeys
 {
@@ -12,6 +10,7 @@ namespace MiX.Integrate.Shared.Entities.Journeys
 		public double Latitude { get; set; }
 		public double Longitude { get; set; }
 		public int StopDuration { get; set; }
+		public string ReverseGeo { get; set; }
 		public long? DmxLocationId { get; set; }
 		public DateTimeOffset ActualDepartureDate { get; set; }
 		public DateTimeOffset ActualArrivalDate { get; set; }

@@ -1,9 +1,5 @@
-﻿using MiX.Integrate.Shared.Entities.Communications;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
+using MiX.Integrate.Shared.Entities.Communications;
 
 namespace MiX.Integrate.Shared.Entities.Messages
 {

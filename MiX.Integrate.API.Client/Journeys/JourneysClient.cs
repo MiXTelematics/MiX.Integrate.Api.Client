@@ -44,6 +44,24 @@ namespace MiX.Integrate.API.Client.Journeys
 			return response.Data;
 		}
 
+
+		public long BulkJourneyAdd(CreateJourney newJourney)
+		{
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.JourneysController.BULKJOURNEYADD, HttpMethod.Put);
+			request.AddJsonBody(newJourney);
+			IHttpRestResponse<long> response = Execute<long>(request, 1);
+			return response.Data;
+		}
+
+		public BulkAddResult GetBulkAddResult(long GroupId, long CorrelationId)
+		{
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.JourneysController.BULKJOURNEYADDRESULT, HttpMethod.Get);
+			request.AddUrlSegment("groupId", GroupId.ToString());
+			request.AddUrlSegment("correlationId", CorrelationId.ToString());
+			IHttpRestResponse<BulkAddResult> response = Execute<BulkAddResult>(request, 1);
+			return response.Data;
+		}
+
 		/// <summary>
 		/// Adds the journey.
 		/// </summary>
@@ -146,7 +164,7 @@ namespace MiX.Integrate.API.Client.Journeys
 		}
 
 		/// <summary>
-		/// 
+		/// Returns the List of JourneyId's that are currently in an active state with a departure date between the supplied dates
 		/// </summary>
 		/// <param name="groupId"></param>
 		/// <param name="startDate"></param>
@@ -159,6 +177,24 @@ namespace MiX.Integrate.API.Client.Journeys
 			request.AddUrlSegment("startDate", startDate.ToString(DataFormats.DateTime_Format));
 			request.AddUrlSegment("endDate", endDate.ToString(DataFormats.DateTime_Format));
 			IHttpRestResponse<List<long>> response = await ExecuteAsync<List<long>>(request).ConfigureAwait(false);
+			return response.Data;
+		}
+
+		/// <summary>
+		/// Returns the List of JourneyId's that are currently in an active state with a departure date between the supplied dates
+		/// with the current status and the date the the journey details was last updated
+		/// </summary>
+		/// <param name="groupId"></param>
+		/// <param name="startDate"></param>
+		/// <param name="endDate"></param>
+		/// <returns></returns>
+		public async Task<List<JourneyIdStatus>> GetJourneyIdStatusListAsync(long groupId, DateTime startDate, DateTime endDate)
+		{
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.JourneysController.GETJOURNEYIDSTATUSLIST, HttpMethod.Get);
+			request.AddUrlSegment("groupId", groupId.ToString());
+			request.AddUrlSegment("startDate", startDate.ToString(DataFormats.DateTime_Format));
+			request.AddUrlSegment("endDate", endDate.ToString(DataFormats.DateTime_Format));
+			IHttpRestResponse<List<JourneyIdStatus>> response = await ExecuteAsync<List<JourneyIdStatus>>(request).ConfigureAwait(false);
 			return response.Data;
 		}
 
@@ -447,6 +483,14 @@ namespace MiX.Integrate.API.Client.Journeys
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.JourneysController.GETJOURNEYASSETPASSENGERASYNC, HttpMethod.Get);
 			request.AddUrlSegment("journeyId", journeyId.ToString());
 			IHttpRestResponse<JourneyAssetAndPassengerData> response = Execute<JourneyAssetAndPassengerData>(request);
+			return response.Data;
+		}
+
+		public async Task<List<AutomatedMonitoring>> GetBulkJourneyProgressAsync(List<long> bulkJourneyProgress)
+		{
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.JourneysController.GETBULKJOURNEYPROGRESSASYNC, HttpMethod.Post);
+			request.AddJsonBody(bulkJourneyProgress);
+			IHttpRestResponse<List<AutomatedMonitoring>> response = await ExecuteAsync<List<AutomatedMonitoring>>(request).ConfigureAwait(false);
 			return response.Data;
 		}
 

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace MiX.Integrate.Shared.Entities.Groups
+﻿namespace MiX.Integrate.Shared.Entities.Groups
 {
 	public class Group
 	{

@@ -105,42 +105,5 @@ namespace MiX.Integrate.API.Client
 			return response.Data;
 		}
 
-		public async Task<SendMessageResult> SendJobMessageAsync(long organisationId, SendJobMessageCarrier jobMessageCarrier, bool saveOnly)
-		{
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.MessagesController.SENDJOBMESSAGE, HttpMethod.Post);
-			request.AddUrlSegment("organisationId", organisationId.ToString());
-			request.AddQueryParameter("saveOnly", saveOnly.ToString());
-			request.AddJsonBody(jobMessageCarrier);
-			IHttpRestResponse<SendMessageResult> response = await ExecuteAsync<SendMessageResult>(request).ConfigureAwait(false);
-			return response.Data;
-		}
-
-		public SendMessageResult SendJobMessage(long organisationId, SendJobMessageCarrier jobMessageCarrier, bool saveOnly)
-		{
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.MessagesController.SENDJOBMESSAGE, HttpMethod.Post);
-			request.AddUrlSegment("organisationId", organisationId.ToString());
-			request.AddQueryParameter("saveOnly", saveOnly.ToString());
-			request.AddJsonBody(jobMessageCarrier);
-			IHttpRestResponse<SendMessageResult> response = Execute<SendMessageResult>(request);
-			return response.Data;
-		}
-
-		public async Task<int> CreateJobListAsync(long organisationId, int[] messageIDList)
-		{
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.MessagesController.CREATEJOBLIST, HttpMethod.Post);
-			request.AddUrlSegment("organisationId", organisationId.ToString());
-			request.AddJsonBody(messageIDList);
-			IHttpRestResponse<int> response = await ExecuteAsync<int>(request).ConfigureAwait(false);
-			return response.Data;
-		}
-
-		public int CreateJobList(long organisationId, int[] messageIDList)
-		{
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.MessagesController.CREATEJOBLIST, HttpMethod.Post);
-			request.AddUrlSegment("organisationId", organisationId.ToString());
-			request.AddJsonBody(messageIDList);
-			IHttpRestResponse<int> response = Execute<int>(request);
-			return response.Data;
-		}
 	}
 }

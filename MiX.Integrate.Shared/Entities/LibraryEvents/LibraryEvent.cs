@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace MiX.Integrate.Shared.Entities.LibraryEvents
+﻿namespace MiX.Integrate.Shared.Entities.LibraryEvents
 {
 	/// <summary>Describes a library event</summary>
 	public class LibraryEvent

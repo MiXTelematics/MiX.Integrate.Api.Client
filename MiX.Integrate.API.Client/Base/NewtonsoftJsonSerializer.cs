@@ -38,8 +38,8 @@ namespace MiX.Integrate.API.Client.Base
 			_settings.Converters.Add(new StringEnumConverter());
 			_settings.Converters.Add(new TimeSpanJsonConverter());
 			_settings.Converters.Add(new TimeSpanNullableJsonConverter());
-			_settings.Converters.Add(new AbstractConverter<ModelSettings_FlexibleDriver, IModelSettings>());
-			_settings.Converters.Add(new AbstractConverter<ModelSettings_FlexibleRAG, IModelSettings>());
+			//_settings.Converters.Add(new AbstractConverter<ModelSettings_FlexibleDriver, IModelSettings>());
+			//_settings.Converters.Add(new AbstractConverter<ModelSettings_FlexibleRAG, IModelSettings>());
 		}
 
 		private static NewtonsoftJsonSerializer _default;
