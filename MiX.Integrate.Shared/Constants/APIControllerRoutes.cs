@@ -139,10 +139,10 @@ namespace MiX.Integrate.Shared.Constants
 			public const string ADDFUELTRANSACTIONS = "api/fueltransactions/organisation/{organisationId}";
 		}
 
-		//MiX.Integrate.Api.Controllers.GeoFileController
-		public class GeoFileController
+		//MiX.Integrate.Api.Controllers.GeoDataController
+		public class GeoDataController
 		{
-			public const string GETMOVEMENTSFORGROUP = "api/geofile/movements/{groupId}/from/{from}/to/{to}";
+			public const string GETASSETMOVEMENTSFORGROUP = "api/geodata/assetmovements/{groupId}/{from}/{to}";
 		}
 
 		//MiX.Integrate.Api.GroupsController
