@@ -39,6 +39,9 @@ namespace MiX.Integrate.Shared.Entities.Trips
 		/// <summary>Total time, in seconds, that over-revving occurred</summary>
 		public int? OverRevTime{ get; set; }
     
+		/// <summary>Total time, in seconds, that normal idling occurred</summary>
+		public int? IdleTime{ get; set; } 
+    
 		/// <summary>Total time, in seconds, excessive idling occurred</summary>
 		public int? ExcessiveIdleTime{ get; set; } 
     
@@ -59,6 +62,9 @@ namespace MiX.Integrate.Shared.Entities.Trips
     
 		/// <summary>Number of times excessive idling occurred</summary>
 		public int? ExcessiveIdleOccurs{ get; set; }
+
+		/// <summary>Number of times idling occurred</summary>
+		public int? IdleOccurs{ get; set; }
 
 		/// <summary>Highest speed recorded during the trip</summary>
 		public decimal MaxSpeedKilometersPerHour { get; set; }
