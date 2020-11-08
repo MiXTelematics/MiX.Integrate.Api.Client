@@ -44,6 +44,24 @@ namespace MiX.Integrate.API.Client.Journeys
 			return response.Data;
 		}
 
+
+		public long BulkJourneyAdd(CreateJourney newJourney)
+		{
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.JourneysController.BULKJOURNEYADD, HttpMethod.Put);
+			request.AddJsonBody(newJourney);
+			IHttpRestResponse<long> response = Execute<long>(request, 1);
+			return response.Data;
+		}
+
+		public BulkAddResult GetBulkAddResult(long GroupId, long CorrelationId)
+		{
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.JourneysController.BULKJOURNEYADDRESULT, HttpMethod.Get);
+			request.AddUrlSegment("groupId", GroupId.ToString());
+			request.AddUrlSegment("correlationId", CorrelationId.ToString());
+			IHttpRestResponse<BulkAddResult> response = Execute<BulkAddResult>(request, 1);
+			return response.Data;
+		}
+
 		/// <summary>
 		/// Adds the journey.
 		/// </summary>
@@ -465,6 +483,22 @@ namespace MiX.Integrate.API.Client.Journeys
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.JourneysController.GETJOURNEYASSETPASSENGERASYNC, HttpMethod.Get);
 			request.AddUrlSegment("journeyId", journeyId.ToString());
 			IHttpRestResponse<JourneyAssetAndPassengerData> response = Execute<JourneyAssetAndPassengerData>(request);
+			return response.Data;
+		}
+
+		public async Task<List<AutomatedMonitoring>> GetBulkJourneyProgressAsync(List<long> bulkJourneyProgress)
+		{
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.JourneysController.GETBULKJOURNEYPROGRESSASYNC, HttpMethod.Post);
+			request.AddJsonBody(bulkJourneyProgress);
+			IHttpRestResponse<List<AutomatedMonitoring>> response = await ExecuteAsync<List<AutomatedMonitoring>>(request).ConfigureAwait(false);
+			return response.Data;
+		}
+
+		public async Task<List<BulkSubmitJourney>> SubmitBulkJourneysAsync(List<long> journeyIds)
+		{
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.JourneysController.SUBMITBULKJOURNEY, HttpMethod.Post);
+			request.AddJsonBody(journeyIds);
+			IHttpRestResponse<List<BulkSubmitJourney>> response = await ExecuteAsync<List<BulkSubmitJourney>>(request).ConfigureAwait(false);
 			return response.Data;
 		}
 

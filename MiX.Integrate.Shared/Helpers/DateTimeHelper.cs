@@ -14,7 +14,6 @@ namespace MiX.Integrate.Shared.Helpers
 		/// <exception cref="ArgumentException">If the value could not be parsed</exception>
 		public static DateTime ParseExactToUtc(this string s)
 		{
-			DateTime dt;
 			try
 			{
 				if (s.Length == DataFormats.DateTime_Format_WithMilliseconds.Length)

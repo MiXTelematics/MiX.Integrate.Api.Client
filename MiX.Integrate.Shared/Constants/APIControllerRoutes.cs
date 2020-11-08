@@ -38,6 +38,7 @@ namespace MiX.Integrate.Shared.Constants
 			public const string ADDDRIVER = "api/drivers";
 			public const string UPDATEDRIVERNAMEBYEXTENDEDIDIFAUTOCREATED = "api/drivers/group/{groupId}/extended/{extendedDriverId}/ifautocreated";
 			public const string GETALLDRIVERS = "api/drivers/organisation/{organisationId}";
+			public const string GETGROUPDRIVERS = "api/drivers/group/{groupId}";
 		}
 
 		//MiX.Integrate.Api.Controllers.DriverLicenceController
@@ -189,6 +190,8 @@ namespace MiX.Integrate.Shared.Constants
 		public class JourneysController
 		{
 			public const string ADDJOURNEY = "api/journeys/";
+			public const string BULKJOURNEYADD = "api/journeys/bulk";
+			public const string BULKJOURNEYADDRESULT = "api/journeys/bulkResult/{groupId}/correlationId/{correlationId}";
 			public const string GETJOURNEY = "api/journeys/{journeyId}";
 			public const string GETJOURNEYIDLIST = "api/journeys/getJourneyIdList/{groupId}/startDate/{startDate}/endDate/{endDate}";
 			public const string GETJOURNEYIDSTATUSLIST = "api/journeys/getJourneyIdStatusList/{groupId}/startDate/{startDate}/endDate/{endDate}";
@@ -201,10 +204,12 @@ namespace MiX.Integrate.Shared.Constants
 			public const string UPDATEJOURNEYASSETDRIVERSASYNC = "api/journeys/updateJourneyAssetDrivers/{journeyId}";
 			public const string GETJOURNEYASSETSANDDRIVERSASYNC = "api/journeys/getJourneyAssetsAndDrivers/{journeyId}";
 			public const string SUBMITJOURNEY = "api/journeys/submitJourneyAsync/{journeyId}";
+			public const string SUBMITBULKJOURNEY = "api/journeys/submitBulkJourneys";
 			public const string GETJOURNEYASSETPASSENGERASYNC = "api/journeys/getJourneyAssetPassenger/{journeyId}";
 			public const string UPDATEJOURNEYASSETPASSENGERASYNC = "api/journeys/updateJourneyAssetPassenger/{journeyId}";
 			public const string REMOVEJOURNEYASSETPASSENGERASYNC = "api/journeys/removeJourneyAssetPassenger/{journeyId}";
 			public const string GETJOURNEYCURRENTIDLIST = "api/journeys/getJourneyCurrentIdList";
+			public const string GETBULKJOURNEYPROGRESSASYNC = "api/journeys/getBulkJourneyProgress";
 		}
 
 		//MiX.Integrate.Api.Controllers.LocationsController
