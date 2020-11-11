@@ -24,7 +24,38 @@ namespace MiX.Integrate.Shared.Entities.Assets
 
 		}
 		public long AssetId { get; set; }
-		public int AssetTypeId { get; set; }
+		public int AssetTypeId { get; set; }		
+/********************************************************
+AssetTypeIds are not currently exposed as an enumeration - this will be corrected in a later release		
+
+1	  Motorcycle
+2	  Trailer
+4	  Boat
+5	  Mobile Plant Equipment
+6	  Stationary Plant Equipment
+7	  Emergency Service Vehicle
+8	  Dangerous Goods Vehicle
+9	  Passenger Vehicle
+10	Light Passenger Vehicle - Minibus
+11	Heavy Passenger Vehicle - Bus - Articulated
+12	Heavy Passenger Vehicle - Bus - Single Decker
+13	Heavy Passenger Vehicle - Bus - Double Decker
+14	Heavy Vehicle - Articulated
+15	Heavy Vehicle - Non-Articulated
+16	Heavy Vehicle - Refrigerated Transport
+17	Light Vehicle
+18	Fluid Transport Vehicle
+19	Snow Plough
+20	Other
+21	Train
+22	Light Delivery Vehicle
+24	Off-Road Vehicle
+25	Medium Commercial Vehicle
+26	Non-Powered Asset
+27	Mobile Phone
+
+**********************************************************/
+		
 		public string Description { get; set; }
 		public bool IsConnectedTrailer { get; set; }
 		public string RegistrationNumber { get; set; }
