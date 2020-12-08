@@ -379,6 +379,32 @@ namespace MiX.Integrate.API.Client.Journeys
 
 		}
 
+		/// <summary>Gets the turn-by-turn route data in JSON format for a journey's route</summary>
+		/// <param name="journeyId">Identifier of the journey</param>
+		/// <returns>A <see cref="JourneyRouteData"/> containing the turn-by-turn route data in JSON format for the specified journey</returns>
+		public JourneyRouteData GetJourneyRouteData(long journeyId)
+		{
+
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.JourneysController.GETJOURNEYROUTEDATA, HttpMethod.Get);
+			request.AddUrlSegment("journeyId", journeyId.ToString());
+			IHttpRestResponse<JourneyRouteData> response = Execute<JourneyRouteData>(request);
+			return response.Data;
+
+		}
+
+		/// <summary>Gets the turn-by-turn route data in JSON format for a journey's route</summary>
+		/// <param name="journeyId">Identifier of the journey</param>
+		/// <returns>A <see cref="JourneyRouteData"/> containing the turn-by-turn route data in JSON format for the specified journey</returns>
+		public async Task<JourneyRouteData> GetJourneyRouteDataAsync(long journeyId)
+		{
+
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.JourneysController.GETJOURNEYROUTEDATA, HttpMethod.Get);
+			request.AddUrlSegment("journeyId", journeyId.ToString());
+			IHttpRestResponse<JourneyRouteData> response = await ExecuteAsync<JourneyRouteData>(request).ConfigureAwait(false);
+			return response.Data;
+
+		}
+
 		/// <summary>
 		/// Get journey current ID
 		/// </summary>
