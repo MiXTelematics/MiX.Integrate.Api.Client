@@ -192,6 +192,7 @@ namespace MiX.Integrate.Shared.Constants
 			public const string GETJOURNEYIDSTATUSLIST = "api/journeys/getJourneyIdStatusList/{groupId}/startDate/{startDate}/endDate/{endDate}";
 			public const string GETJOURNEYROUTE = "api/journeys/routes/{groupId}";
 			public const string GETJOURNEYPROGRESS = "api/journeys/progress/{journeyId}";
+			public const string GETJOURNEYROUTEDATA = "api/journeys/routedata/{journeyId}";
 			public const string GETJOURNEYINPROGRESSCURRENTSTATUS = "api/journeys/inprogress/currentstatus/{groupId}";
 			public const string GETJOURNEYROUTELOCATIONSASYNC = "api/journeys/getJourneyRouteLocations/{journeyId}";
 			public const string REMOVEJOURNEYASYNC = "api/journeys/removeJourney/{journeyId}";
