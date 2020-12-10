@@ -59,8 +59,17 @@ namespace MiX.Integrate.API.Client
 		/// <returns>A <see cref="CreatedSinceResult{Event}"/> containing the result of the call</returns>
 		Task<CreatedSinceResult<Event>> GetCreatedSinceForOrganisationFilteredAsync(long organisationId, string sinceToken, int quantity, List<long> eventTypeIds);
 
-		IList<EventClipResponse> GetMediaUrls(long organisationId, List<EventClip> eventClips);
-		Task<IList<EventClipResponse>> GetMediaUrlsAsync(long organisationId, List<EventClip> eventClips);
+		/// <summary>Gets the media URLs for a set of media references</summary>
+		/// <param name="organisationId">Identifier of the organisation associated with the media references</param>
+		/// <param name="assetMediaReferences">List of references to resolve (max 100 entries), each of which lists the MediaReference and associated Asset Id</param>
+		/// <returns>A list of media references and their associated media URLs</returns>
+		IList<MediaQueryResponse> GetMediaUrls(long organisationId, List<AssetMediaReference> assetMediaReferences);
+
+		/// <summary>Gets the media URLs for a set of media references as an asynchronous operation</summary>
+		/// <param name="organisationId">Identifier of the organisation associated with the media references</param>
+		/// <param name="assetMediaReferences">List of references to resolve (max 100 entries), each of which lists the MediaReference and associated Asset Id</param>
+		/// <returns>A list of media references and their associated media URLs</returns>
+		Task<IList<MediaQueryResponse>> GetMediaUrlsAsync(long organisationId, List<AssetMediaReference> assetMediaReferences);
 
 		/// <summary>Gets occurrences of DEMT amendments made to events for an organisation in a specified period not exceeding 7 days</summary>
 		/// <param name="organisationId">Identifier of the organisation</param>

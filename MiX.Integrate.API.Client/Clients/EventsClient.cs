@@ -396,21 +396,21 @@ namespace MiX.Integrate.API.Client
 			return new CreatedSinceResult<Event>() { HasMoreItems = hasMoreItems, GetSinceToken = getSinceToken, Items = response.Data };
 		}
 
-	public IList<EventClipResponse> GetMediaUrls(long organisationId, List<EventClip> eventClips)
+	public IList<MediaQueryResponse> GetMediaUrls(long organisationId, List<AssetMediaReference> assetMediaReferences)
 		{
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.EventsController.GETMEDIAURLS, HttpMethod.Post);
-			request.AddUrlSegment("groupId", organisationId.ToString());
-			request.AddJsonBody(eventClips);
-			IHttpRestResponse<List<EventClipResponse>> response = Execute<List<EventClipResponse>>(request);
+			request.AddUrlSegment("organisationId", organisationId.ToString());
+			request.AddJsonBody(assetMediaReferences);
+			IHttpRestResponse<List<MediaQueryResponse>> response = Execute<List<MediaQueryResponse>>(request);
 			return response.Data;
 		}
 
-		public async Task<IList<EventClipResponse>> GetMediaUrlsAsync(long organisationId, List<EventClip> eventClips)
+		public async Task<IList<MediaQueryResponse>> GetMediaUrlsAsync(long organisationId, List<AssetMediaReference> assetMediaReferences)
 		{
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.EventsController.GETMEDIAURLS, HttpMethod.Post);
-			request.AddUrlSegment("groupId", organisationId.ToString());
-			request.AddJsonBody(eventClips);
-			IHttpRestResponse<List<EventClipResponse>> response = await ExecuteAsync<List<EventClipResponse>>(request).ConfigureAwait(false);
+			request.AddUrlSegment("organisationId", organisationId.ToString());
+			request.AddJsonBody(assetMediaReferences);
+			IHttpRestResponse<List<MediaQueryResponse>> response = await ExecuteAsync<List<MediaQueryResponse>>(request).ConfigureAwait(false);
 			return response.Data;
 		}
 
