@@ -40,6 +40,7 @@ namespace MiX.Integrate.Shared.Entities.Assets
 		public string Year { get; set; }
 		public string VinNumber { get; set; }
 		public string EngineNumber { get; set; }
+		public long? DefaultDriverId { get; set; }
 		public int? FmVehicleId { get; set; }
 		public string AdditionalMobileDevice { get; set; }
 		public string Notes { get; set; }
