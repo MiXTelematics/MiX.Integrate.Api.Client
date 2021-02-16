@@ -42,6 +42,10 @@ namespace MiX.Integrate.Shared.Entities.Assets
 		public static readonly AssetType Other = new AssetType(20, "Other", "asset-other.jpg");
 		public static readonly AssetType Train = new AssetType(21, "Train", "asset-train.jpg");
 		public static readonly AssetType LightDeliveryVehicle = new AssetType(22, "Light Delivery Vehicle", "asset-light-delivery-vehicle.jpg");
+		public static readonly AssetType OffRoadVehicle = new AssetType(24, "Off-Road Vehicle", "asset-light-delivery-vehicle.jpg");
+		public static readonly AssetType MediumCommercialVehicle = new AssetType(25, "Medium Commercial Vehicle", "asset-medium-commercial-vehicle.jpg");
+		public static readonly AssetType NonPoweredAsset = new AssetType(26, "Non-Powered Asset", "non-powered-asset.jpg");
+		public static readonly AssetType MobilePhone = new AssetType(27, "Mobile Phone", "asset-mobile-phone.jpg");
 
 		public static AssetType GetById(int id)
 		{
