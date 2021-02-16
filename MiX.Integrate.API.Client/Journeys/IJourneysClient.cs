@@ -39,6 +39,9 @@ namespace MiX.Integrate.API.Client.Journeys
 		Task<bool> SubmitJourneyAsync(long journeyId);
 		bool SubmitJourney(long journeyId);
 
+		JourneyRouteData GetJourneyRouteData(long journeyId);
+		Task<JourneyRouteData> GetJourneyRouteDataAsync(long journeyId);
+
 		Task<int> UpdateJourneyAssetPassengersAsync(long journeyId, JourneyAssetAndPassengerData journeyAssetAndPassengerData);
 		int UpdateJourneyAssetPassengers(long journeyId, JourneyAssetAndPassengerData journeyAssetAndPassengerData);
 		Task<int> RemoveJourneyAssetPassengersAsync(long journeyId, JourneyAssetAndPassengerData journeyAssetAndPassengerData);
