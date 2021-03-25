@@ -30,6 +30,7 @@ namespace MiX.Integrate.Shared.Entities.Assets
 		public string RegistrationNumber { get; set; }
 		public long SiteId { get; set; }
 		public string FuelType { get; set; }
+		public float? FuelTankCapacity { get; set; }
 		public float? TargetFuelConsumption { get; set; }
 		public string TargetFuelConsumptionUnits { get; set; }
 		public float? TargetHourlyFuelConsumption { get; set; }
