@@ -20,6 +20,7 @@ namespace MiX.Integrate.Shared.Constants
 		{
 			public const string GETALL = "api/assets/group/{groupId}";
 			public const string GET = "api/assets/{assetId}";
+			public const string GETADDITIONALDETAILSBYGROUP = "api/assets/group/{groupId}/additionaldetails";
 			public const string GETBYGROUP = "api/assets/group/{groupId}/asset/{assetId}";
 			public const string UPDATE = "api/assets";
 			public const string ADDASSETSTATE = "api/assets/group/{groupId}/state";
