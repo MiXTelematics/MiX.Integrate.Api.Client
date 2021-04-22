@@ -27,6 +27,7 @@ namespace MiX.Integrate.Shared.Constants
 			public const string ADD = "api/assets";
 			public const string GETASSETDIAG = "api/assets/diagnostics/group/{groupId}";
 			public const string GETTRAILERSFORORGANISATION = "api/assets/organisation/{organisationId}/trailers";
+			public const string GETASSETTYPES = "api/assets/assettypes";
 		}
 
 		//MiX.Integrate.Api.Controllers.CustomGroupsController
