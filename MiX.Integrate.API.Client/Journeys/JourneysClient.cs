@@ -38,7 +38,7 @@ namespace MiX.Integrate.API.Client.Journeys
 		/// <returns></returns>
 		public long AddJourney(CreateJourney newJourney)
 		{
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.JourneysController.ADDJOURNEY, HttpMethod.Post);
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.JourneysController.ADDJOURNEY, HttpMethod.Put);
 			request.AddJsonBody(newJourney);
 			IHttpRestResponse<long> response = Execute<long>(request, 1);
 			return response.Data;

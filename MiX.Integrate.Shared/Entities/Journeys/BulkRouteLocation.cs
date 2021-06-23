@@ -15,5 +15,7 @@ namespace MiX.Integrate.Shared.Entities.Journeys
 		public int StopDuration { get; set; }
 		public string LocationId { get; set; }
 		public string StopActivityInstructions { get; set; }
+		public DateTimeOffset? DepartureDateTime { get; set; }
+		public DateTimeOffset? ArrivalDateTime { get; set; }
 	}
 }
