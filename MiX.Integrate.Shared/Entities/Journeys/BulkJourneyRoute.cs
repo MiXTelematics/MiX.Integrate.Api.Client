@@ -23,6 +23,7 @@ namespace MiX.Integrate.Shared.Entities.Journeys
 		public string RoutingTunnel { get; set; }
 		public string RoutingType { get; set; }
 		public bool IsReturnJourney { get; set; }
+		public bool SpecifyTimes { get; set; }
 
 		public BulkJourneyRoute()
 		{
