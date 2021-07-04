@@ -1,4 +1,5 @@
-﻿using MiX.Integrate.API.Client.Base;
+﻿using System;
+using MiX.Integrate.API.Client.Base;
 using MiX.Integrate.Shared.Entities.Assets;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -41,5 +42,38 @@ namespace MiX.Integrate.API.Client
 		/// <param name="organisationId">Identifies the organisation to be queried</param>
 		/// <returns>The task object representing the asynchronous operation</returns>
 		Task<List<Trailer>> GetTrailersAsync(long organisationId);
+
+
+		/// <summary>Queries the service history of the specified assets for <see cref="AssetService"/> records
+		/// in the specified date range</summary>
+		/// <param name="assetIds">Identifies assets from a single organisation to include in the query</param>
+		/// <param name="from">Start of the date range to query</param>
+		/// <param name="to">End of the date range to query</param>
+		/// <returns>A list of <see cref="AssetService"/> records in the specified date range for the specified assets</returns>
+		List<AssetService> GetServiceHistory(List<long> assetIds, DateTime from, DateTime to);
+
+		/// <summary>Queries the service history of the specified assets for <see cref="AssetService"/> records
+		/// in the specified date range, as an asynchronous operation</summary>
+		/// <param name="assetIds">Identifies assets from a single organisation to include in the query</param>
+		/// <param name="from">Start of the date range to query</param>
+		/// <param name="to">End of the date range to query</param>
+		/// <returns>The task object representing the asynchronous operation</returns>
+		Task<List<AssetService>> GetServiceHistoryAsync(List<long> assetIds, DateTime from, DateTime to);
+
+		/// <summary>Queries the service history of assets in the specified organisation, organisation subgroup, or site
+		/// for <see cref="AssetService"/> records in the specified date range</summary>
+		/// <param name="groupId">Identifies an organisation, organisation subgroup, or site to include in the query</param>
+		/// <param name="from">Start of the date range to query</param>
+		/// <param name="to">End of the date range to query</param>
+		/// <returns>A list of <see cref="AssetService"/> records in the specified date range for the specified assets</returns>
+		List<AssetService> GetServiceHistoryByGroup(long groupId, DateTime from, DateTime to);
+
+		/// <summary>Queries the service history of assets in the specified organisation, organisation subgroup, or site
+		/// for <see cref="AssetService"/> records in the specified date range</summary>
+		/// <param name="groupId">Identifies an organisation, organisation subgroup, or site to include in the query</param>
+		/// <param name="from">Start of the date range to query</param>
+		/// <param name="to">End of the date range to query</param>
+		/// <returns>The task object representing the asynchronous operation</returns>
+		Task<List<AssetService>> GetServiceHistoryByGroupAsync(long groupId, DateTime from, DateTime to);
 	}
 }
