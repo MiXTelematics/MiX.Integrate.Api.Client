@@ -8,10 +8,10 @@ using System.Threading.Tasks;
 
 namespace MiX.Integrate.API.Client
 {
+	/// <inheritdoc cref="IAssetsClient"/>
   public class AssetsClient : BaseClient, IAssetsClient
   {
-
-    public AssetsClient(string url, bool setTestRequestHeader = false) : base(url, setTestRequestHeader) { }
+		public AssetsClient(string url, bool setTestRequestHeader = false) : base(url, setTestRequestHeader) { }
     public AssetsClient(string url, IdServerResourceOwnerClientSettings settings, bool setTestRequestHeader = false) : base(url, settings, setTestRequestHeader) { }
 
     public List<Asset> GetAll(long groupId)
@@ -181,6 +181,44 @@ namespace MiX.Integrate.API.Client
       return response.Data;
     }
 
+		public List<AssetService> GetServiceHistory(List<long> assetIds, DateTime @from, DateTime to)
+		{
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.AssetsController.GETSERVICEHISTORY, HttpMethod.Post);
+			request.AddUrlSegment("from", @from.ToString("yyyyMMdd"));
+			request.AddUrlSegment("to", to.ToString("yyyyMMdd"));
+			request.AddJsonBody(assetIds);
+			IHttpRestResponse<List<AssetService>> response = Execute<List<AssetService>>(request); 
+			return response.Data;
+		}
 
-  }
+		public async Task<List<AssetService>> GetServiceHistoryAsync(List<long> assetIds, DateTime @from, DateTime to)
+		{
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.AssetsController.GETSERVICEHISTORY, HttpMethod.Post);
+			request.AddUrlSegment("from", @from.ToString("yyyyMMdd"));
+			request.AddUrlSegment("to", to.ToString("yyyyMMdd"));
+			request.AddJsonBody(assetIds);
+			IHttpRestResponse<List<AssetService>> response = await ExecuteAsync<List<AssetService>>(request).ConfigureAwait(false);
+			return response.Data;
+		}
+
+		public List<AssetService> GetServiceHistoryByGroup(long groupId, DateTime @from, DateTime to)
+		{
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.AssetsController.GETSERVICEHISTORYBYGROUP, HttpMethod.Get);
+			request.AddUrlSegment("groupId", groupId.ToString());
+			request.AddUrlSegment("from", @from.ToString("yyyyMMdd"));
+			request.AddUrlSegment("to", to.ToString("yyyyMMdd"));
+			IHttpRestResponse<List<AssetService>> response = Execute<List<AssetService>>(request); 
+			return response.Data;
+		}
+
+		public async Task<List<AssetService>> GetServiceHistoryByGroupAsync(long groupId, DateTime @from, DateTime to)
+		{
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.AssetsController.GETSERVICEHISTORYBYGROUP, HttpMethod.Get);
+			request.AddUrlSegment("groupId", groupId.ToString());
+			request.AddUrlSegment("from", @from.ToString("yyyyMMdd"));
+			request.AddUrlSegment("to", to.ToString("yyyyMMdd"));
+			IHttpRestResponse<List<AssetService>> response = await ExecuteAsync<List<AssetService>>(request).ConfigureAwait(false);
+			return response.Data;
+		}
+	}
 }
