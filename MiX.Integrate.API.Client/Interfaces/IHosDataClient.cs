@@ -23,8 +23,12 @@ namespace MiX.Integrate.API.Client
 
 		List<HosViolation> GetDriverViolationsByListOfDriverIdsInDateRange(ParameterEntityType entityTypeId, List<long> entityIds, DateTime fromDateTime, DateTime toDateTime);
 		Task<List<HosViolation>> GetDriverViolationsByListOfDriverIdsInDateRangeAsync(ParameterEntityType entityTypeId, List<long> entityIds, DateTime fromDateTime, DateTime toDateTime);
+
 		HosAvailableHours GetHosAvailableHours(long driverId, bool displayHiddenTimeTypes = false);
 		Task<HosAvailableHours> GetHosAvailableHoursAsync(long driverId, bool displayHiddenTimeTypes = false);
+
+		List<HosAvailableHours> GetHosAvailableHours(List<long> driverIds, bool displayHiddenTimeTypes = false);
+		Task<List<HosAvailableHours>> GetHosAvailableHoursAsync(List<long> driverIds, bool displayHiddenTimeTypes = false);
 
 		HosEvent GetPreviousEvent(long driverId, byte eventTypeId, DateTime timeStamp);
 		Task<HosEvent> GetPreviousEventAsync(long driverId, byte eventTypeId, DateTime timeStamp);
