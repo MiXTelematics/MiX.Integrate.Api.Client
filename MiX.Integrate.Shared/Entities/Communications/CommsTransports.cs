@@ -13,6 +13,7 @@
 		LBS = 7,
 		Datcom = 8,
 		WLAN = 9,
-		SatComms = 10
+		SatComms = 10,
+		RoviService = 11
 	}
 }
