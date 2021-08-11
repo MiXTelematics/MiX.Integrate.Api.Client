@@ -14,11 +14,11 @@
 	  <dependencies>
       <group targetFramework=".NETStandard2.0">
         <dependency id="NETStandard.Library" version="2.0.3" />
-        <dependency id="MiX.Identity.Client" version="2021.8.11.1-beta" />
+        <dependency id="MiX.Identity.Client" version="2021.8.11.1" />
         <dependency id="System.Net.Http" version="4.3.4" />
       </group>
       <group targetFramework=".NETFramework4.6.2">
-        <dependency id="MiX.Identity.Client" version="2021.8.11.1-beta" />
+        <dependency id="MiX.Identity.Client" version="2021.8.11.1" />
         <dependency id="System.Net.Http" version="4.3.4" />
       </group>
     </dependencies>
