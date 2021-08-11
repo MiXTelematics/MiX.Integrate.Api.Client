@@ -37,7 +37,7 @@ namespace MiX.Integrate.API.Client.Base
 				{
 					IdentityClient identityClient = new IdentityClient(settings.BaseAddress, settings.ClientId, settings.ClientSecret, httpClientHandler);
 
-					TokenResponse reponse = await identityClient.RequestTokenAsync(settings.UserName, settings.Password, settings.Scopes).ConfigureAwait(false);
+					TokenResponse reponse = await identityClient.RequestResourceOwnerPasswordTokenAsync(settings.UserName, settings.Password, settings.Scopes).ConfigureAwait(false);
 
 					if (reponse == null || string.IsNullOrEmpty(reponse.AccessToken))
 					{

@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;netstandard1.6;net462;net452</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0;net462</TargetFrameworks>
     <OutputPath>$(BaseOutputPath)</OutputPath>
     <Version>1.0.0.0</Version>
     <FileVersion>1.0.0.0</FileVersion>
@@ -9,12 +9,10 @@
 	  <PackageLicenseExpression></PackageLicenseExpression>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Compile Remove="Clients\GeoDataClient.cs" />
-  </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="MiX.Identity.Client" Version="2020.9.15.2" />
+    <PackageReference Include="IdentityModel" Version="3.10.10" />
+    <PackageReference Include="MiX.Identity.Client" Version="2021.8.11.1" />
     <PackageReference Include="System.Net.Http" Version="4.3.4" />
   </ItemGroup>
 
@@ -26,9 +24,6 @@
   <ItemGroup>
     <Reference Include="System.Runtime.Serialization" Condition="'$(TargetFramework)' == 'net462'">
       <HintPath>..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.2\System.Runtime.Serialization.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Runtime.Serialization" Condition="'$(TargetFramework)' == 'net452'">
-      <HintPath>..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.2\System.Runtime.Serialization.dll</HintPath>
     </Reference>
   </ItemGroup>
 
