@@ -71,6 +71,7 @@ namespace MiX.Integrate.Shared.Constants
 			public const string GETCAMERASETTINGS = "api/deviceconfiguration/group/{groupId}/assets/camerasettings";
 			public const string GETCONFIGURATIONSTATE = "api/deviceconfiguration/group/{groupId}/assets/configurationstate";
 			public const string GETCOMMUNICATIONSETTINGS = "api/deviceconfiguration/group/{groupId}/assets/communicationsettings";
+			public const string GETDEVICETYPESBYGROUPID = "api/deviceconfiguration/group/{groupId}/assets/mobiledevicetypes";
 			public const string GETCONFIGURATIONSBYASSETIDS = "api/deviceconfiguration/assets";
 			public const string GETCONFIGURATIONSBYGROUPID = "api/deviceconfiguration/organisation/{groupId}";
 		}
