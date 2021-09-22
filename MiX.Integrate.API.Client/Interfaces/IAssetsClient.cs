@@ -14,14 +14,25 @@ namespace MiX.Integrate.API.Client
 		Task<List<Asset>> GetAllAsync(long groupId, string filterType, string wildCard);
 
 		/// <summary>Gets the custom asset detail data for assets in the specified group</summary>
-		/// <param name="groupId">Identifies the organisation, subgroup or site cotaining the assets to query</param>
+		/// <param name="groupId">Identifies the organisation, subgroup or site containing the assets to query</param>
 		/// <returns>Data associated with the custom asset detail fields for assets in the specified group</returns>
 		List<AdditionalDetails> GetAdditionalDetailsByGroup(long groupId);
 
 		/// <summary>Gets the custom asset detail data for assets in the specified group as an asynchronous operation</summary>
-		/// <param name="groupId">Identifies the organisation, subgroup or site cotaining the assets to query</param>
+		/// <param name="groupId">Identifies the organisation, subgroup or site containing the assets to query</param>
 		/// <returns>An object representing the asynchronous operation</returns>
 		Task<List<AdditionalDetails>> GetAdditionalDetailsByGroupAsync(long groupId);
+
+		/// <summary>Gets <see cref="AssetDiagnostics"/> details for each asset in the specified group</summary>
+		/// <param name="groupId">Identifies the organisation, subgroup or site containing the assets to query</param>
+		/// <returns>Asset diagnostics details for assets in the specified group</returns>
+		List<AssetDiagnostics> GetAssetDiagnosticsByGroup(long groupId);
+
+		/// <summary>Gets <see cref="AssetDiagnostics"/> details for each asset in the specified group as an asynchronous operation</summary>
+		/// <param name="groupId">Identifies the organisation, subgroup or site containing the assets to query</param>
+		/// <returns>An object representing the asynchronous operation</returns>
+		Task<List<AssetDiagnostics>> GetAssetDiagnosticsByGroupAsync(long groupId);
+
 		Asset Get(long assetId);
 		Task<Asset> GetAsync(long assetId);
 		Asset GetByGroup(long groupId, long assetId);
