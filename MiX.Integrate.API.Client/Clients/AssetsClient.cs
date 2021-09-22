@@ -46,6 +46,22 @@ namespace MiX.Integrate.API.Client
 			return response.Data;
 		}
 
+		public List<AssetDiagnostics> GetAssetDiagnosticsByGroup(long groupId)
+		{
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.AssetsController.GETASSETDIAG, HttpMethod.Get);
+			request.AddUrlSegment("groupId", groupId.ToString());
+			IHttpRestResponse<List<AssetDiagnostics>> response = Execute<List<AssetDiagnostics>>(request);
+			return response.Data;
+		}
+
+		public async Task<List<AssetDiagnostics>> GetAssetDiagnosticsByGroupAsync(long groupId)
+		{
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.AssetsController.GETASSETDIAG, HttpMethod.Get);
+			request.AddUrlSegment("groupId", groupId.ToString());
+			IHttpRestResponse<List<AssetDiagnostics>> response = await ExecuteAsync<List<AssetDiagnostics>>(request).ConfigureAwait(false);
+			return response.Data;
+		}
+
 
 		public List<Asset> GetAll(long groupId, string filterType, string wildCard)
     {
