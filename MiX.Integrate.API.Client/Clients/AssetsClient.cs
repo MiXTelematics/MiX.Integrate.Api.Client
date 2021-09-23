@@ -46,18 +46,20 @@ namespace MiX.Integrate.API.Client
 			return response.Data;
 		}
 
-		public List<AssetDiagnostics> GetAssetDiagnosticsByGroup(long groupId)
+		public List<AssetDiagnostics> GetAssetDiagnostics(long organisationId, IList<long> assetIds)
 		{
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.AssetsController.GETASSETDIAG, HttpMethod.Get);
-			request.AddUrlSegment("groupId", groupId.ToString());
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.AssetsController.GETASSETDIAG, HttpMethod.Post);
+			request.AddUrlSegment("groupId", organisationId.ToString());
+			request.AddJsonBody(assetIds);
 			IHttpRestResponse<List<AssetDiagnostics>> response = Execute<List<AssetDiagnostics>>(request);
 			return response.Data;
 		}
 
-		public async Task<List<AssetDiagnostics>> GetAssetDiagnosticsByGroupAsync(long groupId)
+		public async Task<List<AssetDiagnostics>> GetAssetDiagnosticsAsync(long organisationId, IList<long> assetIds)
 		{
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.AssetsController.GETASSETDIAG, HttpMethod.Get);
-			request.AddUrlSegment("groupId", groupId.ToString());
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.AssetsController.GETASSETDIAG, HttpMethod.Post);
+			request.AddUrlSegment("groupId", organisationId.ToString());
+			request.AddJsonBody(assetIds);
 			IHttpRestResponse<List<AssetDiagnostics>> response = await ExecuteAsync<List<AssetDiagnostics>>(request).ConfigureAwait(false);
 			return response.Data;
 		}
