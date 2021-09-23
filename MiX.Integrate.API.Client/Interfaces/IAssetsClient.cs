@@ -23,15 +23,17 @@ namespace MiX.Integrate.API.Client
 		/// <returns>An object representing the asynchronous operation</returns>
 		Task<List<AdditionalDetails>> GetAdditionalDetailsByGroupAsync(long groupId);
 
-		/// <summary>Gets <see cref="AssetDiagnostics"/> details for each asset in the specified group</summary>
-		/// <param name="groupId">Identifies the organisation, subgroup or site containing the assets to query</param>
-		/// <returns>Asset diagnostics details for assets in the specified group</returns>
-		List<AssetDiagnostics> GetAssetDiagnosticsByGroup(long groupId);
+		/// <summary>Gets <see cref="AssetDiagnostics"/> details for the specified assets in the specified organisation</summary>
+		/// <param name="organisationId">Identifies the organisation containing the assets to query</param>
+		/// <param name="assetIds">Identifies the assets to query</param>
+		/// <returns>Asset diagnostics details for the specified assets</returns>
+		List<AssetDiagnostics> GetAssetDiagnostics(long organisationId, IList<long> assetIds);
 
-		/// <summary>Gets <see cref="AssetDiagnostics"/> details for each asset in the specified group as an asynchronous operation</summary>
-		/// <param name="groupId">Identifies the organisation, subgroup or site containing the assets to query</param>
+		/// <summary>Gets <see cref="AssetDiagnostics"/> details for the specified assets in the specified organisation</summary>
+		/// <param name="organisationId">Identifies the organisation containing the assets to query</param>
+		/// <param name="assetIds">Identifies the assets to query</param>
 		/// <returns>An object representing the asynchronous operation</returns>
-		Task<List<AssetDiagnostics>> GetAssetDiagnosticsByGroupAsync(long groupId);
+		Task<List<AssetDiagnostics>> GetAssetDiagnosticsAsync(long organisationId, IList<long> assetIds);
 
 		Asset Get(long assetId);
 		Task<Asset> GetAsync(long assetId);
