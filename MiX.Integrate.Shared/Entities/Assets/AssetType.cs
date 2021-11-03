@@ -1,24 +1,53 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace MiX.Integrate.Shared.Entities.Assets
 {
 	public class AssetType
 	{
-		public int AssetTypeId { get; private set; }
-		public string Name { get; private set; }
-		public string DefaultImage { get; set; }
+		public int AssetTypeId { get; }
+		public string Name { get; }
+		public string DefaultImage { get; }
 
-		private static readonly List<AssetType> _all = new List<AssetType>();
-		public static IList<AssetType> All { get { return _all.AsReadOnly(); } }
+		public static IReadOnlyList<AssetType> All { get; }
+
+		static AssetType()
+		{
+			All = new ReadOnlyCollection<AssetType>(new List<AssetType>()
+			{
+				MotorCycle,
+				Trailer,
+				Boat,
+				MobilePlantEquipment,
+				StationaryPlantEquipment,
+				EmergencyServiceVehicle,
+				DangerousGoodsVehicle,
+				PassengerVehicle,
+				LightPassengerVehicleMinibus,
+				HeavyPassengerVehicleBusArticulated,
+				HeavyPassengerVehicleBusSingleDecker,
+				HeavyPassengerVehicleBusDoubleDecker,
+				HeavyVehicleArticulated,
+				HeavyVehicleNonArticulated,
+				HeavyVehicleRefrigeratedTransport,
+				LightVehicle,
+				FluidTransportVehicle,
+				Other,
+				Train,
+				LightDeliveryVehicle,
+				OffRoadVehicle,
+				MediumCommercialVehicle,
+				NonPoweredAsset,
+				MobilePhone
+			});
+		}
 
 		private AssetType(int id, string name, string defaultImage)
 		{
 			AssetTypeId = id;
 			Name = name;
 			DefaultImage = defaultImage;
-
-			_all.Add(this);
 		}
 
 		public static readonly AssetType MotorCycle = new AssetType(1, "Motorcycle", "asset-motorcycle.jpg");
@@ -49,16 +78,16 @@ namespace MiX.Integrate.Shared.Entities.Assets
 
 		public static AssetType GetById(int id)
 		{
-			for (var i = 0; i < _all.Count; i++)
-				if (_all[i].AssetTypeId == id) return _all[i];
+			for (var i = 0; i < All.Count; i++)
+				if (All[i].AssetTypeId == id) return All[i];
 					
 			return default(AssetType);
 		}
 
 		public static AssetType GetByName(string name)
 		{
-			for (var i = 0; i < _all.Count; i++)
-				if (_all[i].Name.Equals(name, StringComparison.OrdinalIgnoreCase)) return _all[i];
+			for (var i = 0; i < All.Count; i++)
+				if (All[i].Name.Equals(name, StringComparison.OrdinalIgnoreCase)) return All[i];
 					
 			return default(AssetType);
 		}
@@ -66,12 +95,12 @@ namespace MiX.Integrate.Shared.Entities.Assets
 		public static implicit operator AssetType(int id)
 		{
 
-			for (var i = 0; i < _all.Count; i++)
-				if (_all[i].AssetTypeId == id)
+			for (var i = 0; i < All.Count; i++)
+				if (All[i].AssetTypeId == id)
 				{
-					var result = _all[i];
-					while (i < _all.Count)
-						if (_all[i++].AssetTypeId == id)
+					var result = All[i];
+					while (i < All.Count)
+						if (All[i++].AssetTypeId == id)
 							throw new InvalidOperationException("More than one match found");
 					return result;
 				}
