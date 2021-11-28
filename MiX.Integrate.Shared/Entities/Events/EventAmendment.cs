@@ -5,10 +5,10 @@ namespace MiX.Integrate.Shared.Entities.Events
 	/// <summary>Details occurrences of amendments to events</summary>
 	public class EventAmendment
 	{
-		/// <summary>Identifier of the amended event<summary></summary>
+		/// <summary>Identifier of the amended event</summary>
 		public long EventId { get; set; }
 
-		/// <summary>The type of amendment made<summary></summary>
+		/// <summary>The type of amendment made</summary>
 		public AmendmentType AmendmentType { get; set; }
 
 		/// <summary>Date and time of the amendment</summary>

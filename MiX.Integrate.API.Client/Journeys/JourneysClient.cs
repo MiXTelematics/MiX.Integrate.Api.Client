@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace MiX.Integrate.API.Client.Journeys
 {
+	/// <inheritdoc/>
 	public class JourneysClient : BaseClient, IJourneysClient
 	{
 		#region Constructors
@@ -525,6 +526,24 @@ namespace MiX.Integrate.API.Client.Journeys
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.JourneysController.SUBMITBULKJOURNEY, HttpMethod.Post);
 			request.AddJsonBody(journeyIds);
 			IHttpRestResponse<List<BulkSubmitJourney>> response = await ExecuteAsync<List<BulkSubmitJourney>>(request).ConfigureAwait(false);
+			return response.Data;
+		}
+
+
+		public List<JourneyState> GetJourneyStates(List<long> journeyIds)
+		{
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.JourneysController.GETJOURNEYSTATESBATCHED, HttpMethod.Post);
+			request.AddJsonBody(journeyIds);
+			IHttpRestResponse<List<JourneyState>> response = Execute<List<JourneyState>>(request);
+			return response.Data;
+		}
+
+
+		public async Task<List<JourneyState>> GetJourneyStatesAsync(List<long> journeyIds)
+		{
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.JourneysController.GETJOURNEYSTATESBATCHED, HttpMethod.Post);
+			request.AddJsonBody(journeyIds);
+			IHttpRestResponse<List<JourneyState>> response = await ExecuteAsync<List<JourneyState>>(request).ConfigureAwait(false);
 			return response.Data;
 		}
 
