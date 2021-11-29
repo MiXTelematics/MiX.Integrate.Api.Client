@@ -212,7 +212,7 @@ namespace MiX.Integrate.Shared.Constants
 			public const string REMOVEJOURNEYASSETPASSENGERASYNC = "api/journeys/removeJourneyAssetPassenger/{journeyId}";
 			public const string GETJOURNEYCURRENTIDLIST = "api/journeys/getJourneyCurrentIdList";
 			public const string GETBULKJOURNEYPROGRESSASYNC = "api/journeys/getBulkJourneyProgress";
-			public const string GETJOURNEYSTATESBATCHED = "api/journeys/currentState";
+			public const string GETJOURNEYSTATESBATCHED = "api/journeys/{organisationId}/currentState";
 		}
 
 		//MiX.Integrate.Api.Controllers.LibraryEventsController
