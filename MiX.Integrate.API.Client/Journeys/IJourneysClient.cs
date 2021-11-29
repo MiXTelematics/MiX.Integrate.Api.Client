@@ -55,13 +55,15 @@ namespace MiX.Integrate.API.Client.Journeys
 		Task<List<BulkSubmitJourney>> SubmitBulkJourneysAsync(List<long> journeyIds);
 
 		/// <summary>Gets the details, route locations, and current status of the specified journeys</summary>
+		/// <param name="organisationId">Identifier of the organisation to which the journeys belong</param>
 		/// <param name="journeyIds">A <see cref="T:System.Collections.Generic.List`1"/> of journey identifiers to query</param>
 		/// <returns>A <see cref="List{JourneyState}"/> as a <see cref="T:List&lt;JourneyState&gt;"/> for the specified journeys</returns>
-		List<JourneyState> GetJourneyStates(List<long> journeyIds);
+		List<JourneyState> GetJourneyStates(long organisationId, List<long> journeyIds);
 
 		/// <summary>Gets the details, route locations, and current status of the specified journeys as an asynchronous operation</summary>
+		/// <param name="organisationId">Identifier of the organisation to which the journeys belong</param>
 		/// <param name="journeyIds">An <see cref="I:IReadOnlyList&lt;long&gt;"/> of journey identifiers to query</param>
 		/// <returns>A <see cref="T:System.Threading.Tasks.Task"/> representing the asynchronous operation</returns>
-		Task<List<JourneyState>> GetJourneyStatesAsync(List<long> journeyIds);
+		Task<List<JourneyState>> GetJourneyStatesAsync(long organisationId, List<long> journeyIds);
 	}
 }

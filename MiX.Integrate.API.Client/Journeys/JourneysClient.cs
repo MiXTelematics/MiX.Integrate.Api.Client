@@ -530,18 +530,20 @@ namespace MiX.Integrate.API.Client.Journeys
 		}
 
 
-		public List<JourneyState> GetJourneyStates(List<long> journeyIds)
+		public List<JourneyState> GetJourneyStates(long organisationId, List<long> journeyIds)
 		{
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.JourneysController.GETJOURNEYSTATESBATCHED, HttpMethod.Post);
+			request.AddUrlSegment("organisationId", organisationId.ToString());
 			request.AddJsonBody(journeyIds);
 			IHttpRestResponse<List<JourneyState>> response = Execute<List<JourneyState>>(request);
 			return response.Data;
 		}
 
 
-		public async Task<List<JourneyState>> GetJourneyStatesAsync(List<long> journeyIds)
+		public async Task<List<JourneyState>> GetJourneyStatesAsync(long organisationId, List<long> journeyIds)
 		{
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.JourneysController.GETJOURNEYSTATESBATCHED, HttpMethod.Post);
+			request.AddUrlSegment("organisationId", organisationId.ToString());
 			request.AddJsonBody(journeyIds);
 			IHttpRestResponse<List<JourneyState>> response = await ExecuteAsync<List<JourneyState>>(request).ConfigureAwait(false);
 			return response.Data;
