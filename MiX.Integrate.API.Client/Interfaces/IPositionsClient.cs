@@ -21,6 +21,25 @@ namespace MiX.Integrate.API.Client
 		Task<List<Position>> GetByDateRangeByAssetIdsAsync(List<long> assetIds, DateTime fromDate, DateTime toDate);
 		List<Position> GetByDateRangeByDriverIds(List<long> driverIds, DateTime fromDate, DateTime toDate);
 		Task<List<Position>> GetByDateRangeByDriverIdsAsync(List<long> driverIds, DateTime fromDate, DateTime toDate);
+
+		/// <summary>Get positions created since the specified SinceToken timestamp for the specified assets
+		/// <para>This method should ONLY be used when CreatedSince functionality is required for
+		/// a limited subset of assets that cannot be adequately described using one or more existing groups</para></summary>
+		/// <param name="assetIds">Identifiers of the assets to query</param>
+		/// <param name="sinceToken">SinceToken "bookmark"</param>
+		/// <param name="quantity">Approximate number of positions to retrieve</param>
+		/// <returns>A <see cref="CreatedSinceResult{T}"/> containing the result of the request</returns>
+		CreatedSinceResult<Position> GetCreatedSinceForAssets(List<long> assetIds, string sinceToken, int quantity);
+
+		/// <summary>Get positions created since the specified SinceToken timestamp for the specified assets
+		/// <para>This method should ONLY be used when CreatedSince functionality is required for
+		/// a limited subset of assets that cannot be adequately described using one or more existing groups</para></summary>
+		/// <param name="assetIds">Identifiers of the assets to query</param>
+		/// <param name="sinceToken">SinceToken "bookmark"</param>
+		/// <param name="quantity">Approximate number of positions to retrieve</param>
+		/// <returns>A <see cref="Task"/> representing the asynchronous operation</returns>
+		Task<CreatedSinceResult<Position>> GetCreatedSinceForAssetsAsync(List<long> assetIds, string sinceToken, int quantity);
+
 		CreatedSinceResult<Position> GetCreatedSinceForGroups(List<long> groupIds, string entityType, string sinceToken, int quantity);
 		Task<CreatedSinceResult<Position>> GetCreatedSinceForGroupsAsync(List<long> groupIds, string entityType, string sinceToken, int quantity);
 		CreatedSinceResult<Position> GetCreatedSinceForOrganisation(long organisationId, string sinceToken, int quantity);
