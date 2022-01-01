@@ -137,6 +137,36 @@ namespace MiX.Integrate.API.Client
 			return response.Data;
 		}
 
+		public CreatedSinceResult<Position> GetCreatedSinceForAssets(List<long> assetIds, string sinceToken, int quantity)
+		{
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.PositionsController.GETCREATEDSINCEFORASSETS, HttpMethod.Post);
+			request.AddUrlSegment("sinceToken", sinceToken);
+			request.AddUrlSegment("quantity", quantity.ToString());
+			request.AddJsonBody(assetIds);
+			IHttpRestResponse<List<Position>> response = Execute<List<Position>>(request);
+			string sHasMoreItems = GetResponseHeader(response.Headers, "HasMoreItems");
+			string getSinceToken = GetResponseHeader(response.Headers, "GetSinceToken");
+			bool hasMoreItems = false;
+			if (!bool.TryParse(sHasMoreItems, out hasMoreItems))
+				throw new Exception("Could not read the HasMoreItems header");
+			return new CreatedSinceResult<Position>() { HasMoreItems = hasMoreItems, GetSinceToken = getSinceToken, Items = response.Data };
+		}
+
+		public async Task<CreatedSinceResult<Position>> GetCreatedSinceForAssetsAsync(List<long> assetIds, string sinceToken, int quantity)
+		{
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.PositionsController.GETCREATEDSINCEFORASSETS, HttpMethod.Post);
+			request.AddUrlSegment("sinceToken", sinceToken);
+			request.AddUrlSegment("quantity", quantity.ToString());
+			request.AddJsonBody(assetIds);
+			IHttpRestResponse<List<Position>> response = await ExecuteAsync<List<Position>>(request).ConfigureAwait(false);
+			string sHasMoreItems = GetResponseHeader(response.Headers, "HasMoreItems");
+			string getSinceToken = GetResponseHeader(response.Headers, "GetSinceToken");
+			bool hasMoreItems = false;
+			if (!bool.TryParse(sHasMoreItems, out hasMoreItems))
+				throw new Exception("Could not read the HasMoreItems header");
+			return new CreatedSinceResult<Position>() { HasMoreItems = hasMoreItems, GetSinceToken = getSinceToken, Items = response.Data };
+		}
+
 		public CreatedSinceResult<Position> GetCreatedSinceForGroups(List<long> groupIds, string entityType, string sinceToken, int quantity)
 		{
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.PositionsController.GETCREATEDSINCEFORGROUPSASYNC, HttpMethod.Post);
