@@ -21,8 +21,8 @@ namespace MiX.Integrate.Shared.Entities.Assets
 			TargetFuelConsumptionUnits = Unit.KilometresPerLitre;
 			TargetHourlyFuelConsumptionUnits = Unit.LiterPerHour;
 			FmVehicleId = fmVehicleId;
-
 		}
+
 		public long AssetId { get; set; }
 		public int AssetTypeId { get; set; }		
 /********************************************************
@@ -79,42 +79,29 @@ AssetTypeIds are not currently exposed as an enumeration - this will be correcte
 		private string _icon;
 		public string Icon
 		{
-			get { return _icon ?? AssetIcons.DefaultAssetIcon; }
+			get  => _icon ?? AssetIcons.DefaultAssetIcon; 
 			set { _icon = value; }
 		}
 		private string _iconColour;
 		public string IconColour
 		{
-			get { return _iconColour ?? AssetIcons.DefaultAssetIconColour; }
+			get => _iconColour ?? AssetIcons.DefaultAssetIconColour; 
 			set { _iconColour = value; }
 		}
 		public string Colour { get; set; }
-		private string _assetImage;
 
+		private string _assetImage;
 		public string AssetImage
 		{
-			get
-			{
-				if (_assetImage != null)
-					return _assetImage;
-				var assetType = AssetType.GetById(AssetTypeId);
-				return assetType?.DefaultImage;
-			}
+			get => _assetImage ?? AssetType.GetById(AssetTypeId)?.DefaultImage;
 			set { _assetImage = value; }
 		}
 
 		public bool IsDefaultImage
 		{
-			get
-			{
-				if (AssetImage == null) return true;
-				foreach (var assetType in AssetType.All)
-					if (assetType.DefaultImage.Equals(AssetImage))
-						return true;
-
-				return false;
-			}
+			get => _assetImage == null || string.Equals(_assetImage,  AssetType.GetById(AssetTypeId)?.DefaultImage);
 		}
+
 		public string AssetImageUrl { get; set; }
 		public string UserState { get; set; }
 		public string CreatedBy { get; set; }

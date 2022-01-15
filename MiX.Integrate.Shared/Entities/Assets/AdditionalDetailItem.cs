@@ -1,6 +1,6 @@
 ﻿namespace MiX.Integrate.Shared.Entities.Assets
 {
-  /// <summary>Instance of a custom asset detail data point/summary>
+  /// <summary>Instance of a custom asset detail data point</summary>
   public class AdditionalDetailItem
   {
     public AdditionalDetailItem(long id, string label, string value)

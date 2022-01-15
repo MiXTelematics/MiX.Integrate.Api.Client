@@ -35,6 +35,7 @@ namespace MiX.Integrate.Shared.Helpers
 		/// <summary>Converts the specified string representation of a UTC timestamp
 		/// to its <see cref="DateTime"/> equivalent or a specified default value</summary>
 		/// <param name="s">A string in the format yyyyMMddHHmmss or yyyyMMddHHmmssfff that contains a date and time to convert</param>
+		/// <param name="defaultValue">The value to return if conversion fails</param>
 		/// <returns>A <see cref="DateTime"/> that is equivalent to the UTC date and time represented in <paramref name="s"/>, or
 		/// <paramref name="defaultValue"/> if the string could not be converted</returns>
 		public static DateTime ParseExactToUtc(this string s, DateTime defaultValue)

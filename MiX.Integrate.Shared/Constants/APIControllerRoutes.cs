@@ -28,6 +28,8 @@ namespace MiX.Integrate.Shared.Constants
 			public const string GETASSETDIAG = "api/assets/diagnostics/group/{groupId}";
 			public const string GETTRAILERSFORORGANISATION = "api/assets/organisation/{organisationId}/trailers";
 			public const string GETASSETTYPES = "api/assets/assettypes";
+			public const string GETSERVICEHISTORY = "api/assets/servicehistory/{from}/to/{to}";
+			public const string GETSERVICEHISTORYBYGROUP = "api/assets/servicehistory/group/{groupId}/{from}/to/{to}";
 		}
 
 		//MiX.Integrate.Api.Controllers.CustomGroupsController
@@ -69,6 +71,7 @@ namespace MiX.Integrate.Shared.Constants
 			public const string GETCAMERASETTINGS = "api/deviceconfiguration/group/{groupId}/assets/camerasettings";
 			public const string GETCONFIGURATIONSTATE = "api/deviceconfiguration/group/{groupId}/assets/configurationstate";
 			public const string GETCOMMUNICATIONSETTINGS = "api/deviceconfiguration/group/{groupId}/assets/communicationsettings";
+			public const string GETDEVICETYPESBYGROUPID = "api/deviceconfiguration/group/{groupId}/assets/mobiledevicetypes";
 			public const string GETCONFIGURATIONSBYASSETIDS = "api/deviceconfiguration/assets";
 			public const string GETCONFIGURATIONSBYGROUPID = "api/deviceconfiguration/organisation/{groupId}";
 		}
@@ -172,6 +175,7 @@ namespace MiX.Integrate.Shared.Constants
 			public const string GETHOSEVENTDATASUMMARY = "api/ghos/events/from/{from}/to/{to}/summary";
 			public const string GETHOSVIOLATIONS = "api/ghos/violations/driver/{driverId}/from/{from}/to/{to}";
 			public const string GETHOSAVAILABLEHOURS = "api/ghos/availablehours/driver/{driverId}/{displayHiddenTimeTypes}";
+			public const string GETHOSAVAILABLEHOURSMULTIPLE = "api/ghos/availablehours/drivers/{displayHiddenTimeTypes}";
 			public const string GETPREVIOUSEVENT = "api/ghos/previousevent/driver/{driverId}/eventtype/{eventTypeId}/{timeStamp}";
 			public const string GETWORKSTATESTATUSSOURCETYPES = "api/ghos/workstatestatussourcetypes";
 			public const string GETRULESETSUMMARIES = "api/ghos/ruleset/{organisationId}/summaries";
@@ -208,6 +212,7 @@ namespace MiX.Integrate.Shared.Constants
 			public const string REMOVEJOURNEYASSETPASSENGERASYNC = "api/journeys/removeJourneyAssetPassenger/{journeyId}";
 			public const string GETJOURNEYCURRENTIDLIST = "api/journeys/getJourneyCurrentIdList";
 			public const string GETBULKJOURNEYPROGRESSASYNC = "api/journeys/getBulkJourneyProgress";
+			public const string GETJOURNEYSTATESBATCHED = "api/journeys/{organisationId}/currentState";
 		}
 
 		//MiX.Integrate.Api.Controllers.LibraryEventsController

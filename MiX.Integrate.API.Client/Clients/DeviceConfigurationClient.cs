@@ -66,6 +66,22 @@ namespace MiX.Integrate.API.Client
 			return response.Data;
 		}
 
+		public List<MobileUnitMobileDeviceInfo> GetMobileDeviceTypes(long groupId)
+		{
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.DeviceConfigController.GETDEVICETYPESBYGROUPID, HttpMethod.Get);
+			request.AddUrlSegment("groupId", groupId.ToString());
+			IHttpRestResponse<List<MobileUnitMobileDeviceInfo>> response = Execute<List<MobileUnitMobileDeviceInfo>>(request);
+			return response.Data;
+		}
+		
+		public async Task<List<MobileUnitMobileDeviceInfo>> GetMobileDeviceTypesAsync(long groupId)
+		{
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.DeviceConfigController.GETDEVICETYPESBYGROUPID, HttpMethod.Get);
+			request.AddUrlSegment("groupId", groupId.ToString());
+			IHttpRestResponse<List<MobileUnitMobileDeviceInfo>> response = await ExecuteAsync<List<MobileUnitMobileDeviceInfo>>(request).ConfigureAwait(false);
+			return response.Data;
+		}
+
 		public async Task<List<MobileUnitConfigurationState>> GetConfigurationStateAsync(long groupId, List<long> assetIds)
 		{
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.DeviceConfigController.GETCONFIGURATIONSTATE, HttpMethod.Post);

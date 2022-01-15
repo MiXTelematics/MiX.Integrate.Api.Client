@@ -14,7 +14,7 @@ namespace MiX.Integrate.Shared.Entities.Tacho
 		/// </summary>
 		public DateTime IntervalDateTime { get; set; }
 		/// <summary>
-		/// collection of <see cref="TachoParameter"/>
+		/// collection of <see cref="TachoParameterValue"/>
 		/// </summary>
 		public List<TachoParameterValue> Data { get; set; }
 

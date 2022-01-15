@@ -204,6 +204,31 @@ namespace MiX.Integrate.API.Client
 
 			return response.Data;
 		}
+
+		public List<HosDriverAvailableHours> GetHosAvailableHours(List<long> driverIds, bool displayHiddenTimeTypes = false)
+		{
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.HosDataController.GETHOSAVAILABLEHOURSMULTIPLE, HttpMethod.Post);
+
+			request.AddUrlSegment("displayHiddenTimeTypes", displayHiddenTimeTypes.ToString());
+			request.AddJsonBody(driverIds);
+
+			IHttpRestResponse<List<HosDriverAvailableHours>> response = Execute<List<HosDriverAvailableHours>>(request);
+
+			return response.Data;
+		}
+
+		public async Task<List<HosDriverAvailableHours>> GetHosAvailableHoursAsync(List<long> driverIds, bool displayHiddenTimeTypes = false)
+		{
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.HosDataController.GETHOSAVAILABLEHOURSMULTIPLE, HttpMethod.Post);
+
+			request.AddUrlSegment("displayHiddenTimeTypes", displayHiddenTimeTypes.ToString());
+			request.AddJsonBody(driverIds);
+
+			IHttpRestResponse<List<HosDriverAvailableHours>> response = await ExecuteAsync<List<HosDriverAvailableHours>>(request).ConfigureAwait(false);
+
+			return response.Data;
+		}
+
 		public HosEvent GetPreviousEvent(long driverId, byte eventTypeId, DateTime timeStamp)
 		{
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.HosDataController.GETPREVIOUSEVENT, HttpMethod.Get);
@@ -216,6 +241,7 @@ namespace MiX.Integrate.API.Client
 
 			return response.Data;
 		}
+
 		public async Task<HosEvent> GetPreviousEventAsync(long driverId, byte eventTypeId, DateTime timeStamp)
 		{
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.HosDataController.GETPREVIOUSEVENT, HttpMethod.Get);
@@ -227,6 +253,7 @@ namespace MiX.Integrate.API.Client
 			IHttpRestResponse<HosEvent> response = await ExecuteAsync<HosEvent>(request).ConfigureAwait(false);
 			return response.Data;
 		}
+
 		public Dictionary<byte, string> GetWorkStateStatusSourceTypes()
 		{
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.HosDataController.GETWORKSTATESTATUSSOURCETYPES, HttpMethod.Get);
@@ -235,6 +262,7 @@ namespace MiX.Integrate.API.Client
 
 			return response.Data;
 		}
+
 		public async Task<Dictionary<byte, string>> GetWorkStateStatusSourceTypesAsync()
 		{
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.HosDataController.GETWORKSTATESTATUSSOURCETYPES, HttpMethod.Get);
@@ -242,6 +270,7 @@ namespace MiX.Integrate.API.Client
 			IHttpRestResponse<Dictionary<byte, string>> response = await ExecuteAsync<Dictionary<byte, string>>(request).ConfigureAwait(false);
 			return response.Data;
 		}
+
 		public List<RuleSetSummary> GetRuleSetSummaries(long organisationGroupId)
 		{
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.HosDataController.GETRULESETSUMMARIES, HttpMethod.Get);
@@ -252,6 +281,7 @@ namespace MiX.Integrate.API.Client
 
 			return response.Data;
 		}
+
 		public async Task<List<RuleSetSummary>> GetRuleSetSummariesAsync(long organisationGroupId)
 		{
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.HosDataController.GETRULESETSUMMARIES, HttpMethod.Get);
