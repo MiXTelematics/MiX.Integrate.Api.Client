@@ -1,8 +1,8 @@
 ﻿namespace MiX.Integrate.Shared.Entities.Journeys
 {
-	public class JourneyAssetDriver
+	public class JourneyAssetTrailer
 	{
-		public long DriverId { get; set; }
+		public long TrailerId { get; set; }
 		public long AssetId { get; set; }
 	}
 }
