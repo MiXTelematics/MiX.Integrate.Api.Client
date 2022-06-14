@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace MiX.Integrate.Shared.Entities.Journeys
 {
@@ -11,5 +12,6 @@ namespace MiX.Integrate.Shared.Entities.Journeys
 		public long LocationId { get; set; }
 		public TimeSpan? DwellTime { get; set; }
 		public string ExternalReference { get; set; }
+		public List<DeliveryWindow> DeliveryWindows { get; set; }
 	}
 }
