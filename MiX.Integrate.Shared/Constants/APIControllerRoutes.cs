@@ -213,6 +213,10 @@ namespace MiX.Integrate.Shared.Constants
 			public const string GETJOURNEYCURRENTIDLIST = "api/journeys/getJourneyCurrentIdList";
 			public const string GETBULKJOURNEYPROGRESSASYNC = "api/journeys/getBulkJourneyProgress";
 			public const string GETJOURNEYSTATESBATCHED = "api/journeys/{organisationId}/currentState";
+
+			public const string GETORGANISATIONCUSTOMERS = "api/journeys/customers/group/{organisationId}/";
+			public const string GETORGANISATIONCUSTOMERDELIVERYPOINTS = "api/journeys/deliverypoints/group/{organisationId}/customer/{customerId}";
+
 		}
 
 		//MiX.Integrate.Api.Controllers.LibraryEventsController
