@@ -549,6 +549,42 @@ namespace MiX.Integrate.API.Client.Journeys
 			return response.Data;
 		}
 
+		public List<Customer> GetOrganisationCustomers(long organisationId)
+		{
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.JourneysController.GETORGANISATIONCUSTOMERS, HttpMethod.Get);
+			request.AddUrlSegment("organisationId", organisationId.ToString());
+			IHttpRestResponse<List<Customer>> response = Execute<List<Customer>>(request);
+			return response.Data;
+		}
+
+
+		public async Task<List<Customer>> GetOrganisationCustomersAsync(long organisationId)
+		{
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.JourneysController.GETORGANISATIONCUSTOMERS, HttpMethod.Get);
+			request.AddUrlSegment("organisationId", organisationId.ToString());
+			IHttpRestResponse<List<Customer>> response = await ExecuteAsync<List<Customer>>(request).ConfigureAwait(false);
+			return response.Data;
+		}
+
+		public List<DeliveryPoint> GetCustomerDeliveryPoints(long organisationId,long customerId)
+		{
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.JourneysController.GETORGANISATIONCUSTOMERDELIVERYPOINTS, HttpMethod.Get);
+			request.AddUrlSegment("organisationId", organisationId.ToString());
+			request.AddUrlSegment("customerId", customerId.ToString());
+			IHttpRestResponse<List<DeliveryPoint>> response = Execute<List<DeliveryPoint>>(request);
+			return response.Data;
+		}
+
+
+		public async Task<List<DeliveryPoint>> GetCustomerDeliveryPointsAsync(long organisationId, long customerId)
+		{
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.JourneysController.GETORGANISATIONCUSTOMERDELIVERYPOINTS, HttpMethod.Get);
+			request.AddUrlSegment("organisationId", organisationId.ToString());
+			request.AddUrlSegment("customerId", customerId.ToString());
+			IHttpRestResponse<List<DeliveryPoint>> response = await ExecuteAsync<List<DeliveryPoint>>(request).ConfigureAwait(false);
+			return response.Data;
+		}
+
 		#endregion
 	}
 }
