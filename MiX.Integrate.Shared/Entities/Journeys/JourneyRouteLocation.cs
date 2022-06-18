@@ -12,6 +12,7 @@ namespace MiX.Integrate.Shared.Entities.Journeys
 		public int StopDuration { get; set; }
 		public string ReverseGeo { get; set; }
 		public long? DmxLocationId { get; set; }
+		public long? DeliveryPointId { get; set; }
 		public DateTimeOffset ActualDepartureDate { get; set; }
 		public DateTimeOffset ActualArrivalDate { get; set; }
 		public DateTimeOffset AdjustedDepartureDate { get; set; }
