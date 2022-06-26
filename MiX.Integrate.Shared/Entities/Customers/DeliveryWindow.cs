@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace MiX.Integrate.Shared.Entities.Journeys
+namespace MiX.Integrate.Shared.Entities.Customers
 {
 	public class DeliveryWindow
 	{

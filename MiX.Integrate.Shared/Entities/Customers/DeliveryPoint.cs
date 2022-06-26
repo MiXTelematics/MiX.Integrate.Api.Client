@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace MiX.Integrate.Shared.Entities.Journeys
+namespace MiX.Integrate.Shared.Entities.Customers
 {
-	public class DeliveryPoint 
+	public class DeliveryPoint
 	{
 		public long DeliveryPointId { get; set; }
 		public string Description { get; set; }
