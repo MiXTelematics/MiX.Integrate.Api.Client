@@ -36,6 +36,7 @@ namespace MiX.Integrate.Shared.Constants
 			public const string GETASSETDIAG = "api/assets/diagnostics/group/{groupId}";
 			public const string GETTRAILERSFORORGANISATION = "api/assets/organisation/{organisationId}/trailers";
 			public const string GETASSETTYPES = "api/assets/assettypes";
+			public const string GETMANUFACTURERS = "api/assets/manufacturers";
 			public const string GETSERVICEHISTORY = "api/assets/servicehistory/{from}/to/{to}";
 			public const string GETSERVICEHISTORYBYGROUP = "api/assets/servicehistory/group/{groupId}/{from}/to/{to}";
 		}
