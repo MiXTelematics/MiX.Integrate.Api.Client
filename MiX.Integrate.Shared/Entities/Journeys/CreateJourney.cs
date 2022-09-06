@@ -8,6 +8,8 @@ namespace MiX.Integrate.Shared.Entities.Journeys
 		public List<JourneyAsset> JourneyAssets { get; set; }
 		public List<JourneyAssetDriver> JourneyAssetDrivers { get; set; }
 		public List<JourneyAssetExternalPassenger> JourneyAssetExternalPassengers { get; set; }
+		public List<JourneyAssetTrailer> JourneyAssetTrailers { get; set; }
+		public List<JourneyResource> JourneyResources { get; set; }
 		public JourneyRoute JourneyRoute { get; set; }
 		public bool SubmitJourney { get; set; }
 
@@ -16,6 +18,8 @@ namespace MiX.Integrate.Shared.Entities.Journeys
 			JourneyAssets = new List<JourneyAsset>();
 			JourneyAssetDrivers = new List<JourneyAssetDriver>();
 			JourneyAssetExternalPassengers = new List<JourneyAssetExternalPassenger>();
+			JourneyAssetTrailers = new List<JourneyAssetTrailer>();
+			JourneyResources = new List<JourneyResource>();
 		}
 	}
 }

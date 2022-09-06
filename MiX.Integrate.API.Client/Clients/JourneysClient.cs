@@ -1,5 +1,6 @@
 ﻿using MiX.Integrate.API.Client.Base;
 using MiX.Integrate.Shared.Constants;
+using MiX.Integrate.Shared.Entities.Customers;
 using MiX.Integrate.Shared.Entities.Journeys;
 using System;
 using System.Collections.Generic;
@@ -548,7 +549,7 @@ namespace MiX.Integrate.API.Client.Journeys
 			IHttpRestResponse<List<JourneyState>> response = await ExecuteAsync<List<JourneyState>>(request).ConfigureAwait(false);
 			return response.Data;
 		}
-
+		
 		#endregion
 	}
 }

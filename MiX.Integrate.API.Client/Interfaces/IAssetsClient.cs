@@ -46,6 +46,23 @@ namespace MiX.Integrate.API.Client
 		long Add(Asset asset);
 		Task<long> AddAsync(Asset asset);
 
+		/// <summary>Get the list of manufacturer names recognised by the Fleet Manager system, used
+		/// to validate the value assigned to the <see cref="Asset.Make"/> property of an <see cref="Asset"/>.
+		/// </summary>
+		/// <remarks>As this information is not subject to frequent changes, the data returned by this
+		/// method should be cached for local use and refreshed only when necessary.</remarks>
+		/// <returns>A list of manufacturer names recognised by the Fleet Manager system</returns>
+		List<string> GetManufacturerNames();
+
+		/// <summary>Get the list of manufacturer names recognised by the Fleet Manager system, used
+		/// to validate the value assigned to the <see cref="Asset.Make"/> property of an <see cref="Asset"/>,
+		/// as an asynchronous operation.
+		/// </summary>
+		/// <remarks>As this information is not subject to frequent changes, the data returned by this
+		/// method should be cached for local use and refreshed only when necessary.</remarks>
+		/// <returns>An object representing the asynchronous operation</returns>
+		Task<List<string>> GetManufacturerNamesAsync();
+
 		/// <summary>Gets <see cref="Trailer"/> assets for the specified organisation as an asynchronous operation</summary>
 		/// <param name="organisationId">Identifies the organisation to be queried</param>
 		/// <returns>A list of <see cref="Trailer"/> objects for the specified organisation</returns>

@@ -16,22 +16,20 @@ namespace MiX.Integrate.API.Client
 
 		public List<ActiveEvent> GetLatestForOrganisation(long organisationId, byte quantity = 1, List<long> eventTypeIds = null)
 		{
-			EventFilter eventFilter = new EventFilter() { EventTypeIds = eventTypeIds };
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.ActiveEventsController.GETLATESTFORGROUP, HttpMethod.Post);
 			request.AddUrlSegment("groupId", organisationId.ToString());
 			request.AddUrlSegment("quantity", quantity.ToString());
-			request.AddJsonBody(eventFilter);
+			request.AddJsonBody(eventTypeIds);
 			IHttpRestResponse<List<ActiveEvent>> response = Execute<List<ActiveEvent>>(request);
 			return response.Data;
 		}
 
 		public async Task<List<ActiveEvent>> GetLatestForOrganisationAsync(long organisationId, byte quantity = 1, List<long> eventTypeIds = null)
 		{
-			EventFilter eventFilter = new EventFilter() { EventTypeIds = eventTypeIds };
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.ActiveEventsController.GETLATESTFORGROUP, HttpMethod.Post);
 			request.AddUrlSegment("groupId", organisationId.ToString());
 			request.AddUrlSegment("quantity", quantity.ToString());
-			request.AddJsonBody(eventFilter);
+			request.AddJsonBody(eventTypeIds);
 			IHttpRestResponse<List<ActiveEvent>> response = await ExecuteAsync<List<ActiveEvent>>(request).ConfigureAwait(false);
 			return response.Data;
 		}

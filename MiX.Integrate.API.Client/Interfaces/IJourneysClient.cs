@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using MiX.Integrate.Shared.Entities.Journeys;
 using MiX.Integrate.API.Client.Base;
 using System;
+using MiX.Integrate.Shared.Entities.Customers;
 
 namespace MiX.Integrate.API.Client.Journeys
 {
@@ -65,5 +66,6 @@ namespace MiX.Integrate.API.Client.Journeys
 		/// <param name="journeyIds">An <see cref="I:IReadOnlyList&lt;long&gt;"/> of journey identifiers to query</param>
 		/// <returns>A <see cref="T:System.Threading.Tasks.Task"/> representing the asynchronous operation</returns>
 		Task<List<JourneyState>> GetJourneyStatesAsync(long organisationId, List<long> journeyIds);
+
 	}
 }

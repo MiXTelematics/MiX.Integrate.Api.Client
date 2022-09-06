@@ -3,7 +3,7 @@ using System;
 
 namespace MiX.Integrate.Shared.Entities.Assets
 {
-  public class Asset
+	public class Asset
 	{
 		public Asset()
 		{
@@ -67,6 +67,9 @@ AssetTypeIds are not currently exposed as an enumeration - this will be correcte
 		public float? TargetHourlyFuelConsumption { get; set; }
 		public string TargetHourlyFuelConsumptionUnits { get; set; }
 		public string FleetNumber { get; set; }
+
+		// A value is required for this field: either a vehicle make/manufacturer
+		// recognised by the Fleet Manager system, or "Other"   
 		public string Make { get; set; }
 		public string Model { get; set; }
 		public string Year { get; set; }
@@ -79,13 +82,13 @@ AssetTypeIds are not currently exposed as an enumeration - this will be correcte
 		private string _icon;
 		public string Icon
 		{
-			get  => _icon ?? AssetIcons.DefaultAssetIcon; 
+			get => _icon ?? AssetIcons.DefaultAssetIcon;
 			set { _icon = value; }
 		}
 		private string _iconColour;
 		public string IconColour
 		{
-			get => _iconColour ?? AssetIcons.DefaultAssetIconColour; 
+			get => _iconColour ?? AssetIcons.DefaultAssetIconColour;
 			set { _iconColour = value; }
 		}
 		public string Colour { get; set; }
@@ -99,7 +102,7 @@ AssetTypeIds are not currently exposed as an enumeration - this will be correcte
 
 		public bool IsDefaultImage
 		{
-			get => _assetImage == null || string.Equals(_assetImage,  AssetType.GetById(AssetTypeId)?.DefaultImage);
+			get => _assetImage == null || string.Equals(_assetImage, AssetType.GetById(AssetTypeId)?.DefaultImage);
 		}
 
 		public string AssetImageUrl { get; set; }
