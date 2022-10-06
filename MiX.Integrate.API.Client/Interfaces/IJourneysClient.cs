@@ -31,11 +31,11 @@ namespace MiX.Integrate.API.Client.Journeys
 		Task<bool> RemoveJourneyAsync(long journeyId);
 		Task<bool> CancelJourneyAsync(long journeyId);
 		Task<bool> UpdateJourneyAssetDriversAsync(long journeyId, List<JourneyAssetDriver> journeyAssetDriver);
-		Task<bool> UpdateJourneyAssetDriversWithValidationAsync(JourneyAssetDriversUpdate journeyAssetDrivers);
+		Task<bool> UpdateJourneyAssetDriversWithValidationAsync(long journeyId, JourneyAssetDriversUpdate journeyAssetDrivers);
 		Task<List<JourneyAssetDriver>> GetJourneyAssetsAndDriversAsync(long journeyId);
 		List<JourneyAssetDriver> GetJourneyAssetsAndDrivers(long journeyId);
 		bool UpdateJourneyAssetDrivers(long journeyId, List<JourneyAssetDriver> journeyAssetDriver);
-		bool UpdateJourneyAssetDriversWithValidation(JourneyAssetDriversUpdate journeyAssetDrivers);
+		bool UpdateJourneyAssetDriversWithValidation(long journeyId, JourneyAssetDriversUpdate journeyAssetDrivers);
 		bool RemoveJourney(long journeyId);
 		bool CancelJourney(long journeyId);
 		JourneyRouteInfo GetJourneyRouteLocations(long journeyId);
