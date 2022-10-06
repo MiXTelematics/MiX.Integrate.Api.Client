@@ -321,17 +321,26 @@ namespace MiX.Integrate.API.Client.Journeys
 
 		}
 
-		public async Task<bool> UpdateJourneyAssetDriversWithValidationAsync(JourneyAssetDriversUpdate journeyAssetDrivers)
+		public async Task<bool> UpdateJourneyAssetDriversWithValidationAsync(long journeyId, JourneyAssetDriversUpdate journeyAssetDrivers)
 		{
 			var request = GetRequest(APIControllerRoutes.JourneysController.UPDATEJOURNEYASSETDRIVERSWITHVALIDATIONASYNC, HttpMethod.Post);
+			request.AddUrlSegment("journeyId", journeyId.ToString());
 			request.AddJsonBody(journeyAssetDrivers);
 			var response = await ExecuteAsync<bool>(request).ConfigureAwait(false);
 			return response.Data;
 		}
 
+		public bool UpdateJourneyAssetDriversWithValidation(long journeyId, JourneyAssetDriversUpdate journeyAssetDrivers)
+		{
+			var request = GetRequest(APIControllerRoutes.JourneysController.UPDATEJOURNEYASSETDRIVERSWITHVALIDATIONASYNC, HttpMethod.Post);
+			request.AddUrlSegment("journeyId", journeyId.ToString());
+			request.AddJsonBody(journeyAssetDrivers);
+			var response = Execute<bool>(request);
+			return response.Data;
+		}
+
 		public async Task<bool> UpdateJourneyAssetDriversAsync(long journeyId, List<JourneyAssetDriver> journeyAssetDriver)
 		{
-
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.JourneysController.UPDATEJOURNEYASSETDRIVERSASYNC, HttpMethod.Put);
 			request.AddUrlSegment("journeyId", journeyId.ToString());
 			request.AddJsonBody(journeyAssetDriver);

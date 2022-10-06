@@ -4,7 +4,6 @@ namespace MiX.Integrate.Shared.Entities.Journeys
 {
 	public class JourneyAssetDriversUpdate
 	{
-		public string JourneyId { get; set; }
 		public IList<JourneyAssetDriversUpdateAsset> JourneyAssets { get; set; }
 
 		public class JourneyAssetDriversUpdateAsset

@@ -35,6 +35,7 @@ namespace MiX.Integrate.API.Client.Journeys
 		Task<List<JourneyAssetDriver>> GetJourneyAssetsAndDriversAsync(long journeyId);
 		List<JourneyAssetDriver> GetJourneyAssetsAndDrivers(long journeyId);
 		bool UpdateJourneyAssetDrivers(long journeyId, List<JourneyAssetDriver> journeyAssetDriver);
+		bool UpdateJourneyAssetDriversWithValidation(JourneyAssetDriversUpdate journeyAssetDrivers);
 		bool RemoveJourney(long journeyId);
 		bool CancelJourney(long journeyId);
 		JourneyRouteInfo GetJourneyRouteLocations(long journeyId);
