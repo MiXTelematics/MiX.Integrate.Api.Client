@@ -321,6 +321,14 @@ namespace MiX.Integrate.API.Client.Journeys
 
 		}
 
+		public async Task<bool> UpdateJourneyAssetDriversWithValidationAsync(JourneyAssetDriversUpdate journeyAssetDrivers)
+		{
+			var request = GetRequest(APIControllerRoutes.JourneysController.UPDATEJOURNEYASSETDRIVERSWITHVALIDATIONASYNC, HttpMethod.Post);
+			request.AddJsonBody(journeyAssetDrivers);
+			var response = await ExecuteAsync<bool>(request).ConfigureAwait(false);
+			return response.Data;
+		}
+
 		public async Task<bool> UpdateJourneyAssetDriversAsync(long journeyId, List<JourneyAssetDriver> journeyAssetDriver)
 		{
 
