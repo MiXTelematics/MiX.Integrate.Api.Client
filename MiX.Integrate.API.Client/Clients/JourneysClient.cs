@@ -384,17 +384,6 @@ namespace MiX.Integrate.API.Client.Journeys
 
 		}
 
-		public bool UpdateJourneyDepartureDate(long journeyId, string departureDateTime)
-		{
-
-			IHttpRestRequest request = GetRequest(APIControllerRoutes.JourneysController.UPDATEJOURNEYDEPARTUREDATEASYNC, HttpMethod.Put);
-			request.AddUrlSegment("journeyId", journeyId.ToString());
-			request.AddUrlSegment("departureDateTime", departureDateTime);
-			IHttpRestResponse<bool> response = Execute<bool>(request);
-			return response.Data;
-
-		}
-
 		public async Task<JourneyRouteInfo> GetJourneyRouteLocationsAsync(long journeyId)
 		{
 
