@@ -245,7 +245,7 @@ namespace MiX.Integrate.Shared.Constants
 			public const string GETJOURNEYROUTELOCATIONSASYNC = "api/journeys/getJourneyRouteLocations/{journeyId}";
 			public const string REMOVEJOURNEYASYNC = "api/journeys/removeJourney/{journeyId}";
 			public const string CANCELJOURNEYASYNC = "api/journeys/cancelJourney/{journeyId}";
-			public const string UPDATEJOURNEYDEPARTUREDATEASYNC = "updateJourneyDepartureDate/{journeyId}/{departureDateTime}";
+			public const string UPDATEJOURNEYDEPARTUREDATEASYNC = "api/updateJourneyDepartureDate/{journeyId}/{departureDateTime}";
 			public const string UPDATEJOURNEYASSETDRIVERSASYNC = "api/journeys/updateJourneyAssetDrivers/{journeyId}";
 			public const string GETJOURNEYASSETSANDDRIVERSASYNC = "api/journeys/getJourneyAssetsAndDrivers/{journeyId}";
 			public const string SUBMITJOURNEY = "api/journeys/submitJourneyAsync/{journeyId}";
