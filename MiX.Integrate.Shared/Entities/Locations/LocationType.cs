@@ -63,6 +63,11 @@
 		/// <summary>
 		/// UnClassified location type.
 		/// </summary> 
-		UnClassified = 14
+		UnClassified = 14,
+
+		/// <summary>
+		/// Charging station location type
+		/// </summary>
+		ChargingStation = 15
 	}
 }

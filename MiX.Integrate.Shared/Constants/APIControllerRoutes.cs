@@ -232,6 +232,7 @@ namespace MiX.Integrate.Shared.Constants
 		public class JourneysController
 		{
 			public const string ADDJOURNEY = "api/journeys/";
+			public const string COMPLETEJOURNEY = "api/journeys/{journeyId}/complete";
 			public const string BULKJOURNEYADD = "api/journeys/bulk";
 			public const string BULKJOURNEYADDRESULT = "api/journeys/bulkResult/{groupId}/correlationId/{correlationId}";
 			public const string GETJOURNEY = "api/journeys/{journeyId}";
@@ -244,6 +245,7 @@ namespace MiX.Integrate.Shared.Constants
 			public const string GETJOURNEYROUTELOCATIONSASYNC = "api/journeys/getJourneyRouteLocations/{journeyId}";
 			public const string REMOVEJOURNEYASYNC = "api/journeys/removeJourney/{journeyId}";
 			public const string CANCELJOURNEYASYNC = "api/journeys/cancelJourney/{journeyId}";
+			public const string UPDATEJOURNEYDEPARTUREDATEASYNC = "api/journeys/updateJourneyDepartureDate/{journeyId}/{departureDateTime}";
 			public const string UPDATEJOURNEYASSETDRIVERSASYNC = "api/journeys/updateJourneyAssetDrivers/{journeyId}";
 			public const string GETJOURNEYASSETSANDDRIVERSASYNC = "api/journeys/getJourneyAssetsAndDrivers/{journeyId}";
 			public const string SUBMITJOURNEY = "api/journeys/submitJourneyAsync/{journeyId}";

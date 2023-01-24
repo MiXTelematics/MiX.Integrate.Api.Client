@@ -78,6 +78,19 @@ namespace MiX.Integrate.API.Client.Journeys
 		}
 
 		/// <summary>
+		/// Completes the journey
+		/// </summary>
+		/// <param name="journeyId"></param>
+		/// <returns></returns>
+		public async Task<bool> CompleteJourneyAsync(long journeyId)
+		{
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.JourneysController.COMPLETEJOURNEY, HttpMethod.Put);
+			request.AddUrlSegment("journeyId", journeyId.ToString());
+			IHttpRestResponse<bool> response = await ExecuteAsync<bool>(request).ConfigureAwait(false);
+			return response.Data;
+		}
+
+		/// <summary>
 		/// Adds the journey.
 		/// </summary>
 		/// <param name="journey">The journey.</param>
@@ -360,6 +373,16 @@ namespace MiX.Integrate.API.Client.Journeys
 
 		}
 
+		public async Task<bool> UpdateJourneyDepartureDateAsync(long journeyId, string departureDateTime)
+		{
+
+			IHttpRestRequest request = GetRequest(APIControllerRoutes.JourneysController.UPDATEJOURNEYDEPARTUREDATEASYNC, HttpMethod.Put);
+			request.AddUrlSegment("journeyId", journeyId.ToString());
+			request.AddUrlSegment("departureDateTime", departureDateTime);
+			IHttpRestResponse<bool> response = await ExecuteAsync<bool>(request).ConfigureAwait(false);
+			return response.Data;
+
+		}
 
 		public async Task<JourneyRouteInfo> GetJourneyRouteLocationsAsync(long journeyId)
 		{

@@ -18,7 +18,7 @@ namespace MiX.Integrate.API.Client.Journeys
 
 		long AddJourney(CreateJourney newjourney);
 		Task<long> AddJourneyAsync(CreateJourney newjourney);
-
+		Task<bool> CompleteJourneyAsync(long journeyId);
 		List<Route> GetRouteList(long groupId);
 		Task<List<Route>> GetRouteListAsync(long groupId);
 
@@ -30,6 +30,7 @@ namespace MiX.Integrate.API.Client.Journeys
 		Task<JourneyRouteInfo> GetJourneyRouteLocationsAsync(long journeyId);
 		Task<bool> RemoveJourneyAsync(long journeyId);
 		Task<bool> CancelJourneyAsync(long journeyId);
+		Task<bool> UpdateJourneyDepartureDateAsync(long journeyId, string departureDateTime);
 		Task<bool> UpdateJourneyAssetDriversAsync(long journeyId, List<JourneyAssetDriver> journeyAssetDriver);
 		Task<List<JourneyAssetDriver>> GetJourneyAssetsAndDriversAsync(long journeyId);
 		List<JourneyAssetDriver> GetJourneyAssetsAndDrivers(long journeyId);
