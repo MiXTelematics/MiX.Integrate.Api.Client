@@ -1,36 +1,37 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
-  <metadata>
-    <id>MiX.Integrate.Api.Client</id>
-    <version>1.0.0</version>
-    <title>MiX Integrate Api Client</title>
-    <authors>MiX Telematics</authors>
-    <owners>MiX Telematics</owners>
-    <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>The MiX.Integrate.Api.Client assembly implements a client library for accessing the MiX Integrate API</description>
-    <copyright>Copyright 2021</copyright>
-	  <license type="expression">MIT</license>
-	  <tags>MiX Integrate API Client</tags>
-	  <dependencies>
-      <group targetFramework=".NETStandard2.0">
-        <dependency id="NETStandard.Library" version="2.0.3" />
-        <dependency id="MiX.Identity.Client" version="2021.8.13.1" />
-        <dependency id="System.Net.Http" version="4.3.4" />
-      </group>
-      <group targetFramework=".NETFramework4.6.2">
-        <dependency id="MiX.Identity.Client" version="2021.8.13.1" />
-        <dependency id="System.Net.Http" version="4.3.4" />
-      </group>
-    </dependencies>
-  </metadata>
-  <files>
+	<metadata>
+		<id>MiX.Integrate.Api.Client</id>
+		<version>1.0.0</version>
+		<title>MiX Integrate Api Client</title>
+		<authors>MiX Telematics</authors>
+		<owners>MiX Telematics</owners>
+		<requireLicenseAcceptance>false</requireLicenseAcceptance>
+		<description>The MiX.Integrate.Api.Client assembly implements a client library for accessing the MiX Integrate API</description>
+		<copyright>Copyright 2023</copyright>
+		<license type="expression">MIT</license>
+		<tags>MiX Integrate API Client</tags>
+		<dependencies>
+			<group targetFramework=".NETStandard2.0">
+				<dependency id="NETStandard.Library" version="2.0.3" />
+				<dependency id="Newtonsoft.Json" Version="11.0.1" />
+				<dependency id="System.Net.Http" version="4.3.4" />
+			</group>
+			<group targetFramework=".NETFramework4.6.2">
+				<dependency id="MiX.Identity.Client" version="2023.2.21.1" />
+				<dependency id="Newtonsoft.Json" Version="11.0.1" />
+				<dependency id="System.Net.Http" version="4.3.4" />
+			</group>
+		</dependencies>
+	</metadata>
+	<files>
 		<file src="$BaseOutputPath$\netstandard2.0\MiX.Integrate.Api.Client.dll" target="lib\netstandard2.0\MiX.Integrate.Api.Client.dll" />
 		<file src="$BaseOutputPath$\netstandard2.0\MiX.Integrate.Api.Client.pdb" target="lib\netstandard2.0\MiX.Integrate.Api.Client.pdb" />
 		<file src="$BaseOutputPath$\netstandard2.0\MiX.Integrate.Shared.dll" target="lib\netstandard2.0\MiX.Integrate.Shared.dll" />
 		<file src="$BaseOutputPath$\netstandard2.0\MiX.Integrate.Shared.pdb" target="lib\netstandard2.0\MiX.Integrate.Shared.pdb" />
-    <file src="$BaseOutputPath$\net462\MiX.Integrate.Api.Client.dll" target="lib\net462\MiX.Integrate.Api.Client.dll" />
-    <file src="$BaseOutputPath$\net462\MiX.Integrate.Api.Client.pdb" target="lib\net462\MiX.Integrate.Api.Client.pdb" />
-    <file src="$BaseOutputPath$\net462\MiX.Integrate.Shared.dll" target="lib\net462\MiX.Integrate.Shared.dll" />
-    <file src="$BaseOutputPath$\net462\MiX.Integrate.Shared.pdb" target="lib\net462\MiX.Integrate.Shared.pdb" />
-  </files>
+		<file src="$BaseOutputPath$\net462\MiX.Integrate.Api.Client.dll" target="lib\net462\MiX.Integrate.Api.Client.dll" />
+		<file src="$BaseOutputPath$\net462\MiX.Integrate.Api.Client.pdb" target="lib\net462\MiX.Integrate.Api.Client.pdb" />
+		<file src="$BaseOutputPath$\net462\MiX.Integrate.Shared.dll" target="lib\net462\MiX.Integrate.Shared.dll" />
+		<file src="$BaseOutputPath$\net462\MiX.Integrate.Shared.pdb" target="lib\net462\MiX.Integrate.Shared.pdb" />
+	</files>
 </package>
