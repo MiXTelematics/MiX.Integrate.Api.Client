@@ -68,6 +68,20 @@ AssetTypeIds are not currently exposed as an enumeration - this will be correcte
 		public string TargetHourlyFuelConsumptionUnits { get; set; }
 		public string FleetNumber { get; set; }
 
+
+		// The following 3 fields are EV-related (FuelType == "Electric")
+		
+		/// <summary>WLTP maximum range, in kilometres</summary>
+		public int? WltpMaxRangeKm { get; set; }
+
+		/// <summary>Battery capacity, in kilowatt-hours</summary>
+		public int? BatteryCapacitykWh { get; set; } 
+
+		/// <summary>Usable battery capacity, in kilowatt-hours</summary>
+		public int? UsableBatteryCapacitykWh { get; set; }
+
+
+
 		// A value is required for this field: either a vehicle make/manufacturer
 		// recognised by the Fleet Manager system, or "Other"   
 		public string Make { get; set; }
