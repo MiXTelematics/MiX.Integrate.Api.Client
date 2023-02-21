@@ -1,4 +1,3 @@
-using IdentityModel.Client;
 using MiX.Identity.Client;
 using System;
 using System.Collections.Generic;
