@@ -1,58 +1,34 @@
-﻿using MiX.Integrate.Shared.Entities.Scoring;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
 namespace MiX.Integrate.API.Client.Base
 {
 	public class NewtonsoftJsonSerializer
 	{
-		public string ContentType
-		{
-			get { return "application/json"; } // Probably used for Serialization?
-			set { }
-		}
+		private static NewtonsoftJsonSerializer _default;
+		private readonly JsonSerializerSettings _settings;
 
-		public string DateFormat { get; set; }
-
-		public string Namespace { get; set; }
-
-		public string RootElement { get; set; }
-
-		public string Serialize(object obj)
-		{
-			string json = JsonConvert.SerializeObject(obj, _settings);
-			return json;
-		}
-
-		public T Deserialize<T>(string jsonString)
-		{
-			return JsonConvert.DeserializeObject<T>(jsonString, _settings);
-		}
-
-		private JsonSerializerSettings _settings;
 		public NewtonsoftJsonSerializer()
 		{
-			_settings = new JsonSerializerSettings();
-			_settings.NullValueHandling = NullValueHandling.Ignore;
+			_settings = new JsonSerializerSettings
+			{
+				NullValueHandling = NullValueHandling.Ignore,
+				MaxDepth = 128  // addresses stack overflow vulnerability
+			};
 			_settings.Converters.Add(new IsoDateTimeConverter());
 			_settings.Converters.Add(new StringEnumConverter());
 			_settings.Converters.Add(new TimeSpanJsonConverter());
 			_settings.Converters.Add(new TimeSpanNullableJsonConverter());
-			//_settings.Converters.Add(new AbstractConverter<ModelSettings_FlexibleDriver, IModelSettings>());
-			//_settings.Converters.Add(new AbstractConverter<ModelSettings_FlexibleRAG, IModelSettings>());
 		}
 
-		private static NewtonsoftJsonSerializer _default;
 		public static NewtonsoftJsonSerializer Default
 		{
-			get
-			{
-				if (_default == null)
-				{
-					_default = new NewtonsoftJsonSerializer();
-				}
-				return _default;
-			}
+			get { return _default ?? (_default = new NewtonsoftJsonSerializer()); }
 		}
+
+		public string Serialize(object obj) => JsonConvert.SerializeObject(obj, _settings);
+
+		public T Deserialize<T>(string jsonString) => JsonConvert.DeserializeObject<T>(jsonString, _settings);
+
 	}
 }
