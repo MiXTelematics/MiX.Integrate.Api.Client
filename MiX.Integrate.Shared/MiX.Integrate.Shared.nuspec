@@ -13,7 +13,7 @@
 		<tags>MiX Integrate Shared</tags>
 		<dependencies>
 			<group targetFramework=".NETStandard2.0">
-				<dependency id="NETStandard.Library" version="2.0.0" />
+				<dependency id="NETStandard.Library" version="2.0.3" />
 			</group>
 			<group targetFramework=".NETStandard1.6">
 				<dependency id="NETStandard.Library" version="1.6.1" />

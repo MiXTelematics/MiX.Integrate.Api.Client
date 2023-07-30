@@ -28,7 +28,7 @@
 
 
   <ItemGroup>
-    <PackageReference Include="MiX.Identity.Client" Version="2023.2.21.1" />
+    <PackageReference Include="MiX.Identity.Client" Version="2023.7.30.1" />
     <PackageReference Include="Newtonsoft.Json" Version="11.0.1" />
     <PackageReference Include="System.Net.Http" Version="4.3.4" />
   </ItemGroup>
