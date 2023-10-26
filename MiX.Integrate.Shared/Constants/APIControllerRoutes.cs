@@ -5,6 +5,13 @@ namespace MiX.Integrate.Shared.Constants
 {
 	public class APIControllerRoutes
 	{
+
+		public class AempController
+		{
+			public const string GETFLEETSNAPSHOT = "api/aemp/{organisationid}";
+			public const string GETFLEETSNAPSHOTPAGED = "api/aemp/{organisationId}/{pageNum}";
+		}
+
 		//MiX.Integrate.Api.Controllers.ActiveEventController 
 		public class ActiveEventsController
 		{
