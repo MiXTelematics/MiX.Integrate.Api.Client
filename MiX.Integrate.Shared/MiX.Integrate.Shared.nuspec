@@ -15,21 +15,13 @@
 			<group targetFramework=".NETStandard2.0">
 				<dependency id="NETStandard.Library" version="2.0.3" />
 			</group>
-			<group targetFramework=".NETStandard1.6">
-				<dependency id="NETStandard.Library" version="1.6.1" />
-			</group>
 			<group targetFramework=".NETFramework4.6.2" />
-			<group targetFramework=".NETFramework4.5.2" />
 		</dependencies>
 	</metadata>
 	<files>
 		<file src="$BaseOutputPath$\netstandard2.0\MiX.Integrate.Shared.dll" target="lib\netstandard2.0\MiX.Integrate.Shared.dll" />
 		<file src="$BaseOutputPath$\netstandard2.0\MiX.Integrate.Shared.pdb" target="lib\netstandard2.0\MiX.Integrate.Shared.pdb" />
-		<file src="$BaseOutputPath$\netstandard1.6\MiX.Integrate.Shared.dll" target="lib\netstandard1.6\MiX.Integrate.Shared.dll" />
-		<file src="$BaseOutputPath$\netstandard1.6\MiX.Integrate.Shared.pdb" target="lib\netstandard1.6\MiX.Integrate.Shared.pdb" />
 		<file src="$BaseOutputPath$\net462\MiX.Integrate.Shared.dll" target="lib\net462\MiX.Integrate.Shared.dll" />
 		<file src="$BaseOutputPath$\net462\MiX.Integrate.Shared.pdb" target="lib\net462\MiX.Integrate.Shared.pdb" />
-		<file src="$BaseOutputPath$\net452\MiX.Integrate.Shared.dll" target="lib\net452\MiX.Integrate.Shared.dll" />
-		<file src="$BaseOutputPath$\net452\MiX.Integrate.Shared.pdb" target="lib\net452\MiX.Integrate.Shared.pdb" />
 	</files>
 </package>
