@@ -21,9 +21,9 @@
 	<files>
 		<file src="$BaseOutputPath$\netstandard2.0\MiX.Integrate.Shared.dll" target="lib\netstandard2.0\MiX.Integrate.Shared.dll" />
 		<file src="$BaseOutputPath$\netstandard2.0\MiX.Integrate.Shared.pdb" target="lib\netstandard2.0\MiX.Integrate.Shared.pdb" />
-		<file src="$BaseOutputPath$\netstandard2.0\MiX.Integrate.Shared.pdb" target="lib\netstandard2.0\MiX.Integrate.Shared.xml" />
+		<file src="$BaseOutputPath$\netstandard2.0\MiX.Integrate.Shared.xml" target="lib\netstandard2.0\MiX.Integrate.Shared.xml" />
 		<file src="$BaseOutputPath$\net462\MiX.Integrate.Shared.dll" target="lib\net462\MiX.Integrate.Shared.dll" />
 		<file src="$BaseOutputPath$\net462\MiX.Integrate.Shared.pdb" target="lib\net462\MiX.Integrate.Shared.pdb" />
-		<file src="$BaseOutputPath$\net462\MiX.Integrate.Shared.pdb" target="lib\net462\MiX.Integrate.Shared.xml" />
+		<file src="$BaseOutputPath$\net462\MiX.Integrate.Shared.xml" target="lib\net462\MiX.Integrate.Shared.xml" />
 	</files>
 </package>
