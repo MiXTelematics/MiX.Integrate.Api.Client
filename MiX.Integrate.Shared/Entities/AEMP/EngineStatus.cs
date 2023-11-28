@@ -9,7 +9,7 @@ namespace MiX.Integrate.Shared.Entities.Aemp
 		[XmlAttribute("dateTime")] public DateTime Datetime { get; set; }
 
 		/// <example>18WVJ90831</example>
-		[XmlElement(IsNullable = false)] public string EngineNumber { get; set; }
+		[XmlElement] public string EngineNumber { get; set; }
 
 		[XmlElement] public bool Running { get; set; }
 	}
