@@ -14,7 +14,7 @@ namespace MiX.Integrate.Shared.Entities.Aemp
 		[XmlElement] public double Longitude { get; set; }
 
 		/// <example>742</example>
-		[XmlElement(IsNullable = false)] public double? Altitude { get; set; }
+		[XmlElement] public double? Altitude { get; set; }
 
 		/// <example>Metres</example>
 		[XmlElement] public string AltitudeUnits { get; set; }
