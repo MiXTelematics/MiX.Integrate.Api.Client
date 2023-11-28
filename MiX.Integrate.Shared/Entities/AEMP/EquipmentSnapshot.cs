@@ -3,7 +3,7 @@
 
 namespace MiX.Integrate.Shared.Entities.Aemp
 {
-	[XmlType(Namespace = "http://standards.iso.org/iso/15143/-3")]
+	[XmlType(TypeName="Equipment")]
 	public class EquipmentSnapshot
 	{
 		[XmlElement(Order = 10)] public EquipmentHeader EquipmentHeader { get; set; }
