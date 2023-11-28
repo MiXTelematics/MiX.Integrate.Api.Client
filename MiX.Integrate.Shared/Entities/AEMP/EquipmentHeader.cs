@@ -7,7 +7,7 @@ namespace MiX.Integrate.Shared.Entities.Aemp
 	public class EquipmentHeader
 	{
 		// Telematics Unit Installation Date
-		[XmlElement(IsNullable = false)] public DateTime? UnitInstallDateTime { get; set; }
+		[XmlElement] public DateTime? UnitInstallDateTime { get; set; }
 
 		// Equipment Make
 		/// <example>FORD</example>
