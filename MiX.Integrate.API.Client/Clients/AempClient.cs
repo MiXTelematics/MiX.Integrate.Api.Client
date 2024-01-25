@@ -50,7 +50,7 @@ namespace MiX.Integrate.API.Client
 
 			var thisHref = fleetSnapshot.Links?.FirstOrDefault(l => "this".Equals(l.rel, StringComparison.InvariantCultureIgnoreCase))?.href;
 			var lastHref = fleetSnapshot.Links?.FirstOrDefault(l => "last".Equals(l.rel, StringComparison.InvariantCultureIgnoreCase))?.href;
-\
+
 			if (string.IsNullOrWhiteSpace(thisHref) || string.IsNullOrWhiteSpace(lastHref))
 				throw new InvalidOperationException("Link data missing or invalid");
 
