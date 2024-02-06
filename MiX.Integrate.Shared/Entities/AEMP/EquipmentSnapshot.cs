@@ -10,7 +10,7 @@ namespace MiX.Integrate.Shared.Entities.Aemp
 		[XmlElement(Order = 20, IsNullable = false)] public Location Location { get; set; }
 		[XmlElement(Order = 30, IsNullable = false)] public CumulativeOperatingHours CumulativeOperatingHours { get; set; }
 		[XmlElement(Order = 40, IsNullable = false)] public FuelUsed FuelUsed { get; set; }
-		[XmlElement(Order = 50, IsNullable = false)] public FuelUsedLast24 FuelUsedLast24 { get; set; }
+		[XmlElement(Order = 50, IsNullable = false)] public FuelUsed FuelUsedLast24 { get; set; }
 		[XmlElement(Order = 60, IsNullable = false)] public Distance Distance { get; set; }
 
 		[XmlElement(Order = 110, IsNullable = false)] public CumulativeIdleHours CumulativeIdleHours { get; set; }

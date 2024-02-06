@@ -12,6 +12,8 @@ namespace MiX.Integrate.Shared.Entities.Aemp
 		[XmlElement] public float Percent { get; set; }
 
 		/// <example>41</example>
-		[XmlElement] public uint? TankCapacity { get; set; }
+		[XmlElement(ElementName = "FuelTankCapacity")] public uint? TankCapacity { get; set; }
+
+		[XmlElement] public string FuelTankCapacityUnits { get; set; } = "litre";
 	}
 }

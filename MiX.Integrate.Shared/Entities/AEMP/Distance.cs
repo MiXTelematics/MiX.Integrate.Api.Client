@@ -9,6 +9,8 @@ namespace MiX.Integrate.Shared.Entities.Aemp
 		[XmlAttribute("dateTime")] public DateTime Datetime { get; set; }
 
 		/// <example>72379.12</example>
-		[XmlElement] public float OdometerKilometre { get; set; }
+		[XmlElement(ElementName="Odometer")] public float OdometerKilometre { get; set; }
+
+		[XmlElement] public string OdometerUnits { get; set; } = "kilometre";
 	}
 }

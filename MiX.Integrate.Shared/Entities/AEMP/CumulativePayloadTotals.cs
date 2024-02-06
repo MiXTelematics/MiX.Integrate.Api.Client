@@ -9,6 +9,8 @@ namespace MiX.Integrate.Shared.Entities.Aemp
 		[XmlAttribute("dateTime")] public DateTime Datetime { get; set; }
 
 		/// <example>201.1</example>
-		[XmlElement] public double PayloadKilograms { get; set; }
+		[XmlElement(ElementName="Payload")] public double PayloadKilograms { get; set; }
+
+		[XmlElement] public string PayloadUnits { get; set; } = "kilogram";
 	}
 }
