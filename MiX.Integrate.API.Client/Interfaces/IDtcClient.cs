@@ -1,4 +1,5 @@
-﻿using MiX.Integrate.API.Client.Base;
+﻿using System;
+using MiX.Integrate.API.Client.Base;
 using MiX.Integrate.Shared.Entities.Dtc;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -21,13 +22,29 @@ namespace MiX.Integrate.API.Client
 		/// <param name="assetIds">Identifiers of the assets</param>
 		/// <param name="includeClosed"><see cref="Task"/> to include resolved faults</param>
 		/// <returns>A list of <see cref="AssetFaults"/> for the specified assets</returns>
-		IList<FaultedAsset> GetAssetFaults(List<long> assetIds, bool includeClosed = false);
+		IList<AssetFaults> GetAssetFaults(List<long> assetIds, bool includeClosed = false);
 
 		/// <summary>Gets faults associated with the specified assets, as an asynchronous operation</summary>
 		/// <param name="assetIds">Identifiers of the assets</param>
 		/// <param name="includeClosed"><see cref="Task"/> to include resolved faults</param>
 		/// <returns>A <see cref="Task"/> which, on completion, yields a list of <see cref="AssetFaults"/> for the specified assets</returns>
-		Task<IList<FaultedAsset>> GetAssetFaultsAsync(List<long> assetIds, bool includeClosed = false);
+		Task<IList<AssetFaults>> GetAssetFaultsAsync(List<long> assetIds, bool includeClosed = false);
+
+		/// <summary>Gets the DTC messages logged the specified assets during the specified period</summary>
+		/// <param name="assetIds">Identifiers of the assets</param>
+		/// <param name="from">Period start</param>
+		/// <param name="to">Period end</param>
+		/// <returns><see cref="FaultMessage"/>s for the specified assets and period</returns>
+		IList<FaultMessage> GetFaultMessageHistory(List<long> assetIds, DateTime from, DateTime to);
+
+		/// <summary>Gets the DTC messages logged the specified assets during the specified period</summary>
+		/// <param name="assetIds">Identifiers of the assets</param>
+		/// <param name="from">Period start</param>
+		/// <param name="to">Period end</param>
+		/// <returns>A <see cref="Task"/> which, on completion, yields a list of <see cref="FaultMessage"/>s for the specified assets and period</returns>
+		Task<IList<FaultMessage>> GetFaultMessageHistoryAsync(List<long> assetIds, DateTime from, DateTime to);
+
+
 
 	}
 }
