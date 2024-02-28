@@ -162,8 +162,8 @@ namespace MiX.Integrate.Shared.Constants
 		public class DtcController
 		{
 			public const string GETFAULTEDASSETSBYGROUP = "api/dtc/faultedassets/{groupId}";
-			public const string GETFAULTSFORASSETS = "api/dtc/faults";
-			public const string GETDTCMESSAGEHISTORYFORASSETS = "api/dtc/messages/{from}/{to}";
+			public const string GETFAULTSFORASSETS = "api/dtc/faults/assets";
+			public const string GETDTCMESSAGEHISTORYFORASSET = "api/dtc/messages/{assetId}/{from}/{to}";
 		}
 
 		//MiX.Integrate.Api EventsController
