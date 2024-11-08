@@ -4,6 +4,7 @@ namespace MiX.Integrate.Shared.Entities.HosData
 {
 	public class HosViolation
 	{
+        public long DriverId { get; set; }
 		public string ViolationName { get; set; }
 		public string ViolationDescription { get; set; }
 		public int ViolationRuleId { get; set; }
