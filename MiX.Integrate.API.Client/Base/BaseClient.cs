@@ -217,23 +217,13 @@ namespace MiX.Integrate.API.Client.Base
 		}
 
 		public IHttpRestResponse<T> Execute<T>(IHttpRestRequest request, int maxRetryAttempts = 3) where T : new()
-		{
-			IHttpRestResponse<T> respT = ExecuteAsync<T>(request, maxRetryAttempts).ConfigureAwait(false).GetAwaiter().GetResult();
-			return respT;
-		}
+		    => ExecuteAsync<T>(request, maxRetryAttempts).ConfigureAwait(false).GetAwaiter().GetResult();
 
 		public IHttpRestResponse Execute(IHttpRestRequest request, int maxRetryAttempts = 3)
-		{
-			IHttpRestResponse resp = ExecuteAsync(request, maxRetryAttempts).ConfigureAwait(false).GetAwaiter().GetResult();
-			return resp;
-		}
+		    => ExecuteAsync(request, maxRetryAttempts).ConfigureAwait(false).GetAwaiter().GetResult();
 
 		public async Task<IHttpRestResponse<T>> ExecuteAsync<T>(IHttpRestRequest request, int maxRetryAttempts = 3) where T : new()
-		{
-			IHttpRestResponse resp = await ExecuteAsync(request, maxRetryAttempts).ConfigureAwait(false);
-			IHttpRestResponse<T> respT = CloneInTo<T>(resp);
-			return respT;
-		}
+		    => CloneInTo<T>(await ExecuteAsync(request, maxRetryAttempts).ConfigureAwait(false));
 
 		public async Task<IHttpRestResponse> ExecuteAsync(IHttpRestRequest request, int maxRetryAttempts = 3)
 		{
@@ -265,27 +255,19 @@ namespace MiX.Integrate.API.Client.Base
 			}
 			if (request.JsonBody.Length > 0)
 			{
-				var jsonBody = new StringContent(request.JsonBody, Encoding.UTF8, "application/json");
-				requestMessage.Content = jsonBody;
+				requestMessage.Content = new StringContent(request.JsonBody, Encoding.UTF8, "application/json");
 			}
 
 			HttpResponseMessage response = await HttpClient.SendAsync(requestMessage).ConfigureAwait(false);
 			CheckResponseError(response);
 
-			Stream stream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
-
-			var sr = new StreamReader(stream);
-			string content = sr.ReadToEnd();
-
-			IHttpRestResponse resp = new HttpRestResponse()
+			return new HttpRestResponse()
 			{
 				Request = request,
-				Content = content,
+				Content = GetResponseContent(response),
 				StatusCode = response.StatusCode,
 				Headers = response.Headers
 			};
-
-			return resp;
 		}
 
 		public string GetResponseHeader(HttpResponseHeaders headers, string name)
@@ -298,10 +280,13 @@ namespace MiX.Integrate.API.Client.Base
 
 		private string GetResponseContent(HttpResponseMessage response)
 		{
-			Stream stream = response.Content.ReadAsStreamAsync().ConfigureAwait(false).GetAwaiter().GetResult();
-			var sr = new StreamReader(stream);
-			string content = sr.ReadToEnd();
-			return content;
+			using (Stream stream = response.Content.ReadAsStreamAsync().ConfigureAwait(false).GetAwaiter().GetResult())
+			{
+				using (var sr = new StreamReader(stream))
+				{
+					return sr.ReadToEnd();
+				}
+			}
 		}
 
 		public void CheckResponseError(HttpResponseMessage response)
@@ -314,7 +299,6 @@ namespace MiX.Integrate.API.Client.Base
 			if ((int)response.StatusCode >= 400 & (int)response.StatusCode < 500)
 			{
 				string content = GetResponseContent(response);
-				_ = response.Content.ReadAsStringAsync();
 				throw new HttpClientException(response.StatusCode, content);
 			}
 			if ((int)response.StatusCode >= 500 & (int)response.StatusCode < 600)
