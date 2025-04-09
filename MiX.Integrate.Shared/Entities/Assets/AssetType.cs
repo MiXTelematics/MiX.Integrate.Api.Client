@@ -39,7 +39,7 @@ namespace MiX.Integrate.Shared.Entities.Assets
 				OffRoadVehicle,
 				MediumCommercialVehicle,
 				NonPoweredAsset,
-				MobilePhone,
+//				MobilePhone,
 				HeavyVehicle
 			});
 		}
@@ -75,7 +75,7 @@ namespace MiX.Integrate.Shared.Entities.Assets
 		public static readonly AssetType OffRoadVehicle = new AssetType(24, "Off-Road Vehicle", "asset-light-delivery-vehicle.jpg");
 		public static readonly AssetType MediumCommercialVehicle = new AssetType(25, "Medium Commercial Vehicle", "asset-medium-commercial-vehicle.jpg");
 		public static readonly AssetType NonPoweredAsset = new AssetType(26, "Non-Powered Asset", "non-powered-asset.jpg");
-		public static readonly AssetType MobilePhone = new AssetType(27, "Mobile Phone", "asset-mobile-phone.jpg");
+//		public static readonly AssetType MobilePhone = new AssetType(27, "Mobile Phone", "asset-mobile-phone.jpg");
 	    public static readonly AssetType HeavyVehicle = new AssetType(28, "Heavy Vehicle", "asset-heavy-vehicle-non-articulated.jpg");
 
 
