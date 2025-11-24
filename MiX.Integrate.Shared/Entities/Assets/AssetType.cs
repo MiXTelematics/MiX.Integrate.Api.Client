@@ -40,7 +40,8 @@ namespace MiX.Integrate.Shared.Entities.Assets
 				MediumCommercialVehicle,
 				NonPoweredAsset,
 //				MobilePhone,
-				HeavyVehicle
+				HeavyVehicle,
+				MobilePlantEquipmentForkLift
 			});
 		}
 
@@ -77,6 +78,7 @@ namespace MiX.Integrate.Shared.Entities.Assets
 		public static readonly AssetType NonPoweredAsset = new AssetType(26, "Non-Powered Asset", "non-powered-asset.jpg");
 //		public static readonly AssetType MobilePhone = new AssetType(27, "Mobile Phone", "asset-mobile-phone.jpg");
 	    public static readonly AssetType HeavyVehicle = new AssetType(28, "Heavy Vehicle", "asset-heavy-vehicle-non-articulated.jpg");
+		public static readonly AssetType MobilePlantEquipmentForkLift = new AssetType(29, "Mobile Plant Equipment - Forklift", "asset-mobile-plant-equipment.jpg");
 
 
 		public static AssetType GetById(int id)
