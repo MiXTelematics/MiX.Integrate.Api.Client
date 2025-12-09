@@ -15,45 +15,53 @@ namespace MiX.Integrate.API.Client
 		public PositionsClient(string url, bool setTestRequestHeader = false) : base(url, setTestRequestHeader) { }
 		public PositionsClient(string url, IdServerResourceOwnerClientSettings settings, bool setTestRequestHeader = false) : base(url, settings, setTestRequestHeader) { }
 
-		public List<Position> GetLatestByAssetIds(List<long> assetIds, byte quantity, DateTime? cachedSince = null)
+		public List<Position> GetLatestByAssetIds(List<long> assetIds, byte quantity, DateTime? cachedSince = null, bool ensureReverseGeocoded = false)
 		{
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.PositionsController.GETLATESTFORASSETS, HttpMethod.Post);
 			request.AddUrlSegment("quantity", quantity.ToString());
 			if (cachedSince.HasValue)
 				request.AddQueryParameter("cachedSince", cachedSince.Value.ToUniversalTime().ToString(DataFormats.DateTime_Format));
+			if (ensureReverseGeocoded)
+				request.AddQueryParameter("ensureReverseGeocoded", ensureReverseGeocoded.ToString());
 			request.AddJsonBody(assetIds);
 			IHttpRestResponse<List<Position>> response = Execute<List<Position>>(request);
 			return response.Data;
 		}
 
-		public async Task<List<Position>> GetLatestByAssetIdsAsync(List<long> assetIds, byte quantity, DateTime? cachedSince = null)
+		public async Task<List<Position>> GetLatestByAssetIdsAsync(List<long> assetIds, byte quantity, DateTime? cachedSince = null, bool ensureReverseGeocoded = false)
 		{
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.PositionsController.GETLATESTFORASSETS, HttpMethod.Post);
 			request.AddUrlSegment("quantity", quantity.ToString());
 			if (cachedSince.HasValue)
 				request.AddQueryParameter("cachedSince", cachedSince.Value.ToUniversalTime().ToString(DataFormats.DateTime_Format));
+			if (ensureReverseGeocoded)
+				request.AddQueryParameter("ensureReverseGeocoded", ensureReverseGeocoded.ToString());
 			request.AddJsonBody(assetIds);
 			IHttpRestResponse<List<Position>> response = await ExecuteAsync<List<Position>>(request).ConfigureAwait(false);
 			return response.Data;
 		}
 
-		public List<Position> GetLatestByGroupIds(List<long> groupIds, byte quantity, DateTime? cachedSince = null)
+		public List<Position> GetLatestByGroupIds(List<long> groupIds, byte quantity, DateTime? cachedSince = null, bool ensureReverseGeocoded = false)
 		{
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.PositionsController.GETLATESTFORGROUPS, HttpMethod.Post);
 			request.AddUrlSegment("quantity", quantity.ToString());
 			if (cachedSince.HasValue)
 				request.AddQueryParameter("cachedSince", cachedSince.Value.ToUniversalTime().ToString(DataFormats.DateTime_Format));
+			if (ensureReverseGeocoded)
+				request.AddQueryParameter("ensureReverseGeocoded", ensureReverseGeocoded.ToString());
 			request.AddJsonBody(groupIds);
 			IHttpRestResponse<List<Position>> response = Execute<List<Position>>(request);
 			return response.Data;
 		}
 
-		public async Task<List<Position>> GetLatestByGroupIdsAsync(List<long> groupIds, byte quantity, DateTime? cachedSince = null)
+		public async Task<List<Position>> GetLatestByGroupIdsAsync(List<long> groupIds, byte quantity, DateTime? cachedSince = null, bool ensureReverseGeocoded = false)
 		{
 			IHttpRestRequest request = GetRequest(APIControllerRoutes.PositionsController.GETLATESTFORGROUPS, HttpMethod.Post);
 			request.AddUrlSegment("quantity", quantity.ToString());
 			if (cachedSince.HasValue)
 				request.AddQueryParameter("cachedSince", cachedSince.Value.ToUniversalTime().ToString(DataFormats.DateTime_Format));
+			if (ensureReverseGeocoded)
+				request.AddQueryParameter("ensureReverseGeocoded", ensureReverseGeocoded.ToString());
 			request.AddJsonBody(groupIds);
 			IHttpRestResponse<List<Position>> response = await ExecuteAsync<List<Position>>(request).ConfigureAwait(false);
 			return response.Data;

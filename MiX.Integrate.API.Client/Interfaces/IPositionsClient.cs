@@ -9,10 +9,10 @@ namespace MiX.Integrate.API.Client
 {
 	public interface IPositionsClient : IBaseClient
 	{
-		List<Position> GetLatestByAssetIds(List<long> assetIds, byte quantity, DateTime? cachedSince = null);
-		Task<List<Position>> GetLatestByAssetIdsAsync(List<long> assetIds, byte quantity, DateTime? cachedSince = null);
-		List<Position> GetLatestByGroupIds(List<long> groupIds, byte quantity, DateTime? cachedSince = null);
-		Task<List<Position>> GetLatestByGroupIdsAsync(List<long> groupIds, byte quantity, DateTime? cachedSince = null);
+		List<Position> GetLatestByAssetIds(List<long> assetIds, byte quantity, DateTime? cachedSince = null, bool ensureReverseGeocoded = false);
+		Task<List<Position>> GetLatestByAssetIdsAsync(List<long> assetIds, byte quantity, DateTime? cachedSince = null, bool ensureReverseGeocoded = false);
+		List<Position> GetLatestByGroupIds(List<long> groupIds, byte quantity, DateTime? cachedSince = null, bool ensureReverseGeocoded = false);
+		Task<List<Position>> GetLatestByGroupIdsAsync(List<long> groupIds, byte quantity, DateTime? cachedSince = null, bool ensureReverseGeocoded = false);
 		List<Position> GetSinceByAssetIds(List<long> assetIds, DateTime since);
 		Task<List<Position>> GetSinceByAssetIdsAsync(List<long> assetIds, DateTime since);
 		List<Position> GetByDateRangeByGroupIds(List<long> groupIds, DateTime fromDate, DateTime toDate);
